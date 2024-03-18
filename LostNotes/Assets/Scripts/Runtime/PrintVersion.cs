@@ -15,7 +15,7 @@ namespace LostNotes {
 			UpdateText();
 		}
 #endif
-		void UpdateText() {
+		private void UpdateText() {
 			if (_textComponent) {
 				_textComponent.text = $"{Application.productName} v{Application.version}";
 			}
