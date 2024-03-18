@@ -43,6 +43,27 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0"
-  }
+    "com.unity.modules.xr": "1.0.0",
+    "com.domybest.mybox": "1.7.0",
+    "net.slothsoft.unity-extensions": "3.1.0"
+  },
+  "scopedRegistries": [
+    {
+      "name": "OpenUPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.domybest.mybox",
+        "net.slothsoft.unity-extensions",
+        "nl.jeffreylanters.tweens",
+        "net.tnrd.nsubstitute"
+      ]
+    },
+    {
+      "name": "Unity NuGet",
+      "url": "https://unitynuget-registry.azurewebsites.net",
+      "scopes": [
+        "org.nuget"
+      ]
+    }
+  ]
 }
