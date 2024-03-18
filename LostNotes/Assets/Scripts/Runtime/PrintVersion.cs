@@ -7,8 +7,18 @@ namespace LostNotes {
 		[SerializeField]
 		private TextMeshProUGUI _textComponent;
 
+		private void Start() {
+			UpdateText();
+		}
+#if UNITY_EDITOR
 		private void Update() {
-			_textComponent.text = Application.version;
+			UpdateText();
+		}
+#endif
+		void UpdateText() {
+			if (_textComponent) {
+				_textComponent.text = $"{Application.productName} v{Application.version}";
+			}
 		}
 	}
 }
