@@ -80,6 +80,7 @@ crashlytics-build.properties
 !/LostNotes/[Aa]ssets/Editor Default Resources/FMOD/*
                     
 # Ignore the Cache folder since it is updated locally.
+/LostNotes/[Aa]ssets/Plugins/FMOD/Cache*
                     
 # Ignore bank files in the StreamingAssets folder.
 /LostNotes/[Aa]ssets/StreamingAssets/**/*.bank
