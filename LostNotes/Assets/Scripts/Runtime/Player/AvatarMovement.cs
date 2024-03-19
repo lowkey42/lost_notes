@@ -9,7 +9,7 @@ namespace LostNotes.Player {
 		}
 
 		public void MoveBy(Vector2Int delta) {
-			Position += delta;
+			transform.position += delta.SwizzleXZ();
 		}
 
 		public void PlaySong(SongAsset song) {
