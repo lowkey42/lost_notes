@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{5476eb85-3967-46c2-8fc4-ae2a29243377}">
 		<property name="assetPath">
-			<value>ln_violin_Es.wav</value>
+			<value>Noten/ln_violin_Es.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
