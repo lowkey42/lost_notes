@@ -16,18 +16,18 @@ namespace LostNotes.Gameplay {
 		private AvatarInput _input;
 
 		private void Awake() {
-			_input.enabled = false;
+			_input.CanMove = false;
+			_input.CanChangePlayState = false;
 		}
 
 		public IEnumerator DoTurn() {
-			_input.enabled = true;
-
 			_actionPoints = _actionPointsPerTurn;
-			while (_actionPoints > 0) {
-				yield return null;
-			}
 
-			_input.enabled = false;
+			do {
+				_input.CanMove = _actionPoints >= _actionPointsToMove;
+				_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
+				yield return null;
+			} while (_input.CanMove || _input.CanChangePlayState);
 		}
 
 		public void MoveBy(Vector2Int delta) {

@@ -66,6 +66,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerActions: {fileID: -944628639613478452, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  _canMove: 1
+  _canChangePlayState: 1
   _isPlaying: 0
 --- !u!114 &5181073520673101130
 MonoBehaviour:

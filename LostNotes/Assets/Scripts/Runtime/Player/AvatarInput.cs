@@ -13,6 +13,7 @@ namespace LostNotes.Player {
 		}
 
 		private void OnDisable() {
+			IsPlaying = false;
 			TearDownPlayer();
 			TearDownNotes();
 		}
@@ -23,23 +24,48 @@ namespace LostNotes.Player {
 		private InputActionMap PlayerMap => playerActions.FindActionMap("Player");
 
 		private void SetUpPlayer() {
+			PlayerMap.Enable();
+
 			PlayerMap["Move"].performed += HandleMove;
+			PlayerMap["Move"].canceled += HandleMove;
 			PlayerMap["Play"].started += HandlePlayStart;
 			PlayerMap["Play"].canceled += HandlePlayStop;
-			PlayerMap.Enable();
 		}
 
 		private void TearDownPlayer() {
-			PlayerMap.Disable();
 			PlayerMap["Move"].performed -= HandleMove;
+			PlayerMap["Move"].canceled -= HandleMove;
 			PlayerMap["Play"].started -= HandlePlayStart;
 			PlayerMap["Play"].canceled -= HandlePlayStop;
+
+			PlayerMap.Disable();
 		}
 
 		private Vector2Int _lastInput;
 
+		[SerializeField, ReadOnly]
+		private bool _canMove = true;
+		public bool CanMove {
+			get => _canMove && !_isPlaying;
+			set => _canMove = value;
+		}
+
+		[SerializeField, ReadOnly]
+		private bool _canChangePlayState = true;
+		public bool CanChangePlayState {
+			get => _canChangePlayState;
+			set {
+				_canChangePlayState = value;
+				if (!_canChangePlayState) {
+					IsPlaying = false;
+				}
+			}
+		}
+
+		private bool CanPlayNotes => _isPlaying;
+
 		private void HandleMove(InputAction.CallbackContext context) {
-			if (_isPlaying) {
+			if (!CanMove) {
 				return;
 			}
 
@@ -64,15 +90,34 @@ namespace LostNotes.Player {
 		[SerializeField, ReadOnly]
 		private bool _isPlaying = false;
 
+		private bool IsPlaying {
+			get => _isPlaying;
+			set {
+				if (_isPlaying != value) {
+					_isPlaying = value;
+					if (value) {
+						gameObject.SendMessage(nameof(INoteMessages.StartPlaying), SendMessageOptions.DontRequireReceiver);
+					} else {
+						gameObject.SendMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
+					}
+				}
+			}
+		}
+
 		public void HandlePlayStart(InputAction.CallbackContext context) {
-			_isPlaying = true;
-			gameObject.SendMessage(nameof(INoteMessages.StartPlaying), SendMessageOptions.DontRequireReceiver);
+			if (!CanChangePlayState) {
+				return;
+			}
+
+			IsPlaying = true;
 		}
 
 		public void HandlePlayStop(InputAction.CallbackContext context) {
-			_isPlaying = false;
-			gameObject.SendMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
+			if (!CanChangePlayState) {
+				return;
+			}
 
+			IsPlaying = false;
 		}
 
 		private InputActionMap NoteMap => playerActions.FindActionMap("Notes");
@@ -95,7 +140,7 @@ namespace LostNotes.Player {
 		}
 
 		private void HandleNoteStart(InputAction.CallbackContext context) {
-			if (!_isPlaying) {
+			if (!CanPlayNotes) {
 				return;
 			}
 
@@ -103,7 +148,7 @@ namespace LostNotes.Player {
 		}
 
 		private void HandleNoteStop(InputAction.CallbackContext context) {
-			if (!_isPlaying) {
+			if (!CanPlayNotes) {
 				return;
 			}
 
