@@ -8,7 +8,7 @@ namespace LostNotes.Gameplay.EnemyActions {
 
 		[SerializeField] private TilemapMask _attackArea = new(new Vector2Int(9, 9));
 
-		public override IEnumerator Execute() {
+		public override IEnumerator Execute(Enemy enemy) {
 			return null; // TODO: play animation, damage attack-able objects in pattern + send move command to movement-script => wait until completion
 		}
 	}

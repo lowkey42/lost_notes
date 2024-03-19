@@ -4,10 +4,11 @@ using UnityEngine;
 namespace LostNotes.Gameplay.EnemyActions {
 	[CreateAssetMenu(fileName = "Rotate", menuName = "EnemyActions/Rotate", order = 0)]
 	public class RotateAction : EnemyAction {
-		[SerializeField][Range(1, 4)] private int _quaterTurns = 1;
+		[SerializeField] private RotationTurn _turns = RotationTurn.Degrees90;
 
-		public override IEnumerator Execute() {
-			return null; // TODO: send rotate command to movement-script and wait until completion
+		public override IEnumerator Execute(Enemy enemy) {
+			enemy.Movement.Rotate(_turns);
+			yield return new WaitForSeconds(1); // TODO: wait until movement/animation completion
 		}
 	}
 }
