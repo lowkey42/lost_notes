@@ -12,6 +12,8 @@ namespace LostNotes.Player {
 		private string _songLabel;
 		[SerializeField, ReadOnly]
 		private List<SongAsset> _songs = new();
+		[SerializeField]
+		private SongAsset _failureSong;
 
 		private void AddSong(SongAsset song) {
 			_songs.Add(song);
@@ -38,16 +40,24 @@ namespace LostNotes.Player {
 		}
 
 		public void StartNote(InputAction action) {
+			var isPlayingAny = false;
 			foreach (var song in _songs) {
 				var status = song.PlayNote(action);
-				if (status == ESongStatus.Done) {
-					song.PlaySong(gameObject);
+				if (status is ESongStatus.Playing or ESongStatus.Done) {
+					isPlayingAny = true;
 				}
+
+				if (status is ESongStatus.Done) {
+					gameObject.SendMessage(nameof(IAvatarMessages.PlaySong), song, SendMessageOptions.DontRequireReceiver);
+				}
+			}
+
+			if (!isPlayingAny) {
+				gameObject.SendMessage(nameof(IAvatarMessages.FailSong), _failureSong, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 
 		public void StopNote(InputAction action) {
-
 		}
 	}
 }

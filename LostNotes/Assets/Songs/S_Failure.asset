@@ -9,13 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92de7798b441f114bbcdbcd5d0b547a2, type: 3}
-  m_Name: SFX_Test
+  m_Script: {fileID: 11500000, guid: 130ba6736687035468319838fc26eb50, type: 3}
+  m_Name: S_Failure
   m_EditorClassIdentifier: 
-  eventToTrigger:
+  _isAvailable: 0
+  _notes: []
+  _songEvent:
     Guid:
       Data1: 818554034
       Data2: 1277787307
       Data3: -1688031326
       Data4: -1156187940
     Path: event:/Song of Failure
+  _songPrefab: {fileID: 9129755563245552758, guid: 1eb0ccd935c15ae42beb11e7c26ba9a9, type: 3}

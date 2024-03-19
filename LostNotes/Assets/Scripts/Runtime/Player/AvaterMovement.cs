@@ -13,9 +13,11 @@ namespace LostNotes.Player {
 		}
 
 		public void PlaySong(SongAsset song) {
+			song.PlaySong(gameObject);
 		}
 
 		public void FailSong(SongAsset song) {
+			song.PlaySong(gameObject);
 		}
 	}
 }

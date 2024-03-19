@@ -7,7 +7,8 @@ namespace LostNotes.Gameplay {
 		[SerializeField] private List<EnemyAction> _actions;
 
 		public IEnumerator DoTurn() {
-			foreach (var action in _actions) yield return action.Execute();
+			foreach (var action in _actions)
+				yield return action.Execute();
 		}
 	}
 }

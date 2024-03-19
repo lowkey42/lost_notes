@@ -23,6 +23,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - song
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f82990598e0d8f342b84961929560f9f
+    m_Address: Assets/Songs/S_SongOfSleep.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - song
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e16205b2a0b3d634b88e4a01feceaa57, type: 2}
   m_SchemaSet:

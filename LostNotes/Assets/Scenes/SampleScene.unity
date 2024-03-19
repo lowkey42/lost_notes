@@ -700,6 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _songLabel: song
   _songs: []
+  _failureSong: {fileID: 11400000, guid: 0a5efc4e48d4560418b2bfd268acc0d1, type: 2}
 --- !u!114 &531318615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1761,7 +1762,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.75
+  m_fontSize: 17.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

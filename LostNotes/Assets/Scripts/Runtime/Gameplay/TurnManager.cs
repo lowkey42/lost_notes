@@ -5,12 +5,12 @@ using UnityEngine;
 namespace LostNotes.Gameplay {
 	public class TurnOrder {
 		public TurnOrder(IReadOnlyList<ITurnActor> actors) {
-			Actors       = actors;
+			Actors = actors;
 			CurrentActor = 0;
 		}
 
-		public IReadOnlyList<ITurnActor> Actors       { get; }
-		public int                       CurrentActor { get; set; }
+		public IReadOnlyList<ITurnActor> Actors { get; }
+		public int CurrentActor { get; set; }
 
 		public bool RoundDone => CurrentActor >= Actors.Count;
 	}
@@ -23,14 +23,14 @@ namespace LostNotes.Gameplay {
 
 		public TurnOrder CurrentRoundTurnOrder => _currentRoundTurnOrder ??= ComputeTurnOrder();
 
-		private void Update() {
+		protected void Update() {
 			_round ??= StartCoroutine(DoRound());
 		}
 
 		private TurnOrder ComputeTurnOrder() {
 			var actors = new List<ITurnActor>();
 			_turnActorsRoot.GetComponentsInChildren(actors);
-			actors.RemoveAll(actor => !actor.HasTurnActions());
+			_ = actors.RemoveAll(actor => !actor.HasTurnActions());
 			return new TurnOrder(actors);
 		}
 
@@ -43,7 +43,7 @@ namespace LostNotes.Gameplay {
 			}
 
 			turnOrder.CurrentActor = turnOrder.Actors.Count;
-			_round                 = null;
+			_round = null;
 		}
 	}
 }
