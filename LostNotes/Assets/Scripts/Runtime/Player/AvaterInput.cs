@@ -15,15 +15,21 @@ namespace LostNotes.Player {
 		private Vector2Int _current;
 
 		private void OnEnable() {
+			SetUpPlayer();
 			SetUpNotes();
 		}
 
 		private void OnDisable() {
+			TearDownPlayer();
 			TearDownNotes();
 		}
 
-		public void OnMove(InputValue value) {
-			var move = Vector2Int.RoundToInt(value.Get<Vector2>());
+		private void HandleMove(InputAction.CallbackContext context) {
+			if (_isPlaying) {
+				return;
+			}
+
+			var move = Vector2Int.RoundToInt(context.ReadValue<Vector2>());
 			var position = Position;
 
 			if (move.x != 0 && _current.x == 0) {
@@ -41,47 +47,69 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private InputActionAsset playerActions;
 
-		private InputActionMap noteMap => playerActions.FindActionMap("Notes");
+		private InputActionMap PlayerMap => playerActions.FindActionMap("Player");
+
+		private void SetUpPlayer() {
+			PlayerMap["Move"].performed += HandleMove;
+			PlayerMap["Play"].started += HandlePlayStart;
+			PlayerMap["Play"].canceled += HandlePlayStop;
+			PlayerMap.Enable();
+		}
+
+		private void TearDownPlayer() {
+			PlayerMap.Disable();
+			PlayerMap["Move"].performed -= HandleMove;
+			PlayerMap["Play"].started -= HandlePlayStart;
+			PlayerMap["Play"].canceled -= HandlePlayStop;
+		}
+
+		private InputActionMap NoteMap => playerActions.FindActionMap("Notes");
 
 		[SerializeField, ReadOnly]
 		private bool _isPlaying = false;
 
-		public void OnPlay(InputValue value) {
-			if (value.isPressed) {
-				_isPlaying = true;
-				noteMap.Enable();
-				gameObject.SendMessage(nameof(INoteMessages.StartPlaying), SendMessageOptions.DontRequireReceiver);
-			} else {
-				_isPlaying = false;
-				noteMap.Disable();
-				gameObject.SendMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
-			}
+		public void HandlePlayStart(InputAction.CallbackContext context) {
+			_isPlaying = true;
+			gameObject.SendMessage(nameof(INoteMessages.StartPlaying), SendMessageOptions.DontRequireReceiver);
+		}
+
+		public void HandlePlayStop(InputAction.CallbackContext context) {
+			_isPlaying = false;
+			gameObject.SendMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
+
 		}
 
 		private void SetUpNotes() {
-			foreach (var noteAction in noteMap) {
-				noteAction.started += StartPlayingNote;
-				noteAction.canceled += StopPlayingNote;
+			foreach (var noteAction in NoteMap) {
+				noteAction.started += HandleNoteStart;
+				noteAction.canceled += HandleNoteStop;
 			}
+
+			NoteMap.Enable();
 		}
 
 		private void TearDownNotes() {
-			foreach (var noteAction in noteMap) {
-				noteAction.started -= StartPlayingNote;
-				noteAction.canceled -= StopPlayingNote;
+			NoteMap.Disable();
+			foreach (var noteAction in NoteMap) {
+				noteAction.started -= HandleNoteStart;
+				noteAction.canceled -= HandleNoteStop;
 			}
 		}
 
-		private void StartPlayingNote(InputAction.CallbackContext context) {
-			if (_isPlaying) {
-				gameObject.SendMessage(nameof(INoteMessages.StartNote), context.action, SendMessageOptions.DontRequireReceiver);
+		private void HandleNoteStart(InputAction.CallbackContext context) {
+			if (!_isPlaying) {
+				return;
 			}
+
+			gameObject.SendMessage(nameof(INoteMessages.StartNote), context.action, SendMessageOptions.DontRequireReceiver);
 		}
 
-		private void StopPlayingNote(InputAction.CallbackContext context) {
-			if (_isPlaying) {
-				gameObject.SendMessage(nameof(INoteMessages.StopNote), context.action, SendMessageOptions.DontRequireReceiver);
+		private void HandleNoteStop(InputAction.CallbackContext context) {
+			if (!_isPlaying) {
+				return;
 			}
+
+			gameObject.SendMessage(nameof(INoteMessages.StopNote), context.action, SendMessageOptions.DontRequireReceiver);
 		}
 
 		public void PlayNote(InputActionReference action) {
