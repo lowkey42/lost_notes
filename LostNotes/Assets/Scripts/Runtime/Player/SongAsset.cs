@@ -25,7 +25,7 @@ namespace LostNotes.Player {
 				return ESongStatus.NotLearned;
 			}
 
-			if (_notes[_currentNodeIndex].action == action) {
+			if (_notes[_currentNodeIndex].action.id == action.id) {
 				_currentNodeIndex++;
 				if (_currentNodeIndex == _notes.Length) {
 					_currentNodeIndex = 0;
