@@ -43,9 +43,14 @@ namespace LostNotes.Player {
 			}
 		}
 
+		[SerializeField]
+		private bool _stopPlayingNotes = false;
+
 		public void StopNote(InputAction action) {
 			if (_instances.Remove(action.id, out var instance)) {
-				_ = instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				if (_stopPlayingNotes) {
+					_ = instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+				}
 			}
 		}
 	}
