@@ -6,6 +6,8 @@ namespace LostNotes.Gameplay {
 	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages {
 		[SerializeField, Range(0, 10)]
 		private int _actionPointsPerTurn = 3;
+		[SerializeField]
+		private bool _allowActionsWithoutSufficientPoints = true;
 		[SerializeField, Range(0, 10)]
 		private int _actionPointsToMove = 1;
 		[SerializeField, Range(0, 10)]
@@ -26,8 +28,14 @@ namespace LostNotes.Gameplay {
 			gameObject.BroadcastMessage(nameof(IActorMessages.StartTurn), SendMessageOptions.DontRequireReceiver);
 
 			do {
-				_input.CanMove = _actionPoints >= _actionPointsToMove;
-				_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
+				if (_allowActionsWithoutSufficientPoints) {
+					_input.CanMove = _actionPoints > 0;
+					_input.CanChangePlayState = _actionPoints > 0;
+				} else {
+					_input.CanMove = _actionPoints >= _actionPointsToMove;
+					_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
+				}
+
 				yield return null;
 			} while (_input.CanMove || _input.CanChangePlayState);
 
