@@ -1,103 +1,61 @@
 fileFormatVersion: 2
 guid: 9063aa11b1fcfcf4cb6030a076d14a30
 PluginImporter:
-  externalObjects: {}
-  serializedVersion: 2
+  serializedVersion: 1
   iconMap: {}
   executionOrder: {}
-  defineConstraints: []
-  isPreloaded: 1
-  isOverridable: 0
-  isExplicitlyReferenced: 0
-  validateReferences: 1
+  isPreloaded: 0
   platformData:
-  - first:
-      : Any
-    second:
+    Android:
       enabled: 0
       settings:
-        Exclude Editor: 0
-        Exclude Linux64: 0
-        Exclude OSXUniversal: 1
-        Exclude Win: 1
-        Exclude Win64: 1
-  - first:
-      : Linux
-    second:
+        CPU: AnyCPU
+    Any:
       enabled: 0
-      settings:
-        CPU: None
-  - first:
-      : LinuxUniversal
-    second:
+      settings: {}
+    Editor:
       enabled: 1
       settings:
         CPU: x86_64
-  - first:
-      : OSXIntel
-    second:
+        DefaultValueInitialized: true
+        OS: AnyOS
+    Linux:
       enabled: 0
       settings:
         CPU: None
-  - first:
-      : OSXIntel64
-    second:
+    Linux64:
+      enabled: 1
+      settings:
+        CPU: x86_64
+    LinuxUniversal:
+      enabled: 1
+      settings:
+        CPU: AnyCPU
+    OSXIntel:
       enabled: 0
       settings:
         CPU: None
-  - first:
-      : SamsungTV
-    second:
+    OSXIntel64:
+      enabled: 0
+      settings:
+        CPU: None
+    OSXUniversal:
+      enabled: 0
+      settings:
+        CPU: None
+    SamsungTV:
       enabled: 0
       settings:
         STV_MODEL: STANDARD_15
-  - first:
-      Android: Android
-    second:
-      enabled: 0
-      settings:
-        CPU: ARMv7
-  - first:
-      Any: 
-    second:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-  - first:
-      Editor: Editor
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-        DefaultValueInitialized: true
-        OS: Linux
-  - first:
-      Standalone: Linux64
-    second:
-      enabled: 1
-      settings:
-        CPU: AnyCPU
-  - first:
-      Standalone: OSXUniversal
-    second:
+    Win:
       enabled: 0
       settings:
         CPU: None
-  - first:
-      Standalone: Win
-    second:
+    Win64:
       enabled: 0
       settings:
         CPU: None
-  - first:
-      Standalone: Win64
-    second:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-  - first:
-      iPhone: iOS
-    second:
+    iOS:
       enabled: 0
       settings:
         CompileFlags: 
