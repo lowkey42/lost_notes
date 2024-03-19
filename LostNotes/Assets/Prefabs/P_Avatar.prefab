@@ -188,6 +188,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachedRenderer: {fileID: 4664040920703944760}
   turnColor: {r: 0.65639025, g: 0.72100896, b: 0.6942702, a: 0.5019608}
+  playColor: {r: 0.13737096, g: 0.19822632, b: 0.46226418, a: 0.74509805}
+  noteColor: {r: 0.67591023, g: 0.16567281, b: 0.6886792, a: 1}
 --- !u!33 &3935388240852542717
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -156,6 +156,10 @@ namespace LostNotes.Player {
 		}
 
 		public void PlayNote(InputActionReference action) {
+			if (!CanPlayNotes) {
+				return;
+			}
+
 			IEnumerator Stop() {
 				yield return Wait.forSeconds[1];
 				gameObject.BroadcastMessage(nameof(INoteMessages.StopNote), action.action, SendMessageOptions.DontRequireReceiver);
