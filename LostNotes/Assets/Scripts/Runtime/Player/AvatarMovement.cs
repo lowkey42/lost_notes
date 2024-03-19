@@ -1,15 +1,21 @@
-using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace LostNotes.Player {
+	[RequireComponent(typeof(Movement))]
 	internal sealed class AvatarMovement : MonoBehaviour, IAvatarMessages {
-		private Vector2Int Position {
-			get => Vector2Int.RoundToInt(transform.position.SwizzleXZ());
-			set => transform.position = value.SwizzleXZ();
+		[SerializeField] private Movement _movement;
+
+		private void Start() {
+			OnValidate();
+		}
+
+		private void OnValidate() {
+			if (!_movement)
+				_movement = GetComponentInChildren<Movement>();
 		}
 
 		public void MoveBy(Vector2Int delta) {
-			transform.position += delta.SwizzleXZ();
+			_movement.MoveBy(delta);
 		}
 
 		public void PlaySong(SongAsset song) {
