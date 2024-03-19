@@ -12,25 +12,18 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private EventReference[] _noteEvents = Array.Empty<EventReference>();
 
-		private bool _isPlaying = false;
 		private readonly Dictionary<Guid, EventInstance> _instances = new();
 
 		public void StartPlaying() {
-			_isPlaying = true;
 		}
 
 		public void StopPlaying() {
-			_isPlaying = false;
 			foreach (var action in _noteActions) {
 				StopNote(action);
 			}
 		}
 
 		public void StartNote(InputAction action) {
-			if (!_isPlaying) {
-				return;
-			}
-
 			for (var i = 0; i < _noteActions.Length; i++) {
 				var actionReference = _noteActions[i];
 				var eve = _noteEvents[i];

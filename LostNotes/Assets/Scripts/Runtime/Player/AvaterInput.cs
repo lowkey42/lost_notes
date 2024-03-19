@@ -1,3 +1,5 @@
+using System.Collections;
+using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -40,11 +42,17 @@ namespace LostNotes.Player {
 		private InputActionAsset playerActions;
 
 		private InputActionMap noteMap => playerActions.FindActionMap("Notes");
+
+		[SerializeField, ReadOnly]
+		private bool _isPlaying = false;
+
 		public void OnPlay(InputValue value) {
 			if (value.isPressed) {
+				_isPlaying = true;
 				noteMap.Enable();
 				gameObject.SendMessage(nameof(INoteMessages.StartPlaying), SendMessageOptions.DontRequireReceiver);
 			} else {
+				_isPlaying = false;
 				noteMap.Disable();
 				gameObject.SendMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
 			}
@@ -65,11 +73,25 @@ namespace LostNotes.Player {
 		}
 
 		private void StartPlayingNote(InputAction.CallbackContext context) {
-			gameObject.SendMessage(nameof(INoteMessages.StartNote), context.action, SendMessageOptions.DontRequireReceiver);
+			if (_isPlaying) {
+				gameObject.SendMessage(nameof(INoteMessages.StartNote), context.action, SendMessageOptions.DontRequireReceiver);
+			}
 		}
 
 		private void StopPlayingNote(InputAction.CallbackContext context) {
-			gameObject.SendMessage(nameof(INoteMessages.StopNote), context.action, SendMessageOptions.DontRequireReceiver);
+			if (_isPlaying) {
+				gameObject.SendMessage(nameof(INoteMessages.StopNote), context.action, SendMessageOptions.DontRequireReceiver);
+			}
+		}
+
+		public void PlayNote(InputActionReference action) {
+			IEnumerator Stop() {
+				yield return Wait.forSeconds[1];
+				gameObject.SendMessage(nameof(INoteMessages.StopNote), action.action, SendMessageOptions.DontRequireReceiver);
+			}
+
+			gameObject.SendMessage(nameof(INoteMessages.StartNote), action.action, SendMessageOptions.DontRequireReceiver);
+			_ = StartCoroutine(Stop());
 		}
 	}
 }
