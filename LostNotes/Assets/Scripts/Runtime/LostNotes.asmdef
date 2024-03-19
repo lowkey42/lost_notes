@@ -6,7 +6,8 @@
         "MyBox",
         "Slothsoft.UnityExtensions",
         "Unity.TextMeshPro",
-        "FMODUnity"
+        "FMODUnity",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
