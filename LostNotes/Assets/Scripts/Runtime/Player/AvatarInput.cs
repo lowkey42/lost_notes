@@ -56,9 +56,7 @@ namespace LostNotes.Player {
 			get => _canChangePlayState;
 			set {
 				_canChangePlayState = value;
-				if (!_canChangePlayState) {
-					IsPlaying = false;
-				}
+				IsPlaying = _canChangePlayState && PlayerMap["Play"].IsPressed();
 			}
 		}
 

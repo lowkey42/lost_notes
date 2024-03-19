@@ -12,6 +12,8 @@ namespace LostNotes.Player {
 		private InputActionReference[] _notes = Array.Empty<InputActionReference>();
 		private int _currentNodeIndex = 0;
 
+		public int NoteCount => _notes.Length;
+
 		public void Learn() {
 			_isAvailable = true;
 		}
