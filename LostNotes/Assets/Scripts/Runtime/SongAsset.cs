@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,7 +35,18 @@ namespace LostNotes {
 				return ESongStatus.Playing;
 			}
 
+			_currentNodeIndex = 0;
 			return ESongStatus.Failed;
+		}
+
+		[SerializeField]
+		private EventReference songEvent = new();
+		public void PlaySong() {
+			if (songEvent.IsNull) {
+				return;
+			}
+
+			RuntimeManager.PlayOneShot(songEvent);
 		}
 	}
 }

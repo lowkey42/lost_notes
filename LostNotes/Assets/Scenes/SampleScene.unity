@@ -379,6 +379,8 @@ GameObject:
   - component: {fileID: 531318613}
   - component: {fileID: 531318612}
   - component: {fileID: 531318611}
+  - component: {fileID: 531318615}
+  - component: {fileID: 531318614}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -398,8 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df62a3689d5ca7b458a08782c20545ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _songLabel: song
-  _songs: []
   playerActions: {fileID: -944628639613478452, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
 --- !u!114 &531318612
 MonoBehaviour:
@@ -455,6 +455,32 @@ Transform:
   - {fileID: 902918396}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &531318614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531318610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36c23bbc6ab92ce48935d67a44f6270a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _songLabel: song
+  _songs: []
+--- !u!114 &531318615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531318610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56777a30ff14d234bb4bb05ada69fd4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &812122955
 GameObject:
   m_ObjectHideFlags: 0

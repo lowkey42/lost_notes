@@ -17,3 +17,10 @@ MonoBehaviour:
   - {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
   - {fileID: -8357431665067262822, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
   - {fileID: -7142199195949855259, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  songEvent:
+    Guid:
+      Data1: 818554034
+      Data2: 1277787307
+      Data3: -1688031326
+      Data4: -1156187940
+    Path: event:/Test

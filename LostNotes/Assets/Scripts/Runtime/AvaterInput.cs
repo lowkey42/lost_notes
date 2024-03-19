@@ -1,29 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace LostNotes {
 	internal sealed class AvaterInput : MonoBehaviour {
-		[SerializeField]
-		private string _songLabel;
-		[SerializeField, ReadOnly]
-		private List<SongAsset> _songs = new();
-
-		private void AddSong(SongAsset song) {
-			_songs.Add(song);
-		}
-
-		private IEnumerator LoadSongs() {
-			var locationHandle = Addressables.LoadResourceLocationsAsync(_songLabel);
-			yield return locationHandle;
-
-			yield return Addressables.LoadAssetsAsync<SongAsset>(locationHandle.Result, AddSong);
-		}
 
 		private Vector2Int Position {
 			get => Vector2Int.RoundToInt(transform.position.SwizzleXZ());
@@ -34,10 +14,6 @@ namespace LostNotes {
 
 		private void OnEnable() {
 			SetUpNotes();
-		}
-
-		private IEnumerator Start() {
-			yield return LoadSongs();
 		}
 
 		private void OnDisable() {
@@ -67,34 +43,33 @@ namespace LostNotes {
 		public void OnPlay(InputValue value) {
 			if (value.isPressed) {
 				noteMap.Enable();
-				foreach (var song in _songs) {
-					song.ResetInput();
-				}
+				gameObject.SendMessage(nameof(INoteMessages.StartPlaying), SendMessageOptions.DontRequireReceiver);
 			} else {
 				noteMap.Disable();
+				gameObject.SendMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
 			}
 		}
 
 		private void SetUpNotes() {
 			foreach (var noteAction in noteMap) {
-				noteAction.started += StartNote;
-				noteAction.canceled += StopNote;
+				noteAction.started += StartPlayingNote;
+				noteAction.canceled += StopPlayingNote;
 			}
 		}
 
 		private void TearDownNotes() {
 			foreach (var noteAction in noteMap) {
-				noteAction.started -= StartNote;
-				noteAction.canceled -= StopNote;
+				noteAction.started -= StartPlayingNote;
+				noteAction.canceled -= StopPlayingNote;
 			}
 		}
 
-		private void StartNote(InputAction.CallbackContext context) {
-			Debug.Log(context.action);
+		private void StartPlayingNote(InputAction.CallbackContext context) {
+			gameObject.SendMessage(nameof(INoteMessages.StartNote), context.action, SendMessageOptions.DontRequireReceiver);
 		}
 
-		private void StopNote(InputAction.CallbackContext context) {
-			Debug.Log(context.action);
+		private void StopPlayingNote(InputAction.CallbackContext context) {
+			gameObject.SendMessage(nameof(INoteMessages.StopNote), context.action, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }
