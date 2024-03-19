@@ -148,6 +148,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3204659304683027325}
+  - component: {fileID: 5871985274383282109}
   - component: {fileID: 3935388240852542717}
   - component: {fileID: 4664040920703944760}
   - component: {fileID: 4955778946820474584}
@@ -173,6 +174,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5585936939416392261}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5871985274383282109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6475847070942298398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8afee9b0916caa4e8a88d4b010f65c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedRenderer: {fileID: 4664040920703944760}
+  turnColor: {r: 0.65639025, g: 0.72100896, b: 0.6942702, a: 0.5019608}
 --- !u!33 &3935388240852542717
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -201,7 +216,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1be75224a04656a4899a49e5fee70ab0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

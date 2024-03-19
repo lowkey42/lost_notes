@@ -23,11 +23,15 @@ namespace LostNotes.Gameplay {
 		public IEnumerator DoTurn() {
 			_actionPoints = _actionPointsPerTurn;
 
+			gameObject.BroadcastMessage(nameof(IActorMessages.StartTurn), SendMessageOptions.DontRequireReceiver);
+
 			do {
 				_input.CanMove = _actionPoints >= _actionPointsToMove;
 				_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
 				yield return null;
 			} while (_input.CanMove || _input.CanChangePlayState);
+
+			gameObject.BroadcastMessage(nameof(IActorMessages.EndTurn), SendMessageOptions.DontRequireReceiver);
 		}
 
 		public void MoveBy(Vector2Int delta) {
