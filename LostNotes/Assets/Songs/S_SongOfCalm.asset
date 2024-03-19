@@ -10,17 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 130ba6736687035468319838fc26eb50, type: 3}
-  m_Name: Song_Test
+  m_Name: S_SongOfCalm
   m_EditorClassIdentifier: 
   _isAvailable: 1
   _notes:
   - {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  - {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
   - {fileID: -8357431665067262822, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
-  - {fileID: -7142199195949855259, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  - {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  - {fileID: -8357431665067262822, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  - {fileID: -7865337618381702727, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
   songEvent:
     Guid:
-      Data1: 818554034
-      Data2: 1277787307
-      Data3: -1688031326
-      Data4: -1156187940
-    Path: event:/Test
+      Data1: -466847681
+      Data2: 1292512156
+      Data3: -1002286973
+      Data4: -1968200943
+    Path: event:/Song of Calm
