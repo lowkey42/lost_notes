@@ -11,7 +11,7 @@ namespace LostNotes.Level {
 			return _interactableLayer.GetTile<InteractableTile>(position.SwizzleXZ());
 		}
 
-		public T GetInteractableAt<T>(Vector2Int position) where T : Component {
+		public T GetInteractableAt<T>(Vector2Int position) where T : class {
 			return null;
 		}
 
