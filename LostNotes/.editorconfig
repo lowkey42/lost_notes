@@ -205,6 +205,7 @@ insert_final_newline = true
 # .NET Coding Conventions     #
 ###############################
 [*.cs]
+end_of_line = lf
 # Organize usings
 dotnet_sort_system_directives_first = true
 # this. preferences
