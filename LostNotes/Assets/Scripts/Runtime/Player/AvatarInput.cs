@@ -83,7 +83,7 @@ namespace LostNotes.Player {
 			_lastInput = input;
 
 			if (delta != Vector2Int.zero) {
-				gameObject.SendMessage(nameof(IAvatarMessages.MoveBy), delta, SendMessageOptions.DontRequireReceiver);
+				gameObject.BroadcastMessage(nameof(IAvatarMessages.MoveBy), delta, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 
@@ -96,9 +96,9 @@ namespace LostNotes.Player {
 				if (_isPlaying != value) {
 					_isPlaying = value;
 					if (value) {
-						gameObject.SendMessage(nameof(INoteMessages.StartPlaying), SendMessageOptions.DontRequireReceiver);
+						gameObject.BroadcastMessage(nameof(INoteMessages.StartPlaying), SendMessageOptions.DontRequireReceiver);
 					} else {
-						gameObject.SendMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
+						gameObject.BroadcastMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
 					}
 				}
 			}
@@ -144,7 +144,7 @@ namespace LostNotes.Player {
 				return;
 			}
 
-			gameObject.SendMessage(nameof(INoteMessages.StartNote), context.action, SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(INoteMessages.StartNote), context.action, SendMessageOptions.DontRequireReceiver);
 		}
 
 		private void HandleNoteStop(InputAction.CallbackContext context) {
@@ -152,16 +152,16 @@ namespace LostNotes.Player {
 				return;
 			}
 
-			gameObject.SendMessage(nameof(INoteMessages.StopNote), context.action, SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(INoteMessages.StopNote), context.action, SendMessageOptions.DontRequireReceiver);
 		}
 
 		public void PlayNote(InputActionReference action) {
 			IEnumerator Stop() {
 				yield return Wait.forSeconds[1];
-				gameObject.SendMessage(nameof(INoteMessages.StopNote), action.action, SendMessageOptions.DontRequireReceiver);
+				gameObject.BroadcastMessage(nameof(INoteMessages.StopNote), action.action, SendMessageOptions.DontRequireReceiver);
 			}
 
-			gameObject.SendMessage(nameof(INoteMessages.StartNote), action.action, SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(INoteMessages.StartNote), action.action, SendMessageOptions.DontRequireReceiver);
 			_ = StartCoroutine(Stop());
 		}
 	}

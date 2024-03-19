@@ -48,12 +48,12 @@ namespace LostNotes.Player {
 				}
 
 				if (status is ESongStatus.Done) {
-					gameObject.SendMessage(nameof(IAvatarMessages.PlaySong), song, SendMessageOptions.DontRequireReceiver);
+					gameObject.BroadcastMessage(nameof(IAvatarMessages.PlaySong), song, SendMessageOptions.DontRequireReceiver);
 				}
 			}
 
 			if (!isPlayingAny) {
-				gameObject.SendMessage(nameof(IAvatarMessages.FailSong), _failureSong, SendMessageOptions.DontRequireReceiver);
+				gameObject.BroadcastMessage(nameof(IAvatarMessages.FailSong), _failureSong, SendMessageOptions.DontRequireReceiver);
 			}
 		}
 
