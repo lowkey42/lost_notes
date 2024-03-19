@@ -125,6 +125,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Notes",
+            "id": "8d0e8d59-3800-4151-9d3b-6ac7edf42d41",
+            "actions": [
+                {
+                    "name": "C",
+                    "type": "Button",
+                    "id": "d3cab34d-c182-4eba-b1d4-a18be70c46d1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cis",
+                    "type": "Button",
+                    "id": "4a41cee8-d60c-4905-9f82-8b8a4341f015",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "D",
+                    "type": "Button",
+                    "id": "6d1a2390-d77a-46ae-b625-b69612c14b3e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c7aebfad-8fdb-4cad-ab03-c5c911d6ec03",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "C",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a437269-27e0-442f-8e3c-9e91f88f00fe",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cis",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6a967349-6d8c-4ca6-91b8-7d7af24935ec",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "D",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
