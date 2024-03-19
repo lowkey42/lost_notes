@@ -28,4 +28,4 @@
 *.lxo filter=lfs diff=lfs merge=lfs -text
 *-navmesh.asset filter=lfs diff=lfs merge=lfs -text
 
-* text eol=lf
+*.cs text eol=lf
