@@ -7,13 +7,6 @@ using UnityEngine.InputSystem;
 namespace LostNotes.Player {
 	internal sealed class AvaterInput : MonoBehaviour {
 
-		private Vector2Int Position {
-			get => Vector2Int.RoundToInt(transform.position.SwizzleXZ());
-			set => transform.position = value.SwizzleXZ();
-		}
-
-		private Vector2Int _current;
-
 		private void OnEnable() {
 			SetUpPlayer();
 			SetUpNotes();
@@ -22,26 +15,6 @@ namespace LostNotes.Player {
 		private void OnDisable() {
 			TearDownPlayer();
 			TearDownNotes();
-		}
-
-		private void HandleMove(InputAction.CallbackContext context) {
-			if (_isPlaying) {
-				return;
-			}
-
-			var move = Vector2Int.RoundToInt(context.ReadValue<Vector2>());
-			var position = Position;
-
-			if (move.x != 0 && _current.x == 0) {
-				position.x += move.x;
-			}
-
-			if (move.y != 0 && _current.y == 0) {
-				position.y += move.y;
-			}
-
-			_current = move;
-			Position = position;
 		}
 
 		[SerializeField]
@@ -63,7 +36,30 @@ namespace LostNotes.Player {
 			PlayerMap["Play"].canceled -= HandlePlayStop;
 		}
 
-		private InputActionMap NoteMap => playerActions.FindActionMap("Notes");
+		private Vector2Int _lastInput;
+
+		private void HandleMove(InputAction.CallbackContext context) {
+			if (_isPlaying) {
+				return;
+			}
+
+			var input = Vector2Int.RoundToInt(context.ReadValue<Vector2>());
+			var delta = Vector2Int.zero;
+
+			if (input.x != 0 && _lastInput.x == 0) {
+				delta.x = input.x;
+			}
+
+			if (input.y != 0 && _lastInput.y == 0) {
+				delta.y = input.y;
+			}
+
+			_lastInput = input;
+
+			if (delta != Vector2Int.zero) {
+				gameObject.SendMessage(nameof(IAvatarMessages.MoveBy), delta, SendMessageOptions.DontRequireReceiver);
+			}
+		}
 
 		[SerializeField, ReadOnly]
 		private bool _isPlaying = false;
@@ -78,6 +74,8 @@ namespace LostNotes.Player {
 			gameObject.SendMessage(nameof(INoteMessages.StopPlaying), SendMessageOptions.DontRequireReceiver);
 
 		}
+
+		private InputActionMap NoteMap => playerActions.FindActionMap("Notes");
 
 		private void SetUpNotes() {
 			foreach (var noteAction in NoteMap) {
