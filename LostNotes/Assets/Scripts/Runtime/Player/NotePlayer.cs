@@ -5,7 +5,7 @@ using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace LostNotes {
+namespace LostNotes.Player {
 	internal sealed class NotePlayer : MonoBehaviour, INoteMessages {
 		[SerializeField]
 		private InputActionReference[] _noteActions = Array.Empty<InputActionReference>();

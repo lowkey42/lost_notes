@@ -3,7 +3,7 @@ using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace LostNotes {
+namespace LostNotes.Player {
 	[CreateAssetMenu]
 	internal sealed class SongAsset : ScriptableObject {
 		[SerializeField]

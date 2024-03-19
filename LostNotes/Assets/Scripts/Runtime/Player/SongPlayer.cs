@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 
-namespace LostNotes {
+namespace LostNotes.Player {
 	internal sealed class SongPlayer : MonoBehaviour, INoteMessages {
 
 		[SerializeField]

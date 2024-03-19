@@ -1,6 +1,6 @@
 using UnityEngine.InputSystem;
 
-namespace LostNotes {
+namespace LostNotes.Player {
 	internal interface INoteMessages {
 		void StartPlaying();
 		void StopPlaying();

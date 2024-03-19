@@ -2,7 +2,7 @@ using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace LostNotes {
+namespace LostNotes.Player {
 	internal sealed class AvaterInput : MonoBehaviour {
 
 		private Vector2Int Position {
