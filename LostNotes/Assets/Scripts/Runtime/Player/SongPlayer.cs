@@ -41,7 +41,7 @@ namespace LostNotes.Player {
 			foreach (var song in _songs) {
 				var status = song.PlayNote(action);
 				if (status == ESongStatus.Done) {
-					song.PlaySong();
+					song.PlaySong(gameObject);
 				}
 			}
 		}

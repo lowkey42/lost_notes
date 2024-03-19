@@ -40,13 +40,18 @@ namespace LostNotes.Player {
 		}
 
 		[SerializeField]
-		private EventReference songEvent = new();
-		public void PlaySong() {
-			if (songEvent.IsNull) {
-				return;
+		private EventReference _songEvent = new();
+		[SerializeField]
+		private GameObject _songPrefab;
+
+		public void PlaySong(GameObject context) {
+			if (!_songEvent.IsNull) {
+				RuntimeManager.PlayOneShot(_songEvent);
 			}
 
-			RuntimeManager.PlayOneShot(songEvent);
+			if (_songPrefab) {
+				_ = Instantiate(_songPrefab, context.transform);
+			}
 		}
 	}
 }
