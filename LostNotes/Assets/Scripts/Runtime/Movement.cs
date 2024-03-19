@@ -22,7 +22,7 @@ namespace LostNotes {
 		public bool MoveBy(Vector2Int delta) {
 			var new2DPosition = Vector2Int.RoundToInt((transform.position + delta.SwizzleXZ()).SwizzleXZ());
 
-			if (_level && _level.GetTileAt(new2DPosition) && !_level.GetTileAt(new2DPosition).IsWalkable())
+			if (_level && !_level.IsWalkable(new2DPosition))
 				return false;
 
 			transform.position = new2DPosition.SwizzleXZ();
