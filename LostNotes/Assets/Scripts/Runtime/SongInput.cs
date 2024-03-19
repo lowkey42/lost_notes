@@ -3,6 +3,6 @@ using UnityEngine;
 using UnityObject = UnityEngine.Object;
 
 namespace LostNotes {
-    sealed class SongInput : MonoBehaviour {
-    }
+	sealed class SongInput : MonoBehaviour {
+	}
 }

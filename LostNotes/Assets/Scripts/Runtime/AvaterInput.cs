@@ -19,7 +19,7 @@ namespace LostNotes {
 		}
 
 		private IEnumerator LoadSongs() {
-			AsyncOperationHandle<IList<UnityEngine.ResourceManagement.ResourceLocations.IResourceLocation>> locationHandle = Addressables.LoadResourceLocationsAsync(_songLabel);
+			var locationHandle = Addressables.LoadResourceLocationsAsync(_songLabel);
 			yield return locationHandle;
 
 			yield return Addressables.LoadAssetsAsync<SongAsset>(locationHandle.Result, AddSong);
@@ -45,8 +45,8 @@ namespace LostNotes {
 		}
 
 		public void OnMove(InputValue value) {
-			Vector2Int move = Vector2Int.RoundToInt(value.Get<Vector2>());
-			Vector2Int position = Position;
+			var move = Vector2Int.RoundToInt(value.Get<Vector2>());
+			var position = Position;
 
 			if (move.x != 0 && _current.x == 0) {
 				position.x += move.x;
@@ -67,7 +67,7 @@ namespace LostNotes {
 		public void OnPlay(InputValue value) {
 			if (value.isPressed) {
 				noteMap.Enable();
-				foreach (SongAsset song in _songs) {
+				foreach (var song in _songs) {
 					song.ResetInput();
 				}
 			} else {
@@ -76,14 +76,14 @@ namespace LostNotes {
 		}
 
 		private void SetUpNotes() {
-			foreach (InputAction noteAction in noteMap) {
+			foreach (var noteAction in noteMap) {
 				noteAction.started += StartNote;
 				noteAction.canceled += StopNote;
 			}
 		}
 
 		private void TearDownNotes() {
-			foreach (InputAction noteAction in noteMap) {
+			foreach (var noteAction in noteMap) {
 				noteAction.started -= StartNote;
 				noteAction.canceled -= StopNote;
 			}
