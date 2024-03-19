@@ -69,9 +69,6 @@ crashlytics-build.properties
 .DS_Store
 
 # == FMOD ==
-!/FMOD Project/
-/FMOD Project/.*
-
 # Never ignore DLLs in the FMOD subfolder.
 !/LostNotes/[Aa]ssets/Plugins/FMOD/**/lib/*
 
