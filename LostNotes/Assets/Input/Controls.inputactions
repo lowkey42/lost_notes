@@ -140,7 +140,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Cis",
+                    "name": "E",
                     "type": "Button",
                     "id": "4a41cee8-d60c-4905-9f82-8b8a4341f015",
                     "expectedControlType": "Button",
@@ -149,9 +149,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "D",
+                    "name": "Es",
                     "type": "Button",
                     "id": "6d1a2390-d77a-46ae-b625-b69612c14b3e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "G",
+                    "type": "Button",
+                    "id": "93a0f52d-2364-4524-9f85-edc0d53f6b1d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -177,7 +186,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cis",
+                    "action": "E",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -188,7 +197,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D",
+                    "action": "Es",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7768819a-411b-41c6-a2dd-1ca300468468",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "G",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

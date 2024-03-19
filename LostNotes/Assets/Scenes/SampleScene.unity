@@ -380,6 +380,7 @@ GameObject:
   - component: {fileID: 531318612}
   - component: {fileID: 531318611}
   - component: {fileID: 531318614}
+  - component: {fileID: 531318615}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -468,6 +469,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _songLabel: song
   _songs: []
+--- !u!114 &531318615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531318610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcff9dd221199f4ea6781bcd83a946c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _noteActions:
+  - {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  - {fileID: -8357431665067262822, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  - {fileID: -7142199195949855259, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  - {fileID: -7865337618381702727, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  _noteEvents:
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &812122955
 GameObject:
   m_ObjectHideFlags: 0
