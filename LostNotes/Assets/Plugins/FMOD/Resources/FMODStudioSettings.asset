@@ -232,9 +232,9 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   switchSettingsMigration: 1
-  HasSourceProject: 0
+  HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: 
+  sourceProjectPath: ../FMOD Project/Lost Notes.fspro
   sourceBankPath: ../FMOD Project/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
