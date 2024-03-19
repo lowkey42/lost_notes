@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
-	internal sealed class AvaterInput : MonoBehaviour {
+	internal sealed class AvatarInput : MonoBehaviour {
 
 		private void OnEnable() {
 			SetUpPlayer();
