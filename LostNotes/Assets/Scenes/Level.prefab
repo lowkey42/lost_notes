@@ -318,6 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2280299597048577071}
   - component: {fileID: 6548589072184184153}
+  - component: {fileID: 8984188330801577167}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -355,6 +356,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactableLayer: {fileID: 5256937322407149511}
+--- !u!114 &8984188330801577167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897945011049549379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9da478cba54fcf98a11b8796e8e807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turnActorsRoot: {fileID: 897945011049549379}
 --- !u!1 &6585251913451680035
 GameObject:
   m_ObjectHideFlags: 0
