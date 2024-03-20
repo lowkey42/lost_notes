@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
@@ -142,7 +144,9 @@ namespace LostNotes.Player {
 				return;
 			}
 
-			gameObject.BroadcastMessage(nameof(INoteMessages.OnStartNote), context.action, SendMessageOptions.DontRequireReceiver);
+			if (TryLookupNote(context.action, out var note)) {
+				StartNote(note);
+			}
 		}
 
 		private void HandleNoteStop(InputAction.CallbackContext context) {
@@ -150,20 +154,64 @@ namespace LostNotes.Player {
 				return;
 			}
 
-			gameObject.BroadcastMessage(nameof(INoteMessages.OnStopNote), context.action, SendMessageOptions.DontRequireReceiver);
+			if (TryLookupNote(context.action, out var note)) {
+				StopNote(note);
+			}
 		}
 
-		public void PlayNote(InputActionReference action) {
+		[Header("Notes")]
+		[SerializeField]
+		private string _noteLabel = "note";
+
+		[SerializeField, ReadOnly]
+		private List<NoteAsset> _notes = new();
+
+		private void AddNote(NoteAsset note) {
+			_notes.Add(note);
+		}
+
+		private IEnumerator LoadNotes() {
+			var locationHandle = Addressables.LoadResourceLocationsAsync(_noteLabel);
+			yield return locationHandle;
+
+			yield return Addressables.LoadAssetsAsync<NoteAsset>(locationHandle.Result, AddNote);
+		}
+
+		private IEnumerator Start() {
+			yield return LoadNotes();
+		}
+
+		private bool TryLookupNote(InputAction action, out NoteAsset note) {
+			for (var i = 0; i < _notes.Count; i++) {
+				if (_notes[i].Is(action)) {
+					note = _notes[i];
+					return true;
+				}
+			}
+
+			note = null;
+			return false;
+		}
+
+		public void StartNote(NoteAsset note) {
+			gameObject.BroadcastMessage(nameof(INoteMessages.OnStartNote), note, SendMessageOptions.DontRequireReceiver);
+		}
+
+		public void StopNote(NoteAsset note) {
+			gameObject.BroadcastMessage(nameof(INoteMessages.OnStopNote), note, SendMessageOptions.DontRequireReceiver);
+		}
+
+		public void PlayNoteOneShot(NoteAsset note) {
 			if (!CanPlayNotes) {
 				return;
 			}
 
 			IEnumerator Stop() {
-				yield return Wait.forSeconds[1];
-				gameObject.BroadcastMessage(nameof(INoteMessages.OnStopNote), action.action, SendMessageOptions.DontRequireReceiver);
+				yield return Wait.forSeconds[0.1f];
+				StopNote(note);
 			}
 
-			gameObject.BroadcastMessage(nameof(INoteMessages.OnStartNote), action.action, SendMessageOptions.DontRequireReceiver);
+			StartNote(note);
 			_ = StartCoroutine(Stop());
 		}
 	}

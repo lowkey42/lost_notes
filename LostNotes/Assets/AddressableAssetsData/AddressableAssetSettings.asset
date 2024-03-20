@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 801c33a38a429f3438d35f52b9bde841
   m_currentHash:
     serializedVersion: 2
-    Hash: 2ec262579336722eecfa40bd9d37a6ee
+    Hash: ff05aef4f46404967383c80f3695e5d3
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -88,6 +88,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - song
+    - note
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 38fb2d66ca229084cbed340ca18aa979, type: 2}

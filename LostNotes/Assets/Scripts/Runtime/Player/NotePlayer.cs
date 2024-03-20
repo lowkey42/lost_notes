@@ -1,49 +1,44 @@
 using System;
 using System.Collections.Generic;
 using FMOD.Studio;
-using FMODUnity;
+using MyBox;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
 	internal sealed class NotePlayer : MonoBehaviour, INoteMessages {
-		[SerializeField]
-		private InputActionReference[] _noteActions = Array.Empty<InputActionReference>();
-		[SerializeField]
-		private EventReference[] _noteEvents = Array.Empty<EventReference>();
-
 		private readonly Dictionary<Guid, EventInstance> _instances = new();
 
 		public void OnStartPlaying() {
 		}
 
 		public void OnStopPlaying() {
-			foreach (var action in _noteActions) {
-				OnStopNote(action);
+			foreach (var instance in _instances.Values) {
+				StopInstance(instance);
 			}
+
+			_instances.Clear();
 		}
 
-		public void OnStartNote(InputAction action) {
-			for (var i = 0; i < _noteActions.Length; i++) {
-				var actionReference = _noteActions[i];
-				var eve = _noteEvents[i];
+		public void OnStartNote(NoteAsset note) {
+			OnStopNote(note);
 
-				if (actionReference.action.id == action.id && !eve.IsNull) {
-					OnStopNote(action);
-					_instances[action.id] = RuntimeManager.CreateInstance(eve);
-					_ = _instances[action.id].start();
-				}
-			}
+			_instances[note.Identifier] = note.Play();
 		}
 
 		[SerializeField]
 		private bool _stopPlayingNotes = false;
+		[SerializeField, ConditionalField(nameof(_stopPlayingNotes))]
+		private STOP_MODE _stopMode = STOP_MODE.ALLOWFADEOUT;
 
-		public void OnStopNote(InputAction action) {
-			if (_instances.Remove(action.id, out var instance)) {
-				if (_stopPlayingNotes) {
-					_ = instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-				}
+		public void OnStopNote(NoteAsset note) {
+			if (_instances.Remove(note.Identifier, out var instance)) {
+				StopInstance(instance);
+			}
+		}
+
+		private void StopInstance(in EventInstance instance) {
+			if (_stopPlayingNotes) {
+				_ = instance.stop(_stopMode);
 			}
 		}
 	}

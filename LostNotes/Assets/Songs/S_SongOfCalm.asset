@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isAvailable: 1
   _notes:
-  - {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
-  - {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
-  - {fileID: -8357431665067262822, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
-  - {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
-  - {fileID: -8357431665067262822, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
-  - {fileID: -7865337618381702727, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
+  - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
+  - {fileID: 11400000, guid: 2e0fa0471ee102244b9605f03e7b2976, type: 2}
+  - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
+  - {fileID: 11400000, guid: 2e0fa0471ee102244b9605f03e7b2976, type: 2}
+  - {fileID: 11400000, guid: 9a0f7198ef15606468b75f5540087f44, type: 2}
   _songEvent:
     Guid:
       Data1: -466847681

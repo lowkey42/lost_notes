@@ -1,7 +1,6 @@
 using System;
 using FMODUnity;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
 	[CreateAssetMenu]
@@ -9,7 +8,7 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private bool _isAvailable = false;
 		[SerializeField]
-		private InputActionReference[] _notes = Array.Empty<InputActionReference>();
+		private NoteAsset[] _notes = Array.Empty<NoteAsset>();
 		private int _currentNodeIndex = 0;
 
 		public int NoteCount => _notes.Length;
@@ -22,12 +21,12 @@ namespace LostNotes.Player {
 			_currentNodeIndex = 0;
 		}
 
-		public ESongStatus PlayNote(InputAction action) {
+		public ESongStatus PlayNote(NoteAsset note) {
 			if (!_isAvailable) {
 				return ESongStatus.NotLearned;
 			}
 
-			if (_notes[_currentNodeIndex].action.id == action.id) {
+			if (_notes[_currentNodeIndex].Is(note)) {
 				_currentNodeIndex++;
 				if (_currentNodeIndex == _notes.Length) {
 					_currentNodeIndex = 0;

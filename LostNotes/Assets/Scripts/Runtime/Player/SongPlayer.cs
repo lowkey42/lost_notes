@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
 	internal sealed class SongPlayer : MonoBehaviour, INoteMessages {
@@ -42,10 +41,10 @@ namespace LostNotes.Player {
 		private ESongStatus songStatus = ESongStatus.NotLearned;
 		private SongAsset song;
 
-		public void OnStartNote(InputAction action) {
+		public void OnStartNote(NoteAsset note) {
 			var isPlayingAny = false;
 			foreach (var song in _songs) {
-				var status = song.PlayNote(action);
+				var status = song.PlayNote(note);
 				if (status is ESongStatus.Playing or ESongStatus.Done) {
 					isPlayingAny = true;
 				}
@@ -74,7 +73,7 @@ namespace LostNotes.Player {
 			}
 		}
 
-		public void OnStopNote(InputAction action) {
+		public void OnStopNote(NoteAsset note) {
 		}
 	}
 }

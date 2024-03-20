@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af8a1018aed61f468841374009ce0ad, type: 3}
+  m_Name: Note_C
+  m_EditorClassIdentifier: 
+  _localizedName: C
+  _inputAction: {fileID: -7142199195949855259, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  _audioEvent:
+    Guid:
+      Data1: 2027777766
+      Data2: 1269149785
+      Data3: -165752129
+      Data4: -506361777
+    Path: event:/Note C

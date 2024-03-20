@@ -1,6 +1,5 @@
 using LostNotes.Gameplay;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
 	internal sealed class AvatarSkin : MonoBehaviour, IActorMessages, INoteMessages {
@@ -41,11 +40,11 @@ namespace LostNotes.Player {
 			material.SetColor("_HighlightColor", turnColor);
 		}
 
-		public void OnStartNote(InputAction action) {
+		public void OnStartNote(NoteAsset note) {
 			material.SetColor("_HighlightColor", noteColor);
 		}
 
-		public void OnStopNote(InputAction action) {
+		public void OnStopNote(NoteAsset note) {
 			material.SetColor("_HighlightColor", playColor);
 		}
 	}

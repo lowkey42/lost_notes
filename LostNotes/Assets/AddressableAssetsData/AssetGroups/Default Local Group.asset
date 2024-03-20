@@ -29,6 +29,30 @@ MonoBehaviour:
     m_SerializedLabels:
     - song
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a0f7198ef15606468b75f5540087f44
+    m_Address: Assets/Notes/Note_Eb.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - note
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e0fa0471ee102244b9605f03e7b2976
+    m_Address: Assets/Notes/Note_C.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - note
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1530ebd5465e8514285d1c34f93d40a2
+    m_Address: Assets/Notes/Note_Ab.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - note
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c5986aca19fcf24ca5eae313d479747
+    m_Address: Assets/Notes/Note_B.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - note
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e16205b2a0b3d634b88e4a01feceaa57, type: 2}
   m_SchemaSet:

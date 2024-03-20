@@ -131,7 +131,7 @@
             "id": "8d0e8d59-3800-4151-9d3b-6ac7edf42d41",
             "actions": [
                 {
-                    "name": "C",
+                    "name": "Ab",
                     "type": "Button",
                     "id": "d3cab34d-c182-4eba-b1d4-a18be70c46d1",
                     "expectedControlType": "Button",
@@ -140,7 +140,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "E",
+                    "name": "B",
                     "type": "Button",
                     "id": "4a41cee8-d60c-4905-9f82-8b8a4341f015",
                     "expectedControlType": "Button",
@@ -149,7 +149,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Es",
+                    "name": "C",
                     "type": "Button",
                     "id": "6d1a2390-d77a-46ae-b625-b69612c14b3e",
                     "expectedControlType": "Button",
@@ -158,7 +158,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "G",
+                    "name": "Eb",
                     "type": "Button",
                     "id": "93a0f52d-2364-4524-9f85-edc0d53f6b1d",
                     "expectedControlType": "Button",
@@ -175,7 +175,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "C",
+                    "action": "Ab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -186,7 +186,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "C",
+                    "action": "Ab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -197,7 +197,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "C",
+                    "action": "Ab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -208,7 +208,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "E",
+                    "action": "B",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -219,7 +219,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "E",
+                    "action": "B",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -230,7 +230,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "E",
+                    "action": "B",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -241,7 +241,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Es",
+                    "action": "C",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -252,7 +252,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Es",
+                    "action": "C",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -263,7 +263,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Es",
+                    "action": "C",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -274,7 +274,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "G",
+                    "action": "Eb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -285,7 +285,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "G",
+                    "action": "Eb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -296,7 +296,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "G",
+                    "action": "Eb",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

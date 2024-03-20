@@ -4,7 +4,6 @@ using System.Linq;
 using Slothsoft.UnityExtensions;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
 	internal sealed class NoteCanvas : MonoBehaviour, INoteMessages, IAvatarMessages {
@@ -46,16 +45,16 @@ namespace LostNotes.Player {
 			_stopRoutine = StartCoroutine(Stop());
 		}
 
-		public void OnStartNote(InputAction action) {
+		public void OnStartNote(NoteAsset note) {
 			if (_clearOnNextNote) {
 				_clearOnNextNote = false;
 				OnStartPlaying();
 			}
 
-			AddNote(action.name);
+			AddNote(note.LocalizedName);
 		}
 
-		public void OnStopNote(InputAction action) {
+		public void OnStopNote(NoteAsset note) {
 		}
 
 		public void OnMove(Vector2Int delta) {
