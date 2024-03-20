@@ -251,6 +251,7 @@ GameObject:
   - component: {fileID: 5181073520673101130}
   - component: {fileID: 3033791940794871691}
   - component: {fileID: 4099957774684976844}
+  - component: {fileID: 4659200490384030462}
   m_Layer: 0
   m_Name: P_Avatar
   m_TagString: Untagged
@@ -317,8 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df62a3689d5ca7b458a08782c20545ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerActions: {fileID: -944628639613478452, guid: b9ff7dc238aa53446bc8e7c92231c0d3,
-    type: 3}
+  playerActions: {fileID: -944628639613478452, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
   _canMove: 1
   _canChangePlayState: 1
   _isPlaying: 0
@@ -393,6 +393,19 @@ MonoBehaviour:
       Data4: 976276140
     Path: event:/Note G
   _stopPlayingNotes: 0
+--- !u!114 &4659200490384030462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520711330091527916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488e54c8a0760bf47a4319d497f0ff2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isWalkable: 0
 --- !u!1 &6075892406356288915
 GameObject:
   m_ObjectHideFlags: 0
