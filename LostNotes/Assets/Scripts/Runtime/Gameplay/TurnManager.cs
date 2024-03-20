@@ -24,13 +24,13 @@ namespace LostNotes.Gameplay {
 		public event TurnOrderHandler OnNewTurn = delegate { };
 
 		private sealed class ActorComparer : IComparer<ITurnActor> {
-			private readonly IReadOnlyDictionary<ITurnActor, Color> meta;
+			private readonly IReadOnlyDictionary<ITurnActor, Color> _meta;
 			public ActorComparer(IReadOnlyDictionary<ITurnActor, Color> meta) {
-				this.meta = meta;
+				_meta = meta;
 			}
 
 			public int Compare(ITurnActor x, ITurnActor y) {
-				return meta[x].r.CompareTo(meta[y].r);
+				return _meta[x].r.CompareTo(_meta[y].r);
 			}
 		}
 
