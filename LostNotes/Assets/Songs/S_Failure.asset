@@ -16,9 +16,9 @@ MonoBehaviour:
   _notes: []
   _songEvent:
     Guid:
-      Data1: 818554034
-      Data2: 1277787307
-      Data3: -1688031326
-      Data4: -1156187940
-    Path: event:/Song of Failure
+      Data1: -720170309
+      Data2: 1227274128
+      Data3: 669471161
+      Data4: 605723425
+    Path: event:/Soundeffekte Player/Failed Note
   _songPrefab: {fileID: 9129755563245552758, guid: 1eb0ccd935c15ae42beb11e7c26ba9a9, type: 3}

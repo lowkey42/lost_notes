@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 130ba6736687035468319838fc26eb50, type: 3}
+  m_Name: S_SongOfRepell
+  m_EditorClassIdentifier: 
+  _isAvailable: 1
+  _notes:
+  - {fileID: 11400000, guid: 9a0f7198ef15606468b75f5540087f44, type: 2}
+  - {fileID: 11400000, guid: 9a0f7198ef15606468b75f5540087f44, type: 2}
+  - {fileID: 11400000, guid: 1c5986aca19fcf24ca5eae313d479747, type: 2}
+  - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
+  - {fileID: 11400000, guid: 1c5986aca19fcf24ca5eae313d479747, type: 2}
+  - {fileID: 11400000, guid: 9a0f7198ef15606468b75f5540087f44, type: 2}
+  _songEvent:
+    Guid:
+      Data1: -1388333384
+      Data2: 1210321410
+      Data3: -1717851213
+      Data4: -1934899547
+    Path: event:/Songs/Song of Sleep/Song of Sleep Combat
+  _songPrefab: {fileID: 9129755563245552758, guid: 4c55929fdc0f66040a0c14adb023db1b, type: 3}
