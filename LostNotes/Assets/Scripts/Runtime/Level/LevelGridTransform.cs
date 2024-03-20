@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace LostNotes.Level {
 		private LevelComponent _level;
 
 		public Vector2Int Position2d => _level.WorldToGrid(transform.position);
+
+		public LevelComponent Level => _level;
 
 		public int Rotation2d => Mathf.RoundToInt(transform.eulerAngles.y);
 
@@ -60,6 +63,10 @@ namespace LostNotes.Level {
 
 		public Vector3 GridTo3dPosition(Vector2Int gridPosition) {
 			return _level.GridToWorld(gridPosition);
+		}
+
+		public IEnumerable<GameObject> ObjectsInArea(TilemapMask area) {
+			return _level.ObjectsInArea(this, area);
 		}
 
 		public void SendMessageToObjectsInArea(TilemapMask area, string methodName, object parameter = null) {
