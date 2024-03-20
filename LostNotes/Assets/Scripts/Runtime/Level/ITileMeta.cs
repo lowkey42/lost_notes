@@ -1,5 +1,5 @@
 namespace LostNotes.Level {
-	interface ITileMeta {
+	internal interface ITileMeta {
 		bool IsWalkable { get; }
 	}
 }
