@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 0}
+  moveChannel: {fileID: 11400000, guid: 7838877b66717044cbe19a928fb80c64, type: 2}
 --- !u!114 &4690978652373671199
 MonoBehaviour:
   m_ObjectHideFlags: 0

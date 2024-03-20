@@ -1,45 +1,47 @@
 using LostNotes.Gameplay;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace LostNotes.UI {
-	public class MoveIndicatorDrawer : MonoBehaviour {
-		[SerializeField]
-		private TurnManager _turnManager;
+	internal sealed class MoveIndicatorDrawer : MonoBehaviour, IActorMessages {
+		[SerializeField, Expandable]
+		private GameObjectEventChannel moveChannel;
 
 		private GameObject _turnIndicatorRoot;
 
-		private void Start() {
-			OnValidate();
-
-			_turnManager.OnNewTurn += OnNewTurn;
-			// TODO: register OnTurnOrderChange to fire on OnNewTurn, if it's the beginning of the players turn
+		private void OnEnable() {
+			moveChannel.onTrigger += HandleMove;
+		}
+		private void OnDisable() {
+			moveChannel.onTrigger -= HandleMove;
 		}
 
-		private void OnDestroy() {
-			_turnManager.OnNewTurn -= OnNewTurn;
+		private void HandleMove(GameObject obj) {
+			if (_round is not null) {
+				RecreateIndicators(_round);
+			}
 		}
 
-		private void OnValidate() {
-			if (!_turnManager)
-				_turnManager = GetComponentInParent<TurnManager>();
+		private TurnOrder _round;
+		public void OnStartTurn(TurnOrder round) {
+			_round = round;
+			RecreateIndicators(round);
 		}
 
-		private void OnNewTurn(TurnOrder round) {
-			if (!round.RoundDone && round.Actors[round.CurrentActor] is AvatarActor)
-				RecreateIndicators(round);
-			else
-				ClearIndicators();
+		public void OnEndTurn() {
+			ClearIndicators();
 		}
 
 		private void ClearIndicators() {
-			Destroy(_turnIndicatorRoot);
+			if (_turnIndicatorRoot) {
+				Destroy(_turnIndicatorRoot);
+			}
 		}
 
 		private void RecreateIndicators(TurnOrder round) {
 			ClearIndicators();
 
 			_turnIndicatorRoot = new GameObject("Indicators");
-			_turnIndicatorRoot.transform.SetParent(transform);
 
 			foreach (var actor in round.Actors) {
 				if (actor.HasTurnActions())

@@ -6,6 +6,8 @@ namespace LostNotes.Level {
 	internal sealed class LevelGridTransform : MonoBehaviour {
 		[SerializeField]
 		private LevelComponent _level;
+		[SerializeField, Expandable]
+		private GameObjectEventChannel moveChannel;
 
 		public Vector2Int Position2d => _level.WorldToGrid(transform.position);
 
@@ -28,6 +30,7 @@ namespace LostNotes.Level {
 			// TODO: lerp/animate position and report animation-completion to caller
 
 			transform.position = newPosition;
+			moveChannel.Raise(gameObject);
 			return true;
 		}
 

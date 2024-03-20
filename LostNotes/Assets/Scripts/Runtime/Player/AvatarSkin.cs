@@ -24,7 +24,7 @@ namespace LostNotes.Player {
 		[SerializeField, ColorUsage(true, true)]
 		private Color noteColor = Color.white;
 
-		public void OnStartTurn() {
+		public void OnStartTurn(TurnOrder round) {
 			material.SetColor("_HighlightColor", turnColor);
 		}
 
