@@ -16,6 +16,20 @@ namespace LostNotes.Gameplay {
 		[SerializeField, Range(0, 10)]
 		private int _actionPointsToPlay = 2;
 		private int _actionPoints = 0;
+		private int ActionPoints {
+			get => _actionPoints;
+			set {
+				_actionPoints = value;
+
+				if (_allowActionsWithoutSufficientPoints) {
+					_input.CanMove = _actionPoints > 0;
+					_input.CanChangePlayState = _actionPoints > 0;
+				} else {
+					_input.CanMove = _actionPoints >= _actionPointsToMove;
+					_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
+				}
+			}
+		}
 
 		[SerializeField]
 		private AvatarInput _input;
@@ -27,19 +41,10 @@ namespace LostNotes.Gameplay {
 
 		public IEnumerator DoTurn() {
 			if (_isAlive) {
-				_actionPoints = _actionPointsPerTurn;
-
+				ActionPoints = _actionPointsPerTurn;
 				do {
-					if (_allowActionsWithoutSufficientPoints) {
-						_input.CanMove = _actionPoints > 0;
-						_input.CanChangePlayState = _actionPoints > 0;
-					} else {
-						_input.CanMove = _actionPoints >= _actionPointsToMove;
-						_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
-					}
-
 					yield return null;
-				} while (_isAlive && (_input.CanMove || _input.CanChangePlayState));
+				} while (_input.CanMove || _input.CanChangePlayState);
 			}
 
 			if (!_isAlive) {
@@ -51,15 +56,15 @@ namespace LostNotes.Gameplay {
 		}
 
 		public void OnMove(Vector2Int delta) {
-			_actionPoints -= _actionPointsToMove;
+			ActionPoints -= _actionPointsToMove;
 		}
 
 		public void OnPlaySong(SongAsset song) {
-			_actionPoints -= _actionPointsToPlay;
+			ActionPoints -= _actionPointsToPlay;
 		}
 
 		public void OnFailSong(SongAsset song) {
-			_actionPoints -= _actionPointsToPlay;
+			ActionPoints -= _actionPointsToPlay;
 		}
 
 		[SerializeField, ReadOnly]
@@ -68,6 +73,7 @@ namespace LostNotes.Gameplay {
 		[ContextMenu(nameof(OnAttacked))]
 		public void OnAttacked() {
 			_isAlive = false;
+			ActionPoints = 0;
 		}
 
 		public void OnReset() {

@@ -76,21 +76,16 @@ namespace LostNotes.Player {
 			}
 
 			var input = Vector2Int.RoundToInt(context.ReadValue<Vector2>());
-			var delta = Vector2Int.zero;
 
-			if (input.x != 0 && _lastInput.x == 0) {
-				delta.x = input.x;
+			if (CanMove && input.x != 0 && _lastInput.x == 0) {
+				gameObject.BroadcastMessage(nameof(IAvatarMessages.OnMove), new Vector2Int(input.x, 0), SendMessageOptions.DontRequireReceiver);
 			}
 
-			if (input.y != 0 && _lastInput.y == 0) {
-				delta.y = input.y;
+			if (CanMove && input.y != 0 && _lastInput.y == 0) {
+				gameObject.BroadcastMessage(nameof(IAvatarMessages.OnMove), new Vector2Int(0, input.y), SendMessageOptions.DontRequireReceiver);
 			}
 
 			_lastInput = input;
-
-			if (delta != Vector2Int.zero) {
-				gameObject.BroadcastMessage(nameof(IAvatarMessages.OnMove), delta, SendMessageOptions.DontRequireReceiver);
-			}
 		}
 
 		[SerializeField, ReadOnly]
