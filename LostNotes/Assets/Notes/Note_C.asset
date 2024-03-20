@@ -16,8 +16,8 @@ MonoBehaviour:
   _inputAction: {fileID: -7142199195949855259, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
   _audioEvent:
     Guid:
-      Data1: 2027777766
-      Data2: 1269149785
-      Data3: -165752129
-      Data4: -506361777
-    Path: event:/Note C
+      Data1: 838115433
+      Data2: 1158846994
+      Data3: 840526480
+      Data4: 529070287
+    Path: event:/Soundeffekte Player/Note C
