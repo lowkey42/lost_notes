@@ -3,19 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostNotes.Gameplay {
-	public class TurnOrder {
-		public TurnOrder(IReadOnlyList<ITurnActor> actors) {
-			Actors = actors;
-			CurrentActor = 0;
-		}
-
-		public IReadOnlyList<ITurnActor> Actors { get; }
-		public int CurrentActor { get; set; }
-
-		public bool RoundDone => CurrentActor >= Actors.Count;
-	}
-
-	public class TurnManager : MonoBehaviour {
+	internal sealed class TurnManager : MonoBehaviour {
 		[SerializeField] private GameObject _turnActorsRoot;
 
 		private TurnOrder _currentRoundTurnOrder = null;
@@ -23,7 +11,7 @@ namespace LostNotes.Gameplay {
 
 		public TurnOrder CurrentRoundTurnOrder => _currentRoundTurnOrder ??= ComputeTurnOrder();
 
-		protected void Update() {
+		private void Update() {
 			_round ??= StartCoroutine(DoRound());
 		}
 

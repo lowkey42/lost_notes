@@ -1,33 +1,28 @@
+using LostNotes.Level;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace LostNotes {
-	public enum RotationTurn {
-		Degrees0 = 0, Degrees90 = 90, Degrees180 = 180, Degrees270 = 270
-	}
+	internal sealed class Movement : MonoBehaviour {
+		[SerializeField]
+		private LevelComponent _level;
 
-	public class Movement : MonoBehaviour {
-		[SerializeField] private Level.Level _level;
-
-		private Vector2Int Position {
-			get => Vector2Int.RoundToInt(transform.position.SwizzleXZ());
-			set => transform.position = value.SwizzleXZ();
-		}
-
-		protected void Start() {
+		private void Start() {
 			if (!_level)
-				_level = GetComponentInParent<Level.Level>();
+				_level = GetComponentInParent<LevelComponent>();
 		}
 
 		public bool MoveBy(Vector2Int delta) {
-			var new2DPosition = Vector2Int.RoundToInt((transform.position + delta.SwizzleXZ()).SwizzleXZ());
+			var oldPosition = _level.WorldToGrid(transform.position);
+			var new2DPosition = oldPosition + delta;
 
-			if (_level && !_level.IsWalkable(new2DPosition))
+			if (_level && !_level.IsWalkable(new2DPosition)) {
 				return false;
+			}
 
 			// TODO: lerp/animate position and report animation-completion to caller
 
-			transform.position = new2DPosition.SwizzleXZ();
+			transform.position = _level.GridToWorld(new2DPosition);
 			return true;
 		}
 

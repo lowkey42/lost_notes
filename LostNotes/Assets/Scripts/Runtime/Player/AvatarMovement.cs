@@ -3,7 +3,8 @@ using UnityEngine;
 namespace LostNotes.Player {
 	[RequireComponent(typeof(Movement))]
 	internal sealed class AvatarMovement : MonoBehaviour, IAvatarMessages {
-		[SerializeField] private Movement _movement;
+		[SerializeField]
+		private Movement _movement;
 
 		private void Start() {
 			OnValidate();

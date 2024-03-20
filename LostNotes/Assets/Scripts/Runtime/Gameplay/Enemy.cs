@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace LostNotes.Gameplay {
-	public class Enemy : MonoBehaviour, ITurnActor {
+	internal sealed class Enemy : MonoBehaviour, ITurnActor {
 		[SerializeField] private List<EnemyAction> _actions;
 		[field: SerializeField] public Movement Movement { get; private set; }
 
-		protected void Start() {
+		private void Start() {
 			if (!Movement)
 				Movement = GetComponentInChildren<Movement>();
 		}

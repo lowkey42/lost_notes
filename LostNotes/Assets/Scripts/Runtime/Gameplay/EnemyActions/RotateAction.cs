@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LostNotes.Gameplay.EnemyActions {
 	[CreateAssetMenu(fileName = "Rotate", menuName = "EnemyActions/Rotate", order = 0)]
-	public class RotateAction : EnemyAction {
+	internal sealed class RotateAction : EnemyAction {
 		[SerializeField] private RotationTurn _turns = RotationTurn.Degrees90;
 
 		public override IEnumerator Execute(Enemy enemy) {

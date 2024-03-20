@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LostNotes {
 	[Serializable]
-	public class TilemapMask {
+	internal sealed class TilemapMask {
 		[SerializeField] private bool[] _mask;
 
 		public TilemapMask(Vector2Int size) {

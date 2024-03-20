@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LostNotes.Gameplay.EnemyActions {
 	[CreateAssetMenu(fileName = "Attack", menuName = "EnemyActions/Attack", order = 0)]
-	public class AttackAction : EnemyAction {
+	internal sealed class AttackAction : EnemyAction {
 		[SerializeField] private Vector2Int _recoil;
 
 		[SerializeField] private TilemapMask _attackArea = new(new Vector2Int(9, 9));
