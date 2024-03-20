@@ -10,22 +10,17 @@ namespace LostNotes.Level {
 		private Tilemap _floorLayer;
 		[SerializeField]
 		private Tilemap _interactableLayer;
+		[SerializeField]
+		private Tilemap _wallLayer;
 
 		public IEnumerable<ITileMeta> GetInteractableTiles(Vector2Int position) {
-			if (_interactableLayer.TryGetTileMeta(position, out var tile)) {
-				yield return tile;
-			}
-
-			foreach (Transform t in _interactableLayer.transform) {
-				if (WorldToGrid(t.position) == position && t.TryGetComponent(out tile)) {
-					yield return tile;
-				}
-			}
+			return _interactableLayer.GetMetaTiles(position);
 		}
 
 		public bool IsWalkable(Vector2Int position) {
 			return _floorLayer.GetTile(position.SwizzleXY())
-				&& GetInteractableTiles(position).All(t => t.IsWalkable);
+				&& !_wallLayer.GetTile(position.SwizzleXY())
+				&& _interactableLayer.GetMetaTiles(position).All(t => t.IsWalkable);
 		}
 
 		public Vector2Int WorldToGrid(Vector3 position3d) {
