@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{5476eb85-3967-46c2-8fc4-ae2a29243377}">
+	<object class="AudioFile" id="{9d5e94b5-7c74-459d-b8a8-aac85ab63535}">
 		<property name="assetPath">
-			<value>Noten/ln_violin_Es.wav</value>
+			<value>Noten/ln_violin_As.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

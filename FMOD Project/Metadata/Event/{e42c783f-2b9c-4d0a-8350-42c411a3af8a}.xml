@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{e42c783f-2b9c-4d0a-8350-42c411a3af8a}">
 		<property name="name">
-			<value>Song of Calm</value>
+			<value>Song of Calm Ext</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3152f2a9-f15f-47fc-a3f0-472a0eca6fe4}</destination>
+			<destination>{94589a07-a055-45c5-b2b7-2db0e95e1a7b}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{a1261e77-45a4-477b-be7b-c68a79fccb38}</destination>
