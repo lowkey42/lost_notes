@@ -7,6 +7,11 @@ using UnityEngine.SceneManagement;
 
 namespace LostNotes.Gameplay {
 	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages, IAttackMessages {
+		[Header("Components")]
+		[SerializeField]
+		private AvatarInput _input;
+
+		[Header("Action Economy")]
 		[SerializeField, Range(0, 10)]
 		private int _actionPointsPerTurn = 3;
 		[SerializeField]
@@ -15,7 +20,6 @@ namespace LostNotes.Gameplay {
 		private int _actionPointsToMove = 1;
 		[SerializeField, Range(0, 10)]
 		private int _actionPointsToPlay = 2;
-		private int _actionPoints = 0;
 		private int ActionPoints {
 			get => _actionPoints;
 			set {
@@ -31,8 +35,11 @@ namespace LostNotes.Gameplay {
 			}
 		}
 
-		[SerializeField]
-		private AvatarInput _input;
+		[Header("Runtime values")]
+		[SerializeField, ReadOnly]
+		private int _actionPoints = 0;
+		[SerializeField, ReadOnly]
+		private bool _isAlive = true;
 
 		private void Awake() {
 			_input.CanMove = false;
@@ -51,7 +58,6 @@ namespace LostNotes.Gameplay {
 				Debug.LogWarning("I is ded", this);
 				yield return Wait.forSeconds[1];
 				gameObject.BroadcastMessage(nameof(IAvatarMessages.OnReset), SendMessageOptions.DontRequireReceiver);
-				yield break;
 			}
 		}
 
@@ -66,9 +72,6 @@ namespace LostNotes.Gameplay {
 		public void OnFailSong(SongAsset song) {
 			ActionPoints -= _actionPointsToPlay;
 		}
-
-		[SerializeField, ReadOnly]
-		private bool _isAlive = true;
 
 		[ContextMenu(nameof(OnAttacked))]
 		public void OnAttacked() {
