@@ -15,7 +15,7 @@ namespace LostNotes.Player {
 		}
 
 		public void MoveBy(Vector2Int delta) {
-			_movement.MoveBy(delta);
+			_ = _movement.MoveBy(delta);
 		}
 
 		public void PlaySong(SongAsset song) {

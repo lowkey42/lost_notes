@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace LostNotes.Gameplay {
 	public class Enemy : MonoBehaviour, ITurnActor {
-		[SerializeField]        private List<EnemyAction> _actions;
-		[field: SerializeField] public  Movement          Movement { get; private set; }
+		[SerializeField] private List<EnemyAction> _actions;
+		[field: SerializeField] public Movement Movement { get; private set; }
 
-		private void Start() {
+		protected void Start() {
 			if (!Movement)
 				Movement = GetComponentInChildren<Movement>();
 		}

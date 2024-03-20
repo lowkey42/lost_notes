@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 namespace LostNotes.Level {
 	internal sealed class Level : MonoBehaviour {
-		[SerializeField] private Tilemap   _interactableLayer;
+		[SerializeField] private Tilemap _interactableLayer;
 		[SerializeField] private BoundsInt _bounds = new(-6, -10, -6, 12, 20, 12);
 
 		public InteractableTile GetTileAt(Vector2Int position) {

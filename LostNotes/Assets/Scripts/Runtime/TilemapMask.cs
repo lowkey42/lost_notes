@@ -7,7 +7,7 @@ namespace LostNotes {
 		[SerializeField] private bool[] _mask;
 
 		public TilemapMask(Vector2Int size) {
-			Size  = size;
+			Size = size;
 			_mask = new bool[size.x * size.y];
 		}
 
@@ -24,14 +24,11 @@ namespace LostNotes {
 			}
 
 			_mask = newMask;
-			Size  = newSize;
+			Size = newSize;
 		}
 
 		public bool IsSet(Vector2Int position) {
-			if (position.x < Size.x && position.y < Size.y)
-				return _mask[position.x + (position.y * Size.x)];
-
-			return false;
+			return position.x < Size.x && position.y < Size.y && _mask[position.x + (position.y * Size.x)];
 		}
 
 		public void Set(Vector2Int position, bool set) {

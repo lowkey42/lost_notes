@@ -4,9 +4,9 @@ using UnityEngine;
 namespace LostNotes.Gameplay.EnemyActions {
 	[CreateAssetMenu(fileName = "Move", menuName = "EnemyActions/Move", order = 0)]
 	public class MoveAction : EnemyAction {
-		[SerializeField] private Vector2Int   _movement;
+		[SerializeField] private Vector2Int _movement;
 		[SerializeField] private RotationTurn _turnOnBlocked = RotationTurn.Degrees90;
-		[SerializeField] private bool         _singleSteps   = true;
+		[SerializeField] private bool _singleSteps = true;
 
 		public override IEnumerator Execute(Enemy enemy) {
 			if (_singleSteps) {

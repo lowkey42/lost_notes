@@ -14,7 +14,7 @@ namespace LostNotes {
 			set => transform.position = value.SwizzleXZ();
 		}
 
-		private void Start() {
+		protected void Start() {
 			if (!_level)
 				_level = GetComponentInParent<Level.Level>();
 		}

@@ -8,9 +8,9 @@ namespace Editor {
 	[CustomPropertyDrawer(typeof(TilemapMask))]
 	public class TilemapMaskPropertyDrawer : PropertyDrawer {
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-			var target          = property.serializedObject.targetObject;
+			var target = property.serializedObject.targetObject;
 			var targetClassType = target.GetType();
-			var field           = targetClassType.GetField(property.propertyPath, BindingFlags.NonPublic | BindingFlags.Instance);
+			var field = targetClassType.GetField(property.propertyPath, BindingFlags.NonPublic | BindingFlags.Instance);
 			if (field == null)
 				return;
 
@@ -32,7 +32,7 @@ namespace Editor {
 			}
 
 			var style = new GUIStyle();
-			style.fixedWidth  = 16;
+			style.fixedWidth = 16;
 			style.fixedHeight = 16;
 
 			for (var y = 0; y < data.Size.y; y++) {
@@ -43,7 +43,7 @@ namespace Editor {
 						continue;
 					}
 
-					var p        = new Vector2Int(x, y);
+					var p = new Vector2Int(x, y);
 					var oldValue = data.IsSet(p);
 					var newValue = EditorGUILayout.Toggle(oldValue, GUILayout.Width(16));
 					if (oldValue != newValue) {

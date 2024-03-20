@@ -14,7 +14,7 @@ namespace LostNotes.Gameplay.EnemyActions {
 			// - transform each position to local space
 			// - Check tile position => if IAttackable, call OnAttacked
 
-			enemy.Movement.MoveByLocal(_recoil);
+			_ = enemy.Movement.MoveByLocal(_recoil);
 
 			return null; // TODO: play animation => wait until completion
 		}
