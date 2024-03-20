@@ -26,17 +26,18 @@ namespace LostNotes.Player {
 				return ESongStatus.NotLearned;
 			}
 
-			if (_notes[_currentNodeIndex].Is(note)) {
-				_currentNodeIndex++;
-				if (_currentNodeIndex == _notes.Length) {
-					_currentNodeIndex = 0;
-					return ESongStatus.Done;
-				}
-
-				return ESongStatus.Playing;
+			if (_currentNodeIndex == _notes.Length) {
+				return ESongStatus.Failed;
 			}
 
-			_currentNodeIndex = 0;
+			if (_notes[_currentNodeIndex].Is(note)) {
+				_currentNodeIndex++;
+				return _currentNodeIndex == _notes.Length
+					? ESongStatus.Done
+					: ESongStatus.Playing;
+			}
+
+			_currentNodeIndex = _notes.Length;
 			return ESongStatus.Failed;
 		}
 
