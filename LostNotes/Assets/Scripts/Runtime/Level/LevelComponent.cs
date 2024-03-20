@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -9,28 +11,28 @@ namespace LostNotes.Level {
 		[SerializeField]
 		private Tilemap _interactableLayer;
 
-		public InteractableTile GetTileAt(Vector2Int position) {
-			return _interactableLayer.GetTile<InteractableTile>(position.SwizzleXZ());
-		}
+		public IEnumerable<ITileMeta> GetInteractableTiles(Vector2Int position) {
+			if (_interactableLayer.TryGetTileMeta(position, out var tile)) {
+				yield return tile;
+			}
 
-		public T GetInteractableAt<T>(Vector2Int position) where T : class {
-			return null;
+			foreach (Transform t in _interactableLayer.transform) {
+				if (WorldToGrid(t.position) == position && t.TryGetComponent(out tile)) {
+					yield return tile;
+				}
+			}
 		}
 
 		public bool IsWalkable(Vector2Int position) {
-			var position3d = position.SwizzleXY();
-			if (!_floorLayer.GetTile(position3d))
-				return false;
-
-			var tile = _interactableLayer.GetTile(position3d);
-			return !tile || tile is not InteractableTile it || it.IsWalkable();
+			return _floorLayer.GetTile(position.SwizzleXY())
+				&& GetInteractableTiles(position).All(t => t.IsWalkable);
 		}
 
-		internal Vector2Int WorldToGrid(Vector3 position3d) {
+		public Vector2Int WorldToGrid(Vector3 position3d) {
 			return _interactableLayer.WorldToCell(position3d).SwizzleXY();
 		}
 
-		internal Vector3 GridToWorld(Vector2Int position2d) {
+		public Vector3 GridToWorld(Vector2Int position2d) {
 			var position3d = _interactableLayer.CellToWorld(position2d.SwizzleXY());
 			position3d.x += _interactableLayer.tileAnchor.x;
 			position3d.z += _interactableLayer.tileAnchor.y;
