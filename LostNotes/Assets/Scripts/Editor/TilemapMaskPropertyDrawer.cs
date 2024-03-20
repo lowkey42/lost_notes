@@ -29,6 +29,7 @@ namespace Editor {
 			if (newSize != data.Size) {
 				Undo.RecordObject(target, "Tilemap mask resized");
 				data.Resize(newSize);
+				EditorUtility.SetDirty(target);
 			}
 
 			var centerPosition = new Vector2Int(data.Size.x / 2, data.Size.y / 2);
@@ -36,6 +37,7 @@ namespace Editor {
 			if (includeCenter != data.IsSet(centerPosition)) {
 				Undo.RecordObject(target, "Tilemap mask modified");
 				data.Set(centerPosition, includeCenter);
+				EditorUtility.SetDirty(target);
 			}
 
 			var style = new GUIStyle();
@@ -56,6 +58,7 @@ namespace Editor {
 					if (oldValue != newValue) {
 						Undo.RecordObject(target, "Tilemap mask modified");
 						data.Set(p, newValue);
+						EditorUtility.SetDirty(target);
 					}
 				}
 
