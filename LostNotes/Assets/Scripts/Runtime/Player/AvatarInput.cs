@@ -5,7 +5,6 @@ using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 namespace LostNotes.Player {
 	internal sealed class AvatarInput : MonoBehaviour {
@@ -47,7 +46,7 @@ namespace LostNotes.Player {
 		}
 
 		private void HandleReset(InputAction.CallbackContext context) {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			gameObject.BroadcastMessage(nameof(IAvatarMessages.OnReset), SendMessageOptions.DontRequireReceiver);
 		}
 
 		private Vector2Int _lastInput;

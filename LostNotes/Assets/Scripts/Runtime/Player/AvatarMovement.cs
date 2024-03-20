@@ -32,5 +32,8 @@ namespace LostNotes.Player {
 		public void OnFailSong(SongAsset song) {
 			song.PlaySong(gameObject);
 		}
+
+		public void OnReset() {
+		}
 	}
 }

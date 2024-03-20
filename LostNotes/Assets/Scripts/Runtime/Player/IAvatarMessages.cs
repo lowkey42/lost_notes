@@ -5,5 +5,6 @@ namespace LostNotes.Player {
 		void OnMove(Vector2Int delta);
 		void OnPlaySong(SongAsset song);
 		void OnFailSong(SongAsset song);
+		void OnReset();
 	}
 }

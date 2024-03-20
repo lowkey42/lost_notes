@@ -1,9 +1,12 @@
 using System.Collections;
 using LostNotes.Player;
+using MyBox;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LostNotes.Gameplay {
-	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages {
+	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages, IAttackMessages {
 		[SerializeField, Range(0, 10)]
 		private int _actionPointsPerTurn = 3;
 		[SerializeField]
@@ -23,23 +26,28 @@ namespace LostNotes.Gameplay {
 		}
 
 		public IEnumerator DoTurn() {
-			_actionPoints = _actionPointsPerTurn;
+			if (_isAlive) {
+				_actionPoints = _actionPointsPerTurn;
 
-			gameObject.BroadcastMessage(nameof(IActorMessages.OnStartTurn), SendMessageOptions.DontRequireReceiver);
+				do {
+					if (_allowActionsWithoutSufficientPoints) {
+						_input.CanMove = _actionPoints > 0;
+						_input.CanChangePlayState = _actionPoints > 0;
+					} else {
+						_input.CanMove = _actionPoints >= _actionPointsToMove;
+						_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
+					}
 
-			do {
-				if (_allowActionsWithoutSufficientPoints) {
-					_input.CanMove = _actionPoints > 0;
-					_input.CanChangePlayState = _actionPoints > 0;
-				} else {
-					_input.CanMove = _actionPoints >= _actionPointsToMove;
-					_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
-				}
+					yield return null;
+				} while (_isAlive && (_input.CanMove || _input.CanChangePlayState));
+			}
 
-				yield return null;
-			} while (_input.CanMove || _input.CanChangePlayState);
-
-			gameObject.BroadcastMessage(nameof(IActorMessages.OnEndTurn), SendMessageOptions.DontRequireReceiver);
+			if (!_isAlive) {
+				Debug.LogWarning("I is ded", this);
+				yield return Wait.forSeconds[1];
+				gameObject.BroadcastMessage(nameof(IAvatarMessages.OnReset), SendMessageOptions.DontRequireReceiver);
+				yield break;
+			}
 		}
 
 		public void OnMove(Vector2Int delta) {
@@ -52,6 +60,18 @@ namespace LostNotes.Gameplay {
 
 		public void OnFailSong(SongAsset song) {
 			_actionPoints -= _actionPointsToPlay;
+		}
+
+		[SerializeField, ReadOnly]
+		private bool _isAlive = true;
+
+		[ContextMenu(nameof(OnAttacked))]
+		public void OnAttacked() {
+			_isAlive = false;
+		}
+
+		public void OnReset() {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 	}
 }

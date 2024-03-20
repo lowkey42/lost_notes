@@ -80,5 +80,8 @@ namespace LostNotes.Player {
 			_attachedText.color = _failColor;
 			_clearOnNextNote = true;
 		}
+
+		public void OnReset() {
+		}
 	}
 }
