@@ -1,22 +1,25 @@
+using LostNotes.Level;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace LostNotes.Player {
-	[RequireComponent(typeof(Movement))]
+	[RequireComponent(typeof(LevelGridTransform))]
 	internal sealed class AvatarMovement : MonoBehaviour, IAvatarMessages {
+		[FormerlySerializedAs("_movement")]
 		[SerializeField]
-		private Movement _movement;
+		private LevelGridTransform _levelGridTransform;
 
 		private void Start() {
 			OnValidate();
 		}
 
 		private void OnValidate() {
-			if (!_movement)
-				_movement = GetComponentInChildren<Movement>();
+			if (!_levelGridTransform)
+				_levelGridTransform = GetComponentInChildren<LevelGridTransform>();
 		}
 
 		public void OnMove(Vector2Int delta) {
-			_ = _movement.MoveBy(delta);
+			_ = _levelGridTransform.MoveBy(delta);
 		}
 
 		public void OnPlaySong(SongAsset song) {

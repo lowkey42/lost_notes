@@ -1,10 +1,8 @@
-using LostNotes.Level;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
-namespace LostNotes {
-	// TODO: rename to GridTransform 
-	internal sealed class Movement : MonoBehaviour {
+namespace LostNotes.Level {
+	internal sealed class LevelGridTransform : MonoBehaviour {
 		[SerializeField] private LevelComponent _level;
 
 		public Vector2Int Position2d => _level.WorldToGrid(transform.position);

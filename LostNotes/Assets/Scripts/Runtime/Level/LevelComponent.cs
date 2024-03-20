@@ -10,8 +10,8 @@ namespace LostNotes.Level {
 
 		[SerializeField] private Tilemap _interactableLayer;
 
-		public void SendMessageToObjectsInArea(Movement source, TilemapMask area, string methodName, object parameter = null) {
-			foreach (var o in GetComponentsInChildren<Movement>()) {
+		public void SendMessageToObjectsInArea(LevelGridTransform source, TilemapMask area, string methodName, object parameter = null) {
+			foreach (var o in GetComponentsInChildren<LevelGridTransform>()) {
 				if (source == o)
 					continue;
 
@@ -24,9 +24,9 @@ namespace LostNotes.Level {
 		public IEnumerable<ITileMeta> GetInteractableTiles(Vector2Int position) {
 			if (_interactableLayer.TryGetTileMeta(position, out var tile)) yield return tile;
 
-			foreach (Transform t in _interactableLayer.transform) {
-				if (WorldToGrid(t.position) == position && t.TryGetComponent(out tile)) yield return tile;
-			}
+			foreach (Transform t in _interactableLayer.transform)
+				if (WorldToGrid(t.position) == position && t.TryGetComponent(out tile))
+					yield return tile;
 		}
 
 		public bool IsWalkable(Vector2Int position) {

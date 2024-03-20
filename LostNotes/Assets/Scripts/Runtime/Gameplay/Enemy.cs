@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using LostNotes.Level;
 using UnityEngine;
 
 namespace LostNotes.Gameplay {
 	internal sealed class Enemy : MonoBehaviour, ITurnActor, IAttackMessages {
 		[SerializeField] private List<EnemyAction> _actions;
-		[field: SerializeField] public Movement Movement { get; private set; }
+		[field: SerializeField] public LevelGridTransform LevelGridTransform { get; private set; }
 
 		private bool _alive = true;
 
 		private void Start() {
-			if (!Movement)
-				Movement = GetComponentInChildren<Movement>();
+			if (!LevelGridTransform)
+				LevelGridTransform = GetComponentInChildren<LevelGridTransform>();
 		}
 
 		public void OnAttacked() {

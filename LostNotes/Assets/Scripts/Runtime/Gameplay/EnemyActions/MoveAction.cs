@@ -13,8 +13,8 @@ namespace LostNotes.Gameplay.EnemyActions {
 				// X movement
 				var xStep = _movement.x < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.x); i++) {
-					if (!enemy.Movement.MoveByLocal(new Vector2Int(xStep, 0))) {
-						enemy.Movement.Rotate(_turnOnBlocked);
+					if (!enemy.LevelGridTransform.MoveByLocal(new Vector2Int(xStep, 0))) {
+						enemy.LevelGridTransform.Rotate(_turnOnBlocked);
 						yield break;
 					}
 
@@ -26,8 +26,8 @@ namespace LostNotes.Gameplay.EnemyActions {
 				var yStep = _movement.y < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.y); i++) {
 					// TODO: should use ABS as iteration bounds and sign for steps
-					if (!enemy.Movement.MoveByLocal(new Vector2Int(0, yStep))) {
-						enemy.Movement.Rotate(_turnOnBlocked);
+					if (!enemy.LevelGridTransform.MoveByLocal(new Vector2Int(0, yStep))) {
+						enemy.LevelGridTransform.Rotate(_turnOnBlocked);
 						yield break;
 					}
 
@@ -35,8 +35,8 @@ namespace LostNotes.Gameplay.EnemyActions {
 						yield return new WaitForSeconds(0.5f); // TODO: wait until movement/animation completion
 				}
 			} else {
-				if (!enemy.Movement.MoveByLocal(_movement))
-					enemy.Movement.Rotate(_turnOnBlocked);
+				if (!enemy.LevelGridTransform.MoveByLocal(_movement))
+					enemy.LevelGridTransform.Rotate(_turnOnBlocked);
 
 				yield return new WaitForSeconds(0.5f); // TODO: wait until movement/animation completion
 			}
