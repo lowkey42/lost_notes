@@ -24,6 +24,14 @@ namespace LostNotes.Level {
 			}
 		}
 
+		public IEnumerable<Vector3Int> GetFloorPositions() {
+			foreach (var position in _floorLayer.cellBounds.allPositionsWithin) {
+				if (_floorLayer.GetTile(position)) {
+					yield return position;
+				}
+			}
+		}
+
 		public IEnumerable<ITileMeta> GetInteractableTiles(Vector2Int position) {
 			return _interactableLayer.GetMetaTiles(position);
 		}
