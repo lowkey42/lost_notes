@@ -71,6 +71,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - song
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43dcd6f161f2af347867a05919391f05
+    m_Address: Assets/Prefabs/P_Bootstrap.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bootstrap
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e16205b2a0b3d634b88e4a01feceaa57, type: 2}
   m_SchemaSet:
