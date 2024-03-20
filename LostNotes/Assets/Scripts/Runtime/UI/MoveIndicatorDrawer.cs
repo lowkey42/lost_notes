@@ -27,7 +27,6 @@ namespace LostNotes.UI {
 		}
 
 		public void OnStartTurn(TurnOrder round) {
-			ClearIndicators();
 			_ourTurn = true;
 		}
 
