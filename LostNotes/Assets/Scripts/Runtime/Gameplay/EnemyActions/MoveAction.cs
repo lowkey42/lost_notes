@@ -56,36 +56,33 @@ namespace LostNotes.Gameplay.EnemyActions {
 			}
 		}
 
-		public override void CreateTurnIndicators(Enemy enemy, Transform parent) {
+		public override void CreateTurnIndicators(FutureEnemyState enemy, Transform parent) {
 			if (!_moveIndicatorPrefab || !_turnIndicatorPrefab || !_stopIndicatorPrefab)
 				return;
-
-			var gridTransform = enemy.LevelGridTransform;
-			var position = gridTransform.Position2d;
 
 			if (!CreateStepIndicators(new Vector2Int(_movement.x < 0 ? -1 : 1, 0), Mathf.Abs(_movement.x), _movement.x < 0 ? 180 : 0)) return;
 
 			if (!CreateStepIndicators(new Vector2Int(0, _movement.y < 0 ? -1 : 1), Mathf.Abs(_movement.y), _movement.y < 0 ? 90 : -90))
 				return;
 
-			Instantiate(_stopIndicatorPrefab, gridTransform.GridTo3dPosition(position), Quaternion.identity, parent);
+			Instantiate(_stopIndicatorPrefab, enemy.Position3d, Quaternion.identity, parent);
 			return;
 
 			bool CreateStepIndicators(Vector2Int step, int stepCount, int indicatorRotation) {
-				var worldStep = gridTransform.LocalToWorldVector(step);
-				var orientation = Quaternion.Euler(0, gridTransform.Rotation2d + indicatorRotation, 0);
+				var worldStep = enemy.LocalToWorldVector(step);
+				var orientation = Quaternion.Euler(0, enemy.Rotation2d + indicatorRotation, 0);
 
-				Quaternion.FromToRotation(gridTransform.GridTo3dPosition(position), gridTransform.GridTo3dPosition(position + worldStep));
+				Quaternion.FromToRotation(enemy.Position3d, enemy.Level.GridToWorld(enemy.Position2d + worldStep));
 				for (var i = 0; i < stepCount; i++) {
-					var newPosition = position + worldStep;
-					if (gridTransform.CanMoveTo(newPosition))
-						Instantiate(_moveIndicatorPrefab, gridTransform.GridTo3dPosition(position), orientation, parent);
+					var newPosition = enemy.Position2d + worldStep;
+					if (enemy.CanMoveTo(newPosition))
+						Instantiate(_moveIndicatorPrefab, enemy.Position3d, orientation, parent);
 					else {
-						Instantiate(_turnIndicatorPrefab, gridTransform.GridTo3dPosition(position), orientation, parent);
+						Instantiate(_turnIndicatorPrefab, enemy.Position3d, orientation, parent);
 						return false;
 					}
 
-					position = newPosition;
+					enemy.Position2d = newPosition;
 				}
 
 				return true;
