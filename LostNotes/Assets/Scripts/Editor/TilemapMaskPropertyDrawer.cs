@@ -31,6 +31,13 @@ namespace Editor {
 				data.Resize(newSize);
 			}
 
+			var centerPosition = new Vector2Int(data.Size.x / 2, data.Size.y / 2);
+			var includeCenter = EditorGUILayout.Toggle("Include Center", data.IsSet(centerPosition));
+			if (includeCenter != data.IsSet(centerPosition)) {
+				Undo.RecordObject(target, "Tilemap mask modified");
+				data.Set(centerPosition, includeCenter);
+			}
+
 			var style = new GUIStyle();
 			style.fixedWidth = 16;
 			style.fixedHeight = 16;

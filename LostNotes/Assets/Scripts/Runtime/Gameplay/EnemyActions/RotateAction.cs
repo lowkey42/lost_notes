@@ -7,7 +7,7 @@ namespace LostNotes.Gameplay.EnemyActions {
 		[SerializeField] private RotationTurn _turns = RotationTurn.Degrees90;
 
 		public override IEnumerator Execute(Enemy enemy) {
-			enemy.Movement.Rotate(_turns);
+			enemy.LevelGridTransform.Rotate(_turns);
 			yield return new WaitForSeconds(1); // TODO: wait until movement/animation completion
 		}
 	}

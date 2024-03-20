@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{b98022da-ea57-4005-9395-2b236f05d4d0}">
+	<object class="AudioFile" id="{be48f6a0-45bf-4de0-aac9-550c940f7707}">
 		<property name="assetPath">
-			<value>Songs/ln_songofanger_combat.wav</value>
+			<value>Songs/ln_songofanger_combat_as.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>6.1428571428571432</value>
+			<value>7.1428571428571432</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{3fe10d14-fc29-4fc5-bbd4-20f34f6e169a}</destination>
