@@ -16,6 +16,7 @@ namespace LostNotes.UI {
 
 		private void Start() {
 			_actor = GetComponentInParent<ITurnActor>();
+			RecreateIndicators();
 		}
 
 		private void OnEnable() {
@@ -36,8 +37,7 @@ namespace LostNotes.UI {
 		}
 
 		private void HandleMove(GameObject obj) {
-			if (!_ourTurn)
-				RecreateIndicators();
+			RecreateIndicators();
 		}
 
 		private void ClearIndicators() {
@@ -45,6 +45,9 @@ namespace LostNotes.UI {
 		}
 
 		private void RecreateIndicators() {
+			if (_actor == null || _ourTurn)
+				return;
+
 			ClearIndicators();
 			_turnIndicatorRoot = new GameObject("Indicators");
 			_actor.CreateTurnIndicators(_turnIndicatorRoot.transform);
