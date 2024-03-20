@@ -13,6 +13,17 @@ namespace LostNotes.Level {
 		[SerializeField]
 		private Tilemap _wallLayer;
 
+		public void SendMessageToObjectsInArea(LevelGridTransform source, TilemapMask area, string methodName, object parameter = null) {
+			foreach (var o in GetComponentsInChildren<LevelGridTransform>()) {
+				if (source == o)
+					continue;
+
+				var localPosition = source.WorldToLocalPosition(o.Position2d) + (area.Size / 2);
+				if (area.IsSet(localPosition))
+					o.BroadcastMessage(methodName, parameter, SendMessageOptions.DontRequireReceiver);
+			}
+		}
+
 		public IEnumerable<ITileMeta> GetInteractableTiles(Vector2Int position) {
 			return _interactableLayer.GetMetaTiles(position);
 		}
