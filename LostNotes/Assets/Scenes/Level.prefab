@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1015201632488239571}
   - component: {fileID: 5256937322407149511}
   - component: {fileID: 6339749293262648929}
+  - component: {fileID: 4264413606607164506}
   m_Layer: 0
   m_Name: Interactables
   m_TagString: Untagged
@@ -189,13 +190,26 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.10058594, y: 0.8671875, z: 0}
+  m_ChunkCullingBounds: {x: 0.22070312, y: 0.8671875, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &4264413606607164506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794037547723005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e917a0a63b3c52045be31f6d845de8ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  component: {fileID: 6339749293262648929}
 --- !u!1 &8621691335386480
 GameObject:
   m_ObjectHideFlags: 0
