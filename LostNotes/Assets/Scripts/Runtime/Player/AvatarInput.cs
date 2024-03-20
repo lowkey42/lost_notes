@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MyBox;
@@ -5,6 +6,7 @@ using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace LostNotes.Player {
 	internal sealed class AvatarInput : MonoBehaviour {
@@ -32,6 +34,7 @@ namespace LostNotes.Player {
 			PlayerMap["Move"].canceled += HandleMove;
 			PlayerMap["Play"].started += HandlePlayStart;
 			PlayerMap["Play"].canceled += HandlePlayStop;
+			PlayerMap["Reset"].started += HandleReset;
 		}
 
 		private void TearDownPlayer() {
@@ -39,8 +42,13 @@ namespace LostNotes.Player {
 			PlayerMap["Move"].canceled -= HandleMove;
 			PlayerMap["Play"].started -= HandlePlayStart;
 			PlayerMap["Play"].canceled -= HandlePlayStop;
+			PlayerMap["Reset"].started -= HandleReset;
 
 			PlayerMap.Disable();
+		}
+
+		private void HandleReset(InputAction.CallbackContext context) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 
 		private Vector2Int _lastInput;
