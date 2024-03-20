@@ -15,9 +15,13 @@ namespace LostNotes.Level {
 		public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData) {
 			base.GetTileData(position, tilemap, ref tileData);
 
+#if UNITY_EDITOR
 			tileData.sprite = Application.isPlaying
 				? null
 				: sprite;
+#else
+			tileData.sprite = null;
+#endif
 			tileData.gameObject = prefab;
 			tileData.flags = TileFlags.None;
 		}
