@@ -1911,7 +1911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9da478cba54fcf98a11b8796e8e807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _turnActorsRoot: {fileID: 556400600}
+  _turnActorsRoot: {fileID: 1244997640}
 --- !u!114 &556400604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2652,7 +2652,7 @@ Tilemap:
       m_TileIndex: 1
       m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
+      m_TileColorIndex: 1
       m_TileObjectToInstantiateIndex: 1
       dummyAlignment: 0
       m_AllTileFlags: 0
@@ -2739,10 +2739,10 @@ Tilemap:
       e32: 1.05e-43
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 7
+  - m_RefCount: 6
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  - m_RefCount: 0
-    m_Data: {r: 4.4152527, g: 4.4152527, b: 4.4152527, a: 4.4152527}
+  - m_RefCount: 1
+    m_Data: {r: 0, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray:
   - m_RefCount: 4
     m_Data: {fileID: 4520711330091527916, guid: 3d1ab0fd62f0a8e80956e2b5140a25f5, type: 3}

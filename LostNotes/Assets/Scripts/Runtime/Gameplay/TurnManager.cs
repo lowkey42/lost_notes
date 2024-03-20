@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace LostNotes.Gameplay {
 	internal sealed class TurnManager : MonoBehaviour {
 		public delegate void TurnOrderHandler(TurnOrder turnOrder);
 
 		[SerializeField]
-		private GameObject _turnActorsRoot;
+		private Tilemap _turnActorsRoot;
 
 		private TurnOrder _currentRoundTurnOrder = null;
 		private Coroutine _round;
@@ -21,10 +23,26 @@ namespace LostNotes.Gameplay {
 		public event TurnOrderHandler OnNewRound = delegate { };
 		public event TurnOrderHandler OnNewTurn = delegate { };
 
+		private sealed class ActorComparer : IComparer<ITurnActor> {
+			private readonly IReadOnlyDictionary<ITurnActor, Color> meta;
+			public ActorComparer(IReadOnlyDictionary<ITurnActor, Color> meta) {
+				this.meta = meta;
+			}
+
+			public int Compare(ITurnActor x, ITurnActor y) {
+				return meta[x].r.CompareTo(meta[y].r);
+			}
+		}
+
 		private TurnOrder ComputeTurnOrder() {
 			var actors = new List<ITurnActor>();
 			_turnActorsRoot.GetComponentsInChildren(actors);
 			_ = actors.RemoveAll(actor => !actor.HasTurnActions());
+			var meta = actors.ToDictionary(
+				actor => actor,
+				actor => _turnActorsRoot.GetColor(_turnActorsRoot.WorldToCell(actor.gameObject.transform.position))
+			);
+			actors.Sort(new ActorComparer(meta));
 			return new TurnOrder(actors);
 		}
 
