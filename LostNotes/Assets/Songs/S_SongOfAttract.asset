@@ -22,9 +22,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
   _songEvent:
     Guid:
-      Data1: -1388333384
-      Data2: 1210321410
-      Data3: -1717851213
-      Data4: -1934899547
-    Path: event:/Songs/Song of Sleep/Song of Sleep Combat
+      Data1: 1558955910
+      Data2: 1085523622
+      Data3: -222807633
+      Data4: -784863073
+    Path: event:/Songs/Song of Attract/Song of Attract
   _songPrefab: {fileID: 9129755563245552758, guid: 380de55c6a52ccf4bb6bb1fc0352a6c3, type: 3}
