@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4965c2c6191fde4ab8df99832b191ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winLevelChannel: {fileID: 11400000, guid: ac31d7e2747ccd645b289afeec095710, type: 2}
+  winLevelChannelReference:
+    m_AssetGUID: ac31d7e2747ccd645b289afeec095710
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _levels: {fileID: 11400000, guid: e09c78dd39a1adb4db8a1627017ff419, type: 2}
 --- !u!1 &913240573960940740
 GameObject:

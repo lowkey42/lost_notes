@@ -48,7 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorTag: Player
-  channel: {fileID: 11400000, guid: ac31d7e2747ccd645b289afeec095710, type: 2}
+  channelReference:
+    m_AssetGUID: ac31d7e2747ccd645b289afeec095710
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &4169950971960567826
 GameObject:
   m_ObjectHideFlags: 0

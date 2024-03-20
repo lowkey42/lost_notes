@@ -1,18 +1,27 @@
+using System.Collections;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace LostNotes.Level {
 	internal sealed class LevelManager : MonoBehaviour {
-		[SerializeField, Expandable]
+		[SerializeField]
+		private AssetReferenceT<GameObjectEventChannel> winLevelChannelReference;
 		private GameObjectEventChannel winLevelChannel;
 		[SerializeField, Expandable]
 		private LevelOrder _levels;
 
-		private void OnEnable() {
+		private IEnumerator Start() {
+			var handle = winLevelChannelReference.LoadAssetAsync();
+			yield return handle;
+			winLevelChannel = handle.Result;
 			winLevelChannel.onTrigger += HandleWin;
 		}
+
 		private void OnDisable() {
-			winLevelChannel.onTrigger -= HandleWin;
+			if (winLevelChannel) {
+				winLevelChannel.onTrigger -= HandleWin;
+			}
 		}
 
 		private void HandleWin(GameObject obj) {
