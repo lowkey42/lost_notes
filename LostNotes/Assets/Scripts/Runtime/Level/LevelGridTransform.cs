@@ -18,7 +18,8 @@ namespace LostNotes.Level {
 			var newPosition2d = Position2d + delta;
 			var newPosition = _level.GridToWorld(newPosition2d);
 
-			if (_level && !_level.IsWalkable(newPosition2d)) return false;
+			if (_level && !_level.IsWalkable(newPosition2d))
+				return false;
 
 			// TODO: lerp/animate position and report animation-completion to caller
 

@@ -1,3 +1,4 @@
+using LostNotes.Gameplay;
 using LostNotes.Level;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -19,7 +20,9 @@ namespace LostNotes.Player {
 		}
 
 		public void OnMove(Vector2Int delta) {
-			_ = _levelGridTransform.MoveBy(delta);
+			if (_levelGridTransform.MoveBy(delta)) {
+				_levelGridTransform.SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
+			}
 		}
 
 		public void OnPlaySong(SongAsset song) {

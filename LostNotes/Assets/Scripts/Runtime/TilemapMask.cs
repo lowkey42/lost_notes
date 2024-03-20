@@ -4,7 +4,12 @@ using UnityEngine;
 namespace LostNotes {
 	[Serializable]
 	internal sealed class TilemapMask {
-		[SerializeField] private bool[] _mask;
+		internal static readonly TilemapMask Self = new(Vector2Int.one) {
+			_mask = new[] { true }
+		};
+
+		[SerializeField]
+		private bool[] _mask = Array.Empty<bool>();
 
 		public TilemapMask(Vector2Int size) {
 			Size = size;
@@ -29,10 +34,8 @@ namespace LostNotes {
 		}
 
 		public bool IsSet(Vector2Int position) {
-			if (position.x < 0 || position.y < 0 || position.x >= Size.x || position.y >= Size.y)
-				return false;
-
-			return _mask[position.x + (position.y * Size.x)];
+			return position.x >= 0 && position.y >= 0 && position.x < Size.x && position.y < Size.y
+&& _mask[position.x + (position.y * Size.x)];
 		}
 
 		public void Set(Vector2Int position, bool set) {

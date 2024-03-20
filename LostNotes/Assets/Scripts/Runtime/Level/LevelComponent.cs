@@ -14,13 +14,17 @@ namespace LostNotes.Level {
 		private Tilemap _wallLayer;
 
 		public void SendMessageToObjectsInArea(LevelGridTransform source, TilemapMask area, string methodName, object parameter = null) {
-			foreach (var o in GetComponentsInChildren<LevelGridTransform>()) {
-				if (source == o)
+			foreach (Transform t in _interactableLayer.transform) {
+				if (t == source.transform) {
 					continue;
+				}
 
-				var localPosition = source.WorldToLocalPosition(o.Position2d) + (area.Size / 2);
-				if (area.IsSet(localPosition))
-					o.BroadcastMessage(methodName, parameter, SendMessageOptions.DontRequireReceiver);
+				var testPosition = WorldToGrid(t.position);
+				var localPosition = source.WorldToLocalPosition(testPosition) + (area.Size / 2);
+
+				if (area.IsSet(localPosition)) {
+					t.gameObject.BroadcastMessage(methodName, parameter, SendMessageOptions.DontRequireReceiver);
+				}
 			}
 		}
 
