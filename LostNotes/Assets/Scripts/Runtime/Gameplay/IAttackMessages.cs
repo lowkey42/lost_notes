@@ -1,5 +1,5 @@
 namespace LostNotes.Gameplay {
-	public interface IAttackable {
+	public interface IAttackMessages {
 		void OnAttacked();
 	}
 }

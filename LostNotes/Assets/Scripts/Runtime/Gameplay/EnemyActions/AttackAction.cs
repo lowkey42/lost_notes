@@ -9,10 +9,7 @@ namespace LostNotes.Gameplay.EnemyActions {
 		[SerializeField] private TilemapMask _attackArea = new(new Vector2Int(9, 9));
 
 		public override IEnumerator Execute(Enemy enemy) {
-			// TODO:
-			// - iterate over _attackArea
-			// - transform each position to local space
-			// - Check tile position => if IAttackable, call OnAttacked
+			enemy.Movement.SendMessageToObjectsInArea(_attackArea, nameof(IAttackMessages.OnAttacked));
 
 			_ = enemy.Movement.MoveByLocal(_recoil);
 

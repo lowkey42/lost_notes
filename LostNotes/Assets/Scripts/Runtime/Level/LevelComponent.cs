@@ -6,26 +6,31 @@ using UnityEngine.Tilemaps;
 
 namespace LostNotes.Level {
 	internal sealed class LevelComponent : MonoBehaviour {
-		[SerializeField]
-		private Tilemap _floorLayer;
-		[SerializeField]
-		private Tilemap _interactableLayer;
+		[SerializeField] private Tilemap _floorLayer;
+
+		[SerializeField] private Tilemap _interactableLayer;
+
+		public void SendMessageToObjectsInArea(Movement source, TilemapMask area, string methodName, object parameter = null) {
+			foreach (var o in GetComponentsInChildren<Movement>()) {
+				if (source == o)
+					continue;
+
+				var localPosition = source.WorldToLocalPosition(o.Position2d) + (area.Size / 2);
+				if (area.IsSet(localPosition))
+					o.BroadcastMessage(methodName, parameter, SendMessageOptions.DontRequireReceiver);
+			}
+		}
 
 		public IEnumerable<ITileMeta> GetInteractableTiles(Vector2Int position) {
-			if (_interactableLayer.TryGetTileMeta(position, out var tile)) {
-				yield return tile;
-			}
+			if (_interactableLayer.TryGetTileMeta(position, out var tile)) yield return tile;
 
 			foreach (Transform t in _interactableLayer.transform) {
-				if (WorldToGrid(t.position) == position && t.TryGetComponent(out tile)) {
-					yield return tile;
-				}
+				if (WorldToGrid(t.position) == position && t.TryGetComponent(out tile)) yield return tile;
 			}
 		}
 
 		public bool IsWalkable(Vector2Int position) {
-			return _floorLayer.GetTile(position.SwizzleXY())
-				&& GetInteractableTiles(position).All(t => t.IsWalkable);
+			return _floorLayer.GetTile(position.SwizzleXY()) && GetInteractableTiles(position).All(t => t.IsWalkable);
 		}
 
 		public Vector2Int WorldToGrid(Vector3 position3d) {
