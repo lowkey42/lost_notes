@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{20a65658-08f6-4577-8de2-d7deacca303a}">
 		<property name="name">
-			<value>Note G</value>
+			<value>Note Es</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{3152f2a9-f15f-47fc-a3f0-472a0eca6fe4}</destination>
+			<destination>{05cff6e1-42b9-4172-9a35-17de4afa8ca0}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{6e4ab4de-0167-481d-ae3c-6afcfc2d3a96}</destination>
@@ -39,7 +39,7 @@
 	</object>
 	<object class="MasterTrack" id="{51f78c99-b5b0-4715-b90f-969a6ce690e0}">
 		<relationship name="modules">
-			<destination>{bcf7dce2-6029-4898-9067-6ec13d92ffe4}</destination>
+			<destination>{eb47e842-de89-4b84-8142-63878d0ccaae}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{b6cd30cf-3910-485f-992d-4b427d8d1cdd}</destination>
@@ -60,7 +60,7 @@
 	<object class="MarkerTrack" id="{f91d9a6c-da4e-4c24-a299-7524e20569ba}" />
 	<object class="Timeline" id="{60335892-1cac-4725-9e48-420c84b13963}">
 		<relationship name="modules">
-			<destination>{bcf7dce2-6029-4898-9067-6ec13d92ffe4}</destination>
+			<destination>{eb47e842-de89-4b84-8142-63878d0ccaae}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{b6cd30cf-3910-485f-992d-4b427d8d1cdd}">
@@ -74,9 +74,12 @@
 			<destination>{6e4ab4de-0167-481d-ae3c-6afcfc2d3a96}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{bcf7dce2-6029-4898-9067-6ec13d92ffe4}">
+	<object class="SingleSound" id="{eb47e842-de89-4b84-8142-63878d0ccaae}">
+		<property name="length">
+			<value>1.8461451247165532</value>
+		</property>
 		<relationship name="audioFile">
-			<destination>{74b2513d-99c4-4914-a4c5-ba2b86e7d14a}</destination>
+			<destination>{52c892bc-e470-452b-9068-341943103e3b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{0c640c3d-ea74-4af3-a3dd-40b5772470e3}">

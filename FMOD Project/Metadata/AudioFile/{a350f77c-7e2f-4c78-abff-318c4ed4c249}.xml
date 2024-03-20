@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a350f77c-7e2f-4c78-abff-318c4ed4c249}">
+		<property name="assetPath">
+			<value>Noten/ln_violin_B.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8461451247165532</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3fe10d14-fc29-4fc5-bbd4-20f34f6e169a}</destination>
+		</relationship>
+	</object>
+</objects>

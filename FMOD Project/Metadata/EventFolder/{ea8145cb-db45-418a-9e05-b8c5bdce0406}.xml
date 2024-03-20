@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EventFolder" id="{ea8145cb-db45-418a-9e05-b8c5bdce0406}">
+		<property name="name">
+			<value>Song of Anger</value>
+		</property>
+		<relationship name="folder">
+			<destination>{feed6d44-b659-4843-a76a-7e5f0f33153c}</destination>
+		</relationship>
+	</object>
+</objects>
