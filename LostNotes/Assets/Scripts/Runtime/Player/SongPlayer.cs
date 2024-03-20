@@ -13,6 +13,8 @@ namespace LostNotes.Player {
 		private List<SongAsset> _songs = new();
 		[SerializeField]
 		private SongAsset _failureSong;
+		[SerializeField]
+		private TilemapMask _songRange = new(new Vector2Int(9, 9));
 
 		private void AddSong(SongAsset song) {
 			_songs.Add(song);
