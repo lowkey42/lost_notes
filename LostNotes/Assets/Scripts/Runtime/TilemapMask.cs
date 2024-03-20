@@ -11,6 +11,7 @@ namespace LostNotes {
 			_mask = new bool[size.x * size.y];
 		}
 
+		[field: SerializeField]
 		public Vector2Int Size { get; private set; }
 
 		public void Resize(Vector2Int newSize) {
