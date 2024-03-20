@@ -15,15 +15,15 @@ namespace LostNotes.Player {
 				_movement = GetComponentInChildren<Movement>();
 		}
 
-		public void MoveBy(Vector2Int delta) {
+		public void OnMove(Vector2Int delta) {
 			_ = _movement.MoveBy(delta);
 		}
 
-		public void PlaySong(SongAsset song) {
+		public void OnPlaySong(SongAsset song) {
 			song.PlaySong(gameObject);
 		}
 
-		public void FailSong(SongAsset song) {
+		public void OnFailSong(SongAsset song) {
 			song.PlaySong(gameObject);
 		}
 	}

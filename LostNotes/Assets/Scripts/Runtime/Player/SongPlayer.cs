@@ -30,19 +30,19 @@ namespace LostNotes.Player {
 			yield return LoadSongs();
 		}
 
-		public void StartPlaying() {
+		public void OnStartPlaying() {
 			foreach (var song in _songs) {
 				song.ResetInput();
 			}
 		}
 
-		public void StopPlaying() {
+		public void OnStopPlaying() {
 		}
 
 		private ESongStatus songStatus = ESongStatus.NotLearned;
 		private SongAsset song;
 
-		public void StartNote(InputAction action) {
+		public void OnStartNote(InputAction action) {
 			var isPlayingAny = false;
 			foreach (var song in _songs) {
 				var status = song.PlayNote(action);
@@ -65,16 +65,16 @@ namespace LostNotes.Player {
 			switch (songStatus) {
 				case ESongStatus.Done:
 					songStatus = ESongStatus.NotLearned;
-					gameObject.BroadcastMessage(nameof(IAvatarMessages.PlaySong), song, SendMessageOptions.DontRequireReceiver);
+					gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPlaySong), song, SendMessageOptions.DontRequireReceiver);
 					break;
 				case ESongStatus.Failed:
 					songStatus = ESongStatus.NotLearned;
-					gameObject.BroadcastMessage(nameof(IAvatarMessages.FailSong), _failureSong, SendMessageOptions.DontRequireReceiver);
+					gameObject.BroadcastMessage(nameof(IAvatarMessages.OnFailSong), _failureSong, SendMessageOptions.DontRequireReceiver);
 					break;
 			}
 		}
 
-		public void StopNote(InputAction action) {
+		public void OnStopNote(InputAction action) {
 		}
 	}
 }

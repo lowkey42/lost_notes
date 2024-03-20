@@ -24,7 +24,7 @@ namespace LostNotes.Player {
 			_attachedText.text = string.Join(' ', _notes);
 		}
 
-		public void StartPlaying() {
+		public void OnStartPlaying() {
 			if (_stopRoutine is not null) {
 				StopCoroutine(_stopRoutine);
 			}
@@ -37,7 +37,7 @@ namespace LostNotes.Player {
 
 		private Coroutine _stopRoutine;
 
-		public void StopPlaying() {
+		public void OnStopPlaying() {
 			IEnumerator Stop() {
 				yield return Wait.forSeconds[1];
 				_attachedCanvas.enabled = false;
@@ -46,19 +46,19 @@ namespace LostNotes.Player {
 			_stopRoutine = StartCoroutine(Stop());
 		}
 
-		public void StartNote(InputAction action) {
+		public void OnStartNote(InputAction action) {
 			if (_clearOnNextNote) {
 				_clearOnNextNote = false;
-				StartPlaying();
+				OnStartPlaying();
 			}
 
 			AddNote(action.name);
 		}
 
-		public void StopNote(InputAction action) {
+		public void OnStopNote(InputAction action) {
 		}
 
-		public void MoveBy(Vector2Int delta) {
+		public void OnMove(Vector2Int delta) {
 		}
 
 		[SerializeField]
@@ -70,14 +70,14 @@ namespace LostNotes.Player {
 
 		private bool _clearOnNextNote = false;
 
-		public void PlaySong(SongAsset song) {
+		public void OnPlaySong(SongAsset song) {
 			_notes = new(_notes.TakeLast(song.NoteCount));
 			UpdateText();
 			_attachedText.color = _playColor;
 			_clearOnNextNote = true;
 		}
 
-		public void FailSong(SongAsset song) {
+		public void OnFailSong(SongAsset song) {
 			_attachedText.color = _failColor;
 			_clearOnNextNote = true;
 		}

@@ -25,27 +25,27 @@ namespace LostNotes.Player {
 		[SerializeField, ColorUsage(true, true)]
 		private Color noteColor = Color.white;
 
-		public void StartTurn() {
+		public void OnStartTurn() {
 			material.SetColor("_HighlightColor", turnColor);
 		}
 
-		public void EndTurn() {
+		public void OnEndTurn() {
 			material.SetColor("_HighlightColor", Color.white);
 		}
 
-		public void StartPlaying() {
+		public void OnStartPlaying() {
 			material.SetColor("_HighlightColor", playColor);
 		}
 
-		public void StopPlaying() {
+		public void OnStopPlaying() {
 			material.SetColor("_HighlightColor", turnColor);
 		}
 
-		public void StartNote(InputAction action) {
+		public void OnStartNote(InputAction action) {
 			material.SetColor("_HighlightColor", noteColor);
 		}
 
-		public void StopNote(InputAction action) {
+		public void OnStopNote(InputAction action) {
 			material.SetColor("_HighlightColor", playColor);
 		}
 	}

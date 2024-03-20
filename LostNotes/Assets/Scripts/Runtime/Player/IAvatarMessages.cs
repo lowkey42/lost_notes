@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace LostNotes.Player {
 	internal interface IAvatarMessages {
-		void MoveBy(Vector2Int delta);
-		void PlaySong(SongAsset song);
-		void FailSong(SongAsset song);
+		void OnMove(Vector2Int delta);
+		void OnPlaySong(SongAsset song);
+		void OnFailSong(SongAsset song);
 	}
 }

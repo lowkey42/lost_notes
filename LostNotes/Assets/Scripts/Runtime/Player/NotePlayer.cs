@@ -14,22 +14,22 @@ namespace LostNotes.Player {
 
 		private readonly Dictionary<Guid, EventInstance> _instances = new();
 
-		public void StartPlaying() {
+		public void OnStartPlaying() {
 		}
 
-		public void StopPlaying() {
+		public void OnStopPlaying() {
 			foreach (var action in _noteActions) {
-				StopNote(action);
+				OnStopNote(action);
 			}
 		}
 
-		public void StartNote(InputAction action) {
+		public void OnStartNote(InputAction action) {
 			for (var i = 0; i < _noteActions.Length; i++) {
 				var actionReference = _noteActions[i];
 				var eve = _noteEvents[i];
 
 				if (actionReference.action.id == action.id && !eve.IsNull) {
-					StopNote(action);
+					OnStopNote(action);
 					_instances[action.id] = RuntimeManager.CreateInstance(eve);
 					_ = _instances[action.id].start();
 				}
@@ -39,7 +39,7 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private bool _stopPlayingNotes = false;
 
-		public void StopNote(InputAction action) {
+		public void OnStopNote(InputAction action) {
 			if (_instances.Remove(action.id, out var instance)) {
 				if (_stopPlayingNotes) {
 					_ = instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);

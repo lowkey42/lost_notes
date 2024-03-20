@@ -25,7 +25,7 @@ namespace LostNotes.Gameplay {
 		public IEnumerator DoTurn() {
 			_actionPoints = _actionPointsPerTurn;
 
-			gameObject.BroadcastMessage(nameof(IActorMessages.StartTurn), SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(IActorMessages.OnStartTurn), SendMessageOptions.DontRequireReceiver);
 
 			do {
 				if (_allowActionsWithoutSufficientPoints) {
@@ -39,18 +39,18 @@ namespace LostNotes.Gameplay {
 				yield return null;
 			} while (_input.CanMove || _input.CanChangePlayState);
 
-			gameObject.BroadcastMessage(nameof(IActorMessages.EndTurn), SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(IActorMessages.OnEndTurn), SendMessageOptions.DontRequireReceiver);
 		}
 
-		public void MoveBy(Vector2Int delta) {
+		public void OnMove(Vector2Int delta) {
 			_actionPoints -= _actionPointsToMove;
 		}
 
-		public void PlaySong(SongAsset song) {
+		public void OnPlaySong(SongAsset song) {
 			_actionPoints -= _actionPointsToPlay;
 		}
 
-		public void FailSong(SongAsset song) {
+		public void OnFailSong(SongAsset song) {
 			_actionPoints -= _actionPointsToPlay;
 		}
 	}

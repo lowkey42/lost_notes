@@ -1,6 +1,6 @@
 namespace LostNotes.Gameplay {
 	internal interface IActorMessages {
-		void StartTurn();
-		void EndTurn();
+		void OnStartTurn();
+		void OnEndTurn();
 	}
 }

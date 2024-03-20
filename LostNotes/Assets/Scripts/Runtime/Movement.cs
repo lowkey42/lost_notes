@@ -13,16 +13,18 @@ namespace LostNotes {
 		}
 
 		public bool MoveBy(Vector2Int delta) {
-			var oldPosition = _level.WorldToGrid(transform.position);
-			var new2DPosition = oldPosition + delta;
+			var oldPosition = transform.position;
+			var oldPosition2d = _level.WorldToGrid(oldPosition);
+			var newPosition2d = oldPosition2d + delta;
+			var newPosition = _level.GridToWorld(newPosition2d);
 
-			if (_level && !_level.IsWalkable(new2DPosition)) {
+			if (_level && !_level.IsWalkable(newPosition2d)) {
 				return false;
 			}
 
 			// TODO: lerp/animate position and report animation-completion to caller
 
-			transform.position = _level.GridToWorld(new2DPosition);
+			transform.position = newPosition;
 			return true;
 		}
 
