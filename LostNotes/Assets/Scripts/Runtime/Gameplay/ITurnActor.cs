@@ -10,5 +10,7 @@ namespace LostNotes.Gameplay {
 		IEnumerator DoTurn();
 
 		bool HasTurnActions() { return true; }
+
+		void CreateTurnIndicators(Transform parent) { }
 	}
 }

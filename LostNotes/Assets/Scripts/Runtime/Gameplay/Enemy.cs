@@ -5,7 +5,9 @@ using UnityEngine;
 
 namespace LostNotes.Gameplay {
 	internal sealed class Enemy : MonoBehaviour, ITurnActor, IAttackMessages {
-		[SerializeField] private List<EnemyAction> _actions;
+		[SerializeField]
+		private List<EnemyAction> _actions;
+
 		[field: SerializeField] public LevelGridTransform LevelGridTransform { get; private set; }
 
 		private bool _alive = true;
@@ -30,6 +32,11 @@ namespace LostNotes.Gameplay {
 
 		public bool HasTurnActions() {
 			return _alive;
+		}
+
+		public void CreateTurnIndicators(Transform parent) {
+			foreach (var action in _actions)
+				action.CreateTurnIndicators(this, parent);
 		}
 	}
 }

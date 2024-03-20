@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e3a27fdbc8b44eb963897451210b1f2, type: 3}
   m_Name: JumperMovement
   m_EditorClassIdentifier: 
+  _moveIndicatorPrefab: {fileID: 5635456826061717842, guid: c45c5727f538211869cd28087779c698, type: 3}
+  _turnIndicatorPrefab: {fileID: 5635456826061717842, guid: 126815674d268c183bd093db71d5cf0a, type: 3}
+  _stopIndicatorPrefab: {fileID: 5635456826061717842, guid: 525104f5a87c17c6ca1f49c58142e911, type: 3}
   _movement: {x: 0, y: 4}
   _turnOnBlocked: 90
   _singleSteps: 1
