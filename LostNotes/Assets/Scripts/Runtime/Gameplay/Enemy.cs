@@ -35,6 +35,9 @@ namespace LostNotes.Gameplay {
 		}
 
 		public void CreateTurnIndicators(Transform parent) {
+			if (!_alive)
+				return;
+
 			var futureState = new FutureEnemyState(LevelGridTransform.Level, this);
 			foreach (var action in _actions)
 				action.CreateTurnIndicators(futureState, parent);
