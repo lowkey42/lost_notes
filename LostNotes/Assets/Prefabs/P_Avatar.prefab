@@ -329,7 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df62a3689d5ca7b458a08782c20545ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerActions: {fileID: -944628639613478452, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  _avatarInput: {fileID: 11400000, guid: 90bd85be36e6b3d488e66868d3e854d1, type: 2}
+  _playerActions: {fileID: -944628639613478452, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
   _canMove: 1
   _canChangePlayState: 1
   _isPlaying: 0
@@ -449,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0677ca1e471d427fa47918611d87451b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minAlpha: 0.2
   _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64
     m_SubObjectName: 
@@ -602,7 +604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 6143910925199202491}
-  _turnManager: {fileID: 0}
 --- !u!1 &6075892406356288915
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8144545258069528212}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.2670914, y: -0.13903669, z: 0.03897535, w: -0.9527917}
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -279,6 +279,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_ArrowButton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 90bd85be36e6b3d488e66868d3e854d1, type: 2}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RaiseInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LostNotes.Player.AvatarInputAsset, LostNotes
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: -8357431665067262822, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.InputSystem.InputActionReference, Unity.InputSystem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -345,6 +377,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_ArrowButton (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 90bd85be36e6b3d488e66868d3e854d1, type: 2}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RaiseInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LostNotes.Player.AvatarInputAsset, LostNotes
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: -7865337618381702727, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.InputSystem.InputActionReference, Unity.InputSystem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -403,6 +467,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_ArrowButton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 90bd85be36e6b3d488e66868d3e854d1, type: 2}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RaiseInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LostNotes.Player.AvatarInputAsset, LostNotes
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: -7142199195949855259, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.InputSystem.InputActionReference, Unity.InputSystem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -460,6 +556,38 @@ PrefabInstance:
     - target: {fileID: 2935168826686283785, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
       propertyPath: m_Name
       value: P_ArrowButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 90bd85be36e6b3d488e66868d3e854d1, type: 2}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RaiseInput
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LostNotes.Player.AvatarInputAsset, LostNotes
+      objectReference: {fileID: 0}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: -4739772405386505156, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+    - target: {fileID: 9143488052143135082, guid: 5c141ad55d1001b49a9600fb72c3a667, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.InputSystem.InputActionReference, Unity.InputSystem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

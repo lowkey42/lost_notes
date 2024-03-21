@@ -7,22 +7,44 @@ using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
 	internal sealed class AvatarInput : MonoBehaviour {
-
 		private void OnEnable() {
 			SetUpPlayer();
 			SetUpNotes();
+			SetUpInput();
 		}
 
 		private void OnDisable() {
 			IsPlaying = false;
 			TearDownPlayer();
 			TearDownNotes();
+			TearDownInput();
 		}
 
 		[SerializeField]
-		private InputActionAsset playerActions;
+		private AvatarInputAsset _avatarInput;
 
-		private InputActionMap PlayerMap => playerActions.FindActionMap("Player");
+		private void SetUpInput() {
+			if (_avatarInput) {
+				_avatarInput.OnInput += HandleInput;
+			}
+		}
+
+		private void TearDownInput() {
+			if (_avatarInput) {
+				_avatarInput.OnInput -= HandleInput;
+			}
+		}
+
+		private void HandleInput(InputActionReference input) {
+			if (TryLookupNote(input, out var note)) {
+				PlayNoteOneShot(note);
+			}
+		}
+
+		[SerializeField]
+		private InputActionAsset _playerActions;
+
+		private InputActionMap PlayerMap => _playerActions.FindActionMap("Player");
 
 		private void SetUpPlayer() {
 			PlayerMap.Enable();
@@ -87,6 +109,10 @@ namespace LostNotes.Player {
 			_lastInput = input;
 		}
 
+		private void HandleMove() {
+
+		}
+
 		[SerializeField, ReadOnly]
 		private bool _isPlaying = false;
 
@@ -120,7 +146,7 @@ namespace LostNotes.Player {
 			IsPlaying = false;
 		}
 
-		private InputActionMap NoteMap => playerActions.FindActionMap("Notes");
+		private InputActionMap NoteMap => _playerActions.FindActionMap("Notes");
 
 		private void SetUpNotes() {
 			foreach (var noteAction in NoteMap) {
@@ -196,7 +222,7 @@ namespace LostNotes.Player {
 			}
 
 			IEnumerator Stop() {
-				yield return Wait.forSeconds[0.1f];
+				yield return null;
 				StopNote(note);
 			}
 
