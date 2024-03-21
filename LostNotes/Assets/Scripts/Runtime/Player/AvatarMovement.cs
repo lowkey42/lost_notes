@@ -25,12 +25,15 @@ namespace LostNotes.Player {
 			}
 		}
 
+		[SerializeField]
+		private TilemapMask _songRange = new(new Vector2Int(9, 9));
+
 		public void OnPlaySong(SongAsset song) {
-			song.PlaySong(gameObject);
+			song.PlaySong(_levelGridTransform, _songRange);
 		}
 
 		public void OnFailSong(SongAsset song) {
-			song.PlaySong(gameObject);
+			song.PlaySong(_levelGridTransform, _songRange);
 		}
 
 		public void OnReset() {

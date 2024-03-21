@@ -1,5 +1,7 @@
 using System;
 using FMODUnity;
+using LostNotes.Gameplay;
+using LostNotes.Level;
 using UnityEngine;
 
 namespace LostNotes.Player {
@@ -7,6 +9,8 @@ namespace LostNotes.Player {
 	internal sealed class SongAsset : ScriptableObject {
 		[SerializeField]
 		private bool _isAvailable = false;
+		[SerializeField]
+		private EEffects _effects = EEffects.Noise;
 		[SerializeField]
 		private NoteAsset[] _notes = Array.Empty<NoteAsset>();
 		private int _currentNodeIndex = 0;
@@ -46,13 +50,17 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private GameObject _songPrefab;
 
-		public void PlaySong(GameObject context) {
+		public void PlaySong(LevelGridTransform context, TilemapMask range) {
 			if (!_songEvent.IsNull) {
 				RuntimeManager.PlayOneShot(_songEvent);
 			}
 
 			if (_songPrefab) {
 				_ = Instantiate(_songPrefab, context.transform);
+			}
+
+			foreach (var message in _effects.GetMessages()) {
+				context.SendMessageToObjectsInArea(range, message, context);
 			}
 		}
 	}

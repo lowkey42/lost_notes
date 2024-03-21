@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S_SongOfCalm
   m_EditorClassIdentifier: 
   _isAvailable: 1
+  _effects: 16
   _notes:
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}

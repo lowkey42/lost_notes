@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S_SongOfSleep
   m_EditorClassIdentifier: 
   _isAvailable: 1
+  _effects: 9
   _notes:
   - {fileID: 11400000, guid: 2e0fa0471ee102244b9605f03e7b2976, type: 2}
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
