@@ -128,6 +128,10 @@ namespace LostNotes.Player {
 
 		public void SetUpHud(Image image) {
 			image.sprite = _hudSprite;
+			for (var i = 0; i < _notes.Length; i++) {
+				var child = image.transform.GetChild(i);
+				child.SendMessage(nameof(INoteMessages.OnStartNote), _notes[i], SendMessageOptions.DontRequireReceiver);
+			}
 		}
 	}
 }
