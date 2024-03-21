@@ -1,24 +1,30 @@
+using System.Collections;
 using System.Collections.Generic;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace LostNotes.Level {
 	internal sealed class LevelGridTransform : MonoBehaviour {
 		[SerializeField]
 		private LevelComponent _level;
-		[SerializeField, Expandable]
+		[SerializeField]
+		private AssetReferenceT<GameObjectEventChannel> moveChannelReference;
 		private GameObjectEventChannel moveChannel;
+
+		private IEnumerator Start() {
+			_ = _level || transform.TryGetComponentInParent(out _level);
+
+			var handle = moveChannelReference.LoadAssetAsync();
+			yield return handle;
+			moveChannel = handle.Result;
+		}
 
 		public Vector2Int Position2d => _level.WorldToGrid(transform.position);
 
 		public LevelComponent Level => _level;
 
 		public int Rotation2d => Mathf.RoundToInt(transform.eulerAngles.y);
-
-		private void Start() {
-			if (!_level)
-				_level = GetComponentInParent<LevelComponent>();
-		}
 
 		public bool MoveBy(Vector2Int delta) {
 			var newPosition2d = Position2d + delta;
@@ -30,7 +36,11 @@ namespace LostNotes.Level {
 			// TODO: lerp/animate position and report animation-completion to caller
 
 			transform.position = newPosition;
-			moveChannel.Raise(gameObject);
+
+			if (moveChannel) {
+				moveChannel.Raise(gameObject);
+			}
+
 			return true;
 		}
 

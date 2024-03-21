@@ -1,31 +1,40 @@
+using System.Collections;
 using LostNotes.Gameplay;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace LostNotes.UI {
 	internal sealed class MoveIndicatorDrawer : MonoBehaviour, IActorMessages {
 		[SerializeField]
-		[Expandable]
+		private AssetReferenceT<GameObjectEventChannel> moveChannelReference;
 		private GameObjectEventChannel moveChannel;
+
+		private IEnumerator Start() {
+			_ = transform.TryGetComponentInParent(out _actor);
+
+			var handle = moveChannelReference.LoadAssetAsync();
+			yield return handle;
+			moveChannel = handle.Result;
+
+			if (moveChannel) {
+				moveChannel.onTrigger += HandleMove;
+			}
+
+			RecreateIndicators();
+		}
+
+		private void OnDisable() {
+			if (moveChannel) {
+				moveChannel.onTrigger -= HandleMove;
+			}
+		}
 
 		private ITurnActor _actor;
 
 		private bool _ourTurn = false;
 
 		private GameObject _turnIndicatorRoot;
-
-		private void Start() {
-			_actor = GetComponentInParent<ITurnActor>();
-			RecreateIndicators();
-		}
-
-		private void OnEnable() {
-			moveChannel.onTrigger += HandleMove;
-		}
-
-		private void OnDisable() {
-			moveChannel.onTrigger -= HandleMove;
-		}
 
 		public void OnStartTurn(TurnOrder round) {
 			_ourTurn = true;
@@ -41,7 +50,8 @@ namespace LostNotes.UI {
 		}
 
 		private void ClearIndicators() {
-			if (_turnIndicatorRoot) Destroy(_turnIndicatorRoot);
+			if (_turnIndicatorRoot)
+				Destroy(_turnIndicatorRoot);
 		}
 
 		private void RecreateIndicators() {
