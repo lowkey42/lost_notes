@@ -1,5 +1,5 @@
 ﻿namespace LostNotes.Player {
-	interface ISongMessages {
+	internal interface ISongMessages {
 		void OnSetSong(SongAsset song);
 	}
 }

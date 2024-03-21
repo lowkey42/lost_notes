@@ -1,5 +1,5 @@
 namespace LostNotes.Player {
-	enum EObjectSorting {
+	internal enum EObjectSorting {
 		None,
 		ClosestToSource,
 		FurthestToSource,

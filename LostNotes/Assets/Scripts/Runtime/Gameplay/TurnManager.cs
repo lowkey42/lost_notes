@@ -45,7 +45,7 @@ namespace LostNotes.Gameplay {
 				turnOrder.Actors[i].gameObject.BroadcastMessage(nameof(IActorMessages.OnStartTurn), turnOrder, SendMessageOptions.DontRequireReceiver);
 				foreach (var a in turnOrder.Actors)
 					a.gameObject.BroadcastMessage(nameof(IActorMessages.OnStartAnyTurn), turnOrder, SendMessageOptions.DontRequireReceiver);
-				
+
 				OnNewTurn(turnOrder);
 				yield return turnOrder.Actors[i].DoTurn();
 				turnOrder.Actors[i].gameObject.BroadcastMessage(nameof(IActorMessages.OnEndTurn), SendMessageOptions.DontRequireReceiver);

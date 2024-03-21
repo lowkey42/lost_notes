@@ -1,4 +1,3 @@
-using LostNotes.Gameplay;
 using LostNotes.Level;
 using UnityEngine;
 using UnityEngine.Serialization;

@@ -70,6 +70,7 @@ namespace LostNotes.Player {
 				_notes = new(_notes.TakeLast(song.NoteCount));
 				UpdateText();
 			}
+
 			_attachedText.color = song.Color;
 			_clearOnNextNote = true;
 		}

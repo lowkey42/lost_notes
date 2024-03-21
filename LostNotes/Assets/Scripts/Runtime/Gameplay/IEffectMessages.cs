@@ -1,7 +1,7 @@
 ﻿using LostNotes.Level;
 
 namespace LostNotes.Gameplay {
-	interface IEffectMessages {
+	internal interface IEffectMessages {
 		void OnNoise(LevelGridTransform source);
 		void OnPush(LevelGridTransform source);
 		void OnPull(LevelGridTransform source);
