@@ -17,18 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 801c33a38a429f3438d35f52b9bde841
   m_SerializeEntries:
-  - m_GUID: edc1eeec2855db14c811458fa9c4ad84
-    m_Address: Assets/Songs/S_SongOfCalm.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - song
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f82990598e0d8f342b84961929560f9f
-    m_Address: Assets/Songs/S_SongOfSleep.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - song
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9a0f7198ef15606468b75f5540087f44
     m_Address: Assets/Notes/Note_Eb.asset
     m_ReadOnly: 0
@@ -52,24 +40,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - note
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1369d561109b40944889fe57764d1733
-    m_Address: Assets/Songs/S_SongOfAnger.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - song
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7ed20e676ae765b4292301d7d8008dc8
-    m_Address: Assets/Songs/S_SongOfRepell.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - song
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8efa4713b05c67f4f831c1042f1b1ebc
-    m_Address: Assets/Songs/S_SongOfAttract.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - song
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 43dcd6f161f2af347867a05919391f05
     m_Address: Assets/Prefabs/P_Bootstrap.prefab

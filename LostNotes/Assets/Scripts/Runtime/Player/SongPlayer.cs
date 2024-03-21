@@ -1,24 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using MyBox;
+using System;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace LostNotes.Player {
 	internal sealed class SongPlayer : MonoBehaviour, INoteMessages {
-
-		[SerializeField]
-		private string _songLabel;
-		[SerializeField, ReadOnly]
-		private List<SongAsset> _songs = new();
-		[SerializeField]
-		private SongAsset _failureSong;
-
-		private IEnumerator Start() {
-			yield return _songLabel.LoadAssetsAsync<SongAsset>(_songs.Add);
-		}
+		[SerializeField, Expandable]
+		private SongAsset[] _validSongs = Array.Empty<SongAsset>();
+		[SerializeField, Expandable]
+		private SongAsset[] _failureSongs = Array.Empty<SongAsset>();
 
 		public void OnStartPlaying() {
-			foreach (var song in _songs) {
+			foreach (var song in _validSongs) {
 				song.ResetInput();
 			}
 		}
@@ -26,37 +18,37 @@ namespace LostNotes.Player {
 		public void OnStopPlaying() {
 		}
 
-		private ESongStatus songStatus = ESongStatus.NotLearned;
-		private SongAsset song;
+		private ESongStatus _songStatus = ESongStatus.NotLearned;
+		private SongAsset _song;
 
 		public void OnStartNote(NoteAsset note) {
 			var isPlayingAny = false;
-			foreach (var song in _songs) {
+			foreach (var song in _validSongs) {
 				var status = song.PlayNote(note);
 				if (status is ESongStatus.Playing or ESongStatus.Done) {
 					isPlayingAny = true;
 				}
 
 				if (status is ESongStatus.Done) {
-					songStatus = ESongStatus.Done;
-					this.song = song;
+					_songStatus = ESongStatus.Done;
+					_song = song;
 				}
 			}
 
 			if (!isPlayingAny) {
-				songStatus = ESongStatus.Failed;
+				_songStatus = ESongStatus.Failed;
 			}
 		}
 
 		private void Update() {
-			switch (songStatus) {
+			switch (_songStatus) {
 				case ESongStatus.Done:
-					songStatus = ESongStatus.NotLearned;
-					gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPlaySong), song, SendMessageOptions.DontRequireReceiver);
+					_songStatus = ESongStatus.NotLearned;
+					gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPlaySong), _song, SendMessageOptions.DontRequireReceiver);
 					break;
 				case ESongStatus.Failed:
-					songStatus = ESongStatus.NotLearned;
-					gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPlaySong), _failureSong, SendMessageOptions.DontRequireReceiver);
+					_songStatus = ESongStatus.NotLearned;
+					gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPlaySong), _failureSongs.RandomElement(), SendMessageOptions.DontRequireReceiver);
 					break;
 			}
 		}
