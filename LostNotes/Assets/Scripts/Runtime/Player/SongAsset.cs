@@ -6,6 +6,7 @@ using LostNotes.Gameplay;
 using LostNotes.Level;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace LostNotes.Player {
 	[CreateAssetMenu]
@@ -92,6 +93,8 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private Color _songColor = Color.green;
 		public Color Color => _songColor;
+		[SerializeField]
+		private Sprite _hudSprite;
 
 		public IEnumerator PlaySong(LevelGridTransform context, TilemapMask range) {
 			if (!_songEvent.IsNull) {
@@ -104,6 +107,10 @@ namespace LostNotes.Player {
 			}
 
 			yield return PlayEffects_Co(context, range);
+		}
+
+		public void SetUpHud(Image image) {
+			image.sprite = _hudSprite;
 		}
 	}
 }

@@ -15,6 +15,7 @@ MonoBehaviour:
   _isAvailable: 1
   _effects: 33
   _effectDelay: 0.1
+  _receiverSorting: 0
   _notes:
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
@@ -31,3 +32,4 @@ MonoBehaviour:
     Path: event:/Songs/Song of Anger/Song of Anger Combat
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
   _songColor: {r: 0.8396226, g: 0.36871427, b: 0.11485406, a: 1}
+  _hudSprite: {fileID: 21300000, guid: b7b6b41e767357043b5bb94606360207, type: 3}

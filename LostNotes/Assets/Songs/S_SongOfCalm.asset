@@ -15,6 +15,7 @@ MonoBehaviour:
   _isAvailable: 1
   _effects: 16
   _effectDelay: 0.1
+  _receiverSorting: 0
   _notes:
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
@@ -31,3 +32,4 @@ MonoBehaviour:
     Path: event:/Songs/Song of Calm/Song of Calm Combat
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
   _songColor: {r: 0.36808035, g: 0.8207547, b: 0.35230508, a: 1}
+  _hudSprite: {fileID: 21300000, guid: e8c3367d306cedd44b8d300663fd3c72, type: 3}
