@@ -1,32 +1,35 @@
-using System;
 using System.Linq;
 using LostNotes.Player;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using System.Collections.Generic;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 namespace LostNotes.Level {
-	[Serializable]
-	internal sealed class SongLoadout {
+	[CreateAssetMenu]
+	internal sealed class SongLoadout : ScriptableObject {
 		[SerializeField]
-		private SerializableKeyValuePairs<SongAsset, bool> availability = new();
+		private SerializableKeyValuePairs<SongAsset, bool> _availability = new();
+
+		public IEnumerable<SongAsset> Songs => _availability.Keys;
 
 		internal void Load() {
-			foreach (var (song, isAvailable) in availability) {
+			foreach (var (song, isAvailable) in _availability) {
 				song.IsAvailable = isAvailable;
 			}
 		}
 
 		internal void Reset() {
-			foreach (var (song, _) in availability) {
+			foreach (var (song, _) in _availability) {
 				song.IsAvailable = true;
 			}
 		}
 
 #if UNITY_EDITOR
-		internal bool EditorSetUp() {
+		private void OnValidate() {
 			var songs = AssetDatabase
 				.FindAssets($"t:{nameof(SongAsset)}")
 				.Select(AssetDatabase.GUIDToAssetPath)
@@ -34,16 +37,18 @@ namespace LostNotes.Level {
 				.OfType<SongAsset>()
 				.Where(s => !s.IsFailure);
 
-			var isDirty = !songs.All(availability.ContainsKey);
+			var isDirty = !songs.All(_availability.ContainsKey);
 
 			if (isDirty) {
-				availability.SetItems(songs.ToDictionary(
+				_availability.SetItems(songs.ToDictionary(
 					s => s,
-					s => availability.TryGetValue(s, out var value) && value
+					s => _availability.TryGetValue(s, out var value) && value
 				));
 			}
 
-			return isDirty;
+			if (isDirty) {
+				EditorUtility.SetDirty(this);
+			}
 		}
 #endif
 	}

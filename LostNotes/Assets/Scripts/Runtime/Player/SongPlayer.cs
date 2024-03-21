@@ -1,16 +1,17 @@
 using System;
+using LostNotes.Level;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace LostNotes.Player {
 	internal sealed class SongPlayer : MonoBehaviour, INoteMessages {
 		[SerializeField, Expandable]
-		private SongAsset[] _validSongs = Array.Empty<SongAsset>();
+		private SongLoadout _validSongs;
 		[SerializeField, Expandable]
 		private SongAsset[] _failureSongs = Array.Empty<SongAsset>();
 
 		public void OnStartPlaying() {
-			foreach (var song in _validSongs) {
+			foreach (var song in _validSongs.Songs) {
 				song.ResetInput();
 			}
 		}
@@ -23,7 +24,7 @@ namespace LostNotes.Player {
 
 		public void OnStartNote(NoteAsset note) {
 			var isPlayingAny = false;
-			foreach (var song in _validSongs) {
+			foreach (var song in _validSongs.Songs) {
 				var status = song.PlayNote(note);
 				if (status is ESongStatus.Playing or ESongStatus.Done) {
 					isPlayingAny = true;

@@ -6,25 +6,17 @@ using UnityEngine.Tilemaps;
 
 namespace LostNotes.Level {
 	internal sealed class LevelComponent : MonoBehaviour {
-		[SerializeField]
+		[SerializeField, Expandable]
 		private Tilemap _floorLayer;
 
-		[SerializeField]
+		[SerializeField, Expandable]
 		private Tilemap _interactableLayer;
 
-		[SerializeField]
+		[SerializeField, Expandable]
 		private Tilemap _wallLayer;
 
-		[SerializeField]
-		private SongLoadout _songLoadout = new();
-
-#if UNITY_EDITOR
-		private void OnValidate() {
-			if (_songLoadout.EditorSetUp()) {
-				UnityEditor.EditorUtility.SetDirty(this);
-			}
-		}
-#endif
+		[SerializeField, Expandable]
+		private SongLoadout _songLoadout;
 
 		private void Start() {
 			_songLoadout.Load();
@@ -85,16 +77,17 @@ namespace LostNotes.Level {
 
 		public bool IsInteractionBlocking(Vector2Int position) {
 			return !_floorLayer.GetTile(position.SwizzleXY()) || _wallLayer.GetTile(position.SwizzleXY()) ||
-			       _interactableLayer.GetMetaTiles(position).Any(t => t.IsInteractionBlocking);
+				   _interactableLayer.GetMetaTiles(position).Any(t => t.IsInteractionBlocking);
 		}
 
 		public bool IsInteractionUnblocked(Vector2Int a, Vector2Int b) {
 			// Raycast check of all tiles between a and b, using Bresenham's line algorithm
 			var deltaError = new Vector2Int(Mathf.Abs(b.x - a.x), -Mathf.Abs(b.y - a.y));
-			var step = new Vector2Int(a.x < b.x ? 1 : -1,         a.y < b.y ? 1 : -1);
+			var step = new Vector2Int(a.x < b.x ? 1 : -1, a.y < b.y ? 1 : -1);
 			var error = deltaError.x + deltaError.y;
 			var firstIteration = true;
-			for (;;) {
+			for (; ; )
+{
 				if (a.x == b.x && a.y == b.y)
 					return true;
 
