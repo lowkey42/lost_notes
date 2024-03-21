@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e0f6c130-661e-403e-87a1-b9e6ab7a612a}">
+		<property name="assetPath">
+			<value>Soundeffects/Menu/LN_menu_1select.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.8571428571428572</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3fe10d14-fc29-4fc5-bbd4-20f34f6e169a}</destination>
+		</relationship>
+	</object>
+</objects>
