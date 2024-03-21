@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 801c33a38a429f3438d35f52b9bde841
   m_SerializeEntries:
   - m_GUID: edc1eeec2855db14c811458fa9c4ad84
-    m_Address: Assets/Songs/Song_Test.asset
+    m_Address: Assets/Songs/S_SongOfCalm.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - song
