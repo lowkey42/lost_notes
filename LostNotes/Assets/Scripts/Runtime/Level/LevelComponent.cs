@@ -92,12 +92,13 @@ namespace LostNotes.Level {
 			var deltaError = new Vector2Int(Mathf.Abs(b.x - a.x), -Mathf.Abs(b.y - a.y));
 			var step = new Vector2Int(a.x < b.x ? 1 : -1,         a.y < b.y ? 1 : -1);
 			var error = deltaError.x + deltaError.y;
+			var firstIteration = true;
 			for (;;) {
-				if (IsInteractionBlocking(a))
-					return false;
-
 				if (a.x == b.x && a.y == b.y)
 					return true;
+
+				if (!firstIteration && IsInteractionBlocking(a))
+					return false;
 
 				var error2 = 2 * error;
 				if (error2 >= deltaError.y) {
@@ -113,6 +114,8 @@ namespace LostNotes.Level {
 					error += deltaError.x;
 					a.y += step.y;
 				}
+
+				firstIteration = false;
 			}
 		}
 
