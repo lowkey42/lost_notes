@@ -7,6 +7,7 @@ namespace LostNotes.Level {
 	internal static class TilemapExtensions {
 		private sealed class TileWithCollision : ITileMeta {
 			public bool IsWalkable => false;
+			public bool IsInteractionBlocking => true;
 		}
 
 		public static IEnumerable<ITileMeta> GetMetaTiles(this Tilemap tilemap, Vector2Int position) {

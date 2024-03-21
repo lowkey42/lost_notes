@@ -5,5 +5,10 @@ namespace LostNotes.Level {
 		[SerializeField]
 		private bool _isWalkable = false;
 		public bool IsWalkable => _isWalkable;
+
+		[SerializeField]
+		private bool _isInteractionBlocking = false;
+
+		public bool IsInteractionBlocking => _isInteractionBlocking;
 	}
 }

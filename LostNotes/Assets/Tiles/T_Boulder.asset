@@ -15,3 +15,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 1ccd99463c7589a4f933b5f692e4ee15, type: 3}
   prefab: {fileID: 4520711330091527916, guid: c7ecd3a8c8f267743a5d7833c1da05ef, type: 3}
   _isWalkable: 1
+  _isInteractionBlocking: 1

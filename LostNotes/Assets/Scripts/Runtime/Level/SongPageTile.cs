@@ -14,6 +14,7 @@ namespace LostNotes.Level {
 		private SongAsset _song;
 
 		public bool IsWalkable => true;
+		public bool IsInteractionBlocking => false;
 
 		public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData) {
 			tileData.sprite = _sprite;

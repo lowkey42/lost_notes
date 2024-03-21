@@ -43,7 +43,7 @@ namespace LostNotes.Level {
 				for (var x = 0; x < area.Size.x; x++) {
 					var localGridPosition = new Vector2Int(x, y);
 					var worldGridPosition = Vector2Int.RoundToInt((rotation3d * (localGridPosition - (area.Size / 2)).SwizzleXZ()).SwizzleXZ()) + position;
-					if (area.IsSet(localGridPosition))
+					if (area.IsSet(localGridPosition) && IsInteractionUnblocked(position, worldGridPosition))
 						yield return worldGridPosition;
 				}
 			}
@@ -57,7 +57,7 @@ namespace LostNotes.Level {
 				var testPosition = WorldToGrid(t.position);
 				var localPosition = source.WorldToLocalPosition(testPosition) + (area.Size / 2);
 
-				if (area.IsSet(localPosition))
+				if (area.IsSet(localPosition) && IsInteractionUnblocked(source.Position2d, testPosition))
 					yield return t.gameObject;
 			}
 		}
@@ -81,6 +81,39 @@ namespace LostNotes.Level {
 		public bool IsWalkable(Vector2Int position) {
 			return _floorLayer.GetTile(position.SwizzleXY()) && !_wallLayer.GetTile(position.SwizzleXY()) &&
 				   _interactableLayer.GetMetaTiles(position).All(t => t.IsWalkable);
+		}
+
+		public bool IsInteractionBlocking(Vector2Int position) {
+			return !_floorLayer.GetTile(position.SwizzleXY()) || _wallLayer.GetTile(position.SwizzleXY()) ||
+			       _interactableLayer.GetMetaTiles(position).Any(t => t.IsInteractionBlocking);
+		}
+
+		public bool IsInteractionUnblocked(Vector2Int a, Vector2Int b) {
+			var deltaError = new Vector2Int(Mathf.Abs(b.x - a.x), -Mathf.Abs(b.y - a.y));
+			var step = new Vector2Int(a.x < b.x ? 1 : -1,         a.y < b.y ? 1 : -1);
+			var error = deltaError.x + deltaError.y;
+			for (;;) {
+				if (IsInteractionBlocking(a))
+					return false;
+
+				if (a.x == b.x && a.y == b.y)
+					return true;
+
+				var error2 = 2 * error;
+				if (error2 >= deltaError.y) {
+					if (a.x == b.x)
+						return true;
+					error += deltaError.y;
+					a.x += step.x;
+				}
+
+				if (error2 <= deltaError.x) {
+					if (a.y == b.y)
+						return true;
+					error += deltaError.x;
+					a.y += step.y;
+				}
+			}
 		}
 
 		public Vector2Int WorldToGrid(Vector3 position3d) {

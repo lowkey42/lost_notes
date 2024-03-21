@@ -12,6 +12,11 @@ namespace LostNotes.Level {
 		private bool _isWalkable = true;
 		public bool IsWalkable => _isWalkable;
 
+		[SerializeField]
+		private bool _isInteractionBlocking = false;
+
+		public bool IsInteractionBlocking => _isInteractionBlocking;
+
 		public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData) {
 			tileData.sprite = sprite;
 			tileData.gameObject = prefab;
