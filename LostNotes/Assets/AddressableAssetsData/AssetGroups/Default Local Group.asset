@@ -82,6 +82,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7838877b66717044cbe19a928fb80c64
+    m_Address: Assets/EventChannels/Channel_TransformMove.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e16205b2a0b3d634b88e4a01feceaa57, type: 2}
   m_SchemaSet:

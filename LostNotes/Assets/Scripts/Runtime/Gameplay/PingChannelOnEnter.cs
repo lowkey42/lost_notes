@@ -13,9 +13,13 @@ namespace LostNotes.Gameplay {
 		private GameObjectEventChannel channel;
 
 		private IEnumerator Start() {
-			var handle = channelReference.LoadAssetAsync();
-			yield return handle;
-			channel = handle.Result;
+			yield return channelReference.LoadAssetAsync(asset => channel = asset);
+		}
+
+		private void OnDestroy() {
+			if (channel) {
+				channelReference.ReleaseAsset();
+			}
 		}
 
 		public void OnActorEnter(GameObject actor) {

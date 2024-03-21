@@ -2,25 +2,41 @@ using System.Collections;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
 
 namespace LostNotes.Level {
 	internal sealed class LevelManager : MonoBehaviour {
 		[SerializeField]
 		private AssetReferenceT<GameObjectEventChannel> winLevelChannelReference;
 		private GameObjectEventChannel winLevelChannel;
+		[SerializeField]
+		private AssetReferenceT<GameObjectEventChannel> loseLevelChannelReference;
+		private GameObjectEventChannel loseLevelChannel;
+
 		[SerializeField, Expandable]
 		private LevelOrder _levels;
 
 		private IEnumerator Start() {
-			var handle = winLevelChannelReference.LoadAssetAsync();
-			yield return handle;
-			winLevelChannel = handle.Result;
-			winLevelChannel.onTrigger += HandleWin;
+			yield return winLevelChannelReference.LoadAssetAsync(asset => {
+				winLevelChannel = asset;
+				winLevelChannel.onTrigger += HandleWin;
+			});
+
+			yield return loseLevelChannelReference.LoadAssetAsync(asset => {
+				loseLevelChannel = asset;
+				loseLevelChannel.onTrigger += HandleLose;
+			});
 		}
 
-		private void OnDisable() {
+		private void OnDestroy() {
 			if (winLevelChannel) {
 				winLevelChannel.onTrigger -= HandleWin;
+				winLevelChannelReference.ReleaseAsset();
+			}
+
+			if (loseLevelChannel) {
+				loseLevelChannel.onTrigger -= HandleLose;
+				loseLevelChannelReference.ReleaseAsset();
 			}
 		}
 
@@ -32,6 +48,10 @@ namespace LostNotes.Level {
 					Debug.Log("YOU WIN THE GAME");
 				}
 			}
+		}
+
+		private void HandleLose(GameObject obj) {
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 	}
 }

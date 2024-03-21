@@ -15,9 +15,13 @@ namespace LostNotes.Level {
 		private IEnumerator Start() {
 			_ = _level || transform.TryGetComponentInParent(out _level);
 
-			var handle = moveChannelReference.LoadAssetAsync();
-			yield return handle;
-			moveChannel = handle.Result;
+			yield return moveChannelReference.LoadAssetAsync(asset => moveChannel = asset);
+		}
+
+		private void OnDestroy() {
+			if (moveChannel) {
+				moveChannelReference.ReleaseAsset();
+			}
 		}
 
 		public Vector2Int Position2d => _level.WorldToGrid(transform.position);

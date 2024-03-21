@@ -13,20 +13,18 @@ namespace LostNotes.UI {
 		private IEnumerator Start() {
 			_ = transform.TryGetComponentInParent(out _actor);
 
-			var handle = moveChannelReference.LoadAssetAsync();
-			yield return handle;
-			moveChannel = handle.Result;
-
-			if (moveChannel) {
+			yield return moveChannelReference.LoadAssetAsync(asset => {
+				moveChannel = asset;
 				moveChannel.onTrigger += HandleMove;
-			}
+			});
 
 			RecreateIndicators();
 		}
 
-		private void OnDisable() {
+		private void OnDestroy() {
 			if (moveChannel) {
 				moveChannel.onTrigger -= HandleMove;
+				moveChannelReference.ReleaseAsset();
 			}
 		}
 

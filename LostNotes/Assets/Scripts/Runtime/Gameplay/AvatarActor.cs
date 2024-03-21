@@ -3,6 +3,7 @@ using LostNotes.Player;
 using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 
 namespace LostNotes.Gameplay {
@@ -10,6 +11,20 @@ namespace LostNotes.Gameplay {
 		[Header("Components")]
 		[SerializeField]
 		private AvatarInput _input;
+
+		[SerializeField]
+		private AssetReferenceT<GameObjectEventChannel> deathChannelReference;
+		private GameObjectEventChannel deathChannel;
+
+		private IEnumerator Start() {
+			yield return deathChannelReference.LoadAssetAsync(asset => deathChannel = asset);
+		}
+
+		private void OnDestroy() {
+			if (deathChannel) {
+				deathChannelReference.ReleaseAsset();
+			}
+		}
 
 		[Header("Action Economy")]
 		[SerializeField, Range(0, 10)]
@@ -77,6 +92,10 @@ namespace LostNotes.Gameplay {
 		public void OnAttacked() {
 			_isAlive = false;
 			ActionPoints = 0;
+
+			if (deathChannel) {
+				deathChannel.Raise(gameObject);
+			}
 		}
 
 		public void OnReset() {
