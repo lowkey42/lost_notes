@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using LostNotes.Level;
 using LostNotes.Player;
 using MyBox;
@@ -7,7 +8,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace LostNotes.Gameplay {
-	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages, IAttackMessages {
+	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages, IAttackMessages, IActorMessages {
 		[Header("Components")]
 		[SerializeField]
 		private AvatarInput _input;
@@ -69,6 +70,8 @@ namespace LostNotes.Gameplay {
 
 		public TurnOrder TurnOrder { get; set; }
 
+		private bool hasEnemies;
+
 		public IEnumerator DoTurn() {
 			if (_isAlive) {
 				ActionPoints = _actionPointsPerTurn;
@@ -93,13 +96,17 @@ namespace LostNotes.Gameplay {
 		private readonly Queue<object> _turnQueue = new();
 
 		public void OnMove(Vector2Int delta) {
-			ActionPoints -= _actionPointsToMove;
+			if (!_isAlone) {
+				ActionPoints -= _actionPointsToMove;
+			}
 
 			_turnQueue.Enqueue(_gridTransform.MoveBy(delta, _stepJumpHeight, _stepDurationFactor, _stepJumpCount));
 		}
 
 		public void OnPlaySong(SongAsset song) {
-			ActionPoints -= _actionPointsToPlay;
+			if (!_isAlone) {
+				ActionPoints -= _actionPointsToPlay;
+			}
 
 			_turnQueue.Enqueue(song.PlaySong(_gridTransform, _songRange));
 		}
@@ -116,6 +123,16 @@ namespace LostNotes.Gameplay {
 			if (_deathChannel) {
 				_deathChannel.Raise(gameObject);
 			}
+		}
+
+		private bool _isAlone = false;
+
+		public void OnStartTurn(TurnOrder round) {
+			_isAlone = !round.Actors.Any(a => a.HasTurnActions() && a.gameObject != gameObject);
+		}
+
+		public void OnEndTurn() {
+			throw new System.NotImplementedException();
 		}
 	}
 }

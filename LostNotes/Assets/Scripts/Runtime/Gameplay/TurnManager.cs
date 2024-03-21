@@ -20,9 +20,6 @@ namespace LostNotes.Gameplay {
 			_round ??= StartCoroutine(DoRound());
 		}
 
-		public event TurnOrderHandler OnNewRound = delegate { };
-		public event TurnOrderHandler OnNewTurn = delegate { };
-
 		private TurnOrder ComputeTurnOrder() {
 			var actors = new List<ITurnActor>();
 			_turnActorsRoot.GetComponentsInChildren(actors);
@@ -38,15 +35,12 @@ namespace LostNotes.Gameplay {
 			foreach (var a in turnOrder.Actors)
 				a.TurnOrder = turnOrder;
 
-			OnNewRound(turnOrder);
-
 			for (var i = 0; i < turnOrder.Actors.Count; ++i) {
 				turnOrder.CurrentActor = i;
 				turnOrder.Actors[i].gameObject.BroadcastMessage(nameof(IActorMessages.OnStartTurn), turnOrder, SendMessageOptions.DontRequireReceiver);
 				foreach (var a in turnOrder.Actors)
 					a.gameObject.BroadcastMessage(nameof(IActorMessages.OnStartAnyTurn), turnOrder, SendMessageOptions.DontRequireReceiver);
 
-				OnNewTurn(turnOrder);
 				yield return turnOrder.Actors[i].DoTurn();
 				turnOrder.Actors[i].gameObject.BroadcastMessage(nameof(IActorMessages.OnEndTurn), SendMessageOptions.DontRequireReceiver);
 			}
