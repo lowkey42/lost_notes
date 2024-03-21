@@ -49,6 +49,11 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  loseLevelChannelReference:
+    m_AssetGUID: 719d474fdd1b29b4aa4e492d71365c43
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   _levels: {fileID: 11400000, guid: e09c78dd39a1adb4db8a1627017ff419, type: 2}
 --- !u!1 &913240573960940740
 GameObject:
@@ -234,7 +239,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.2
+  m_fontSize: 29.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

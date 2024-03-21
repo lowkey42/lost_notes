@@ -1,10 +1,8 @@
 using System.Collections;
 using LostNotes.Player;
 using MyBox;
-using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.SceneManagement;
 
 namespace LostNotes.Gameplay {
 	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages, IAttackMessages {
@@ -68,12 +66,6 @@ namespace LostNotes.Gameplay {
 					yield return null;
 				} while (_input.CanMove || _input.CanChangePlayState);
 			}
-
-			if (!_isAlive) {
-				Debug.LogWarning("I is ded", this);
-				yield return Wait.forSeconds[1];
-				gameObject.BroadcastMessage(nameof(IAvatarMessages.OnReset), SendMessageOptions.DontRequireReceiver);
-			}
 		}
 
 		public void OnMove(Vector2Int delta) {
@@ -93,13 +85,13 @@ namespace LostNotes.Gameplay {
 			_isAlive = false;
 			ActionPoints = 0;
 
-			if (deathChannel) {
-				deathChannel.Raise(gameObject);
-			}
+			gameObject.BroadcastMessage(nameof(IAvatarMessages.OnReset), SendMessageOptions.DontRequireReceiver);
 		}
 
 		public void OnReset() {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			if (deathChannel) {
+				deathChannel.Raise(gameObject);
+			}
 		}
 	}
 }
