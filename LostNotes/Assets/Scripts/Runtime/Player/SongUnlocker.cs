@@ -30,6 +30,7 @@ namespace LostNotes.Player {
 			if (obj.TryGetComponent<SongProvider>(out var provider)) {
 				if (GameObject.FindGameObjectsWithTag(_pageLabel).Count(o => obj.TryGetComponent<SongProvider>(out var p) && p.Song == provider.Song) == 1) {
 					provider.Song.IsAvailable = true;
+					provider.Song.NotesLearned = 0;
 				}
 
 				Destroy(obj);

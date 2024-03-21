@@ -3,7 +3,6 @@ using LostNotes.Player;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 using System.Collections.Generic;
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -19,12 +18,16 @@ namespace LostNotes.Level {
 		internal void Load() {
 			foreach (var (song, isAvailable) in _availability) {
 				song.IsAvailable = isAvailable;
+				song.NotesLearned = isAvailable
+					? song.NoteCount
+					: 0;
 			}
 		}
 
 		internal void Reset() {
 			foreach (var (song, _) in _availability) {
 				song.IsAvailable = true;
+				song.NotesLearned = 0;
 			}
 		}
 

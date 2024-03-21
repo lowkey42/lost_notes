@@ -11,12 +11,28 @@ using UnityEngine.UI;
 namespace LostNotes.Player {
 	[CreateAssetMenu]
 	internal sealed class SongAsset : ScriptableObject {
+		public event Action<bool> onChangeAvailable;
+		public event Action<int> onChangeLearned;
+
 		[SerializeField]
 		private bool _isAvailable = false;
 
 		public bool IsAvailable {
 			get => _isAvailable;
-			set => _isAvailable = value;
+			set {
+				_isAvailable = value;
+				onChangeAvailable?.Invoke(value);
+			}
+		}
+
+		[SerializeField]
+		private int _notesLearned = 0;
+		public int NotesLearned {
+			get => _notesLearned;
+			set {
+				_notesLearned = value;
+				onChangeLearned?.Invoke(value);
+			}
 		}
 
 		[SerializeField]
@@ -77,6 +93,7 @@ namespace LostNotes.Player {
 
 			if (_notes[_currentNodeIndex].Is(note)) {
 				_currentNodeIndex++;
+				NotesLearned = Mathf.Max(NotesLearned, _currentNodeIndex);
 				return _currentNodeIndex == _notes.Length
 					? ESongStatus.Done
 					: ESongStatus.Playing;
