@@ -11,6 +11,7 @@ unityPipeline {
     BUILD_FOR_MAC = '0'
     BUILD_FOR_WEBGL = '1'
     BUILD_FOR_ANDROID = '1'
+	BUILD_NAME = 'lost-notes'
     
     // which platforms to deploy to
     DEPLOY_TO_STEAM = '0'
