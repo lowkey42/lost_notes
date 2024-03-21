@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using MyBox;
@@ -6,6 +7,10 @@ using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
 	internal sealed class AvatarInput : MonoBehaviour {
+		public static event Action<EViolinState> OnChangePlayState;
+		public static event Action<bool> OnChangeCanMove;
+		public static event Action<bool> OnChangeCanPlay;
+
 		private void OnEnable() {
 			SetUpPlayer();
 			SetUpNotes();
@@ -26,6 +31,7 @@ namespace LostNotes.Player {
 			if (_avatarInput) {
 				_avatarInput.OnActionInput += HandleActionInput;
 				_avatarInput.OnMoveInput += HandleMoveInput;
+				_avatarInput.OnTogglePlay += HandleTogglePlay;
 			}
 		}
 
@@ -33,6 +39,7 @@ namespace LostNotes.Player {
 			if (_avatarInput) {
 				_avatarInput.OnActionInput -= HandleActionInput;
 				_avatarInput.OnMoveInput -= HandleMoveInput;
+				_avatarInput.OnTogglePlay -= HandleTogglePlay;
 			}
 		}
 
@@ -82,7 +89,10 @@ namespace LostNotes.Player {
 		private bool _canMove = true;
 		public bool CanMove {
 			get => _canMove && !_isPlaying;
-			set => _canMove = value;
+			set {
+				_canMove = value;
+				OnChangeCanMove?.Invoke(value);
+			}
 		}
 
 		[SerializeField, ReadOnly]
@@ -91,8 +101,13 @@ namespace LostNotes.Player {
 			get => _canChangePlayState;
 			set {
 				_canChangePlayState = value;
+				OnChangeCanPlay?.Invoke(value);
 				IsPlaying = _canChangePlayState && PlayerMap["Play"].IsPressed();
 			}
+		}
+
+		private void HandleTogglePlay() {
+			IsPlaying = !IsPlaying;
 		}
 
 		private bool CanPlayNotes => _isPlaying;
@@ -123,14 +138,15 @@ namespace LostNotes.Player {
 		private bool IsPlaying {
 			get => _isPlaying;
 			set {
-				if (_isPlaying != value) {
-					_isPlaying = value;
-					if (value) {
-						gameObject.BroadcastMessage(nameof(INoteMessages.OnStartPlaying), SendMessageOptions.DontRequireReceiver);
-					} else {
-						gameObject.BroadcastMessage(nameof(INoteMessages.OnStopPlaying), SendMessageOptions.DontRequireReceiver);
-					}
+				_isPlaying = value;
+
+				if (value) {
+					gameObject.BroadcastMessage(nameof(INoteMessages.OnStartPlaying), SendMessageOptions.DontRequireReceiver);
+				} else {
+					gameObject.BroadcastMessage(nameof(INoteMessages.OnStopPlaying), SendMessageOptions.DontRequireReceiver);
 				}
+
+				OnChangePlayState?.Invoke(IsPlaying ? EViolinState.Playing : EViolinState.Idle);
 			}
 		}
 
