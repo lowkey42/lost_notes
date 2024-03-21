@@ -89,6 +89,7 @@ namespace LostNotes.Level {
 		}
 
 		public bool IsInteractionUnblocked(Vector2Int a, Vector2Int b) {
+			// Raycast check of all tiles between a and b, using Bresenham's line algorithm
 			var deltaError = new Vector2Int(Mathf.Abs(b.x - a.x), -Mathf.Abs(b.y - a.y));
 			var step = new Vector2Int(a.x < b.x ? 1 : -1,         a.y < b.y ? 1 : -1);
 			var error = deltaError.x + deltaError.y;
