@@ -369,10 +369,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15427c470b31ea41bab10621c5ec7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playImage: {fileID: 418450683701955837}
-  _playButton: {fileID: 5880035265127846762}
   _idleSprite: {fileID: 21300000, guid: da0040ffefef50445b19a01ef6256caf, type: 3}
   _playingSprite: {fileID: 21300000, guid: 647c15f4ba304fc458a3718551d80159, type: 3}
+  _playButton: {fileID: 5880035265127846762}
+  _idleArrow: {fileID: 21300000, guid: 0d802ca673e562344bbf992e9d523659, type: 3}
+  _playingArrow: {fileID: 21300000, guid: 9805abd110aa1934c8ffce424f8c6980, type: 3}
   _moveButtons:
   - {fileID: 1592563081260879830}
   - {fileID: 4449266985193835756}

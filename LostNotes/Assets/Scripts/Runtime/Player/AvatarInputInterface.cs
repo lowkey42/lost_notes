@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,8 +15,12 @@ namespace LostNotes.Player {
 			AvatarInput.OnChangeCanMove -= HandleChangeCanMove;
 			AvatarInput.OnChangeCanPlay -= HandleChangeCanPlay;
 		}
+
+		[Header("Violin")]
 		[SerializeField]
-		private Image _playImage;
+		private Sprite _idleSprite;
+		[SerializeField]
+		private Sprite _playingSprite;
 		[SerializeField]
 		private Button _playButton;
 
@@ -24,21 +28,30 @@ namespace LostNotes.Player {
 			_playButton.interactable = canMove;
 		}
 
-		[SerializeField]
-		private Sprite _idleSprite;
-		[SerializeField]
-		private Sprite _playingSprite;
-
 		private void HandleChangePlayState(EViolinState state) {
-			_playImage.sprite = state switch {
+			_playButton.image.sprite = state switch {
 				EViolinState.Idle => _idleSprite,
 				EViolinState.Playing => _playingSprite,
 				_ => throw new NotImplementedException(),
 			};
+
+			foreach (var button in _moveButtons) {
+				button.image.sprite = state switch {
+					EViolinState.Idle => _idleArrow,
+					EViolinState.Playing => _playingArrow,
+					_ => throw new NotImplementedException(),
+				};
+			}
 		}
 
+		[Header("Arrows")]
+		[SerializeField]
+		private Sprite _idleArrow;
+		[SerializeField]
+		private Sprite _playingArrow;
 		[SerializeField]
 		private Button[] _moveButtons = Array.Empty<Button>();
+
 		private void HandleChangeCanMove(bool canMove) {
 			foreach (var button in _moveButtons) {
 				button.interactable = canMove;
