@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{9e6cc81b-aa54-4c06-b7b4-7764e96e409f}">
+		<property name="name">
+			<value>BackgroundFade</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bbab3470-4bc9-41a2-ad4d-ebfd9ce3e3fc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{e7513d29-2fec-465e-8530-6423391a0fed}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{e7513d29-2fec-465e-8530-6423391a0fed}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>2</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
