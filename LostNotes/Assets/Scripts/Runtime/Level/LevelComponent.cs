@@ -51,7 +51,7 @@ namespace LostNotes.Level {
 
 		public IEnumerable<GameObject> ObjectsInArea(LevelGridTransform source, TilemapMask area) {
 			foreach (Transform t in _interactableLayer.transform) {
-				if (t == source.transform)
+				if (!t.gameObject.activeInHierarchy || t == source.transform)
 					continue;
 
 				var testPosition = WorldToGrid(t.position);

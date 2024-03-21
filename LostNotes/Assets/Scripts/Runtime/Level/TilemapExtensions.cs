@@ -19,7 +19,7 @@ namespace LostNotes.Level {
 			}
 
 			foreach (Transform t in tilemap.transform) {
-				if (tilemap.WorldToCell(t.position) == position && t.TryGetComponent(out tile)) {
+				if (t.gameObject.activeInHierarchy && tilemap.WorldToCell(t.position) == position && t.TryGetComponent(out tile)) {
 					yield return tile;
 				}
 			}
