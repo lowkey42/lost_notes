@@ -132,7 +132,6 @@ namespace LostNotes.Gameplay {
 		}
 
 		public void OnEndTurn() {
-			throw new System.NotImplementedException();
 		}
 	}
 }
