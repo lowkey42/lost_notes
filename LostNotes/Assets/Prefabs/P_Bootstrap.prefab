@@ -68,11 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a35cb4b550b87438496e324e2e0e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pageSpawnChannelReference:
-    m_AssetGUID: 6d25c0f5dd844ab44a0dcd21de3c72e3
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  _pageLabel: Page
   _pageCollectChannelReference:
     m_AssetGUID: 2c80b91581c74f640bf27c2fd91e1ed9
     m_SubObjectName: 
@@ -262,7 +258,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.5
+  m_fontSize: 28
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

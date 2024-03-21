@@ -9,13 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2268714948299845679}
-  - component: {fileID: 3198355944226091595}
   - component: {fileID: 4558810206297179124}
   - component: {fileID: 5508778576432599264}
   - component: {fileID: 9017181211861384293}
   m_Layer: 0
   m_Name: P_SongPage
-  m_TagString: Untagged
+  m_TagString: Page
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,23 +36,6 @@ Transform:
   - {fileID: 7617870218910380489}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3198355944226091595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3723314650923619869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d675c14b367297a46be840047a9dc357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _channelReference:
-    m_AssetGUID: 6d25c0f5dd844ab44a0dcd21de3c72e3
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
 --- !u!114 &4558810206297179124
 MonoBehaviour:
   m_ObjectHideFlags: 0

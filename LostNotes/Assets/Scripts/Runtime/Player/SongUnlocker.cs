@@ -1,25 +1,19 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
+using MyBox;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace LostNotes.Player {
 	internal sealed class SongUnlocker : MonoBehaviour {
-
-		[SerializeField]
-		private AssetReferenceT<GameObjectEventChannel> _pageSpawnChannelReference;
-		private GameObjectEventChannel _pageSpawnChannel;
+		[SerializeField, Tag]
+		private string _pageLabel = "Page";
 
 		[SerializeField]
 		private AssetReferenceT<GameObjectEventChannel> _pageCollectChannelReference;
 		private GameObjectEventChannel _pageCollectChannel;
 
 		private IEnumerator Start() {
-			yield return _pageSpawnChannelReference.LoadAssetAsync(asset => {
-				_pageSpawnChannel = asset;
-				_pageSpawnChannel.OnTrigger += HandleSongSpawn;
-			});
-
 			yield return _pageCollectChannelReference.LoadAssetAsync(asset => {
 				_pageCollectChannel = asset;
 				_pageCollectChannel.OnTrigger += HandleSongCollect;
@@ -27,28 +21,14 @@ namespace LostNotes.Player {
 		}
 
 		private void OnDestroy() {
-			if (_pageSpawnChannel) {
-				_pageSpawnChannelReference.ReleaseAsset();
-			}
-
 			if (_pageCollectChannel) {
 				_pageCollectChannelReference.ReleaseAsset();
 			}
 		}
 
-		private readonly Dictionary<SongAsset, int> unlocking = new();
-
-		private void HandleSongSpawn(GameObject obj) {
-			if (obj.TryGetComponent<SongProvider>(out var provider)) {
-				unlocking[provider.Song] = unlocking.GetValueOrDefault(provider.Song) + 1;
-			}
-		}
-
 		private void HandleSongCollect(GameObject obj) {
 			if (obj.TryGetComponent<SongProvider>(out var provider)) {
-				unlocking[provider.Song]--;
-
-				if (unlocking[provider.Song] == 0) {
+				if (GameObject.FindGameObjectsWithTag(_pageLabel).Count(o => obj.TryGetComponent<SongProvider>(out var p) && p.Song == provider.Song) == 1) {
 					provider.Song.IsAvailable = true;
 				}
 
