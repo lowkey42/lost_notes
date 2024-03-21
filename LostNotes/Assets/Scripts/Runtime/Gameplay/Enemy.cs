@@ -1,11 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using LostNotes.Level;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace LostNotes.Gameplay {
 	internal sealed class Enemy : MonoBehaviour, ITurnActor, IAttackMessages {
+		[Serializable]
+		public class StatusActions {
+			public StatusEffects RequiredStatusEffects;
+			public StatusEffects ForbiddenStatusEffects;
+			public List<EnemyAction> Actions;
+		}
 		
 		[SerializeField]
 		private List<EnemyAction> _actions;
@@ -13,13 +21,20 @@ namespace LostNotes.Gameplay {
 		[SerializeField]
 		private ActorStatus _status;
 
+		[SerializeField]
+		private List<StatusActions> _statusSpecificActionOverrides = new();
+
 		[field: SerializeField] public LevelGridTransform LevelGridTransform { get; private set; }
-		
-		private void Start() {
+
+		private void OnValidate() {
 			if (!LevelGridTransform)
 				LevelGridTransform = GetComponentInChildren<LevelGridTransform>();
 			if (!_status)
 				_status = GetComponentInChildren<ActorStatus>();
+		}
+
+		private void Start() {
+			OnValidate();
 		}
 
 		public void OnAttacked() {
@@ -38,7 +53,10 @@ namespace LostNotes.Gameplay {
 		}
 
 		public bool HasTurnActions() {
-			return !_status || !_status.HasStatusEffect(StatusEffects.Sleeping);
+			if (_status && _status.HasStatusEffect(StatusEffects.Sleeping))
+				return false;
+
+			return GetActions().Count != 0;
 		}
 
 		public void CreateTurnIndicators(Transform parent) {
@@ -46,8 +64,19 @@ namespace LostNotes.Gameplay {
 				return;
 
 			var futureState = new FutureEnemyState(LevelGridTransform.Level, this);
-			foreach (var action in _actions)
+			foreach (var action in GetActions())
 				action.CreateTurnIndicators(futureState, parent);
+		}
+
+		private List<EnemyAction> GetActions() {
+			var status = _status.GetStatusFlags();
+
+			foreach (var o in _statusSpecificActionOverrides) {
+				if (status.HasFlag(o.RequiredStatusEffects) && (status & o.ForbiddenStatusEffects) == 0)
+					return o.Actions;
+			}
+
+			return _actions;
 		}
 	}
 }
