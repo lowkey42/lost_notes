@@ -175,6 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcfd0b3b608440483d208c149da48c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolatedChild: {fileID: 3369865467406903886}
+  _interpolatedDuration: 0.25
   _level: {fileID: 0}
   _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64

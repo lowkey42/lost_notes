@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using LostNotes.Gameplay;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
@@ -8,10 +9,17 @@ using UnityEngine.AddressableAssets;
 namespace LostNotes.Level {
 	internal sealed class LevelGridTransform : MonoBehaviour {
 		[SerializeField]
+		private Transform _interpolatedChild;
+
+		[SerializeField]
+		private float _interpolatedDuration = 0.25f;
+		
+		[SerializeField]
 		private LevelComponent _level;
 		[SerializeField]
 		private AssetReferenceT<GameObjectEventChannel> _moveChannelReference;
 		private GameObjectEventChannel _moveChannel;
+		private Sequence _interpolationSequence;
 
 		private IEnumerator Start() {
 			_ = _level || transform.TryGetComponentInParent(out _level);
@@ -31,32 +39,44 @@ namespace LostNotes.Level {
 
 		public int Rotation2d => Mathf.RoundToInt(transform.eulerAngles.y);
 
-		public bool MoveBy(Vector2Int delta) {
+		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1) {
 			var newPosition2d = Position2d + delta;
 			var newPosition = _level.GridToWorld(newPosition2d);
 
 			if (!CanMoveTo(newPosition2d))
-				return false;
+				return null;
 
-			// TODO: lerp/animate position and report animation-completion to caller
+			if (!_interpolatedChild) {
+				transform.position = newPosition;
+				SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
+				if (_moveChannel)
+					_moveChannel.Raise(gameObject);
 
-			transform.position = newPosition;
-
-			SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
-
-			if (_moveChannel) {
-				_moveChannel.Raise(gameObject);
+				return new WaitForSeconds(durationFactor * _interpolatedDuration);
 			}
 
-			return true;
+			_interpolationSequence?.Kill(true);
+
+			_interpolatedChild.localPosition = Vector3.zero;
+			_interpolationSequence = _interpolatedChild.DOJump(newPosition, jumpHeight, jumpCount, durationFactor * _interpolatedDuration);
+			_interpolationSequence.SetEase(Ease.InOutQuad);
+			_interpolationSequence.OnComplete(() => {
+				_interpolatedChild.localPosition = Vector3.zero;
+				transform.position = newPosition;
+				SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
+				if (_moveChannel) _moveChannel.Raise(gameObject);
+				_interpolationSequence = null;
+			});
+
+			return _interpolationSequence.WaitForCompletion();
 		}
 
 		public bool CanMoveTo(Vector2Int newPosition) {
 			return !_level || _level.IsWalkable(newPosition);
 		}
 
-		public bool MoveByLocal(Vector2Int delta) {
-			return MoveBy(LocalToWorldVector(delta));
+		public YieldInstruction MoveByLocal(Vector2Int delta, float jumpHeight = 0, float speed = 1) {
+			return MoveBy(LocalToWorldVector(delta), jumpHeight, speed);
 		}
 
 		public void Rotate(RotationTurn turn) {
