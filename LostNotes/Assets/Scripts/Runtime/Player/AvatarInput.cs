@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MyBox;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.InputSystem;
 
 namespace LostNotes.Player {
@@ -172,10 +171,7 @@ namespace LostNotes.Player {
 		}
 
 		private IEnumerator LoadNotes() {
-			var locationHandle = Addressables.LoadResourceLocationsAsync(_noteLabel);
-			yield return locationHandle;
-
-			yield return Addressables.LoadAssetsAsync<NoteAsset>(locationHandle.Result, AddNote);
+			yield return _noteLabel.LoadAssetsAsync<NoteAsset>(AddNote);
 		}
 
 		private IEnumerator Start() {

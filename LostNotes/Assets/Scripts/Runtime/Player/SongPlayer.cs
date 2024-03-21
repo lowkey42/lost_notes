@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace LostNotes.Player {
 	internal sealed class SongPlayer : MonoBehaviour, INoteMessages {
@@ -21,10 +20,7 @@ namespace LostNotes.Player {
 		}
 
 		private IEnumerator LoadSongs() {
-			var locationHandle = Addressables.LoadResourceLocationsAsync(_songLabel);
-			yield return locationHandle;
-
-			yield return Addressables.LoadAssetsAsync<SongAsset>(locationHandle.Result, AddSong);
+			yield return _songLabel.LoadAssetsAsync<SongAsset>(AddSong);
 		}
 
 		private IEnumerator Start() {
