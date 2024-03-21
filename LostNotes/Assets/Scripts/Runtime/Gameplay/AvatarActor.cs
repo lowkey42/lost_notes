@@ -72,8 +72,8 @@ namespace LostNotes.Gameplay {
 			if (_isAlive) {
 				ActionPoints = _actionPointsPerTurn;
 				do {
-					if (_songRoutine is { } coroutine) {
-						_songRoutine = null;
+					if (_turnRoutine is { } coroutine) {
+						_turnRoutine = null;
 						yield return coroutine;
 					} else {
 						yield return null;
@@ -82,16 +82,28 @@ namespace LostNotes.Gameplay {
 			}
 		}
 
+		[Header("Movement")]
+		[SerializeField]
+		private float _stepDurationFactor = 1.0f;
+
+		[SerializeField]
+		private float _stepJumpHeight = 0.2f;
+
+		[SerializeField]
+		private int _stepJumpCount = 3;
+
+		private object _turnRoutine;
+
 		public void OnMove(Vector2Int delta) {
 			ActionPoints -= _actionPointsToMove;
-		}
 
-		private IEnumerator _songRoutine;
+			_turnRoutine = _gridTransform.MoveBy(delta, _stepJumpHeight, _stepDurationFactor, _stepJumpCount);
+		}
 
 		public void OnPlaySong(SongAsset song) {
 			ActionPoints -= _actionPointsToPlay;
 
-			_songRoutine = song.PlaySong(_gridTransform, _songRange);
+			_turnRoutine = song.PlaySong(_gridTransform, _songRange);
 		}
 
 		[ContextMenu(nameof(OnAttacked))]
