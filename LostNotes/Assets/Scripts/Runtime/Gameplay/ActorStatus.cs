@@ -1,10 +1,21 @@
+using System;
 using LostNotes.Level;
+using MyBox;
 using UnityEngine;
 
 namespace LostNotes.Gameplay {
 	internal class ActorStatus : MonoBehaviour, IEffectMessages {
 		[SerializeField]
 		private StatusEffects _statusEffects;
+
+		private void Start() {
+			gameObject.BroadcastMessage(nameof(IActorStatusMessages.OnStatusEffectsChanged), _statusEffects, SendMessageOptions.DontRequireReceiver);
+		}
+
+		[ButtonMethod]
+		private void DebugMakeAngry() {
+			ApplyStatusEffect(StatusEffects.Angry);
+		}
 
 		public StatusEffects GetStatusFlags() {
 			return _statusEffects;
@@ -20,7 +31,8 @@ namespace LostNotes.Gameplay {
 				return;
 
 			_statusEffects |= newStatusEffects;
-			gameObject.BroadcastMessage(nameof(IActorStatusMessages.OnGainedStatusEffect), newStatusEffects, SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(IActorStatusMessages.OnGainedStatusEffect),   newStatusEffects, SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(IActorStatusMessages.OnStatusEffectsChanged), _statusEffects,   SendMessageOptions.DontRequireReceiver);
 		}
 
 		public void RemoveStatusEffect(StatusEffects status) {
@@ -29,7 +41,8 @@ namespace LostNotes.Gameplay {
 				return;
 
 			_statusEffects &= ~lostStatusEffects;
-			gameObject.BroadcastMessage(nameof(IActorStatusMessages.OnLostStatusEffect), lostStatusEffects, SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(IActorStatusMessages.OnLostStatusEffect),     lostStatusEffects, SendMessageOptions.DontRequireReceiver);
+			gameObject.BroadcastMessage(nameof(IActorStatusMessages.OnStatusEffectsChanged), _statusEffects,    SendMessageOptions.DontRequireReceiver);
 		}
 
 		public void OnNoise(LevelGridTransform source) { }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace LostNotes.UI {
-	internal sealed class MoveIndicatorDrawer : MonoBehaviour, IActorMessages {
+	internal sealed class MoveIndicatorDrawer : MonoBehaviour, IActorMessages, IActorStatusMessages {
 		[SerializeField]
 		private float _minAlpha = 0.2f;
 
@@ -55,6 +55,10 @@ namespace LostNotes.UI {
 		}
 
 		private void HandleMove(GameObject obj) {
+			RecreateIndicators();
+		}
+
+		public void OnStatusEffectsChanged(StatusEffects statusEffects) {
 			RecreateIndicators();
 		}
 

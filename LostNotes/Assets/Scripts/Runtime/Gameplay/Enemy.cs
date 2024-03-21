@@ -48,7 +48,7 @@ namespace LostNotes.Gameplay {
 			if (!HasTurnActions())
 				yield break;
 
-			foreach (var action in _actions)
+			foreach (var action in GetActions())
 				yield return action.Execute(this);
 		}
 

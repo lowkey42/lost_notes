@@ -39,7 +39,6 @@ namespace LostNotes.Gameplay.EnemyActions {
 				// Y movement
 				var yStep = _movement.y < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.y); i++) {
-					// TODO: should use ABS as iteration bounds and sign for steps
 					if (!enemy.LevelGridTransform.MoveByLocal(new Vector2Int(0, yStep))) {
 						enemy.LevelGridTransform.Rotate(_turnOnBlocked);
 						yield break;
@@ -75,9 +74,10 @@ namespace LostNotes.Gameplay.EnemyActions {
 				Quaternion.FromToRotation(enemy.Position3d, enemy.Level.GridToWorld(enemy.Position2d + worldStep));
 				for (var i = 0; i < stepCount; i++) {
 					var newPosition = enemy.Position2d + worldStep;
-					if (enemy.CanMoveTo(newPosition))
-						Instantiate(_moveIndicatorPrefab, enemy.Position3d, orientation, parent);
-					else {
+					if (enemy.CanMoveTo(newPosition)) {
+						if (_singleSteps)
+							Instantiate(_moveIndicatorPrefab, enemy.Position3d, orientation, parent);
+					} else {
 						Instantiate(_turnIndicatorPrefab, enemy.Position3d, orientation, parent);
 						return false;
 					}

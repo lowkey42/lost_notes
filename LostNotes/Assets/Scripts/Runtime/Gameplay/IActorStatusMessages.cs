@@ -1,6 +1,7 @@
 namespace LostNotes.Gameplay {
 	internal interface IActorStatusMessages {
-		void OnGainedStatusEffect(StatusEffects statusEffect);
-		void OnLostStatusEffect(StatusEffects   statusEffect);
+		void OnGainedStatusEffect(StatusEffects   gainedStatusEffect) { }
+		void OnLostStatusEffect(StatusEffects     lostStatusEffect) { }
+		void OnStatusEffectsChanged(StatusEffects statusEffects) { }
 	}
 }
