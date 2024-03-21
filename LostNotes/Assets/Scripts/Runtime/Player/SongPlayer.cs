@@ -15,16 +15,8 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private TilemapMask _songRange = new(new Vector2Int(9, 9));
 
-		private void AddSong(SongAsset song) {
-			_songs.Add(song);
-		}
-
-		private IEnumerator LoadSongs() {
-			yield return _songLabel.LoadAssetsAsync<SongAsset>(AddSong);
-		}
-
 		private IEnumerator Start() {
-			yield return LoadSongs();
+			yield return _songLabel.LoadAssetsAsync<SongAsset>(_songs.Add);
 		}
 
 		public void OnStartPlaying() {

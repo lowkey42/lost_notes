@@ -166,16 +166,8 @@ namespace LostNotes.Player {
 		[SerializeField, ReadOnly]
 		private List<NoteAsset> _notes = new();
 
-		private void AddNote(NoteAsset note) {
-			_notes.Add(note);
-		}
-
-		private IEnumerator LoadNotes() {
-			yield return _noteLabel.LoadAssetsAsync<NoteAsset>(AddNote);
-		}
-
 		private IEnumerator Start() {
-			yield return LoadNotes();
+			yield return _noteLabel.LoadAssetsAsync<NoteAsset>(_notes.Add);
 		}
 
 		private bool TryLookupNote(InputAction action, out NoteAsset note) {
