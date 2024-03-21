@@ -7,6 +7,8 @@ namespace LostNotes.Gameplay {
 		GameObject gameObject { get; }
 #pragma warning restore IDE1006 // Naming Styles
 
+		TurnOrder TurnOrder { get; set; }
+
 		IEnumerator DoTurn();
 
 		bool HasTurnActions() { return true; }

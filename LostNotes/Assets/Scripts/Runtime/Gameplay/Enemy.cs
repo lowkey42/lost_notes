@@ -22,6 +22,8 @@ namespace LostNotes.Gameplay {
 			_alive = false;
 		}
 
+		public TurnOrder TurnOrder { get; set; }
+
 		public IEnumerator DoTurn() {
 			if (!_alive)
 				yield break;
