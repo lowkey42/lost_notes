@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using MyBox;
-using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,20 +24,27 @@ namespace LostNotes.Player {
 
 		private void SetUpInput() {
 			if (_avatarInput) {
-				_avatarInput.OnInput += HandleInput;
+				_avatarInput.OnActionInput += HandleActionInput;
+				_avatarInput.OnMoveInput += HandleMoveInput;
 			}
 		}
 
 		private void TearDownInput() {
 			if (_avatarInput) {
-				_avatarInput.OnInput -= HandleInput;
+				_avatarInput.OnActionInput -= HandleActionInput;
+				_avatarInput.OnMoveInput -= HandleMoveInput;
 			}
 		}
 
-		private void HandleInput(InputActionReference input) {
+		private void HandleActionInput(InputActionReference input) {
 			if (TryLookupNote(input, out var note)) {
 				PlayNoteOneShot(note);
 			}
+		}
+
+		private void HandleMoveInput(Vector2Int input) {
+			DoMove(input);
+			DoMove(Vector2Int.zero);
 		}
 
 		[SerializeField]
@@ -92,11 +98,13 @@ namespace LostNotes.Player {
 		private bool CanPlayNotes => _isPlaying;
 
 		private void HandleMove(InputAction.CallbackContext context) {
+			DoMove(Vector2Int.RoundToInt(context.ReadValue<Vector2>()));
+		}
+
+		private void DoMove(Vector2Int input) {
 			if (!CanMove) {
 				return;
 			}
-
-			var input = Vector2Int.RoundToInt(context.ReadValue<Vector2>());
 
 			if (CanMove && input.x != 0 && _lastInput.x == 0) {
 				gameObject.BroadcastMessage(nameof(IAvatarMessages.OnMove), new Vector2Int(input.x, 0), SendMessageOptions.DontRequireReceiver);
@@ -107,10 +115,6 @@ namespace LostNotes.Player {
 			}
 
 			_lastInput = input;
-		}
-
-		private void HandleMove() {
-
 		}
 
 		[SerializeField, ReadOnly]
