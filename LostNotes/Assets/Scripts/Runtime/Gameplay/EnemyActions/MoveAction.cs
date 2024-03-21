@@ -8,7 +8,7 @@ namespace LostNotes.Gameplay.EnemyActions {
 		private GameObject _moveIndicatorPrefab;
 
 		[SerializeField]
-		private GameObject _turnIndicatorPrefab;
+		private GameObject[] _turnIndicatorPrefabs;
 
 		[SerializeField]
 		private GameObject _stopIndicatorPrefab;
@@ -17,7 +17,7 @@ namespace LostNotes.Gameplay.EnemyActions {
 		private Vector2Int _movement;
 
 		[SerializeField]
-		private RotationTurn _turnOnBlocked = RotationTurn.Degrees90;
+		private RotationTurn _minTurnOnBlocked = RotationTurn.Degrees90;
 
 		[SerializeField]
 		private bool _singleSteps = true;
@@ -33,9 +33,10 @@ namespace LostNotes.Gameplay.EnemyActions {
 				// X movement
 				var xStep = _movement.x < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.x); i++) {
-					var move = enemy.LevelGridTransform.MoveByLocal(new Vector2Int(xStep, 0), _jumpHeight, _interpolatedDurationFactor);
+					var step = new Vector2Int(xStep, 0);
+					var move = enemy.LevelGridTransform.MoveByLocal(step, _jumpHeight, _interpolatedDurationFactor);
 					if (move == null) {
-						enemy.LevelGridTransform.Rotate(_turnOnBlocked);
+						TurnOnCollision(step);
 						yield break;
 					}
 
@@ -45,9 +46,10 @@ namespace LostNotes.Gameplay.EnemyActions {
 				// Y movement
 				var yStep = _movement.y < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.y); i++) {
-					var move = enemy.LevelGridTransform.MoveByLocal(new Vector2Int(0, yStep), _jumpHeight, _interpolatedDurationFactor);
+					var step = new Vector2Int(0, yStep);
+					var move = enemy.LevelGridTransform.MoveByLocal(step, _jumpHeight, _interpolatedDurationFactor);
 					if (move == null) {
-						enemy.LevelGridTransform.Rotate(_turnOnBlocked);
+						TurnOnCollision(step);
 						yield break;
 					}
 
@@ -56,16 +58,32 @@ namespace LostNotes.Gameplay.EnemyActions {
 			} else {
 				var move = enemy.LevelGridTransform.MoveByLocal(_movement, _jumpHeight, _interpolatedDurationFactor);
 				if (move == null)
-					enemy.LevelGridTransform.Rotate(_turnOnBlocked);
+					TurnOnCollision(_movement);
 				else
 					yield return move;
+			}
+
+			yield break;
+
+			void TurnOnCollision(Vector2Int step) {
+				if (_minTurnOnBlocked == RotationTurn.Degrees0)
+					return;
+
+				enemy.LevelGridTransform.Rotate(_minTurnOnBlocked);
+				for (var turns = (int) _minTurnOnBlocked; !enemy.LevelGridTransform.CanMoveByLocal(step) && turns < 360; turns += 90)
+					enemy.LevelGridTransform.Rotate(RotationTurn.Degrees90);
 			}
 		}
 
 		public override void CreateTurnIndicators(FutureEnemyState enemy, Transform parent) {
-			if (!_moveIndicatorPrefab || !_turnIndicatorPrefab || !_stopIndicatorPrefab)
+			if (!_moveIndicatorPrefab || !_stopIndicatorPrefab)
 				return;
 
+			if (!_singleSteps && !enemy.CanMoveBy(_movement)) {
+				CreateRotationIndicators(_movement, 0);
+				return;
+			}
+			
 			if (!CreateStepIndicators(new Vector2Int(_movement.x < 0 ? -1 : 1, 0), Mathf.Abs(_movement.x), _movement.x < 0 ? 180 : 0)) return;
 
 			if (!CreateStepIndicators(new Vector2Int(0, _movement.y < 0 ? -1 : 1), Mathf.Abs(_movement.y), _movement.y < 0 ? 90 : -90))
@@ -81,11 +99,10 @@ namespace LostNotes.Gameplay.EnemyActions {
 				Quaternion.FromToRotation(enemy.Position3d, enemy.Level.GridToWorld(enemy.Position2d + worldStep));
 				for (var i = 0; i < stepCount; i++) {
 					var newPosition = enemy.Position2d + worldStep;
-					if (enemy.CanMoveTo(newPosition)) {
-						if (_singleSteps)
-							Instantiate(_moveIndicatorPrefab, enemy.Position3d, orientation, parent);
-					} else {
-						Instantiate(_turnIndicatorPrefab, enemy.Position3d, orientation, parent);
+					if (!_singleSteps || enemy.CanMoveTo(newPosition))
+						Instantiate(_moveIndicatorPrefab, enemy.Position3d, orientation, parent);
+					else {
+						CreateRotationIndicators(step, indicatorRotation);
 						return false;
 					}
 
@@ -93,6 +110,24 @@ namespace LostNotes.Gameplay.EnemyActions {
 				}
 
 				return true;
+			}
+
+			void CreateRotationIndicators(Vector2Int step, int indicatorRotation) {
+				if (_minTurnOnBlocked == RotationTurn.Degrees0)
+					return;
+
+				var orientation = Quaternion.Euler(0, enemy.Rotation2d + indicatorRotation, 0);
+
+				// rotate until next MoveByLocal would succeed
+				var turnDegrees = (int) _minTurnOnBlocked;
+				enemy.Rotation2d += turnDegrees;
+				while (!enemy.CanMoveBy(step) && turnDegrees < 270) {
+					turnDegrees += 90;
+					enemy.Rotation2d += 90;
+				}
+
+				if (_turnIndicatorPrefabs != null && turnDegrees / 90 < _turnIndicatorPrefabs.Length)
+					Instantiate(_turnIndicatorPrefabs[(turnDegrees / 90) - 1], enemy.Position3d, orientation, parent);
 			}
 		}
 	}
