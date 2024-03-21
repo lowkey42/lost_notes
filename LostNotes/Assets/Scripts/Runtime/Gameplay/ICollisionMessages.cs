@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace LostNotes.Gameplay {
-	interface ICollisionMessages {
+	internal interface ICollisionMessages {
 		void OnActorEnter(GameObject actor);
 	}
 }

@@ -32,7 +32,8 @@ namespace LostNotes.Level {
 
 		public IEnumerable<GameObject> ObjectsInArea(LevelGridTransform source, TilemapMask area) {
 			foreach (Transform t in _interactableLayer.transform) {
-				if (t == source.transform) continue;
+				if (t == source.transform)
+					continue;
 
 				var testPosition = WorldToGrid(t.position);
 				var localPosition = source.WorldToLocalPosition(testPosition) + (area.Size / 2);
@@ -60,7 +61,7 @@ namespace LostNotes.Level {
 
 		public bool IsWalkable(Vector2Int position) {
 			return _floorLayer.GetTile(position.SwizzleXY()) && !_wallLayer.GetTile(position.SwizzleXY()) &&
-			       _interactableLayer.GetMetaTiles(position).All(t => t.IsWalkable);
+				   _interactableLayer.GetMetaTiles(position).All(t => t.IsWalkable);
 		}
 
 		public Vector2Int WorldToGrid(Vector3 position3d) {
