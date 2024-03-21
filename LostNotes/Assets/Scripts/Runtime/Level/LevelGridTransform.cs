@@ -40,6 +40,8 @@ namespace LostNotes.Level {
 		public int Rotation2d => Mathf.RoundToInt(transform.eulerAngles.y);
 
 		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1) {
+			_interpolationSequence?.Kill(true);
+			
 			var newPosition2d = Position2d + delta;
 			var newPosition = _level.GridToWorld(newPosition2d);
 
@@ -54,8 +56,6 @@ namespace LostNotes.Level {
 
 				return new WaitForSeconds(durationFactor * _interpolatedDuration);
 			}
-
-			_interpolationSequence?.Kill(true);
 
 			_interpolatedChild.localPosition = Vector3.zero;
 			_interpolationSequence = _interpolatedChild.DOJump(newPosition, jumpHeight, jumpCount, durationFactor * _interpolatedDuration);
@@ -76,6 +76,7 @@ namespace LostNotes.Level {
 		}
 
 		public YieldInstruction MoveByLocal(Vector2Int delta, float jumpHeight = 0, float speed = 1) {
+			_interpolationSequence?.Kill(true);
 			return MoveBy(LocalToWorldVector(delta), jumpHeight, speed);
 		}
 
