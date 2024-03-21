@@ -20,9 +20,7 @@ namespace LostNotes.Player {
 		}
 
 		public void OnMove(Vector2Int delta) {
-			if (_levelGridTransform.MoveBy(delta)) {
-				_levelGridTransform.SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
-			}
+			_ = _levelGridTransform.MoveBy(delta);
 		}
 
 		[SerializeField]

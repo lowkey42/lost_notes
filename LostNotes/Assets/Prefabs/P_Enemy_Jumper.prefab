@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 8773612014515123362}
   - component: {fileID: 4690978652373671199}
   - component: {fileID: -4796435925094127541}
+  - component: {fileID: 2912192758979876536}
   m_Layer: 0
   m_Name: P_Enemy_Jumper
   m_TagString: Untagged
@@ -132,6 +133,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isWalkable: 0
+--- !u!114 &2912192758979876536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520711330091527916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e7a8ceab4b49a468ede70cacefd820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridTransform: {fileID: 8773612014515123362}
 --- !u!1 &6075892406356288915
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8144545258069528212}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.39154252, y: 0.0030232957, z: -0.0012807489, w: -0.9201542}
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using LostNotes.Gameplay;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -40,6 +41,8 @@ namespace LostNotes.Level {
 			// TODO: lerp/animate position and report animation-completion to caller
 
 			transform.position = newPosition;
+
+			SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
 
 			if (moveChannel) {
 				moveChannel.Raise(gameObject);

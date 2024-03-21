@@ -11,6 +11,14 @@ namespace LostNotes.Player {
 		private bool _isAvailable = false;
 		[SerializeField]
 		private EEffects _effects = EEffects.Noise;
+
+		[ContextMenu(nameof(ShowMessages))]
+		private void ShowMessages() {
+			foreach (var message in _effects.GetMessages()) {
+				Debug.Log(message);
+			}
+		}
+
 		[SerializeField]
 		private NoteAsset[] _notes = Array.Empty<NoteAsset>();
 		private int _currentNodeIndex = 0;
