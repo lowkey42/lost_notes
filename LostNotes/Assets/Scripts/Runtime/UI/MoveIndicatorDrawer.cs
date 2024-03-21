@@ -42,6 +42,7 @@ namespace LostNotes.UI {
 		private GameObject _turnIndicatorRoot;
 
 		public void OnStartTurn(TurnOrder round) {
+			RecreateIndicators();
 			_ourTurn = true;
 		}
 
