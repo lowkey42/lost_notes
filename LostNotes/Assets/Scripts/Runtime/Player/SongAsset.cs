@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using FMODUnity;
 using LostNotes.Gameplay;
 using LostNotes.Level;
+using Slothsoft.UnityExtensions;
 using UnityEngine;
 
 namespace LostNotes.Player {
@@ -11,11 +13,14 @@ namespace LostNotes.Player {
 		private bool _isAvailable = false;
 		[SerializeField]
 		private EEffects _effects = EEffects.Noise;
+		[SerializeField]
+		private float effectDelay = 0.1f;
 
-		[ContextMenu(nameof(ShowMessages))]
-		private void ShowMessages() {
+		private IEnumerator PlayEffects_Co(LevelGridTransform context, TilemapMask range) {
+			yield return Wait.forSeconds[effectDelay];
+
 			foreach (var message in _effects.GetMessages()) {
-				Debug.Log(message);
+				context.SendMessageToObjectsInArea(range, message, context);
 			}
 		}
 
@@ -67,9 +72,7 @@ namespace LostNotes.Player {
 				_ = Instantiate(_songPrefab, context.transform);
 			}
 
-			foreach (var message in _effects.GetMessages()) {
-				context.SendMessageToObjectsInArea(range, message, context);
-			}
+			_ = context.StartCoroutine(PlayEffects_Co(context, range));
 		}
 	}
 }
