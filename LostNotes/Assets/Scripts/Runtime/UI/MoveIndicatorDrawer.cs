@@ -59,6 +59,8 @@ namespace LostNotes.UI {
 			ClearIndicators();
 			_turnIndicatorRoot = new GameObject("Indicators");
 			_actor.CreateTurnIndicators(_turnIndicatorRoot.transform);
+
+			if (_actor.TurnOrder != null) _actor.TurnOrder.GetTurnOrderDistance(_actor);
 		}
 	}
 }
