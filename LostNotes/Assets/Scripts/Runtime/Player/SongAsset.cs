@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using FMODUnity;
 using LostNotes.Gameplay;
 using LostNotes.Level;
@@ -21,12 +22,31 @@ namespace LostNotes.Player {
 		private EEffects _effects = EEffects.Noise;
 		[SerializeField]
 		private float _effectDelay = 0.1f;
+		[SerializeField]
+		private EObjectSorting _receiverSorting = EObjectSorting.None;
 
 		private IEnumerator PlayEffects_Co(LevelGridTransform context, TilemapMask range) {
 			yield return Wait.forSeconds[_effectDelay];
 
-			foreach (var message in _effects.GetMessages()) {
-				context.SendMessageToObjectsInArea(range, message, context);
+			var receivers = context.ObjectsInArea(range);
+
+			switch (_receiverSorting) {
+				case EObjectSorting.None:
+					break;
+				case EObjectSorting.ClosestToSource:
+					receivers = receivers.OrderBy(obj => Vector3.Distance(obj.transform.position, context.transform.position));
+					break;
+				case EObjectSorting.FurthestToSource:
+					receivers = receivers.OrderByDescending(obj => Vector3.Distance(obj.transform.position, context.transform.position));
+					break;
+				default:
+					throw new NotImplementedException();
+			}
+
+			foreach (var obj in receivers) {
+				foreach (var message in _effects.GetMessages()) {
+					obj.BroadcastMessage(message, context, SendMessageOptions.DontRequireReceiver);
+				}
 			}
 		}
 

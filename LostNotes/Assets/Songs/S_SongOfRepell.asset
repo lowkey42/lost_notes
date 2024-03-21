@@ -15,6 +15,7 @@ MonoBehaviour:
   _isAvailable: 1
   _effects: 3
   _effectDelay: 0.1
+  _receiverSorting: 2
   _notes:
   - {fileID: 11400000, guid: 9a0f7198ef15606468b75f5540087f44, type: 2}
   - {fileID: 11400000, guid: 9a0f7198ef15606468b75f5540087f44, type: 2}

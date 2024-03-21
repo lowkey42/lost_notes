@@ -34,8 +34,9 @@ namespace LostNotes {
 		}
 
 		public bool IsSet(Vector2Int position) {
-			return position.x >= 0 && position.y >= 0 && position.x < Size.x && position.y < Size.y
-&& _mask[position.x + (position.y * Size.x)];
+			return position.x >= 0 && position.x < Size.x
+				&& position.y >= 0 && position.y < Size.y
+				&& _mask[position.x + (position.y * Size.x)];
 		}
 
 		public void Set(Vector2Int position, bool set) {
