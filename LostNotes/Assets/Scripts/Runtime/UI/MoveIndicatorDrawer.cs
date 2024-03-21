@@ -8,7 +8,7 @@ namespace LostNotes.UI {
 	internal sealed class MoveIndicatorDrawer : MonoBehaviour, IActorMessages {
 		[SerializeField]
 		private float _minAlpha = 0.2f;
-		
+
 		[SerializeField]
 		private AssetReferenceT<GameObjectEventChannel> _moveChannelReference;
 		private GameObjectEventChannel _moveChannel;
@@ -22,6 +22,10 @@ namespace LostNotes.UI {
 			});
 
 			RecreateIndicators();
+		}
+
+		private void OnDisable() {
+			ClearIndicators();
 		}
 
 		private void OnDestroy() {
