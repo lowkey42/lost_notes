@@ -56,7 +56,7 @@ namespace LostNotes.Player {
 					break;
 				case ESongStatus.Failed:
 					songStatus = ESongStatus.NotLearned;
-					gameObject.BroadcastMessage(nameof(IAvatarMessages.OnFailSong), _failureSong, SendMessageOptions.DontRequireReceiver);
+					gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPlaySong), _failureSong, SendMessageOptions.DontRequireReceiver);
 					break;
 			}
 		}

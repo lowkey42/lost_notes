@@ -76,10 +76,6 @@ namespace LostNotes.Gameplay {
 			ActionPoints -= _actionPointsToPlay;
 		}
 
-		public void OnFailSong(SongAsset song) {
-			ActionPoints -= _actionPointsToPlay;
-		}
-
 		[ContextMenu(nameof(OnAttacked))]
 		public void OnAttacked() {
 			_isAlive = false;

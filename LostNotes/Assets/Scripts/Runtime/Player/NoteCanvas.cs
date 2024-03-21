@@ -62,22 +62,15 @@ namespace LostNotes.Player {
 
 		[SerializeField]
 		private Color _defaultColor = Color.white;
-		[SerializeField]
-		private Color _playColor = Color.green;
-		[SerializeField]
-		private Color _failColor = Color.red;
 
 		private bool _clearOnNextNote = false;
 
 		public void OnPlaySong(SongAsset song) {
-			_notes = new(_notes.TakeLast(song.NoteCount));
-			UpdateText();
-			_attachedText.color = _playColor;
-			_clearOnNextNote = true;
-		}
-
-		public void OnFailSong(SongAsset song) {
-			_attachedText.color = _failColor;
+			if (!song.IsFailure) {
+				_notes = new(_notes.TakeLast(song.NoteCount));
+				UpdateText();
+			}
+			_attachedText.color = song.Color;
 			_clearOnNextNote = true;
 		}
 

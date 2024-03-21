@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isAvailable: 1
   _effects: 16
+  _effectDelay: 0.1
   _notes:
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}
@@ -28,4 +29,5 @@ MonoBehaviour:
       Data3: -209008709
       Data4: 1330116494
     Path: event:/Songs/Song of Calm/Song of Calm Combat
-  _songPrefab: {fileID: 9129755563245552758, guid: bb55ecdc26ca35e4cb1a01db4a91d35c, type: 3}
+  _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
+  _songColor: {r: 0, g: 1, b: 0, a: 1}

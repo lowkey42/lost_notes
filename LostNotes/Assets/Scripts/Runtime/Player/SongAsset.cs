@@ -35,6 +35,7 @@ namespace LostNotes.Player {
 		private int _currentNodeIndex = 0;
 
 		public int NoteCount => _notes.Length;
+		public bool IsFailure => NoteCount > 0;
 
 		public void Learn() {
 			_isAvailable = true;
@@ -68,6 +69,9 @@ namespace LostNotes.Player {
 		private EventReference _songEvent = new();
 		[SerializeField]
 		private GameObject _songPrefab;
+		[SerializeField]
+		private Color _songColor = Color.green;
+		public Color Color => _songColor;
 
 		public void PlaySong(LevelGridTransform context, TilemapMask range) {
 			if (!_songEvent.IsNull) {
@@ -75,7 +79,8 @@ namespace LostNotes.Player {
 			}
 
 			if (_songPrefab) {
-				_ = Instantiate(_songPrefab, context.transform);
+				var instance = Instantiate(_songPrefab, context.transform);
+				instance.BroadcastMessage(nameof(ISongMessages.OnStartSong), this, SendMessageOptions.DontRequireReceiver);
 			}
 
 			_ = context.StartCoroutine(PlayEffects_Co(context, range));

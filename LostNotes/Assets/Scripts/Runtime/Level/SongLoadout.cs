@@ -32,7 +32,7 @@ namespace LostNotes.Level {
 				.Select(AssetDatabase.GUIDToAssetPath)
 				.Select(AssetDatabase.LoadMainAssetAtPath)
 				.OfType<SongAsset>()
-				.Where(s => s.NoteCount > 0);
+				.Where(s => !s.IsFailure);
 
 			var isDirty = !songs.All(availability.ContainsKey);
 

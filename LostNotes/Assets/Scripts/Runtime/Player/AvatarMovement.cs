@@ -30,10 +30,6 @@ namespace LostNotes.Player {
 			song.PlaySong(_levelGridTransform, _songRange);
 		}
 
-		public void OnFailSong(SongAsset song) {
-			song.PlaySong(_levelGridTransform, _songRange);
-		}
-
 		public void OnReset() {
 		}
 	}

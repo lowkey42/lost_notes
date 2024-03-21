@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: S_Failure
   m_EditorClassIdentifier: 
   _isAvailable: 0
+  _effects: 1
+  _effectDelay: 0.1
   _notes: []
   _songEvent:
     Guid:
@@ -22,3 +24,4 @@ MonoBehaviour:
       Data4: 605723425
     Path: event:/Soundeffekte Player/Failed Note
   _songPrefab: {fileID: 9129755563245552758, guid: 1eb0ccd935c15ae42beb11e7c26ba9a9, type: 3}
+  _songColor: {r: 1, g: 0, b: 0.11576605, a: 1}
