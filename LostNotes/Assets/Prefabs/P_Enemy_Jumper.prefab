@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0677ca1e471d427fa47918611d87451b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveChannelReference:
+  _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64
     m_SubObjectName: 
     m_SubObjectType: 
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 2912192758979876536}
   m_Layer: 0
   m_Name: P_Enemy_Jumper
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 0}
-  moveChannelReference:
+  _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64
     m_SubObjectName: 
     m_SubObjectType: 
@@ -119,7 +119,7 @@ MonoBehaviour:
   _actions:
   - {fileID: 11400000, guid: 2a50889496cf50081a74c6164addcc5b, type: 2}
   - {fileID: 11400000, guid: 9c01bbeb1bc994775b553c8db338a77b, type: 2}
-  <LevelGridTransform>k__BackingField: {fileID: 0}
+  <LevelGridTransform>k__BackingField: {fileID: 8773612014515123362}
 --- !u!114 &-4796435925094127541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,7 +505,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8144545258069528212}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.39154252, y: 0.0030232957, z: -0.0012807489, w: -0.9201542}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

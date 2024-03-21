@@ -10,18 +10,18 @@ namespace LostNotes.Level {
 		[SerializeField]
 		private LevelComponent _level;
 		[SerializeField]
-		private AssetReferenceT<GameObjectEventChannel> moveChannelReference;
-		private GameObjectEventChannel moveChannel;
+		private AssetReferenceT<GameObjectEventChannel> _moveChannelReference;
+		private GameObjectEventChannel _moveChannel;
 
 		private IEnumerator Start() {
 			_ = _level || transform.TryGetComponentInParent(out _level);
 
-			yield return moveChannelReference.LoadAssetAsync(asset => moveChannel = asset);
+			yield return _moveChannelReference.LoadAssetAsync(asset => _moveChannel = asset);
 		}
 
 		private void OnDestroy() {
-			if (moveChannel) {
-				moveChannelReference.ReleaseAsset();
+			if (_moveChannel) {
+				_moveChannelReference.ReleaseAsset();
 			}
 		}
 
@@ -44,8 +44,8 @@ namespace LostNotes.Level {
 
 			SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
 
-			if (moveChannel) {
-				moveChannel.Raise(gameObject);
+			if (_moveChannel) {
+				_moveChannel.Raise(gameObject);
 			}
 
 			return true;

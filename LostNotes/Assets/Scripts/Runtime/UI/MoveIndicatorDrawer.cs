@@ -7,24 +7,24 @@ using UnityEngine.AddressableAssets;
 namespace LostNotes.UI {
 	internal sealed class MoveIndicatorDrawer : MonoBehaviour, IActorMessages {
 		[SerializeField]
-		private AssetReferenceT<GameObjectEventChannel> moveChannelReference;
-		private GameObjectEventChannel moveChannel;
+		private AssetReferenceT<GameObjectEventChannel> _moveChannelReference;
+		private GameObjectEventChannel _moveChannel;
 
 		private IEnumerator Start() {
 			_ = transform.TryGetComponentInParent(out _actor);
 
-			yield return moveChannelReference.LoadAssetAsync(asset => {
-				moveChannel = asset;
-				moveChannel.onTrigger += HandleMove;
+			yield return _moveChannelReference.LoadAssetAsync(asset => {
+				_moveChannel = asset;
+				_moveChannel.onTrigger += HandleMove;
 			});
 
 			RecreateIndicators();
 		}
 
 		private void OnDestroy() {
-			if (moveChannel) {
-				moveChannel.onTrigger -= HandleMove;
-				moveChannelReference.ReleaseAsset();
+			if (_moveChannel) {
+				_moveChannel.onTrigger -= HandleMove;
+				_moveChannelReference.ReleaseAsset();
 			}
 		}
 

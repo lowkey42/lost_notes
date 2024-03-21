@@ -7,36 +7,36 @@ using UnityEngine.SceneManagement;
 namespace LostNotes.Level {
 	internal sealed class LevelManager : MonoBehaviour {
 		[SerializeField]
-		private AssetReferenceT<GameObjectEventChannel> winLevelChannelReference;
-		private GameObjectEventChannel winLevelChannel;
+		private AssetReferenceT<GameObjectEventChannel> _winLevelChannelReference;
+		private GameObjectEventChannel _winLevelChannel;
 		[SerializeField]
-		private AssetReferenceT<GameObjectEventChannel> loseLevelChannelReference;
-		private GameObjectEventChannel loseLevelChannel;
+		private AssetReferenceT<GameObjectEventChannel> _loseLevelChannelReference;
+		private GameObjectEventChannel _loseLevelChannel;
 
 		[SerializeField, Expandable]
 		private LevelOrder _levels;
 
 		private IEnumerator Start() {
-			yield return winLevelChannelReference.LoadAssetAsync(asset => {
-				winLevelChannel = asset;
-				winLevelChannel.onTrigger += HandleWin;
+			yield return _winLevelChannelReference.LoadAssetAsync(asset => {
+				_winLevelChannel = asset;
+				_winLevelChannel.onTrigger += HandleWin;
 			});
 
-			yield return loseLevelChannelReference.LoadAssetAsync(asset => {
-				loseLevelChannel = asset;
-				loseLevelChannel.onTrigger += HandleLose;
+			yield return _loseLevelChannelReference.LoadAssetAsync(asset => {
+				_loseLevelChannel = asset;
+				_loseLevelChannel.onTrigger += HandleLose;
 			});
 		}
 
 		private void OnDestroy() {
-			if (winLevelChannel) {
-				winLevelChannel.onTrigger -= HandleWin;
-				winLevelChannelReference.ReleaseAsset();
+			if (_winLevelChannel) {
+				_winLevelChannel.onTrigger -= HandleWin;
+				_winLevelChannelReference.ReleaseAsset();
 			}
 
-			if (loseLevelChannel) {
-				loseLevelChannel.onTrigger -= HandleLose;
-				loseLevelChannelReference.ReleaseAsset();
+			if (_loseLevelChannel) {
+				_loseLevelChannel.onTrigger -= HandleLose;
+				_loseLevelChannelReference.ReleaseAsset();
 			}
 		}
 

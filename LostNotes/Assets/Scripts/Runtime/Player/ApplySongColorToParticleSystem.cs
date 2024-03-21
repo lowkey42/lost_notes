@@ -5,7 +5,7 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private ParticleSystem _particleSystem;
 
-		public void OnStartSong(SongAsset song) {
+		public void OnSetSong(SongAsset song) {
 			var main = _particleSystem.main;
 			main.startColor = song.Color;
 		}

@@ -11,16 +11,16 @@ namespace LostNotes.Gameplay {
 		private AvatarInput _input;
 
 		[SerializeField]
-		private AssetReferenceT<GameObjectEventChannel> deathChannelReference;
-		private GameObjectEventChannel deathChannel;
+		private AssetReferenceT<GameObjectEventChannel> _deathChannelReference;
+		private GameObjectEventChannel _deathChannel;
 
 		private IEnumerator Start() {
-			yield return deathChannelReference.LoadAssetAsync(asset => deathChannel = asset);
+			yield return _deathChannelReference.LoadAssetAsync(asset => _deathChannel = asset);
 		}
 
 		private void OnDestroy() {
-			if (deathChannel) {
-				deathChannelReference.ReleaseAsset();
+			if (_deathChannel) {
+				_deathChannelReference.ReleaseAsset();
 			}
 		}
 
@@ -85,8 +85,8 @@ namespace LostNotes.Gameplay {
 		}
 
 		public void OnReset() {
-			if (deathChannel) {
-				deathChannel.Raise(gameObject);
+			if (_deathChannel) {
+				_deathChannel.Raise(gameObject);
 			}
 		}
 	}

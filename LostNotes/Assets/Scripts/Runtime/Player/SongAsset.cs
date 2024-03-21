@@ -100,7 +100,7 @@ namespace LostNotes.Player {
 
 			if (_songPrefab) {
 				var instance = Instantiate(_songPrefab, context.transform.position, Quaternion.identity);
-				instance.BroadcastMessage(nameof(ISongMessages.OnStartSong), this, SendMessageOptions.DontRequireReceiver);
+				instance.BroadcastMessage(nameof(ISongMessages.OnSetSong), this, SendMessageOptions.DontRequireReceiver);
 			}
 
 			_ = context.StartCoroutine(PlayEffects_Co(context, range));

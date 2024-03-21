@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _level: {fileID: 0}
-  moveChannelReference:
+  _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64
     m_SubObjectName: 
     m_SubObjectType: 
