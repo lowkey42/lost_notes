@@ -9,6 +9,15 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private LevelGridTransform _levelGridTransform;
 
+		[SerializeField]
+		private float _stepDurationFactor = 1.0f;
+
+		[SerializeField]
+		private float _stepJumpHeight = 0.2f;
+
+		[SerializeField]
+		private int _stepJumpCount = 3;
+
 		private void Start() {
 			OnValidate();
 		}
@@ -19,7 +28,7 @@ namespace LostNotes.Player {
 		}
 
 		public void OnMove(Vector2Int delta) {
-			_ = _levelGridTransform.MoveBy(delta);
+			_ = _levelGridTransform.MoveBy(delta, _stepJumpHeight, _stepDurationFactor, _stepJumpCount);
 		}
 
 		public void OnPlaySong(SongAsset song) {

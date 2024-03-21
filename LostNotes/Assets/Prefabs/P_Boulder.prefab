@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcfd0b3b608440483d208c149da48c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolatedChild: {fileID: 3369865467406903886}
+  _interpolatedDuration: 0.25
   _level: {fileID: 0}
   _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64
@@ -288,7 +290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8144545258069528212}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.21272132, y: -0.7198883, z: 0.25044152, w: -0.6113833}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

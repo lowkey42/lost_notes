@@ -16,13 +16,26 @@ namespace LostNotes.Gameplay.EnemyActions {
 		[SerializeField]
 		private TilemapMask _attackArea = new(new Vector2Int(9, 9));
 
+		[SerializeField]
+		private float _recoilDelay = 0.05f;
+
+		[SerializeField]
+		private float _recoilDurationFactor = 0.25f;
+
+		[SerializeField]
+		private float _recoilJumpHeight = 0.5f;
+
 		public override IEnumerator Execute(Enemy enemy) {
 			enemy.LevelGridTransform.SendMessageToObjectsInArea(_attackArea, nameof(IAttackMessages.OnAttacked));
 
-			if (_recoil.x != 0 || _recoil.y != 0)
-				_ = enemy.LevelGridTransform.MoveByLocal(_recoil);
+			if (_recoil.x != 0 || _recoil.y != 0) {
+				if (_recoilDelay > 0)
+					yield return new WaitForSeconds(_recoilDelay);
 
-			return null; // TODO: play animation => wait until completion
+				yield return enemy.LevelGridTransform.MoveByLocal(_recoil, _recoilJumpHeight, _recoilDurationFactor);
+			}
+
+			// TODO: play animation => wait until completion
 		}
 
 		public override void CreateTurnIndicators(FutureEnemyState enemy, Transform parent) {

@@ -287,6 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcfd0b3b608440483d208c149da48c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolatedChild: {fileID: 3369865467406903886}
+  _interpolatedDuration: 0.25
   _level: {fileID: 0}
   _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64
@@ -353,6 +355,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelGridTransform: {fileID: 8773612014515123362}
+  _stepDurationFactor: 1
+  _stepJumpHeight: 0.1
+  _stepJumpCount: 1
 --- !u!114 &3033791940794871691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,7 +736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8144545258069528212}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

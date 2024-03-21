@@ -22,36 +22,43 @@ namespace LostNotes.Gameplay.EnemyActions {
 		[SerializeField]
 		private bool _singleSteps = true;
 
+		[SerializeField]
+		private float _interpolatedDurationFactor = 1.0f;
+
+		[SerializeField]
+		private float _jumpHeight = 0.0f;
+
 		public override IEnumerator Execute(Enemy enemy) {
 			if (_singleSteps) {
 				// X movement
 				var xStep = _movement.x < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.x); i++) {
-					if (!enemy.LevelGridTransform.MoveByLocal(new Vector2Int(xStep, 0))) {
+					var move = enemy.LevelGridTransform.MoveByLocal(new Vector2Int(xStep, 0), _jumpHeight, _interpolatedDurationFactor);
+					if (move == null) {
 						enemy.LevelGridTransform.Rotate(_turnOnBlocked);
 						yield break;
 					}
 
-					if (i + 1 < Mathf.Abs(_movement.x))
-						yield return new WaitForSeconds(0.5f); // TODO: wait until movement/animation completion
+					yield return move;
 				}
 
 				// Y movement
 				var yStep = _movement.y < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.y); i++) {
-					if (!enemy.LevelGridTransform.MoveByLocal(new Vector2Int(0, yStep))) {
+					var move = enemy.LevelGridTransform.MoveByLocal(new Vector2Int(0, yStep), _jumpHeight, _interpolatedDurationFactor);
+					if (move == null) {
 						enemy.LevelGridTransform.Rotate(_turnOnBlocked);
 						yield break;
 					}
 
-					if (i + 1 < Mathf.Abs(_movement.y))
-						yield return new WaitForSeconds(0.5f); // TODO: wait until movement/animation completion
+					yield return move;
 				}
 			} else {
-				if (!enemy.LevelGridTransform.MoveByLocal(_movement))
+				var move = enemy.LevelGridTransform.MoveByLocal(_movement, _jumpHeight, _interpolatedDurationFactor);
+				if (move == null)
 					enemy.LevelGridTransform.Rotate(_turnOnBlocked);
-
-				yield return new WaitForSeconds(0.5f); // TODO: wait until movement/animation completion
+				else
+					yield return move;
 			}
 		}
 
