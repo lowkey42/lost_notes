@@ -1927,6 +1927,19 @@ MonoBehaviour:
   _floorLayer: {fileID: 555333577}
   _interactableLayer: {fileID: 1244997640}
   _wallLayer: {fileID: 865494226}
+  _songLoadout:
+    availability:
+      items:
+      - key: {fileID: 11400000, guid: 1369d561109b40944889fe57764d1733, type: 2}
+        value: 0
+      - key: {fileID: 11400000, guid: 8efa4713b05c67f4f831c1042f1b1ebc, type: 2}
+        value: 1
+      - key: {fileID: 11400000, guid: edc1eeec2855db14c811458fa9c4ad84, type: 2}
+        value: 0
+      - key: {fileID: 11400000, guid: 7ed20e676ae765b4292301d7d8008dc8, type: 2}
+        value: 1
+      - key: {fileID: 11400000, guid: f82990598e0d8f342b84961929560f9f, type: 2}
+        value: 0
 --- !u!1 &865494225
 GameObject:
   m_ObjectHideFlags: 0

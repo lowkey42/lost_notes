@@ -11,6 +11,12 @@ namespace LostNotes.Player {
 	internal sealed class SongAsset : ScriptableObject {
 		[SerializeField]
 		private bool _isAvailable = false;
+
+		public bool IsAvailable {
+			get => _isAvailable;
+			set => _isAvailable = value;
+		}
+
 		[SerializeField]
 		private EEffects _effects = EEffects.Noise;
 		[SerializeField]

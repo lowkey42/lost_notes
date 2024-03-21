@@ -15,6 +15,25 @@ namespace LostNotes.Level {
 		[SerializeField]
 		private Tilemap _wallLayer;
 
+		[SerializeField]
+		private SongLoadout _songLoadout = new();
+
+#if UNITY_EDITOR
+		private void OnValidate() {
+			if (_songLoadout.EditorSetUp()) {
+				UnityEditor.EditorUtility.SetDirty(this);
+			}
+		}
+#endif
+
+		private void Start() {
+			_songLoadout.Load();
+		}
+
+		private void OnDestroy() {
+			_songLoadout.Reset();
+		}
+
 		// TODO: TilesInArea and ObjectsInArea currently ignore if tiles are shaded by walls
 
 		public IEnumerable<Vector2Int> TilesInArea(Vector2Int position, int rotation, TilemapMask area) {
