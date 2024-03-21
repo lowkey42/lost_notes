@@ -76,7 +76,7 @@ namespace LostNotes.Level {
 		}
 
 		public bool CanMoveByLocal(Vector2Int delta) {
-			return !_level || _level.IsWalkable(LocalToWorldVector(delta));
+			return !_level || _level.IsWalkable(LocalToWorldPosition(delta));
 		}
 
 		public YieldInstruction MoveByLocal(Vector2Int delta, float jumpHeight = 0, float speed = 1) {
