@@ -23,25 +23,11 @@ namespace LostNotes.Gameplay {
 		public event TurnOrderHandler OnNewRound = delegate { };
 		public event TurnOrderHandler OnNewTurn = delegate { };
 
-		private sealed class ActorComparer : IComparer<ITurnActor> {
-			private readonly IReadOnlyDictionary<ITurnActor, Color> _meta;
-			public ActorComparer(IReadOnlyDictionary<ITurnActor, Color> meta) {
-				_meta = meta;
-			}
-
-			public int Compare(ITurnActor x, ITurnActor y) {
-				return _meta[x].r.CompareTo(_meta[y].r);
-			}
-		}
-
 		private TurnOrder ComputeTurnOrder() {
 			var actors = new List<ITurnActor>();
 			_turnActorsRoot.GetComponentsInChildren(actors);
 			_ = actors.RemoveAll(actor => !actor.HasTurnActions());
-			var meta = actors.ToDictionary(
-				actor => actor,
-				actor => _turnActorsRoot.GetColor(_turnActorsRoot.WorldToCell(actor.gameObject.transform.position))
-			);
+			var meta = actors.ToDictionary(actor => actor, actor => _turnActorsRoot.GetColor(_turnActorsRoot.WorldToCell(actor.gameObject.transform.position)));
 			actors.Sort(new ActorComparer(meta));
 			return new TurnOrder(actors);
 		}
@@ -49,11 +35,17 @@ namespace LostNotes.Gameplay {
 		private IEnumerator DoRound() {
 			var turnOrder = CurrentRoundTurnOrder;
 
+			foreach (var a in turnOrder.Actors)
+				a.TurnOrder = turnOrder;
+
 			OnNewRound(turnOrder);
 
 			for (var i = 0; i < turnOrder.Actors.Count; ++i) {
 				turnOrder.CurrentActor = i;
 				turnOrder.Actors[i].gameObject.BroadcastMessage(nameof(IActorMessages.OnStartTurn), turnOrder, SendMessageOptions.DontRequireReceiver);
+				foreach (var a in turnOrder.Actors)
+					a.gameObject.BroadcastMessage(nameof(IActorMessages.OnStartAnyTurn), turnOrder, SendMessageOptions.DontRequireReceiver);
+				
 				OnNewTurn(turnOrder);
 				yield return turnOrder.Actors[i].DoTurn();
 				turnOrder.Actors[i].gameObject.BroadcastMessage(nameof(IActorMessages.OnEndTurn), SendMessageOptions.DontRequireReceiver);
@@ -61,6 +53,18 @@ namespace LostNotes.Gameplay {
 
 			turnOrder.CurrentActor = turnOrder.Actors.Count;
 			_round = null;
+		}
+
+		private sealed class ActorComparer : IComparer<ITurnActor> {
+			private readonly IReadOnlyDictionary<ITurnActor, Color> _meta;
+
+			public ActorComparer(IReadOnlyDictionary<ITurnActor, Color> meta) {
+				_meta = meta;
+			}
+
+			public int Compare(ITurnActor x, ITurnActor y) {
+				return _meta[x].r.CompareTo(_meta[y].r);
+			}
 		}
 	}
 }

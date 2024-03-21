@@ -7,8 +7,11 @@ using UnityEngine.AddressableAssets;
 namespace LostNotes.UI {
 	internal sealed class MoveIndicatorDrawer : MonoBehaviour, IActorMessages {
 		[SerializeField]
-		private AssetReferenceT<GameObjectEventChannel> _moveChannelReference;
-		private GameObjectEventChannel _moveChannel;
+		private float _minAlpha = 0.2f;
+		
+		[SerializeField]
+		private AssetReferenceT<GameObjectEventChannel> moveChannelReference;
+		private GameObjectEventChannel moveChannel;
 
 		private IEnumerator Start() {
 			_ = transform.TryGetComponentInParent(out _actor);
@@ -38,6 +41,10 @@ namespace LostNotes.UI {
 			_ourTurn = true;
 		}
 
+		public void OnStartAnyTurn(TurnOrder round) {
+			RecreateIndicators();
+		}
+
 		public void OnEndTurn() {
 			_ourTurn = false;
 			RecreateIndicators();
@@ -59,6 +66,14 @@ namespace LostNotes.UI {
 			ClearIndicators();
 			_turnIndicatorRoot = new GameObject("Indicators");
 			_actor.CreateTurnIndicators(_turnIndicatorRoot.transform);
+
+			var distance = _actor.TurnOrder?.GetTurnOrderDistance(_actor) ?? 0;
+			if (distance >= 1 && _actor.TurnOrder != null) {
+				foreach (var sprite in _turnIndicatorRoot.GetComponentsInChildren<SpriteRenderer>()) {
+					var alpha = 1.0f - ((distance - 1) / (float) (_actor.TurnOrder.Actors.Count - 1));
+					sprite.color = sprite.color.WithAlpha((alpha * (1 - _minAlpha)) + _minAlpha);
+				}
+			}
 		}
 	}
 }

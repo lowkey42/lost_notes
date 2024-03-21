@@ -59,6 +59,8 @@ namespace LostNotes.Gameplay {
 			_input.CanChangePlayState = false;
 		}
 
+		public TurnOrder TurnOrder { get; set; }
+
 		public IEnumerator DoTurn() {
 			if (_isAlive) {
 				ActionPoints = _actionPointsPerTurn;
