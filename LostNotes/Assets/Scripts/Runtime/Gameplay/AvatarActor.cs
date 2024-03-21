@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using LostNotes.Level;
 using LostNotes.Player;
 using MyBox;
@@ -72,13 +73,10 @@ namespace LostNotes.Gameplay {
 			if (_isAlive) {
 				ActionPoints = _actionPointsPerTurn;
 				do {
-					if (_turnRoutine is { } coroutine) {
-						_turnRoutine = null;
-						yield return coroutine;
-					} else {
-						yield return null;
-					}
-				} while (_input.CanMove || _input.CanChangePlayState);
+					yield return _turnQueue.TryDequeue(out var coroutine)
+						? coroutine
+						: null;
+				} while (_turnQueue.Count > 0 || _input.CanMove || _input.CanChangePlayState);
 			}
 		}
 
@@ -92,18 +90,18 @@ namespace LostNotes.Gameplay {
 		[SerializeField]
 		private int _stepJumpCount = 3;
 
-		private object _turnRoutine;
+		private readonly Queue<object> _turnQueue = new();
 
 		public void OnMove(Vector2Int delta) {
 			ActionPoints -= _actionPointsToMove;
 
-			_turnRoutine = _gridTransform.MoveBy(delta, _stepJumpHeight, _stepDurationFactor, _stepJumpCount);
+			_turnQueue.Enqueue(_gridTransform.MoveBy(delta, _stepJumpHeight, _stepDurationFactor, _stepJumpCount));
 		}
 
 		public void OnPlaySong(SongAsset song) {
 			ActionPoints -= _actionPointsToPlay;
 
-			_turnRoutine = song.PlaySong(_gridTransform, _songRange);
+			_turnQueue.Enqueue(song.PlaySong(_gridTransform, _songRange));
 		}
 
 		[ContextMenu(nameof(OnAttacked))]
