@@ -10,8 +10,8 @@ namespace LostNotes.UI {
 		private float _minAlpha = 0.2f;
 		
 		[SerializeField]
-		private AssetReferenceT<GameObjectEventChannel> moveChannelReference;
-		private GameObjectEventChannel moveChannel;
+		private AssetReferenceT<GameObjectEventChannel> _moveChannelReference;
+		private GameObjectEventChannel _moveChannel;
 
 		private IEnumerator Start() {
 			_ = transform.TryGetComponentInParent(out _actor);
