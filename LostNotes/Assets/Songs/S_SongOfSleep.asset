@@ -30,4 +30,4 @@ MonoBehaviour:
       Data4: -1934899547
     Path: event:/Songs/Song of Sleep/Song of Sleep Combat
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
-  _songColor: {r: 0, g: 1, b: 0, a: 1}
+  _songColor: {r: 0.1990477, g: 0.6698113, b: 0.5854278, a: 1}

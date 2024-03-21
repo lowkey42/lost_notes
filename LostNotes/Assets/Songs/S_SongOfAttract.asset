@@ -30,4 +30,4 @@ MonoBehaviour:
       Data4: -784863073
     Path: event:/Songs/Song of Attract/Song of Attract
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
-  _songColor: {r: 0, g: 1, b: 0, a: 1}
+  _songColor: {r: 0.48811057, g: 0.17866677, b: 0.5188679, a: 1}

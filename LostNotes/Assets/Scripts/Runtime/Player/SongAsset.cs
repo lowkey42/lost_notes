@@ -35,7 +35,7 @@ namespace LostNotes.Player {
 		private int _currentNodeIndex = 0;
 
 		public int NoteCount => _notes.Length;
-		public bool IsFailure => NoteCount > 0;
+		public bool IsFailure => NoteCount == 0;
 
 		public void Learn() {
 			_isAvailable = true;

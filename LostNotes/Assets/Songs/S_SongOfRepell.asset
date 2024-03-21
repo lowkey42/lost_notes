@@ -30,4 +30,4 @@ MonoBehaviour:
       Data4: -855874565
     Path: event:/Songs/Song of Repell/Song of Repell
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
-  _songColor: {r: 0, g: 1, b: 0, a: 1}
+  _songColor: {r: 0.23949803, g: 0.5250127, b: 0.735849, a: 1}
