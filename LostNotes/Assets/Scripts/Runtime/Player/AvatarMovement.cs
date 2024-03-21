@@ -22,11 +22,7 @@ namespace LostNotes.Player {
 			_ = _levelGridTransform.MoveBy(delta);
 		}
 
-		[SerializeField]
-		private TilemapMask _songRange = new(new Vector2Int(9, 9));
-
 		public void OnPlaySong(SongAsset song) {
-			song.PlaySong(_levelGridTransform, _songRange);
 		}
 
 		public void OnReset() {

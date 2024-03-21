@@ -93,7 +93,7 @@ namespace LostNotes.Player {
 		private Color _songColor = Color.green;
 		public Color Color => _songColor;
 
-		public void PlaySong(LevelGridTransform context, TilemapMask range) {
+		public IEnumerator PlaySong(LevelGridTransform context, TilemapMask range) {
 			if (!_songEvent.IsNull) {
 				RuntimeManager.PlayOneShot(_songEvent);
 			}
@@ -103,7 +103,7 @@ namespace LostNotes.Player {
 				instance.BroadcastMessage(nameof(ISongMessages.OnSetSong), this, SendMessageOptions.DontRequireReceiver);
 			}
 
-			_ = context.StartCoroutine(PlayEffects_Co(context, range));
+			yield return PlayEffects_Co(context, range);
 		}
 	}
 }

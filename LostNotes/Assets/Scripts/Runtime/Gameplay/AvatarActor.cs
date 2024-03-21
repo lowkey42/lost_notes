@@ -1,4 +1,5 @@
 using System.Collections;
+using LostNotes.Level;
 using LostNotes.Player;
 using MyBox;
 using UnityEngine;
@@ -9,6 +10,8 @@ namespace LostNotes.Gameplay {
 		[Header("Components")]
 		[SerializeField]
 		private AvatarInput _input;
+		[SerializeField]
+		private LevelGridTransform _gridTransform;
 
 		[SerializeField]
 		private AssetReferenceT<GameObjectEventChannel> _deathChannelReference;
@@ -48,6 +51,10 @@ namespace LostNotes.Gameplay {
 			}
 		}
 
+		[Header("Song Playing")]
+		[SerializeField]
+		private TilemapMask _songRange = new(new Vector2Int(9, 9));
+
 		[Header("Runtime values")]
 		[SerializeField, ReadOnly]
 		private int _actionPoints = 0;
@@ -65,7 +72,12 @@ namespace LostNotes.Gameplay {
 			if (_isAlive) {
 				ActionPoints = _actionPointsPerTurn;
 				do {
-					yield return null;
+					if (_songRoutine is { } coroutine) {
+						_songRoutine = null;
+						yield return coroutine;
+					} else {
+						yield return null;
+					}
 				} while (_input.CanMove || _input.CanChangePlayState);
 			}
 		}
@@ -74,8 +86,12 @@ namespace LostNotes.Gameplay {
 			ActionPoints -= _actionPointsToMove;
 		}
 
+		private IEnumerator _songRoutine;
+
 		public void OnPlaySong(SongAsset song) {
 			ActionPoints -= _actionPointsToPlay;
+
+			_songRoutine = song.PlaySong(_gridTransform, _songRange);
 		}
 
 		[ContextMenu(nameof(OnAttacked))]
