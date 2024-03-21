@@ -6,15 +6,15 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private Renderer attachedRenderer;
 
-		private Material material;
+		private Material _material;
 
 		private void OnEnable() {
-			material = attachedRenderer.material;
+			_material = attachedRenderer.material;
 		}
 
 		private void OnDisable() {
 			attachedRenderer.material = attachedRenderer.sharedMaterial;
-			Destroy(material);
+			Destroy(_material);
 		}
 
 		[SerializeField, ColorUsage(true, true)]
@@ -25,27 +25,27 @@ namespace LostNotes.Player {
 		private Color noteColor = Color.white;
 
 		public void OnStartTurn(TurnOrder round) {
-			material.SetColor("_HighlightColor", turnColor);
+			_material.SetColor("_HighlightColor", turnColor);
 		}
 
 		public void OnEndTurn() {
-			material.SetColor("_HighlightColor", Color.white);
+			_material.SetColor("_HighlightColor", Color.white);
 		}
 
 		public void OnStartPlaying() {
-			material.SetColor("_HighlightColor", playColor);
+			_material.SetColor("_HighlightColor", playColor);
 		}
 
 		public void OnStopPlaying() {
-			material.SetColor("_HighlightColor", turnColor);
+			_material.SetColor("_HighlightColor", turnColor);
 		}
 
 		public void OnStartNote(NoteAsset note) {
-			material.SetColor("_HighlightColor", noteColor);
+			_material.SetColor("_HighlightColor", noteColor);
 		}
 
 		public void OnStopNote(NoteAsset note) {
-			material.SetColor("_HighlightColor", playColor);
+			_material.SetColor("_HighlightColor", playColor);
 		}
 	}
 }

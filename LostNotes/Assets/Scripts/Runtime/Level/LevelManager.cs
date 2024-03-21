@@ -19,23 +19,23 @@ namespace LostNotes.Level {
 		private IEnumerator Start() {
 			yield return _winLevelChannelReference.LoadAssetAsync(asset => {
 				_winLevelChannel = asset;
-				_winLevelChannel.onTrigger += HandleWin;
+				_winLevelChannel.OnTrigger += HandleWin;
 			});
 
 			yield return _loseLevelChannelReference.LoadAssetAsync(asset => {
 				_loseLevelChannel = asset;
-				_loseLevelChannel.onTrigger += HandleLose;
+				_loseLevelChannel.OnTrigger += HandleLose;
 			});
 		}
 
 		private void OnDestroy() {
 			if (_winLevelChannel) {
-				_winLevelChannel.onTrigger -= HandleWin;
+				_winLevelChannel.OnTrigger -= HandleWin;
 				_winLevelChannelReference.ReleaseAsset();
 			}
 
 			if (_loseLevelChannel) {
-				_loseLevelChannel.onTrigger -= HandleLose;
+				_loseLevelChannel.OnTrigger -= HandleLose;
 				_loseLevelChannelReference.ReleaseAsset();
 			}
 		}

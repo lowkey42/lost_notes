@@ -18,7 +18,7 @@ namespace LostNotes.UI {
 
 			yield return _moveChannelReference.LoadAssetAsync(asset => {
 				_moveChannel = asset;
-				_moveChannel.onTrigger += HandleMove;
+				_moveChannel.OnTrigger += HandleMove;
 			});
 
 			RecreateIndicators();
@@ -26,7 +26,7 @@ namespace LostNotes.UI {
 
 		private void OnDestroy() {
 			if (_moveChannel) {
-				_moveChannel.onTrigger -= HandleMove;
+				_moveChannel.OnTrigger -= HandleMove;
 				_moveChannelReference.ReleaseAsset();
 			}
 		}

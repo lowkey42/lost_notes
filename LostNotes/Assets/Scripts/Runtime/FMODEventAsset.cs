@@ -5,23 +5,23 @@ namespace LostNotes {
 	[CreateAssetMenu]
 	internal sealed class FMODEventAsset : ScriptableObject {
 		[SerializeField]
-		private EventReference eventToTrigger = new();
+		private EventReference _eventToTrigger = new();
 
 		[ContextMenu(nameof(Invoke))]
 		public void Invoke() {
-			if (eventToTrigger.IsNull) {
+			if (_eventToTrigger.IsNull) {
 				return;
 			}
 
-			RuntimeManager.PlayOneShot(eventToTrigger);
+			RuntimeManager.PlayOneShot(_eventToTrigger);
 		}
 
 		public void Invoke(Transform reference) {
-			if (eventToTrigger.IsNull) {
+			if (_eventToTrigger.IsNull) {
 				return;
 			}
 
-			RuntimeManager.PlayOneShot(eventToTrigger, reference.position);
+			RuntimeManager.PlayOneShot(_eventToTrigger, reference.position);
 		}
 	}
 }

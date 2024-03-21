@@ -4,10 +4,10 @@ using UnityEngine;
 namespace LostNotes {
 	[CreateAssetMenu]
 	internal sealed class GameObjectEventChannel : ScriptableObject {
-		public Action<GameObject> onTrigger;
+		public event Action<GameObject> OnTrigger;
 
 		public void Raise(GameObject context) {
-			onTrigger?.Invoke(context);
+			OnTrigger?.Invoke(context);
 		}
 	}
 }

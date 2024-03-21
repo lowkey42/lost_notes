@@ -17,12 +17,12 @@ namespace LostNotes.Player {
 		private IEnumerator Start() {
 			yield return _pageSpawnChannelReference.LoadAssetAsync(asset => {
 				_pageSpawnChannel = asset;
-				_pageSpawnChannel.onTrigger += HandleSongSpawn;
+				_pageSpawnChannel.OnTrigger += HandleSongSpawn;
 			});
 
 			yield return _pageCollectChannelReference.LoadAssetAsync(asset => {
 				_pageCollectChannel = asset;
-				_pageCollectChannel.onTrigger += HandleSongCollect;
+				_pageCollectChannel.OnTrigger += HandleSongCollect;
 			});
 		}
 
