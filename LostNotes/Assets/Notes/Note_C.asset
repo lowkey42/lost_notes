@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Note_C
   m_EditorClassIdentifier: 
   _localizedName: C
-  _inputAction: {fileID: -7142199195949855259, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
+  _inputAction: {fileID: -7865337618381702727, guid: b9ff7dc238aa53446bc8e7c92231c0d3, type: 3}
   _audioEvent:
     Guid:
       Data1: 838115433
