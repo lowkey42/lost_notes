@@ -14,10 +14,10 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private EEffects _effects = EEffects.Noise;
 		[SerializeField]
-		private float effectDelay = 0.1f;
+		private float _effectDelay = 0.1f;
 
 		private IEnumerator PlayEffects_Co(LevelGridTransform context, TilemapMask range) {
-			yield return Wait.forSeconds[effectDelay];
+			yield return Wait.forSeconds[_effectDelay];
 
 			foreach (var message in _effects.GetMessages()) {
 				context.SendMessageToObjectsInArea(range, message, context);
