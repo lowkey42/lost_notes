@@ -12,13 +12,13 @@ namespace LostNotes.UI {
 
 		public void OnSetSong(SongAsset song) {
 			_songs.Add(song);
-			song.onChangeAvailable += HandleAvailable;
+			song.OnChangeAvailable += HandleAvailable;
 			song.SetUpHud(_image);
 		}
 
 		private void OnDestroy() {
 			foreach (var song in _songs) {
-				song.onChangeAvailable -= HandleAvailable;
+				song.OnChangeAvailable -= HandleAvailable;
 			}
 
 			_songs.Clear();

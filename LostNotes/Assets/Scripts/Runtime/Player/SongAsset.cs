@@ -11,8 +11,8 @@ using UnityEngine.UI;
 namespace LostNotes.Player {
 	[CreateAssetMenu]
 	internal sealed class SongAsset : ScriptableObject {
-		public event Action<bool> onChangeAvailable;
-		public event Action<int> onChangeLearned;
+		public event Action<bool> OnChangeAvailable;
+		public event Action<int> OnChangeLearned;
 
 		[SerializeField]
 		private bool _isAvailable = false;
@@ -21,7 +21,7 @@ namespace LostNotes.Player {
 			get => _isAvailable;
 			set {
 				_isAvailable = value;
-				onChangeAvailable?.Invoke(value);
+				OnChangeAvailable?.Invoke(value);
 			}
 		}
 
@@ -31,7 +31,7 @@ namespace LostNotes.Player {
 			get => _notesLearned;
 			set {
 				_notesLearned = value;
-				onChangeLearned?.Invoke(value);
+				OnChangeLearned?.Invoke(value);
 			}
 		}
 
