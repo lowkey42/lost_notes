@@ -20,7 +20,7 @@ namespace LostNotes.Level {
 		public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData) {
 			tileData.sprite = sprite;
 			tileData.gameObject = prefab;
-			tileData.flags = TileFlags.InstantiateGameObjectRuntimeOnly;
+			tileData.flags = TileFlags.None;
 		}
 
 		public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
