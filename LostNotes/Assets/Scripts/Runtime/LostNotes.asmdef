@@ -2,6 +2,7 @@
     "name": "LostNotes",
     "rootNamespace": "",
     "references": [
+        "AYellowpaper.SerializedCollections",
         "Cinemachine",
         "MyBox",
         "Slothsoft.UnityExtensions",
