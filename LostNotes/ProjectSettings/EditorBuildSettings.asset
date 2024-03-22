@@ -29,5 +29,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_03_03.unity
     guid: d0d4e93a6c9c55e4fa1f2791b9b1d232
+  - enabled: 1
+    path: Assets/Scenes/Level_03_02 1.unity
+    guid: e06c4bb1b29bcba47bffbd2492574d8a
+  - enabled: 1
+    path: Assets/Scenes/Level_03_02 3.unity
+    guid: 4eeb0b65216ae3a4aad41fc26d3afd77
+  - enabled: 1
+    path: Assets/Scenes/Level_03_02 2.unity
+    guid: 2b9d5491078c8f247b5566ee5254c974
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: dfc59e41e9112be478fe0a71023d0488, type: 2}
