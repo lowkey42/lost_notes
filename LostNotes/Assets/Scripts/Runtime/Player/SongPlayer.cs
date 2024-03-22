@@ -22,6 +22,7 @@ namespace LostNotes.Player {
 		}
 
 		public void OnStopPlaying() {
+			ResetSongs();
 		}
 
 		private ESongStatus _songStatus = ESongStatus.NotLearned;

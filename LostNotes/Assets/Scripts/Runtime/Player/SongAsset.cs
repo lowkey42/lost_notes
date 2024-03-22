@@ -13,6 +13,7 @@ namespace LostNotes.Player {
 	internal sealed class SongAsset : ScriptableObject {
 		public event Action<bool> OnChangeAvailable;
 		public event Action<int> OnChangeLearned;
+		public event Action<int> OnChangePlayed;
 
 		[SerializeField]
 		private bool _isAvailable = false;
@@ -81,6 +82,7 @@ namespace LostNotes.Player {
 
 		public void ResetInput() {
 			_currentNodeIndex = 0;
+			OnChangePlayed?.Invoke(0);
 		}
 
 		public ESongStatus PlayNote(NoteAsset note) {
@@ -94,6 +96,7 @@ namespace LostNotes.Player {
 
 			if (_notes[_currentNodeIndex].Is(note)) {
 				_currentNodeIndex++;
+				OnChangePlayed?.Invoke(_currentNodeIndex);
 				NotesLearned = Mathf.Max(NotesLearned, _currentNodeIndex);
 				return _currentNodeIndex == _notes.Length
 					? ESongStatus.Done
@@ -101,6 +104,7 @@ namespace LostNotes.Player {
 			}
 
 			_currentNodeIndex = _notes.Length;
+			OnChangePlayed?.Invoke(0);
 			return ESongStatus.Failed;
 		}
 
