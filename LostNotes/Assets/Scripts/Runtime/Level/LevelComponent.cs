@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Slothsoft.UnityExtensions;
@@ -6,8 +7,23 @@ using UnityEngine.Tilemaps;
 
 namespace LostNotes.Level {
 	internal sealed class LevelComponent : MonoBehaviour {
+		public event Action<Vector2Int, TileBase> OnSetHighlight;
+		public event Action<Vector2Int> OnClearHighlight;
+
 		[SerializeField, Expandable]
 		private Tilemap _floorLayer;
+
+		public void SetHighlighting(IEnumerable<Vector2Int> positions, TileBase tile) {
+			foreach (var position in positions) {
+				OnSetHighlight?.Invoke(position, tile);
+			}
+		}
+
+		public void ClearHighlighting(IEnumerable<Vector2Int> positions) {
+			foreach (var position in positions) {
+				OnClearHighlight?.Invoke(position);
+			}
+		}
 
 		[SerializeField, Expandable]
 		private Tilemap _interactableLayer;

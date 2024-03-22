@@ -15,6 +15,8 @@ namespace LostNotes.Gameplay {
 		[SerializeField]
 		private LevelGridTransform _gridTransform;
 
+		public LevelComponent Level => _gridTransform.Level;
+
 		[SerializeField]
 		private AssetReferenceT<GameObjectEventChannel> _deathChannelReference;
 		private GameObjectEventChannel _deathChannel;
@@ -56,6 +58,13 @@ namespace LostNotes.Gameplay {
 		[Header("Song Playing")]
 		[SerializeField]
 		private TilemapMask _songRange = new(new Vector2Int(9, 9));
+
+		public IEnumerable<Vector2Int> TilesInSongRange => _gridTransform
+			.Level
+			.TilesInArea(_gridTransform.Position2d, _gridTransform.Rotation2d, _songRange);
+
+		public IEnumerable<GameObject> ObjectsInSongRange => _gridTransform
+			.ObjectsInArea(_songRange);
 
 		[Header("Runtime values")]
 		[SerializeField, ReadOnly]
