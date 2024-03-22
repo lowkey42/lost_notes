@@ -198,7 +198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5611510581639139948
 RectTransform:
   m_ObjectHideFlags: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
   _validSongs: {fileID: 11400000, guid: bec1da92d2adc3c4ba8f1d79ae16d932, type: 2}
   _failureSongs:
   - {fileID: 11400000, guid: 0a5efc4e48d4560418b2bfd268acc0d1, type: 2}
+  _notePrefab: {fileID: 9129755563245552758, guid: d5ad930dd00b7c747a3b5d8d5192c9ff, type: 3}
 --- !u!114 &4099957774684976844
 MonoBehaviour:
   m_ObjectHideFlags: 0

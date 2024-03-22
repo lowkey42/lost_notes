@@ -27,6 +27,9 @@ namespace LostNotes.Player {
 		private ESongStatus _songStatus = ESongStatus.NotLearned;
 		private SongAsset _song;
 
+		[SerializeField]
+		private GameObject _notePrefab;
+
 		public void OnStartNote(NoteAsset note) {
 			var isPlayingAny = false;
 			foreach (var song in _validSongs.Songs) {
@@ -39,6 +42,10 @@ namespace LostNotes.Player {
 					_songStatus = ESongStatus.Done;
 					_song = song;
 				}
+			}
+
+			if (isPlayingAny && _songStatus != ESongStatus.Done) {
+				_ = Instantiate(_notePrefab, transform);
 			}
 
 			if (!isPlayingAny) {
