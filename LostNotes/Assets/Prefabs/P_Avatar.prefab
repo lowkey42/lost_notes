@@ -823,7 +823,7 @@ Animator:
   m_GameObject: {fileID: 6075892406356288915}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 12004acc752a01f71842d58faadb81d2, type: 2}
+  m_Controller: {fileID: 22100000, guid: da6dce86769a83ca98b475efc8c0f5d8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -849,13 +849,13 @@ MonoBehaviour:
   _animatorPerDirection:
     _serializedList:
     - Key: 0
-      Value: {fileID: 22100000, guid: 12004acc752a01f71842d58faadb81d2, type: 2}
+      Value: {fileID: 22100000, guid: da6dce86769a83ca98b475efc8c0f5d8, type: 2}
     - Key: 270
-      Value: {fileID: 22100000, guid: b8fdfb01159aae3eda5f298ac9aa0459, type: 2}
+      Value: {fileID: 22100000, guid: da6dce86769a83ca98b475efc8c0f5d8, type: 2}
     - Key: 90
       Value: {fileID: 22100000, guid: da6dce86769a83ca98b475efc8c0f5d8, type: 2}
     - Key: 180
-      Value: {fileID: 22100000, guid: ba99ea1b18cff991c8670b61b8e5b527, type: 2}
+      Value: {fileID: 22100000, guid: da6dce86769a83ca98b475efc8c0f5d8, type: 2}
   _levelGridTransform: {fileID: 8773612014515123362}
   _animator: {fileID: 4517435104843382572}
   _walkingSpeed: 1
