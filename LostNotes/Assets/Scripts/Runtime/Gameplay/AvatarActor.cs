@@ -105,17 +105,17 @@ namespace LostNotes.Gameplay {
 		private readonly Queue<object> _turnQueue = new();
 
 		public void OnMove(Vector2Int delta) {
-			if (!_isAlone) {
-				ActionPoints -= _actionPointsToMove;
-			}
+			ActionPoints -= _isAlone
+				? 0
+				: _actionPointsToMove;
 
 			_turnQueue.Enqueue(_gridTransform.MoveBy(delta, _stepJumpHeight, _stepDurationFactor, _stepJumpCount));
 		}
 
 		public void OnPlaySong(SongAsset song) {
-			if (!_isAlone) {
-				ActionPoints -= _actionPointsToPlay;
-			}
+			ActionPoints -= _isAlone
+				? 0
+				: _actionPointsToPlay;
 
 			_turnQueue.Enqueue(song.PlaySong(_gridTransform, _songRange));
 		}

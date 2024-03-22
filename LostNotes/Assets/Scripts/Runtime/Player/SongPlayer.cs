@@ -10,10 +10,15 @@ namespace LostNotes.Player {
 		[SerializeField, Expandable]
 		private SongAsset[] _failureSongs = Array.Empty<SongAsset>();
 
-		public void OnStartPlaying() {
+		private void ResetSongs() {
+			_songStatus = ESongStatus.NotLearned;
 			foreach (var song in _validSongs.Songs) {
 				song.ResetInput();
 			}
+		}
+
+		public void OnStartPlaying() {
+			ResetSongs();
 		}
 
 		public void OnStopPlaying() {
