@@ -20,12 +20,12 @@ namespace LostNotes.Level {
 		public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData) {
 			tileData.sprite = sprite;
 			tileData.gameObject = prefab;
-			tileData.flags = TileFlags.None;
+			tileData.flags = TileFlags.InstantiateGameObjectRuntimeOnly;
 		}
 
 		public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
 			if (go) {
-				go.transform.eulerAngles = new(0, tilemap.GetTransformMatrix(position).rotation.eulerAngles.y, 0);
+				go.transform.eulerAngles = new(0, tilemap.GetTransformMatrix(position).rotation.eulerAngles.z, 0);
 			}
 
 			return base.StartUp(position, tilemap, go);
