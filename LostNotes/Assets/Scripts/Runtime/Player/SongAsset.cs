@@ -46,6 +46,8 @@ namespace LostNotes.Player {
 		private IEnumerator PlayEffects_Co(LevelGridTransform context, TilemapMask range) {
 			yield return Wait.forSeconds[_effectDelay];
 
+			OnChangePlayed?.Invoke(0);
+
 			var receivers = context.ObjectsInArea(range);
 
 			switch (_receiverSorting) {
@@ -82,6 +84,9 @@ namespace LostNotes.Player {
 
 		public void ResetInput() {
 			_currentNodeIndex = 0;
+		}
+
+		public void ResetPlaying() {
 			OnChangePlayed?.Invoke(0);
 		}
 
