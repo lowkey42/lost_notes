@@ -8,6 +8,7 @@ namespace LostNotes.Player {
 		public event Action<InputActionReference> OnActionInput;
 		public event Action<Vector2Int> OnMoveInput;
 		public event Action OnTogglePlay;
+		public event Action OnReset;
 
 		public void RaiseInput(InputActionReference input) {
 			OnActionInput?.Invoke(input);
@@ -23,6 +24,10 @@ namespace LostNotes.Player {
 
 		public void RaiseTogglePlay() {
 			OnTogglePlay?.Invoke();
+		}
+
+		public void RaiseReset() {
+			OnReset?.Invoke();
 		}
 	}
 }

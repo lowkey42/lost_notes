@@ -32,6 +32,7 @@ namespace LostNotes.Player {
 				_avatarInput.OnActionInput += HandleActionInput;
 				_avatarInput.OnMoveInput += HandleMoveInput;
 				_avatarInput.OnTogglePlay += HandleTogglePlay;
+				_avatarInput.OnReset += HandleReset;
 			}
 		}
 
@@ -40,7 +41,12 @@ namespace LostNotes.Player {
 				_avatarInput.OnActionInput -= HandleActionInput;
 				_avatarInput.OnMoveInput -= HandleMoveInput;
 				_avatarInput.OnTogglePlay -= HandleTogglePlay;
+				_avatarInput.OnReset -= HandleReset;
 			}
+		}
+
+		private void HandleReset() {
+			gameObject.BroadcastMessage(nameof(IAvatarMessages.OnReset), SendMessageOptions.DontRequireReceiver);
 		}
 
 		private void HandleActionInput(InputActionReference input) {
@@ -80,7 +86,7 @@ namespace LostNotes.Player {
 		}
 
 		private void HandleReset(InputAction.CallbackContext context) {
-			gameObject.BroadcastMessage(nameof(IAvatarMessages.OnReset), SendMessageOptions.DontRequireReceiver);
+			HandleReset();
 		}
 
 		private Vector2Int _lastInput;
