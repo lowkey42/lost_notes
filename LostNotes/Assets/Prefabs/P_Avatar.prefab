@@ -691,8 +691,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8afee9b0916caa4e8a88d4b010f65c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachedRenderer: {fileID: 8644219082990533721}
-  turnColor: {r: 0.65639025, g: 0.72100896, b: 0.6942702, a: 0.5019608}
+  _attachedRenderer: {fileID: 8644219082990533721}
+  _turnColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
+  _selectionColor: {r: 0.23362409, g: 0.46122584, b: 0.6603774, a: 1}
 --- !u!212 &8644219082990533721
 SpriteRenderer:
   m_ObjectHideFlags: 0

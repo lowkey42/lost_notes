@@ -2,33 +2,57 @@ using LostNotes.Gameplay;
 using UnityEngine;
 
 namespace LostNotes.Player {
-	internal sealed class ActorSkin : MonoBehaviour, IActorMessages {
+	internal sealed class ActorSkin : MonoBehaviour, IActorMessages, ISelectionMessages {
 		[SerializeField]
-		private Renderer attachedRenderer;
+		private Renderer _attachedRenderer;
 
 		private Material _material;
 
 		private void OnEnable() {
-			_material = attachedRenderer.material;
+			_material = _attachedRenderer.material;
 		}
 
 		private void OnDisable() {
-			attachedRenderer.material = attachedRenderer.sharedMaterial;
+			_attachedRenderer.material = _attachedRenderer.sharedMaterial;
 			Destroy(_material);
 		}
 
 		[SerializeField, ColorUsage(true, true)]
-		private Color turnColor = Color.white;
+		private Color _turnColor = Color.white;
+		[SerializeField, ColorUsage(true, true)]
+		private Color _selectionColor = Color.white;
+
+		private bool _hasTurnStarted = false;
+		private bool _isSelected = false;
 
 		public void OnStartTurn(TurnOrder round) {
-			if (_material) {
-				_material.SetColor("_HighlightColor", turnColor);
-			}
+			_hasTurnStarted = true;
+			UpdateColor();
 		}
 
 		public void OnEndTurn() {
+			_hasTurnStarted = false;
+			UpdateColor();
+		}
+
+		public void OnSelect() {
+			_isSelected = true;
+			UpdateColor();
+		}
+
+		public void OnDeselect() {
+			_isSelected = false;
+			UpdateColor();
+		}
+
+		private void UpdateColor() {
 			if (_material) {
-				_material.SetColor("_HighlightColor", Color.white);
+				var color = _isSelected
+					? _selectionColor
+					: _hasTurnStarted
+						? _turnColor
+						: Color.white;
+				_material.SetColor("_HighlightColor", color);
 			}
 		}
 	}
