@@ -6,6 +6,8 @@ namespace LostNotes.UI {
 	internal sealed class NoteHud : MonoBehaviour {
 		[SerializeField]
 		private Image _image;
+		[SerializeField]
+		private Image _question;
 
 		private SongAsset _song;
 		private int _noteIndex;
@@ -35,9 +37,9 @@ namespace LostNotes.UI {
 		}
 
 		private void HandleLearned(int value) {
-			_image.color = value > _noteIndex
-				? Color.white
-				: default;
+			var isLearned = value > _noteIndex;
+			_image.enabled = isLearned;
+			_question.enabled = !isLearned;
 		}
 	}
 }
