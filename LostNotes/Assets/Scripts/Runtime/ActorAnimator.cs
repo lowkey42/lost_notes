@@ -1,10 +1,13 @@
-using System;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using LostNotes.Gameplay;
 using LostNotes.Level;
 using LostNotes.Player;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace LostNotes {
 	internal class ActorAnimator : MonoBehaviour, IActorStatusMessages, INoteMessages, IEnemyMessages {
@@ -37,6 +40,8 @@ namespace LostNotes {
 		private LevelGridDirection _lastDirection = LevelGridDirection.East;
 		private RuntimeAnimatorController _defaultAnimationController;
 
+		private TweenerCore<Vector3, Vector3, VectorOptions> _idleSequence;
+
 		private bool _isWalking = false;
 		private bool _isActing = false;
 		private bool _isSleeping = false;
@@ -52,6 +57,9 @@ namespace LostNotes {
 			OnValidate();
 			_defaultAnimationController = _animator.runtimeAnimatorController;
 			UpdateAnimator();
+
+			_idleSequence = transform.DOScaleY(0.95f, 0.333f).SetDelay(Random.Range(0f, 1f)).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutBounce)
+			                         .OnPause(() => transform.localScale = Vector3.one);
 		}
 
 		private void Update() {
@@ -74,13 +82,17 @@ namespace LostNotes {
 		}
 
 		public void OnGainedStatusEffect(StatusEffects gainedStatusEffect) {
-			if (gainedStatusEffect.HasFlag(StatusEffects.Sleeping))
+			if (gainedStatusEffect.HasFlag(StatusEffects.Sleeping)) {
 				_animator.SetBool(_animatorIsSleeping, _isSleeping = true);
+				_idleSequence.Pause();
+			}
 		}
 
 		public void OnLostStatusEffect(StatusEffects lostStatusEffect) {
-			if (lostStatusEffect.HasFlag(StatusEffects.Sleeping))
+			if (lostStatusEffect.HasFlag(StatusEffects.Sleeping)) {
 				_animator.SetBool(_animatorIsSleeping, _isSleeping = false);
+				_idleSequence.Play();
+			}
 		}
 
 		public void OnStartPlaying() {
