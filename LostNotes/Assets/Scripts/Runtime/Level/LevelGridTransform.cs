@@ -65,12 +65,13 @@ namespace LostNotes.Level {
 			}
 
 			_interpolationDurationFactor = durationFactor;
-			_interpolatedChild.localPosition = Vector3.zero;
+			var oldPosition = transform.position;
+			transform.position = newPosition;
+			_interpolatedChild.position = oldPosition;
 			_interpolationSequence = _interpolatedChild.DOJump(newPosition, jumpHeight, jumpCount, durationFactor * _interpolatedDuration);
 			_interpolationSequence.SetEase(Ease.InOutQuad);
 			_interpolationSequence.OnComplete(() => {
 				_interpolatedChild.localPosition = Vector3.zero;
-				transform.position = newPosition;
 				SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
 				if (_moveChannel) _moveChannel.Raise(gameObject);
 				_interpolationSequence = null;
