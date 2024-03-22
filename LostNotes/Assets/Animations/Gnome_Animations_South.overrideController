@@ -9,7 +9,17 @@ AnimatorOverrideController:
   m_Name: Gnome_Animations_South
   m_Controller: {fileID: 9100000, guid: 9d33812e5dcfdfb32bcbb58cc19227ae, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: d36abcd110cca5edb98592ca5f8a24a4, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: a6edee08b9a561bf0a183672f18386dd, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3452a8a7f1373750a89fc52941354a8b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 05f4e80aa125b338fb5a8054cad178fa, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1b73ec5a2de811e28b89518429ea8ad0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1024d2e4564a56f9daab70655f490a0f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 451d4b3622a65e538808ae9d2d3e49cb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 396aab0293e10c0eeaeed1f2cf394011, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c4bdb49a65b4407268d968411992c974, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 11d775c21cca5ef8bbfb5e5a7c3e9940, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3f63c5af540d75b17b3d40b7f1fad99c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 11d775c21cca5ef8bbfb5e5a7c3e9940, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 1c6192134d8ae2a23bf21a59b2ee10e0, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: a6edee08b9a561bf0a183672f18386dd, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0ccf7aba821fb64e4aab9fff557231d7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d36abcd110cca5edb98592ca5f8a24a4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0ccf7aba821fb64e4aab9fff557231d7, type: 2}
