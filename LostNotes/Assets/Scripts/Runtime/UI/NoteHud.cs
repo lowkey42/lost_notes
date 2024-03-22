@@ -25,7 +25,7 @@ namespace LostNotes.UI {
 		}
 
 		private void HandleLearned(int value) {
-			_image.color = value > transform.GetSiblingIndex()
+			_image.color = value >= transform.GetSiblingIndex()
 				? Color.white
 				: default;
 		}

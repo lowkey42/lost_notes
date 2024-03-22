@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using FMODUnity;
 using LostNotes.Gameplay;
@@ -71,6 +72,7 @@ namespace LostNotes.Player {
 		private NoteAsset[] _notes = Array.Empty<NoteAsset>();
 		private int _currentNodeIndex = 0;
 
+		public IEnumerable<NoteAsset> Notes => _notes;
 		public int NoteCount => _notes.Length;
 		public bool IsFailure => NoteCount == 0;
 
@@ -112,6 +114,7 @@ namespace LostNotes.Player {
 		public Color Color => _songColor;
 		[SerializeField]
 		private Sprite _hudSprite;
+		public Sprite HudSprite => _hudSprite;
 
 		public IEnumerator PlaySong(LevelGridTransform context, TilemapMask range) {
 			if (!_songEvent.IsNull) {
@@ -124,14 +127,6 @@ namespace LostNotes.Player {
 			}
 
 			yield return PlayEffects_Co(context, range);
-		}
-
-		public void SetUpHud(Image image) {
-			image.sprite = _hudSprite;
-			for (var i = 0; i < _notes.Length; i++) {
-				var child = image.transform.GetChild(i);
-				child.SendMessage(nameof(INoteMessages.OnStartNote), _notes[i], SendMessageOptions.DontRequireReceiver);
-			}
 		}
 	}
 }
