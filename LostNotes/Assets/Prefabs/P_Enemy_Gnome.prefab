@@ -199,7 +199,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: af2956e53107d02068b628ddbbef8e60, type: 2}
   - {fileID: 11400000, guid: 01787f193b8f7e8fda6f883931efeae0, type: 2}
   _status: {fileID: 6966819272973433147}
-  _statusSpecificActionOverrides: []
+  _statusSpecificActionOverrides:
+  - RequiredStatusEffects: 2
+    ForbiddenStatusEffects: 1
+    Actions:
+    - {fileID: 11400000, guid: fcb4788b9b0ff595d902f84819648443, type: 2}
+    - {fileID: 11400000, guid: 173575d09dbd3a968846233e615cd65b, type: 2}
   <LevelGridTransform>k__BackingField: {fileID: 8773612014515123362}
 --- !u!114 &-4796435925094127541
 MonoBehaviour:
