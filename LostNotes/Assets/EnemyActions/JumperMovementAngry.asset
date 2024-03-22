@@ -18,7 +18,7 @@ MonoBehaviour:
   - {fileID: 5635456826061717842, guid: f0a9a64fdb185c778a2e5cb91189f9ad, type: 3}
   - {fileID: 5635456826061717842, guid: 76ca77b6278a11e3a805c09e971edea0, type: 3}
   _stopIndicatorPrefab: {fileID: 5635456826061717842, guid: 525104f5a87c17c6ca1f49c58142e911, type: 3}
-  _movement: {x: 0, y: 4}
+  _movement: {x: 4, y: 0}
   _minTurnOnBlocked: 90
   _singleSteps: 0
   _interpolatedDurationFactor: 1

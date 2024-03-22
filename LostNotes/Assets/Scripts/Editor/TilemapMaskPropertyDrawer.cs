@@ -44,9 +44,9 @@ namespace Editor {
 			style.fixedWidth = 16;
 			style.fixedHeight = 16;
 
-			for (var x = 0; x < data.Size.x; x++) {
+			for (var y = 0; y < data.Size.y; y++) {
 				EditorGUILayout.BeginHorizontal(style);
-				for (var y = 0; y < data.Size.y; y++) {
+				for (var x = 0; x < data.Size.x; x++) {
 					if (x == data.Size.x / 2 && y == data.Size.y / 2) {
 						EditorGUILayout.LabelField("\u27a1", GUILayout.ExpandWidth(false), GUILayout.Width(16));
 						continue;
