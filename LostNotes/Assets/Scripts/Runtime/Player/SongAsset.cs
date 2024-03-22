@@ -7,7 +7,6 @@ using LostNotes.Gameplay;
 using LostNotes.Level;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace LostNotes.Player {
 	[CreateAssetMenu]
