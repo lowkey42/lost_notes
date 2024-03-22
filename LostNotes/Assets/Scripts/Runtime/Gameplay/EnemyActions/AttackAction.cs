@@ -17,6 +17,12 @@ namespace LostNotes.Gameplay.EnemyActions {
 		private TilemapMask _attackArea = new(new Vector2Int(9, 9));
 
 		[SerializeField]
+		private float _attackSpeed = 1.0f;
+
+		[SerializeField]
+		private float _endTurnDelay = 0.25f;
+
+		[SerializeField]
 		private float _recoilDelay = 0.05f;
 
 		[SerializeField]
@@ -26,16 +32,23 @@ namespace LostNotes.Gameplay.EnemyActions {
 		private float _recoilJumpHeight = 0.5f;
 
 		public override IEnumerator Execute(Enemy enemy) {
+			enemy.BroadcastMessage(nameof(IEnemyMessages.OnStartAttack), _attackSpeed, SendMessageOptions.DontRequireReceiver);
+			
 			enemy.LevelGridTransform.SendMessageToObjectsInArea(_attackArea, nameof(IAttackMessages.OnAttacked));
 
 			if (_recoil.x != 0 || _recoil.y != 0) {
 				if (_recoilDelay > 0)
 					yield return new WaitForSeconds(_recoilDelay);
 
+				var now = Time.time;
 				yield return enemy.LevelGridTransform.MoveByLocal(_recoil, _recoilJumpHeight, _recoilDurationFactor);
-			}
+				var delayLeft = _endTurnDelay - (Time.time - now);
+				if (delayLeft > 0)
+					yield return new WaitForSeconds(delayLeft);
+			} else
+				yield return new WaitForSeconds(_endTurnDelay);
 
-			// TODO: play animation => wait until completion
+			enemy.BroadcastMessage(nameof(IEnemyMessages.OnEndAttack), SendMessageOptions.DontRequireReceiver);
 		}
 
 		public override void CreateTurnIndicators(FutureEnemyState enemy, Transform parent) {

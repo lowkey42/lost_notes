@@ -20,6 +20,7 @@ namespace LostNotes.Level {
 		private AssetReferenceT<GameObjectEventChannel> _moveChannelReference;
 		private GameObjectEventChannel _moveChannel;
 		private Sequence _interpolationSequence;
+		private float _interpolationDurationFactor = 1;
 
 		private IEnumerator Start() {
 			_ = _level || transform.TryGetComponentInParent(out _level);
@@ -41,6 +42,10 @@ namespace LostNotes.Level {
 
 		public LevelGridDirection Direction => (LevelGridDirection) Mathf.Clamp(Rotation2d / 90 * 90, 0, 270);
 
+		public bool IsMoving => _interpolationSequence != null;
+
+		public float MovingDurationFactor => _interpolationDurationFactor;
+		
 		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1) {
 			_interpolationSequence?.Kill(true);
 			
@@ -59,6 +64,7 @@ namespace LostNotes.Level {
 				return new WaitForSeconds(durationFactor * _interpolatedDuration);
 			}
 
+			_interpolationDurationFactor = durationFactor;
 			_interpolatedChild.localPosition = Vector3.zero;
 			_interpolationSequence = _interpolatedChild.DOJump(newPosition, jumpHeight, jumpCount, durationFactor * _interpolatedDuration);
 			_interpolationSequence.SetEase(Ease.InOutQuad);
