@@ -24,6 +24,10 @@ namespace LostNotes.Level {
 		}
 
 		public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
+			if (go) {
+				go.transform.eulerAngles = new(0, tilemap.GetTransformMatrix(position).rotation.eulerAngles.y, 0);
+			}
+
 			return base.StartUp(position, tilemap, go);
 		}
 	}
