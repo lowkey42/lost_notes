@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isWalkable: 0
+  _isInteractionBlocking: 0
 --- !u!114 &2912192758979876536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,8 +394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attachedRenderer: {fileID: 8644219082990533721}
   turnColor: {r: 0.6653949, g: 0.6653949, b: 0.6653949, a: 0.5019608}
-  playColor: {r: 1, g: 0.41996336, b: 0.41996336, a: 0.74509805}
-  noteColor: {r: 0.67591023, g: 0.16567281, b: 0.6886792, a: 1}
 --- !u!212 &8644219082990533721
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -515,8 +514,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 8
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e560d40a7c8c93440a305a927adf3f5a, type: 2}
+  m_sharedMaterial: {fileID: 3440114617982639813, guid: e560d40a7c8c93440a305a927adf3f5a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -620,7 +619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8144545258069528212}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.1736482, y: -0, z: -0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
