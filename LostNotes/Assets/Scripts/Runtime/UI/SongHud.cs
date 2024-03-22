@@ -9,7 +9,9 @@ namespace LostNotes.UI {
 		[SerializeField]
 		private Image _image;
 		[SerializeField]
-		private GameObject _notePrefab;
+		private Transform _noteContainer;
+		[SerializeField]
+		private NoteHud _notePrefab;
 
 		private readonly List<SongAsset> _songs = new();
 
@@ -18,11 +20,13 @@ namespace LostNotes.UI {
 			song.OnChangeAvailable += HandleAvailable;
 			_image.sprite = song.HudSprite;
 
-			transform.Clear();
+			_noteContainer.Clear();
+
+			var i = 0;
 			foreach (var note in song.Notes) {
-				var instance = Instantiate(_notePrefab, transform);
-				instance.BroadcastMessage(nameof(INoteMessages.OnStartNote), note, SendMessageOptions.DontRequireReceiver);
-				instance.BroadcastMessage(nameof(ISongMessages.OnSetSong), song, SendMessageOptions.DontRequireReceiver);
+				var instance = Instantiate(_notePrefab, _noteContainer);
+				instance.SetUpNote(note, song, i);
+				i++;
 			}
 		}
 
@@ -36,6 +40,7 @@ namespace LostNotes.UI {
 
 		private void HandleAvailable(bool isAvailable) {
 			_image.enabled = isAvailable;
+			_noteContainer.gameObject.SetActive(isAvailable);
 		}
 	}
 }

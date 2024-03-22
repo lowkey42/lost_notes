@@ -1,31 +1,41 @@
-using System.Collections.Generic;
 using LostNotes.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace LostNotes.UI {
-	internal sealed class NoteHud : MonoBehaviour, ISongMessages {
+	internal sealed class NoteHud : MonoBehaviour {
 		[SerializeField]
 		private Image _image;
 
-		private readonly List<SongAsset> _songs = new();
+		private SongAsset _song;
+		private int _noteIndex;
 
-		public void OnSetSong(SongAsset song) {
-			_songs.Add(song);
+		internal void SetUpNote(NoteAsset note, SongAsset song, int i) {
+			_noteIndex = i;
+
+			(_image.transform.parent as RectTransform).pivot = new Vector2(0.5f, Mathf.InverseLerp(-6, 6, note.StepsToB));
+			_image.transform.localEulerAngles = new(0, 0, note.InputRotation);
+
+			ResetSong();
+
+			_song = song;
 			song.OnChangeLearned += HandleLearned;
 			HandleLearned(song.NotesLearned);
 		}
 
-		private void OnDestroy() {
-			foreach (var song in _songs) {
-				song.OnChangeLearned -= HandleLearned;
+		private void ResetSong() {
+			if (_song) {
+				_song.OnChangeLearned -= HandleLearned;
+				_song = null;
 			}
+		}
 
-			_songs.Clear();
+		private void OnDestroy() {
+			ResetSong();
 		}
 
 		private void HandleLearned(int value) {
-			_image.color = value >= transform.GetSiblingIndex()
+			_image.color = value > _noteIndex
 				? Color.white
 				: default;
 		}
