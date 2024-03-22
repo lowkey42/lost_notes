@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 8644219082990533721}
   - component: {fileID: 1110440018116961920}
   - component: {fileID: 8883095392436103592}
+  - component: {fileID: 3272307316685889471}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -497,6 +498,21 @@ MonoBehaviour:
   _walkingSpeed: 1
   _actingSpeed: 1
   _idleSpeed: 1
+--- !u!114 &3272307316685889471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075892406356288915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34bec867b6c54928b71ef6304f02c738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 8644219082990533721}
+  _sleepingTint: {r: 0.6, g: 0.6, b: 0.7, a: 1}
+  _angryTint: {r: 1, g: 0.9, b: 0.9, a: 1}
 --- !u!1 &6724075308481043999
 GameObject:
   m_ObjectHideFlags: 0

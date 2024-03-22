@@ -17,6 +17,11 @@ namespace LostNotes.Gameplay {
 			ApplyStatusEffect(StatusEffects.Angry);
 		}
 
+		[ButtonMethod]
+		private void DebugMakeSleeping() {
+			ApplyStatusEffect(StatusEffects.Sleeping);
+		}
+
 		public StatusEffects GetStatusFlags() {
 			return _statusEffects;
 		}
