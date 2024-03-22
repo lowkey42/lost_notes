@@ -26,6 +26,8 @@ namespace LostNotes.Gameplay {
 
 		[field: SerializeField] public LevelGridTransform LevelGridTransform { get; private set; }
 
+		public bool IsSleeping => _status && _status.HasStatusEffect(StatusEffects.Sleeping);
+
 		private void OnValidate() {
 			if (!LevelGridTransform)
 				LevelGridTransform = GetComponentInChildren<LevelGridTransform>();
@@ -48,12 +50,16 @@ namespace LostNotes.Gameplay {
 			if (!HasTurnActions())
 				yield break;
 
-			foreach (var action in GetActions())
+			foreach (var action in GetActions()) {
+				if (!gameObject.activeInHierarchy || IsSleeping)
+					yield break;
+				
 				yield return action.Execute(this);
+			}
 		}
 
 		public bool HasTurnActions() {
-			if (_status && _status.HasStatusEffect(StatusEffects.Sleeping))
+			if (IsSleeping)
 				return false;
 
 			return GetActions().Count != 0;
