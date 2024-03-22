@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Linq;
+using Slothsoft.UnityExtensions;
 
 namespace LostNotes.Gameplay {
 	internal sealed class TurnOrder {
@@ -25,5 +27,9 @@ namespace LostNotes.Gameplay {
 
 			return turnDistance;
 		}
+
+		public bool IsCurrentActorAlone => !Actors
+			.Without(Actors[CurrentActor])
+			.Any(a => a.HasTurnActions());
 	}
 }

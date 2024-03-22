@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using LostNotes.Level;
 using LostNotes.Player;
 using MyBox;
@@ -137,7 +136,7 @@ namespace LostNotes.Gameplay {
 		private bool _isAlone = false;
 
 		public void OnStartTurn(TurnOrder round) {
-			_isAlone = !round.Actors.Any(a => a.HasTurnActions() && a.gameObject != gameObject);
+			_isAlone = round.IsCurrentActorAlone;
 		}
 
 		public void OnEndTurn() {
