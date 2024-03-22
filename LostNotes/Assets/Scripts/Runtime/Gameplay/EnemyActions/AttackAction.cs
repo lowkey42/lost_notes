@@ -59,7 +59,7 @@ namespace LostNotes.Gameplay.EnemyActions {
 				Instantiate(_indicatorPrefab, enemy.Level.GridToWorld(tilePosition), Quaternion.identity, parent);
 
 			if ((_recoil.x != 0 || _recoil.y != 0) && _recoilIndicatorPrefab && enemy.CanMoveBy(_recoil))
-				Instantiate(_indicatorPrefab, enemy.Level.GridToWorld(enemy.LocalToWorldPosition(_recoil)), Quaternion.identity, parent);
+				Instantiate(_recoilIndicatorPrefab, enemy.Level.GridToWorld(enemy.LocalToWorldPosition(_recoil)), Quaternion.identity, parent);
 		}
 	}
 }
