@@ -39,6 +39,8 @@ namespace LostNotes.Level {
 
 		public int Rotation2d => Mathf.RoundToInt(transform.eulerAngles.y);
 
+		public LevelGridDirection Direction => (LevelGridDirection) Mathf.Clamp(Rotation2d / 90 * 90, 0, 270);
+
 		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1) {
 			_interpolationSequence?.Kill(true);
 			
