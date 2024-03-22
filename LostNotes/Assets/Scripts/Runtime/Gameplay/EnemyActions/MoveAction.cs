@@ -33,6 +33,9 @@ namespace LostNotes.Gameplay.EnemyActions {
 				// X movement
 				var xStep = _movement.x < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.x); i++) {
+					if (!enemy.gameObject.activeInHierarchy || enemy.IsSleeping)
+						yield break;
+					
 					var step = new Vector2Int(xStep, 0);
 					var move = enemy.LevelGridTransform.MoveByLocal(step, _jumpHeight, _interpolatedDurationFactor);
 					if (move == null) {
@@ -46,6 +49,9 @@ namespace LostNotes.Gameplay.EnemyActions {
 				// Y movement
 				var yStep = _movement.y < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.y); i++) {
+					if (!enemy.gameObject.activeInHierarchy || enemy.IsSleeping)
+						yield break;
+
 					var step = new Vector2Int(0, yStep);
 					var move = enemy.LevelGridTransform.MoveByLocal(step, _jumpHeight, _interpolatedDurationFactor);
 					if (move == null) {
