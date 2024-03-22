@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Froblin_Sprout_Animations_South
+  m_Controller: {fileID: 9100000, guid: 9d33812e5dcfdfb32bcbb58cc19227ae, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: c4bdb49a65b4407268d968411992c974, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a732a46707a838afaa39a25464c5fbf2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1c6192134d8ae2a23bf21a59b2ee10e0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a732a46707a838afaa39a25464c5fbf2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3f63c5af540d75b17b3d40b7f1fad99c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a732a46707a838afaa39a25464c5fbf2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d36abcd110cca5edb98592ca5f8a24a4, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5434b87f6be61ba9884ddb15129d233f, type: 2}
