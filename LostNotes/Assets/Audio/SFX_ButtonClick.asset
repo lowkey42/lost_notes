@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92de7798b441f114bbcdbcd5d0b547a2, type: 3}
-  m_Name: SFX_Test
+  m_Name: SFX_ButtonClick
   m_EditorClassIdentifier: 
-  eventToTrigger:
+  _eventToTrigger:
     Guid:
-      Data1: 818554034
-      Data2: 1277787307
-      Data3: -1688031326
-      Data4: -1156187940
-    Path: event:/Song of Failure
+      Data1: 2027777766
+      Data2: 1269149785
+      Data3: -165752129
+      Data4: -506361777
+    Path: event:/Soundeffekte Player/Note As
