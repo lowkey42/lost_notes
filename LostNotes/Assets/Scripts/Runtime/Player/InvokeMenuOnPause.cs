@@ -1,10 +1,9 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace LostNotes.Player {
-	internal sealed class InvokeActionOnPause : MonoBehaviour, IAvatarMessages {
+	internal sealed class InvokeMenuOnPause : MonoBehaviour, IAvatarMessages {
 		[SerializeField]
-		private UnityEvent _onPause = new();
+		private AvatarMenuAsset _menus;
 
 		public void OnMove(Vector2Int delta) {
 		}
@@ -15,8 +14,8 @@ namespace LostNotes.Player {
 		public void OnReset() {
 		}
 
-		public void OnPause() {
-			_onPause.Invoke();
+		public void OnPause(bool isPaused) {
+			_menus.TogglePauseMenu(isPaused);
 		}
 
 		public void OnSkip() {

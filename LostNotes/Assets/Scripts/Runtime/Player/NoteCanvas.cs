@@ -78,7 +78,7 @@ namespace LostNotes.Player {
 		public void OnReset() {
 		}
 
-		public void OnPause() {
+		public void OnPause(bool isPaused) {
 		}
 
 		public void OnSkip() {

@@ -57,8 +57,18 @@ namespace LostNotes.Player {
 			HandleSkip();
 		}
 
+		private bool _isPaused;
+
+		private bool IsPaused {
+			get => _isPaused;
+			set {
+				_isPaused = value;
+				gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPause), value, SendMessageOptions.DontRequireReceiver);
+			}
+		}
+
 		private void HandlePause() {
-			gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPause), SendMessageOptions.DontRequireReceiver);
+			IsPaused = !IsPaused;
 		}
 
 		private void HandlePause(InputAction.CallbackContext context) {
@@ -118,21 +128,21 @@ namespace LostNotes.Player {
 		[SerializeField, ReadOnly]
 		private bool _canMove = true;
 		public bool CanMove {
-			get => _canMove && !_isPlaying;
+			get => _canMove && !_isPlaying && !_isPaused;
 			set {
 				_canMove = value;
-				OnChangeCanMove?.Invoke(value);
+				OnChangeCanMove?.Invoke(CanMove);
 			}
 		}
 
 		[SerializeField, ReadOnly]
 		private bool _canChangePlayState = true;
 		public bool CanChangePlayState {
-			get => _canChangePlayState;
+			get => _canChangePlayState && !_isPaused;
 			set {
 				_canChangePlayState = value;
-				OnChangeCanPlay?.Invoke(value);
-				IsPlaying = _canChangePlayState && PlayerMap["Play"].IsPressed();
+				OnChangeCanPlay?.Invoke(CanChangePlayState);
+				IsPlaying = CanChangePlayState && PlayerMap["Play"].IsPressed();
 			}
 		}
 
@@ -140,7 +150,7 @@ namespace LostNotes.Player {
 			IsPlaying = !IsPlaying;
 		}
 
-		private bool CanPlayNotes => _isPlaying;
+		private bool CanPlayNotes => _isPlaying && !_isPaused;
 
 		private void HandleMove(InputAction.CallbackContext context) {
 			DoMove(Vector2Int.RoundToInt(context.ReadValue<Vector2>()));

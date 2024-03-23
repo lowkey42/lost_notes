@@ -39,14 +39,5 @@ namespace LostNotes.Player {
 		public void RaiseReset() {
 			OnReset?.Invoke();
 		}
-
-		private GameObject _menu;
-		public void ToggleMenu(GameObject prefab) {
-			if (_menu) {
-				Destroy(_menu);
-			} else {
-				_menu = Instantiate(prefab);
-			}
-		}
 	}
 }

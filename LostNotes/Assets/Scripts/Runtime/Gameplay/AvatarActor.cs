@@ -103,8 +103,6 @@ namespace LostNotes.Gameplay {
 
 		public TurnOrder TurnOrder { get; set; }
 
-		private bool hasEnemies;
-
 		public IEnumerator DoTurn() {
 			if (!_status.HasStatusEffect(StatusEffects.Sleeping)) {
 				ActionPoints = _actionPointsPerTurn;
@@ -182,7 +180,7 @@ namespace LostNotes.Gameplay {
 		public void OnEndTurn() {
 		}
 
-		public void OnPause() {
+		public void OnPause(bool isPaused) {
 		}
 
 		public void OnSkip() {
