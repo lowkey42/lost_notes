@@ -372,9 +372,9 @@ MonoBehaviour:
     _mask: 000000000000000000000000010101000000000001010101010000000101010101010100000101010001010100000101010101010100000001010101010000000000010101000000000000000000000000
     <Size>k__BackingField: {x: 9, y: 9}
   _actionPoints: 0
-  _stepDurationFactor: 1
-  _stepJumpHeight: 0.2
-  _stepJumpCount: 3
+  _stepDurationFactor: 0.7
+  _stepJumpHeight: 0.15
+  _stepJumpCount: 1
   _sleepResetDelay: 2
 --- !u!114 &9123955715109969741
 MonoBehaviour:
@@ -919,7 +919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1949395939468239460, guid: 09f575225f9b11e2d9d6dcee2936aef7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.75
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3552735842112530457, guid: 09f575225f9b11e2d9d6dcee2936aef7, type: 3}
       propertyPath: m_text
@@ -1007,7 +1007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8130502453820931521, guid: 09f575225f9b11e2d9d6dcee2936aef7, type: 3}
       propertyPath: m_text
-      value: 3
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -21,5 +21,5 @@ MonoBehaviour:
   _movement: {x: 4, y: 0}
   _minTurnOnBlocked: 90
   _singleSteps: 0
-  _interpolatedDurationFactor: 1
+  _interpolatedDurationFactor: 0.75
   _jumpHeight: 1

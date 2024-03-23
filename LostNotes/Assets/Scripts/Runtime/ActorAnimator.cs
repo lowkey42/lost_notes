@@ -60,11 +60,12 @@ namespace LostNotes {
 				UpdateAnimator();
 			}
 
-			_idleSequence = transform.DOScaleY(0.95f, 0.333f).SetDelay(Random.Range(0f, 1f)).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutBounce)
+			_idleSequence = transform.DOScaleY(0.95f, 0.333f + Random.Range(-0.05f, 0.05f)).SetDelay(Random.Range(0f, 0.2f)).SetLoops(-1, LoopType.Yoyo)
+			                         .SetEase(Ease.InOutBounce)
 			                         .OnPause(() => transform.localScale = Vector3.one);
 		}
 
-		private void Update() {
+		private void LateUpdate() {
 			if (!_animator)
 				return;
 			
