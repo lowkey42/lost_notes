@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{56b1f045-f106-4960-92a0-95f61d9ea206}">
+		<property name="name">
+			<value>Combat Fade</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bbab3470-4bc9-41a2-ad4d-ebfd9ce3e3fc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{44ea462b-05b5-405c-9cbe-62aa0258ac53}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{44ea462b-05b5-405c-9cbe-62aa0258ac53}">
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>1</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
