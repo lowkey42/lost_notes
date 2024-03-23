@@ -17,7 +17,7 @@ namespace LostNotes.Gameplay {
 
 			delta = Vector2Int.RoundToInt(((Vector2) delta).normalized);
 
-			_ = _gridTransform.MoveBy(delta);
+			_ = _gridTransform.MoveBy(delta, 0.4f, 2, 1, false, 0.5f);
 		}
 
 		public void OnPull(LevelGridTransform source) {
@@ -28,7 +28,7 @@ namespace LostNotes.Gameplay {
 
 			delta = Vector2Int.RoundToInt(((Vector2) delta).normalized);
 
-			_ = _gridTransform.MoveBy(delta);
+			_ = _gridTransform.MoveBy(delta, 0.4f, 2, 1, false, 0.5f);
 		}
 
 		public void OnSleep(LevelGridTransform source) {

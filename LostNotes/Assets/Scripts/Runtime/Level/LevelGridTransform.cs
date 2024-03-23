@@ -46,7 +46,8 @@ namespace LostNotes.Level {
 
 		public float MovingDurationFactor => _interpolationDurationFactor;
 
-		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1, bool ignoreCollisions = false) {
+		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1, bool ignoreCollisions = false,
+		                               float      delay = 0) {
 			_interpolationSequence?.Kill(true);
 			
 			var newPosition2d = Position2d + delta;
@@ -70,6 +71,7 @@ namespace LostNotes.Level {
 			_interpolatedChild.position = oldPosition;
 			_interpolationSequence = _interpolatedChild.DOJump(newPosition, jumpHeight, jumpCount, durationFactor * _interpolatedDuration);
 			_interpolationSequence.SetEase(Ease.InOutQuad);
+			_interpolationSequence.SetDelay(delay);
 			_interpolationSequence.OnComplete(() => {
 				_interpolatedChild.localPosition = Vector3.zero;
 				SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
