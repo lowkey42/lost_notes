@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{9d5e94b5-7c74-459d-b8a8-aac85ab63535}">
+	<object class="AudioFile" id="{97bc566d-2c1c-4079-affb-a5c00dc4f545}">
 		<property name="assetPath">
-			<value>Noten/ln_violin_As.wav</value>
+			<value>Soundeffects/World&amp;Enemies/LN_FX_stone.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>1.8461451247165532</value>
+			<value>3</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{3fe10d14-fc29-4fc5-bbd4-20f34f6e169a}</destination>
