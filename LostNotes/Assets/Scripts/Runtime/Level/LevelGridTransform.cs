@@ -5,6 +5,7 @@ using LostNotes.Gameplay;
 using Slothsoft.UnityExtensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 
 namespace LostNotes.Level {
 	internal sealed class LevelGridTransform : MonoBehaviour {
@@ -16,9 +17,14 @@ namespace LostNotes.Level {
 		
 		[SerializeField]
 		private LevelComponent _level;
+
+		[SerializeField]
+		private UnityEvent _onMove;
+		
 		[SerializeField]
 		private AssetReferenceT<GameObjectEventChannel> _moveChannelReference;
 		private GameObjectEventChannel _moveChannel;
+		
 		private Sequence _interpolationSequence;
 		private float _interpolationDurationFactor = 1;
 
@@ -51,6 +57,7 @@ namespace LostNotes.Level {
 		
 		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1, bool ignoreCollisions = false,
 		                               float      delay = 0) {
+			_onMove.Invoke();
 			_interpolationSequence?.Kill(true);
 			
 			var newPosition2d = Position2d + delta;
