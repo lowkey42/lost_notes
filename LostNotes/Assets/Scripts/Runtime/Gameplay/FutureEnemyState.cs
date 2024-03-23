@@ -19,11 +19,11 @@ namespace LostNotes.Gameplay {
 		public Vector3 Position3d => Level.GridToWorld(Position2d);
 
 		public bool CanMoveTo(Vector2Int newPosition) {
-			return !Level || Level.IsWalkable(newPosition);
+			return !Level || Level.IsWalkable(newPosition, Enemy.transform);
 		}
 
 		public bool CanMoveBy(Vector2Int localOffset) {
-			return !Level || Level.IsWalkable(LocalToWorldPosition(localOffset));
+			return CanMoveTo(LocalToWorldPosition(localOffset));
 		}
 
 		public Vector2Int LocalToWorldVector(Vector2Int v) {
