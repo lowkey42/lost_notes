@@ -411,6 +411,7 @@ MonoBehaviour:
   _failureSongs:
   - {fileID: 11400000, guid: 0a5efc4e48d4560418b2bfd268acc0d1, type: 2}
   _notePrefab: {fileID: 9129755563245552758, guid: d5ad930dd00b7c747a3b5d8d5192c9ff, type: 3}
+  _hasPlayedParameter: CompletedSong
 --- !u!114 &4099957774684976844
 MonoBehaviour:
   m_ObjectHideFlags: 0
