@@ -29,17 +29,18 @@ namespace LostNotes.Gameplay.EnemyActions {
 		private float _jumpHeight = 0.0f;
 
 		public override IEnumerator Execute(Enemy enemy) {
+			var xStep = new Vector2Int(_movement.x < 0 ? -1 : 1, 0);
+			var yStep = new Vector2Int(0,                        _movement.y < 0 ? -1 : 1);
+
 			if (_singleSteps) {
 				// X movement
-				var xStep = _movement.x < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.x); i++) {
 					if (!enemy.gameObject.activeInHierarchy || enemy.IsSleeping)
 						yield break;
-					
-					var step = new Vector2Int(xStep, 0);
-					var move = enemy.LevelGridTransform.MoveByLocal(step, _jumpHeight, _interpolatedDurationFactor);
+
+					var move = enemy.LevelGridTransform.MoveByLocal(xStep, _jumpHeight, _interpolatedDurationFactor);
 					if (move == null) {
-						TurnOnCollision(step);
+						TurnOnCollision(xStep);
 						yield break;
 					}
 
@@ -47,28 +48,31 @@ namespace LostNotes.Gameplay.EnemyActions {
 				}
 
 				// Y movement
-				var yStep = _movement.y < 0 ? -1 : 1;
 				for (var i = 0; i < Mathf.Abs(_movement.y); i++) {
 					if (!enemy.gameObject.activeInHierarchy || enemy.IsSleeping)
 						yield break;
 
-					var step = new Vector2Int(0, yStep);
-					var move = enemy.LevelGridTransform.MoveByLocal(step, _jumpHeight, _interpolatedDurationFactor);
+					var move = enemy.LevelGridTransform.MoveByLocal(yStep, _jumpHeight, _interpolatedDurationFactor);
 					if (move == null) {
-						TurnOnCollision(step);
+						TurnOnCollision(yStep);
 						yield break;
 					}
 
 					yield return move;
 				}
+				
 			} else {
 				var move = enemy.LevelGridTransform.MoveByLocal(_movement, _jumpHeight, _interpolatedDurationFactor);
-				if (move == null)
+				if (move == null) {
 					TurnOnCollision(_movement);
-				else
+					yield break;
+				} else
 					yield return move;
 			}
 
+			var nextTurnStep = _singleSteps ? _movement.x != 0 ? xStep : yStep : _movement;
+			if (!enemy.LevelGridTransform.CanMoveByLocal(nextTurnStep))
+				TurnOnCollision(nextTurnStep);
 			yield break;
 
 			void TurnOnCollision(Vector2Int step) {
@@ -89,13 +93,20 @@ namespace LostNotes.Gameplay.EnemyActions {
 				CreateRotationIndicators(_movement, 0);
 				return;
 			}
-			
-			if (!CreateStepIndicators(new Vector2Int(_movement.x < 0 ? -1 : 1, 0), Mathf.Abs(_movement.x), _movement.x < 0 ? 180 : 0)) return;
 
-			if (!CreateStepIndicators(new Vector2Int(0, _movement.y < 0 ? -1 : 1), Mathf.Abs(_movement.y), _movement.y < 0 ? 90 : -90))
+			var xStep = new Vector2Int(_movement.x < 0 ? -1 : 1, 0);
+			var yStep = new Vector2Int(0,                        _movement.y < 0 ? -1 : 1);
+			if (!CreateStepIndicators(xStep, Mathf.Abs(_movement.x), _movement.x < 0 ? 180 : 0)) return;
+
+			if (!CreateStepIndicators(yStep, Mathf.Abs(_movement.y), _movement.y < 0 ? 90 : -90))
 				return;
 
-			Instantiate(_stopIndicatorPrefab, enemy.Position3d, Quaternion.identity, parent);
+			var nextTurnStep = _singleSteps ? _movement.x != 0 ? xStep : yStep : _movement;
+			if (enemy.CanMoveBy(nextTurnStep))
+				Instantiate(_stopIndicatorPrefab, enemy.Position3d, Quaternion.identity, parent);
+			else
+				CreateRotationIndicators(nextTurnStep, 0);
+			
 			return;
 
 			bool CreateStepIndicators(Vector2Int step, int stepCount, int indicatorRotation) {
