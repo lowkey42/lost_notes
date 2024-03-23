@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78152d452e80ec54aa83f5ba250ba509, type: 3}
   m_Name: Menus
   m_EditorClassIdentifier: 
+  _introPrefab: {fileID: 7340872831612032413, guid: 1aeb6f4be5a7a1d4b82ef79f7be609be, type: 3}
+  _creditsPrefab: {fileID: 7340872831612032413, guid: c85d24d1e67b2d448aba8961844bbde3, type: 3}
   _pauseMenuPrefab: {fileID: 7340872831612032413, guid: 3a1c3ab857d776d4eb689c095df5d331, type: 3}

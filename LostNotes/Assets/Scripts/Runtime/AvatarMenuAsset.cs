@@ -4,6 +4,26 @@ namespace LostNotes {
 	[CreateAssetMenu]
 	internal sealed class AvatarMenuAsset : ScriptableObject {
 		[SerializeField]
+		private GameObject _introPrefab;
+		public void ToggleIntro() {
+			if (_menu) {
+				CloseMenu();
+			} else {
+				OpenMenu(_introPrefab);
+			}
+		}
+
+		[SerializeField]
+		private GameObject _creditsPrefab;
+		public void ToggleCredits() {
+			if (_menu) {
+				CloseMenu();
+			} else {
+				OpenMenu(_creditsPrefab);
+			}
+		}
+
+		[SerializeField]
 		private GameObject _pauseMenuPrefab;
 		public void TogglePauseMenu(bool isPaused) {
 			if (isPaused) {
