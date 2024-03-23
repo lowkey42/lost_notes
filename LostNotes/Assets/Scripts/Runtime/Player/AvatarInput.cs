@@ -34,6 +34,7 @@ namespace LostNotes.Player {
 				_avatarInput.OnTogglePlay += HandleTogglePlay;
 				_avatarInput.OnReset += HandleReset;
 				_avatarInput.OnSkipTurn += HandleSkip;
+				_avatarInput.OnTogglePause += HandlePause;
 			}
 		}
 
@@ -44,6 +45,7 @@ namespace LostNotes.Player {
 				_avatarInput.OnTogglePlay -= HandleTogglePlay;
 				_avatarInput.OnReset -= HandleReset;
 				_avatarInput.OnSkipTurn -= HandleSkip;
+				_avatarInput.OnTogglePause -= HandlePause;
 			}
 		}
 
@@ -60,7 +62,7 @@ namespace LostNotes.Player {
 		}
 
 		private void HandlePause(InputAction.CallbackContext context) {
-			HandleSkip();
+			HandlePause();
 		}
 
 		private void HandleReset() {
