@@ -32,6 +32,9 @@ namespace LostNotes.Level {
 			if (_moveChannel) {
 				_moveChannelReference.ReleaseAsset();
 			}
+
+			if (_interpolationSequence != null && _interpolationSequence.IsActive())
+				_interpolationSequence.Kill();
 		}
 
 		public Vector2Int Position2d => _level.WorldToGrid(transform.position);
@@ -45,7 +48,7 @@ namespace LostNotes.Level {
 		public bool IsMoving => _interpolationSequence != null && _interpolationSequence.IsPlaying();
 
 		public float MovingDurationFactor => _interpolationDurationFactor;
-
+		
 		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1, bool ignoreCollisions = false,
 		                               float      delay = 0) {
 			_interpolationSequence?.Kill(true);

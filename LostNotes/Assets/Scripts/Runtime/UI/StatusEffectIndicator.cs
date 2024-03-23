@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -18,6 +19,11 @@ namespace LostNotes.UI {
 
 		private TweenerCore<Color, Color, ColorOptions> _animation;
 
+		private void OnDestroy() {
+			if (_animation != null && _animation.IsActive())
+				_animation.Kill();
+		}
+
 		public void OnStatusEffectsChanged(StatusEffects statusEffects) {
 			if (!_image)
 				return;
@@ -30,7 +36,8 @@ namespace LostNotes.UI {
 					_animation ??= _image.material.DOFade(0.4f, 2.0f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
 
 				else if (_animation != null) {
-					_animation.Kill();
+					if (_animation.IsPlaying())
+						_animation.Kill();
 					_animation = null;
 				}
 			} else
