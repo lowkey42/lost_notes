@@ -141,5 +141,14 @@ namespace LostNotes.Gameplay {
 
 		public void OnEndTurn() {
 		}
+
+		public void OnPause() {
+		}
+
+		public void OnSkip() {
+			ActionPoints = _isAlone
+				? _actionPointsToPlay
+				: 0;
+		}
 	}
 }
