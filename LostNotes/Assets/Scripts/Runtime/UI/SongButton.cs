@@ -10,6 +10,10 @@ namespace LostNotes.UI {
 		public void OnSetSong(SongAsset song) {
 			if (song.IsAvailable) {
 				_image.sprite = song.HudSprite;
+
+				if (TryGetComponent<SetImageOnSelect>(out var image)) {
+					image.Sprite = song.DetailSprite;
+				}
 			}
 		}
 	}

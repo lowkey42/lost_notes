@@ -123,6 +123,9 @@ namespace LostNotes.Player {
 		[SerializeField]
 		private Sprite _hudSprite;
 		public Sprite HudSprite => _hudSprite;
+		[SerializeField]
+		private Sprite _detailSprite;
+		public Sprite DetailSprite => _detailSprite;
 
 		public IEnumerator PlaySong(LevelGridTransform context, TilemapMask range) {
 			if (!_songEvent.IsNull) {
