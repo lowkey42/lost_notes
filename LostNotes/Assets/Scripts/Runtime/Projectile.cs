@@ -26,7 +26,7 @@ namespace LostNotes {
 			OnValidate();
 			var target = PushOnStart;
 			_ = _gridTransform.Level.IsInteractionUnblocked(_gridTransform.Position2d, target, out target);
-			var duration = PushDurationFactor * (PushOnStart.magnitude / target.magnitude);
+			var duration = target.magnitude > 0 ? PushDurationFactor * (PushOnStart.magnitude / target.magnitude) : PushDurationFactor;
 			yield return _gridTransform.MoveBy(target - _gridTransform.Position2d, 0.2f, duration, 1, true);
 			_onHit.Invoke();
 			yield return new WaitForSeconds(0.2f);
