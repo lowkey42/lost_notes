@@ -16,6 +16,8 @@ namespace LostNotes.Level {
 		[SerializeField, Expandable]
 		private LevelOrder _levels;
 
+		public static bool IsReady { get; private set; }
+
 		private IEnumerator Start() {
 			yield return _winLevelChannelReference.LoadAssetAsync(asset => {
 				_winLevelChannel = asset;
@@ -26,6 +28,10 @@ namespace LostNotes.Level {
 				_loseLevelChannel = asset;
 				_loseLevelChannel.OnTrigger += HandleLose;
 			});
+
+			yield return new WaitUntil(() => FMODUnity.RuntimeManager.HaveAllBanksLoaded);
+
+			IsReady = true;
 		}
 
 		private void OnDestroy() {

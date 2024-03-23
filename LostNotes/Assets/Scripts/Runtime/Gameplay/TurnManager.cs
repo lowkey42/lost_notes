@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using LostNotes.Level;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -30,6 +31,8 @@ namespace LostNotes.Gameplay {
 		}
 
 		private IEnumerator DoRound() {
+			yield return new WaitUntil(() => LevelManager.IsReady);
+
 			var turnOrder = CurrentRoundTurnOrder;
 
 			foreach (var a in turnOrder.Actors)

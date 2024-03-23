@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LostNotes.Level;
 using MyBox;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,12 @@ namespace LostNotes.Player {
 		public static event Action<bool> OnChangeCanPlay;
 
 		private void OnEnable() {
+			_ = StartCoroutine(OnEnable_Co());
+		}
+
+		private IEnumerator OnEnable_Co() {
+			yield return new WaitUntil(() => LevelManager.IsReady);
+
 			SetUpPlayer();
 			SetUpNotes();
 			SetUpInput();
