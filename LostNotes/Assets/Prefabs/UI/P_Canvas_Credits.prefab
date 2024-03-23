@@ -241,7 +241,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &3434932087875340465
 MonoBehaviour:
@@ -328,6 +328,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2899288290228463355}
     m_Modifications:
+    - target: {fileID: 164519316338730524, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 266759449894253966, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
+      propertyPath: m_fontSize
+      value: 36.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450522653767959605, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
+      propertyPath: m_fontSize
+      value: 42.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2563439793611748317, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
+      propertyPath: m_fontSize
+      value: 52.85
+      objectReference: {fileID: 0}
     - target: {fileID: 6596536847770902142, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
       propertyPath: m_Name
       value: P_Credits
