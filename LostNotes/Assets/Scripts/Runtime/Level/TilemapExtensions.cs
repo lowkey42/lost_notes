@@ -10,19 +10,17 @@ namespace LostNotes.Level {
 			public bool IsInteractionBlocking => true;
 		}
 
-		public static IEnumerable<ITileMeta> GetMetaTiles(this Tilemap tilemap, Vector2Int position) {
-			return GetMetaTiles(tilemap, position.SwizzleXY());
+		public static IEnumerable<ITileMeta> GetMetaTiles(this Tilemap tilemap, Vector2Int position, Transform ignore = null) {
+			return GetMetaTiles(tilemap, position.SwizzleXY(), ignore);
 		}
 
-		public static IEnumerable<ITileMeta> GetMetaTiles(this Tilemap tilemap, Vector3Int position) {
+		public static IEnumerable<ITileMeta> GetMetaTiles(this Tilemap tilemap, Vector3Int position, Transform ignore = null) {
 			if (tilemap.TryGetMetaTile(position, out var tile)) {
 				yield return tile;
 			}
 
 			foreach (Transform t in tilemap.transform) {
-				if (t.gameObject.activeInHierarchy && tilemap.WorldToCell(t.position) == position && t.TryGetComponent(out tile)) {
-					yield return tile;
-				}
+				if (t.gameObject.activeInHierarchy && t != ignore && tilemap.WorldToCell(t.position) == position && t.TryGetComponent(out tile)) yield return tile;
 			}
 		}
 

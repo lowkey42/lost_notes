@@ -86,9 +86,9 @@ namespace LostNotes.Level {
 			return _interactableLayer.GetMetaTiles(position);
 		}
 
-		public bool IsWalkable(Vector2Int position) {
+		public bool IsWalkable(Vector2Int position, Transform ignore = null) {
 			return _floorLayer.GetTile(position.SwizzleXY()) && !_wallLayer.GetTile(position.SwizzleXY()) &&
-				   _interactableLayer.GetMetaTiles(position).All(t => t.IsWalkable);
+			       _interactableLayer.GetMetaTiles(position, ignore).All(t => t.IsWalkable);
 		}
 
 		public bool IsInteractionBlocking(Vector2Int position) {
