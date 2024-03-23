@@ -134,7 +134,9 @@ namespace LostNotes.Gameplay {
 				? 0
 				: _actionPointsToMove;
 
-			_turnQueue.Enqueue(_gridTransform.MoveBy(delta, _stepJumpHeight, _stepDurationFactor, _stepJumpCount));
+			var jumps = _stepJumpCount * (delta.x == 0 ? 1 : 2);
+			var height = _stepJumpHeight * (delta.x == 0 ? 2 : 1);
+			_turnQueue.Enqueue(_gridTransform.MoveBy(delta, height, _stepDurationFactor, jumps));
 		}
 
 		public void OnPlaySong(SongAsset song) {

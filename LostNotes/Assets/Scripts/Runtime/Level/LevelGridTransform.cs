@@ -42,7 +42,7 @@ namespace LostNotes.Level {
 
 		public LevelGridDirection Direction => (LevelGridDirection) Mathf.Clamp(Rotation2d / 90 * 90, 0, 270);
 
-		public bool IsMoving => _interpolationSequence != null;
+		public bool IsMoving => _interpolationSequence != null && _interpolationSequence.IsPlaying();
 
 		public float MovingDurationFactor => _interpolationDurationFactor;
 
@@ -70,8 +70,9 @@ namespace LostNotes.Level {
 			transform.position = newPosition;
 			_interpolatedChild.position = oldPosition;
 			_interpolationSequence = _interpolatedChild.DOJump(newPosition, jumpHeight, jumpCount, durationFactor * _interpolatedDuration);
-			_interpolationSequence.SetEase(Ease.InOutQuad);
-			_interpolationSequence.SetDelay(delay);
+			if (delay > 0)
+				_interpolationSequence.SetDelay(delay);
+			
 			_interpolationSequence.OnComplete(() => {
 				_interpolatedChild.localPosition = Vector3.zero;
 				SendMessageToObjectsInArea(TilemapMask.Self, nameof(ICollisionMessages.OnActorEnter), gameObject);
