@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace LostNotes.UI {
-	internal sealed class SetImageOnSelect : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler {
+	internal sealed class SetImageOnSelect : MonoBehaviour, ISelectHandler, IDeselectHandler {
 		[SerializeField, Tag]
 		private string _containerLabel = "MenuContent";
 
@@ -44,17 +44,6 @@ namespace LostNotes.UI {
 				image.sprite = null;
 				image.enabled = false;
 			}
-		}
-
-		public void OnPointerEnter(PointerEventData eventData) {
-			TearDown();
-			if (_sprite) {
-				SetUp();
-			}
-		}
-
-		public void OnPointerExit(PointerEventData eventData) {
-			TearDown();
 		}
 	}
 }

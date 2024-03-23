@@ -1,7 +1,7 @@
 using FMODUnity;
 using UnityEngine;
 
-namespace LostNotes {
+namespace LostNotes.Audio {
 	[CreateAssetMenu]
 	internal sealed class FMODEventAsset : ScriptableObject {
 		[SerializeField]

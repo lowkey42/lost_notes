@@ -1,7 +1,4 @@
-using Slothsoft.UnityExtensions;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace LostNotes {
 	[CreateAssetMenu]
@@ -24,11 +21,6 @@ namespace LostNotes {
 			}
 
 			_menu = Instantiate(_prefab);
-			if (EventSystem.current) {
-				if (_menu.transform.TryGetComponentInChildren<Selectable>(out var selectable)) {
-					EventSystem.current.SetSelectedGameObject(selectable.gameObject);
-				}
-			}
 		}
 
 		private void CloseMenu() {

@@ -27,5 +27,16 @@ namespace LostNotes.Level {
 			index = default;
 			return false;
 		}
+
+		public void StartGame() {
+			_levelScenes[0].LoadScene();
+		}
+
+		[SerializeField]
+		private SceneReference _mainMenu = new();
+
+		public void LoadMainMenu() {
+			_mainMenu.LoadScene();
+		}
 	}
 }

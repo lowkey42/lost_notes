@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7315540388912667549}
   - component: {fileID: 8252675902620478879}
   - component: {fileID: 1397461311758029610}
+  - component: {fileID: 8676706806216536812}
+  - component: {fileID: 2687894277428787913}
   m_Layer: 0
   m_Name: Button (1)
   m_TagString: Untagged
@@ -89,13 +91,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 2146526445945970461}
+    m_SelectOnDown: {fileID: 1523140519401145659}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -107,7 +109,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 980bb7abba4202e40b45c728e28d7caa, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -120,6 +122,44 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8676706806216536812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425404386813291953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5146f64e9850949a359ac35e90a002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onHover:
+    Guid:
+      Data1: -1740463707
+      Data2: 1244868824
+      Data3: 565573523
+      Data4: 270694295
+    Path: event:/Soundeffekte UI/Main Menu/MainMenuHover/MainMenuHover 3
+  _onSelect:
+    Guid:
+      Data1: -301293360
+      Data2: 1102759979
+      Data3: -774708603
+      Data4: 676548969
+    Path: event:/Soundeffekte UI/Main Menu/MainMenuSelect/MainMenuSelect 3
+--- !u!114 &2687894277428787913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425404386813291953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186a39c4c2e25e345a2e5667ce18253c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3565872711026548419
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +247,8 @@ GameObject:
   - component: {fileID: 5186606372496709308}
   - component: {fileID: 2162089878535838238}
   - component: {fileID: 2146526445945970461}
+  - component: {fileID: 1457683601806383492}
+  - component: {fileID: 2474949399899516303}
   m_Layer: 0
   m_Name: Button (2)
   m_TagString: Untagged
@@ -284,13 +326,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 2791480242011611627}
+    m_SelectOnDown: {fileID: 1397461311758029610}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -302,7 +344,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: d6d5f0645e039354799d7f8c3760361d, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -315,6 +357,44 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1457683601806383492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032043372878422916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5146f64e9850949a359ac35e90a002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onHover:
+    Guid:
+      Data1: 537346779
+      Data2: 1148130031
+      Data3: -531478868
+      Data4: -987071645
+    Path: event:/Soundeffekte UI/Main Menu/MainMenuHover/MainMenuHover 2
+  _onSelect:
+    Guid:
+      Data1: 170667105
+      Data2: 1267764476
+      Data3: -296849526
+      Data4: 1070775676
+    Path: event:/Soundeffekte UI/Main Menu/MainMenuSelect/MainMenuSelect 2
+--- !u!114 &2474949399899516303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032043372878422916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186a39c4c2e25e345a2e5667ce18253c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5434875551156495677
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +557,9 @@ GameObject:
   - component: {fileID: 4348708621876779978}
   - component: {fileID: 4886132671323734996}
   - component: {fileID: 2791480242011611627}
+  - component: {fileID: 3977239801513304693}
+  - component: {fileID: 3695848971101983010}
+  - component: {fileID: 98557495616439230}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -554,13 +637,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1523140519401145659}
+    m_SelectOnDown: {fileID: 2146526445945970461}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -572,7 +655,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 1e82d0a6482703543a402d3fc51f06a5, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -584,7 +667,69 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4886132671323734996}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: e09c78dd39a1adb4db8a1627017ff419, type: 2}
+        m_TargetAssemblyTypeName: LostNotes.Level.LevelOrder, LostNotes
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3977239801513304693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535070646155928806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5146f64e9850949a359ac35e90a002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onHover:
+    Guid:
+      Data1: -197513690
+      Data2: 1225687405
+      Data3: 1160551096
+      Data4: 1295285880
+    Path: event:/Soundeffekte UI/Main Menu/MainMenuHover/MainMenuHover 1
+  _onSelect:
+    Guid:
+      Data1: -1925538086
+      Data2: 1306381749
+      Data3: 1518439354
+      Data4: 358491013
+    Path: event:/Soundeffekte UI/Main Menu/MainMenuSelect/MainMenuSelect 1
+--- !u!114 &3695848971101983010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535070646155928806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186a39c4c2e25e345a2e5667ce18253c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &98557495616439230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7535070646155928806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f00de5a7f445077468054c68ef05dc37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8887465785473607595
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +742,8 @@ GameObject:
   - component: {fileID: 181047167188496500}
   - component: {fileID: 5838144894611276844}
   - component: {fileID: 1523140519401145659}
+  - component: {fileID: 4460666259638963861}
+  - component: {fileID: 5405617299160579953}
   m_Layer: 0
   m_Name: Button (3)
   m_TagString: Untagged
@@ -674,13 +821,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1397461311758029610}
+    m_SelectOnDown: {fileID: 2791480242011611627}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -692,7 +839,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: e30dce2dcfd3c794d8492b2ed6a11e02, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -704,7 +851,57 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5838144894611276844}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fe8ea9fed7efd38418c1690e1a17ec97, type: 2}
+        m_TargetAssemblyTypeName: LostNotes.AvatarMenuAsset, LostNotes
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4460666259638963861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887465785473607595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5146f64e9850949a359ac35e90a002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onHover:
+    Guid:
+      Data1: 1844759105
+      Data2: 1112202147
+      Data3: 136543929
+      Data4: 1608968491
+    Path: event:/Soundeffekte UI/Main Menu/MainMenuHover/MainMenuHover 4
+  _onSelect:
+    Guid:
+      Data1: 1816959683
+      Data2: 1092432212
+      Data3: -1852599126
+      Data4: 24691324
+    Path: event:/Soundeffekte UI/Main Menu/MainMenuSelect/MainMenuSelect 4
+--- !u!114 &5405617299160579953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887465785473607595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186a39c4c2e25e345a2e5667ce18253c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9099759582118639049
 GameObject:
   m_ObjectHideFlags: 0
