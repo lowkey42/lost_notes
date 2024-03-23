@@ -1,3 +1,6 @@
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using LostNotes.Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +16,8 @@ namespace LostNotes.UI {
 		[SerializeField]
 		private Sprite _angrySprite;
 
+		private TweenerCore<Color, Color, ColorOptions> _animation;
+
 		public void OnStatusEffectsChanged(StatusEffects statusEffects) {
 			if (!_image)
 				return;
@@ -21,6 +26,13 @@ namespace LostNotes.UI {
 			if (sprite) {
 				_image.sprite = sprite;
 				_image.gameObject.SetActive(true);
+				if (statusEffects.HasFlag(StatusEffects.Sleeping))
+					_animation ??= _image.material.DOFade(0.4f, 2.0f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+
+				else if (_animation != null) {
+					_animation.Kill();
+					_animation = null;
+				}
 			} else
 				_image.gameObject.SetActive(false);
 		}
