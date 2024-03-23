@@ -86,8 +86,10 @@ namespace LostNotes.Gameplay.EnemyActions {
 			foreach (var tilePosition in enemy.Level.TilesInArea(enemy.Position2d, enemy.Rotation2d, _attackArea))
 				Instantiate(_indicatorPrefab, enemy.Level.GridToWorld(tilePosition), Quaternion.identity, parent);
 
-			if ((_recoil.x != 0 || _recoil.y != 0) && _recoilIndicatorPrefab && enemy.CanMoveBy(_recoil))
+			if ((_recoil.x != 0 || _recoil.y != 0) && _recoilIndicatorPrefab && enemy.CanMoveBy(_recoil)) {
 				Instantiate(_recoilIndicatorPrefab, enemy.Level.GridToWorld(enemy.LocalToWorldPosition(_recoil)), Quaternion.identity, parent);
+				enemy.Position2d = enemy.LocalToWorldPosition(_recoil);
+			}
 		}
 	}
 }
