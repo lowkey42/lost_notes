@@ -23,6 +23,12 @@ namespace LostNotes.UI {
 			TearDown();
 		}
 
+		private void Start() {
+			if (EventSystem.current && EventSystem.current.currentSelectedGameObject == gameObject) {
+				SetUp();
+			}
+		}
+
 		private void OnDisable() {
 			TearDown();
 		}
