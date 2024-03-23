@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using DG.Tweening;
@@ -41,6 +42,7 @@ namespace LostNotes {
 		private RuntimeAnimatorController _defaultAnimationController;
 
 		private TweenerCore<Vector3, Vector3, VectorOptions> _idleSequence;
+		private TweenerCore<Quaternion, Vector3, QuaternionOptions> _sleepSequence;
 
 		private bool _isWalking = false;
 		private bool _isActing = false;
@@ -63,6 +65,12 @@ namespace LostNotes {
 			_idleSequence = transform.DOScaleY(0.95f, 0.333f + Random.Range(-0.05f, 0.05f)).SetDelay(Random.Range(0f, 0.2f)).SetLoops(-1, LoopType.Yoyo)
 			                         .SetEase(Ease.InOutBounce)
 			                         .OnPause(() => transform.localScale = Vector3.one);
+		}
+
+		private void OnDestroy() {
+			_idleSequence.Kill();
+			if (_sleepSequence != null && _sleepSequence.IsActive())
+				_sleepSequence.Kill();
 		}
 
 		private void LateUpdate() {
@@ -93,7 +101,7 @@ namespace LostNotes {
 
 			if (gainedStatusEffect.HasFlag(StatusEffects.Sleeping)) {
 				_animator.SetBool(_animatorIsSleeping, _isSleeping = true);
-				transform.DOLocalRotate(new Vector3(50, 0, 15), 0.7f).SetEase(Ease.InBack);
+				_sleepSequence = transform.DOLocalRotate(new Vector3(50, 0, 15), 0.7f).SetEase(Ease.InBack);
 				_idleSequence.Pause();
 			}
 		}
