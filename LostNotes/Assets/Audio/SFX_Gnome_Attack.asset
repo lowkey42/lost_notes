@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _eventToTrigger:
     Guid:
-      Data1: 158125743
-      Data2: 1089038134
-      Data3: -2141473612
-      Data4: 776783009
-    Path: event:/Soundeffekte Welt/GnomiRecoil
+      Data1: 279651945
+      Data2: 1278910475
+      Data3: 1079250590
+      Data4: -1506428503
+    Path: event:/Soundeffekte Welt/GnomeSneeze
