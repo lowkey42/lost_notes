@@ -48,8 +48,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 0.836545, b: 0.2117647, a: 1}
-  m_Intensity: 0.75
+  m_Color: {r: 0.869, g: 0.7258706, b: 0.18402353, a: 1}
+  m_Intensity: 0.3
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 3997f5840000000039e36db2
@@ -131,6 +131,9 @@ MonoBehaviour:
   _interpolatedChild: {fileID: 3369865467406903886}
   _interpolatedDuration: 0.25
   _level: {fileID: 0}
+  _onMove:
+    m_PersistentCalls:
+      m_Calls: []
   _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64
     m_SubObjectName: 
@@ -259,7 +262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8144545258069528212}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1736482, y: -0, z: -0, w: 0.9848078}
+  m_LocalRotation: {x: 0.359968, y: 0.26439214, z: -0.1071434, w: 0.88827926}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
