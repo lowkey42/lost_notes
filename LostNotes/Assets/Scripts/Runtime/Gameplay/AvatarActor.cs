@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using LostNotes.Level;
@@ -8,6 +9,9 @@ using UnityEngine.AddressableAssets;
 
 namespace LostNotes.Gameplay {
 	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages, IAttackMessages, IActorMessages {
+		public static event Action<bool> OnChangeIsAlone;
+		public static event Action<int> OnChangeAvailableActionPoints;
+
 		[Header("Components")]
 		[SerializeField]
 		private AvatarInput _input;
@@ -51,6 +55,8 @@ namespace LostNotes.Gameplay {
 					_input.CanMove = _actionPoints >= _actionPointsToMove;
 					_input.CanChangePlayState = _actionPoints >= _actionPointsToPlay;
 				}
+
+				OnChangeAvailableActionPoints?.Invoke(value);
 			}
 		}
 
@@ -104,7 +110,7 @@ namespace LostNotes.Gameplay {
 		private readonly Queue<object> _turnQueue = new();
 
 		public void OnMove(Vector2Int delta) {
-			ActionPoints -= _isAlone
+			ActionPoints -= IsAlone
 				? 0
 				: _actionPointsToMove;
 
@@ -112,7 +118,7 @@ namespace LostNotes.Gameplay {
 		}
 
 		public void OnPlaySong(SongAsset song) {
-			ActionPoints -= _isAlone
+			ActionPoints -= IsAlone
 				? 0
 				: _actionPointsToPlay;
 
@@ -135,8 +141,16 @@ namespace LostNotes.Gameplay {
 
 		private bool _isAlone = false;
 
+		private bool IsAlone {
+			get => _isAlone;
+			set {
+				_isAlone = value;
+				OnChangeIsAlone?.Invoke(value);
+			}
+		}
+
 		public void OnStartTurn(TurnOrder round) {
-			_isAlone = round.IsCurrentActorAlone;
+			IsAlone = round.IsCurrentActorAlone;
 		}
 
 		public void OnEndTurn() {
@@ -146,7 +160,7 @@ namespace LostNotes.Gameplay {
 		}
 
 		public void OnSkip() {
-			ActionPoints = _isAlone
+			ActionPoints = IsAlone
 				? _actionPointsToPlay
 				: 0;
 		}
