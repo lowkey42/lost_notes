@@ -55,14 +55,19 @@ namespace LostNotes {
 
 		private void Start() {
 			OnValidate();
-			_defaultAnimationController = _animator.runtimeAnimatorController;
-			UpdateAnimator();
+			if (_animator) {
+				_defaultAnimationController = _animator.runtimeAnimatorController;
+				UpdateAnimator();
+			}
 
 			_idleSequence = transform.DOScaleY(0.95f, 0.333f).SetDelay(Random.Range(0f, 1f)).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutBounce)
 			                         .OnPause(() => transform.localScale = Vector3.one);
 		}
 
 		private void Update() {
+			if (!_animator)
+				return;
+			
 			_animator.SetBool(_animatorIsWalking, _isWalking = _levelGridTransform.IsMoving);
 			_animator.SetFloat(_animatorWalkingSpeed, _walkingSpeed = 1.0f / _levelGridTransform.MovingDurationFactor);
 
@@ -82,6 +87,9 @@ namespace LostNotes {
 		}
 
 		public void OnGainedStatusEffect(StatusEffects gainedStatusEffect) {
+			if (!_animator)
+				return;
+
 			if (gainedStatusEffect.HasFlag(StatusEffects.Sleeping)) {
 				_animator.SetBool(_animatorIsSleeping, _isSleeping = true);
 				_idleSequence.Pause();
@@ -89,6 +97,9 @@ namespace LostNotes {
 		}
 
 		public void OnLostStatusEffect(StatusEffects lostStatusEffect) {
+			if (!_animator)
+				return;
+
 			if (lostStatusEffect.HasFlag(StatusEffects.Sleeping)) {
 				_animator.SetBool(_animatorIsSleeping, _isSleeping = false);
 				_idleSequence.Play();
@@ -96,10 +107,16 @@ namespace LostNotes {
 		}
 
 		public void OnStartPlaying() {
+			if (!_animator)
+				return;
+
 			_animator.SetBool(_animatorIsActing, _isActing = true);
 		}
 
 		public void OnStopPlaying() {
+			if (!_animator)
+				return;
+
 			_animator.SetBool(_animatorIsActing, _isActing = false);
 		}
 
@@ -108,11 +125,17 @@ namespace LostNotes {
 		public void OnStopNote(NoteAsset note) { }
 
 		public void OnStartAttack(float speed) {
+			if (!_animator)
+				return;
+
 			_animator.SetFloat(_animatorActingSpeed, _actingSpeed = speed);
 			_animator.SetBool(_animatorIsActing, _isActing = true);
 		}
 
 		public void OnEndAttack() {
+			if (!_animator)
+				return;
+
 			_animator.SetBool(_animatorIsActing, _isActing = false);
 		}
 	}
