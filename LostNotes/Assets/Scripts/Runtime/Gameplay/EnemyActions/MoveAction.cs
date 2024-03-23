@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LostNotes.Gameplay.EnemyActions {
 	[CreateAssetMenu(fileName = "Move", menuName = "EnemyActions/Move", order = 0)]
@@ -28,6 +29,12 @@ namespace LostNotes.Gameplay.EnemyActions {
 		[SerializeField]
 		private float _jumpHeight = 0.0f;
 
+		[SerializeField]
+		private UnityEvent _onStart;
+
+		[SerializeField]
+		private UnityEvent _onEnd;
+
 		public override IEnumerator Execute(Enemy enemy) {
 			var xStep = new Vector2Int(_movement.x < 0 ? -1 : 1, 0);
 			var yStep = new Vector2Int(0,                        _movement.y < 0 ? -1 : 1);
@@ -38,13 +45,7 @@ namespace LostNotes.Gameplay.EnemyActions {
 					if (!enemy.gameObject.activeInHierarchy || enemy.IsSleeping)
 						yield break;
 
-					var move = enemy.LevelGridTransform.MoveByLocal(xStep, _jumpHeight, _interpolatedDurationFactor);
-					if (move == null) {
-						TurnOnCollision(xStep);
-						yield break;
-					}
-
-					yield return move;
+					yield return MoveOrRotate(xStep);
 				}
 
 				// Y movement
@@ -52,22 +53,11 @@ namespace LostNotes.Gameplay.EnemyActions {
 					if (!enemy.gameObject.activeInHierarchy || enemy.IsSleeping)
 						yield break;
 
-					var move = enemy.LevelGridTransform.MoveByLocal(yStep, _jumpHeight, _interpolatedDurationFactor);
-					if (move == null) {
-						TurnOnCollision(yStep);
-						yield break;
-					}
-
-					yield return move;
+					yield return MoveOrRotate(yStep);
 				}
 				
 			} else {
-				var move = enemy.LevelGridTransform.MoveByLocal(_movement, _jumpHeight, _interpolatedDurationFactor);
-				if (move == null) {
-					TurnOnCollision(_movement);
-					yield break;
-				} else
-					yield return move;
+				yield return MoveOrRotate(_movement);
 			}
 
 			var nextTurnStep = _singleSteps ? _movement.x != 0 ? xStep : yStep : _movement;
@@ -75,6 +65,18 @@ namespace LostNotes.Gameplay.EnemyActions {
 				TurnOnCollision(nextTurnStep);
 			yield break;
 
+			IEnumerator MoveOrRotate(Vector2Int step) {
+				var move = enemy.LevelGridTransform.MoveByLocal(step, _jumpHeight, _interpolatedDurationFactor);
+				if (move == null) {
+					TurnOnCollision(_movement);
+					yield break;
+				}
+
+				_onStart.Invoke();
+				yield return move;
+				_onEnd.Invoke();
+			}
+			
 			void TurnOnCollision(Vector2Int step) {
 				if (_minTurnOnBlocked == RotationTurn.Degrees0)
 					return;
