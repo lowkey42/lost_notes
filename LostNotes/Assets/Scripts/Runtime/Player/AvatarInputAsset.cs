@@ -7,7 +7,9 @@ namespace LostNotes.Player {
 	internal sealed class AvatarInputAsset : ScriptableObject {
 		public event Action<InputActionReference> OnActionInput;
 		public event Action<Vector2Int> OnMoveInput;
+		public event Action OnSkipTurn;
 		public event Action OnTogglePlay;
+		public event Action OnTogglePause;
 		public event Action OnReset;
 
 		public void RaiseInput(InputActionReference input) {
@@ -24,6 +26,14 @@ namespace LostNotes.Player {
 
 		public void RaiseTogglePlay() {
 			OnTogglePlay?.Invoke();
+		}
+
+		public void RaiseTogglePause() {
+			OnTogglePause?.Invoke();
+		}
+
+		public void RaiseSkipTurn() {
+			OnSkipTurn?.Invoke();
 		}
 
 		public void RaiseReset() {
