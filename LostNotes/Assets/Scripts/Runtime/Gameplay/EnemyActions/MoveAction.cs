@@ -45,7 +45,15 @@ namespace LostNotes.Gameplay.EnemyActions {
 					if (!enemy.gameObject.activeInHierarchy || enemy.IsSleeping)
 						yield break;
 
-					yield return MoveOrRotate(xStep);
+					var move = enemy.LevelGridTransform.MoveByLocal(xStep, _jumpHeight, _interpolatedDurationFactor);
+					if (move == null) {
+						TurnOnCollision(xStep);
+						yield break;
+					}
+
+					_onStart.Invoke();
+					yield return move;
+					_onEnd.Invoke();
 				}
 
 				// Y movement
@@ -53,20 +61,19 @@ namespace LostNotes.Gameplay.EnemyActions {
 					if (!enemy.gameObject.activeInHierarchy || enemy.IsSleeping)
 						yield break;
 
-					yield return MoveOrRotate(yStep);
+					var move = enemy.LevelGridTransform.MoveByLocal(yStep, _jumpHeight, _interpolatedDurationFactor);
+					if (move == null) {
+						TurnOnCollision(yStep);
+						yield break;
+					}
+
+					_onStart.Invoke();
+					yield return move;
+					_onEnd.Invoke();
 				}
 				
 			} else {
-				yield return MoveOrRotate(_movement);
-			}
-
-			var nextTurnStep = _singleSteps ? _movement.x != 0 ? xStep : yStep : _movement;
-			if (!enemy.LevelGridTransform.CanMoveByLocal(nextTurnStep))
-				TurnOnCollision(nextTurnStep);
-			yield break;
-
-			IEnumerator MoveOrRotate(Vector2Int step) {
-				var move = enemy.LevelGridTransform.MoveByLocal(step, _jumpHeight, _interpolatedDurationFactor);
+				var move = enemy.LevelGridTransform.MoveByLocal(_movement, _jumpHeight, _interpolatedDurationFactor);
 				if (move == null) {
 					TurnOnCollision(_movement);
 					yield break;
@@ -76,6 +83,11 @@ namespace LostNotes.Gameplay.EnemyActions {
 				yield return move;
 				_onEnd.Invoke();
 			}
+
+			var nextTurnStep = _singleSteps ? _movement.x != 0 ? xStep : yStep : _movement;
+			if (!enemy.LevelGridTransform.CanMoveByLocal(nextTurnStep))
+				TurnOnCollision(nextTurnStep);
+			yield break;
 			
 			void TurnOnCollision(Vector2Int step) {
 				if (_minTurnOnBlocked == RotationTurn.Degrees0)
