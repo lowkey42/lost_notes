@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92de7798b441f114bbcdbcd5d0b547a2, type: 3}
-  m_Name: SFX_Death_Hole
+  m_Name: SFX_Boulder_Move
   m_EditorClassIdentifier: 
   _eventToTrigger:
     Guid:
-      Data1: 1516159259
-      Data2: 1285209612
-      Data3: -2092921185
-      Data4: -895351328
-    Path: event:/Soundeffekte Welt/EntityYeet
+      Data1: 857397914
+      Data2: 1251628572
+      Data3: 1189767842
+      Data4: 469693784
+    Path: event:/Soundeffekte Welt/BoulderMove

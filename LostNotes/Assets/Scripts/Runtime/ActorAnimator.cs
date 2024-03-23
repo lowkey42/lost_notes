@@ -8,6 +8,7 @@ using LostNotes.Gameplay;
 using LostNotes.Level;
 using LostNotes.Player;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace LostNotes {
@@ -37,6 +38,9 @@ namespace LostNotes {
 
 		[SerializeField]
 		private float _idleSpeed = 1.0f;
+
+		[SerializeField]
+		private UnityEvent _onSleep;
 
 		private LevelGridDirection _lastDirection = LevelGridDirection.East;
 		private RuntimeAnimatorController _defaultAnimationController;
@@ -103,6 +107,7 @@ namespace LostNotes {
 				_animator.SetBool(_animatorIsSleeping, _isSleeping = true);
 				_sleepSequence = transform.DOLocalRotate(new Vector3(50, 0, 15), 0.7f).SetEase(Ease.InBack);
 				_idleSequence.Pause();
+				_onSleep.Invoke();
 			}
 		}
 

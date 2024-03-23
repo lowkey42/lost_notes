@@ -133,6 +133,21 @@ MonoBehaviour:
   _interpolatedChild: {fileID: 3369865467406903886}
   _interpolatedDuration: 0.25
   _level: {fileID: 0}
+  _onMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 203bbf6ec1daa5bc8bb1bc95647d7755, type: 2}
+        m_TargetAssemblyTypeName: LostNotes.Audio.FMODEventAsset, LostNotes
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _moveChannelReference:
     m_AssetGUID: 7838877b66717044cbe19a928fb80c64
     m_SubObjectName: 
