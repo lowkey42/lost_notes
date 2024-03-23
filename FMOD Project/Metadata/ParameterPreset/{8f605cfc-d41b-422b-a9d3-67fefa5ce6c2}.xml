@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{8f605cfc-d41b-422b-a9d3-67fefa5ce6c2}">
+		<property name="name">
+			<value>There's a Hole in the Ground</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bbab3470-4bc9-41a2-ad4d-ebfd9ce3e3fc}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{2a184306-8845-4c31-a10c-4a0bf3dc0930}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{2a184306-8845-4c31-a10c-4a0bf3dc0930}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>NoHole</value>
+			<value>Hole</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
