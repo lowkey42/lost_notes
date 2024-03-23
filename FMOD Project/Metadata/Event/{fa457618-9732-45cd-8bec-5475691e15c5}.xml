@@ -36,6 +36,7 @@
 			<destination>{6925f0c0-00f2-40b9-be17-d47e1581a96c}</destination>
 			<destination>{7d87fafb-13c0-456b-adc9-470e59bbaae1}</destination>
 			<destination>{d69157b4-9b2a-4ce1-9083-3d48fe8048c7}</destination>
+			<destination>{656c96f9-6e8c-4111-b347-bb2fab20113c}</destination>
 		</relationship>
 		<relationship name="banks">
 			<destination>{055f5f30-3ae3-43be-bb56-e039a3a550af}</destination>
@@ -118,6 +119,11 @@
 			<destination>{440b0ab7-aafb-462e-afc2-82c8da1dda86}</destination>
 		</relationship>
 	</object>
+	<object class="ParameterProxy" id="{656c96f9-6e8c-4111-b347-bb2fab20113c}">
+		<relationship name="preset">
+			<destination>{168223d1-6228-4866-913c-c918f4e10f3b}</destination>
+		</relationship>
+	</object>
 	<object class="EventMixerMaster" id="{ffa6cac4-ded3-4a12-b75a-5d585a9863d6}">
 		<relationship name="automators">
 			<destination>{c5e3d5a9-3b71-475f-8eea-e9c5e38f8e6c}</destination>
@@ -150,6 +156,9 @@
 		<property name="commandType">
 			<value>3</value>
 		</property>
+		<relationship name="triggerConditions">
+			<destination>{d50b7cc0-17ab-4258-af33-2dd815610480}</destination>
+		</relationship>
 		<relationship name="commandTarget">
 			<destination>{e7513d29-2fec-465e-8530-6423391a0fed}</destination>
 		</relationship>
@@ -241,6 +250,17 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{56d0da92-d62f-41c4-a7a7-a5477b00e4a1}" />
+	<object class="ParameterCondition" id="{d50b7cc0-17ab-4258-af33-2dd815610480}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{168223d1-6228-4866-913c-c918f4e10f3b}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{b1188b41-ce66-4ee2-a4f2-74caa19ee53d}" />
 	<object class="FadeCurve" id="{3ca207b4-e50b-4cec-b39a-b83ca4fd59fc}">
 		<relationship name="startPoint">
@@ -377,7 +397,7 @@
 			<value>1</value>
 		</property>
 		<property name="value">
-			<value>4000</value>
+			<value>2200</value>
 		</property>
 	</object>
 </objects>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{c1f0e2ad-c17d-4b50-a9e6-7795cf4491bd}">
 		<property name="assetPath">
-			<value>Failed Note.wav</value>
+			<value>Noten/Failed Note.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
