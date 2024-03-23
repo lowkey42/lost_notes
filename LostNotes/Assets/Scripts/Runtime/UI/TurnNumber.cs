@@ -27,7 +27,7 @@ namespace LostNotes.UI {
 				var turnDistance = turnOrder.GetTurnOrderDistance(_ourTurnActor);
 				_text.text = turnDistance switch {
 					-1 => "",
-					0  => "↓",
+					0  => "",
 					_  => turnDistance.ToString()
 				};
 			}
