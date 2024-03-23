@@ -127,13 +127,15 @@ namespace LostNotes.Gameplay.EnemyActions {
 				// rotate until next MoveByLocal would succeed
 				var turnDegrees = (int) _minTurnOnBlocked;
 				enemy.Rotation2d += turnDegrees;
-				while (!enemy.CanMoveBy(step) && turnDegrees < 270) {
+				while (!enemy.CanMoveBy(step) && turnDegrees < 360) {
 					turnDegrees += 90;
 					enemy.Rotation2d += 90;
 				}
 
-				if (_turnIndicatorPrefabs != null && turnDegrees / 90 < _turnIndicatorPrefabs.Length)
+				if (_turnIndicatorPrefabs != null && turnDegrees / 90 <= _turnIndicatorPrefabs.Length)
 					Instantiate(_turnIndicatorPrefabs[(turnDegrees / 90) - 1], enemy.Position3d, orientation, parent);
+				else if (_turnIndicatorPrefabs != null && 1 < _turnIndicatorPrefabs.Length)
+					Instantiate(_turnIndicatorPrefabs[1], enemy.Position3d, orientation, parent);
 			}
 		}
 	}
