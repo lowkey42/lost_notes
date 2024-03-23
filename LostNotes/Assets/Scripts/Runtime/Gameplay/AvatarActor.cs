@@ -11,6 +11,7 @@ namespace LostNotes.Gameplay {
 	internal sealed class AvatarActor : MonoBehaviour, ITurnActor, IAvatarMessages, IAttackMessages, IActorMessages {
 		public static event Action<bool> OnChangeIsAlone;
 		public static event Action<int> OnChangeAvailableActionPoints;
+		public static event Action<int> OnChangeSelectedActionPoints;
 
 		[Header("Components")]
 		[SerializeField]
@@ -80,6 +81,23 @@ namespace LostNotes.Gameplay {
 		private void Awake() {
 			_input.CanMove = false;
 			_input.CanChangePlayState = false;
+		}
+
+		private void OnEnable() {
+			AvatarInput.OnChangePlayState += UpdatePlayState;
+		}
+
+		private void OnDisable() {
+			AvatarInput.OnChangePlayState -= UpdatePlayState;
+		}
+
+		private void UpdatePlayState(EViolinState state) {
+			OnChangeSelectedActionPoints?.Invoke(
+				state switch {
+					EViolinState.Playing => _actionPointsToPlay,
+					_ => 0,
+				}
+			);
 		}
 
 		public TurnOrder TurnOrder { get; set; }

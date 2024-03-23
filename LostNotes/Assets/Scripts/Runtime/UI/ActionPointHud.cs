@@ -24,11 +24,13 @@ namespace LostNotes.UI {
 		private void OnEnable() {
 			AvatarActor.OnChangeIsAlone += HandleIsAlone;
 			AvatarActor.OnChangeAvailableActionPoints += HandleChangeActionPoints;
+			AvatarActor.OnChangeSelectedActionPoints += HandleChangeSelectedActionPoints;
 		}
 
 		private void OnDisable() {
 			AvatarActor.OnChangeIsAlone -= HandleIsAlone;
 			AvatarActor.OnChangeAvailableActionPoints -= HandleChangeActionPoints;
+			AvatarActor.OnChangeSelectedActionPoints -= HandleChangeSelectedActionPoints;
 		}
 
 		private void HandleIsAlone(bool isAlone) {
@@ -36,15 +38,20 @@ namespace LostNotes.UI {
 			UpdateHud();
 		}
 
-		private void HandleChangeActionPoints(int availablePoints) {
-			_availablePoints = availablePoints;
+		private void HandleChangeActionPoints(int points) {
+			_availablePoints = points;
+			UpdateHud();
+		}
+
+		private void HandleChangeSelectedActionPoints(int points) {
+			_highlightedPoints = points;
 			UpdateHud();
 		}
 
 		private void UpdateHud() {
 			for (var i = 0; i < _pointImages.Length; i++) {
 				_pointImages[i].sprite = i switch {
-					_ when _highlightedPoints > i => _highlightSprite,
+					_ when _availablePoints > i && _highlightedPoints > i => _highlightSprite,
 					_ when _availablePoints > i => _availableSprite,
 					_ => _clearSprite,
 				};
