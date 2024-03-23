@@ -135,7 +135,7 @@ namespace LostNotes.Player {
 		[SerializeField, ReadOnly]
 		private bool _canMove = true;
 		public bool CanMove {
-			get => _canMove && !_isPlaying && !_isPaused;
+			get => _canMove && !_isPlaying;
 			set {
 				_canMove = value;
 				OnChangeCanMove?.Invoke(CanMove);
@@ -145,7 +145,7 @@ namespace LostNotes.Player {
 		[SerializeField, ReadOnly]
 		private bool _canChangePlayState = true;
 		public bool CanChangePlayState {
-			get => _canChangePlayState && !_isPaused;
+			get => _canChangePlayState;
 			set {
 				_canChangePlayState = value;
 				OnChangeCanPlay?.Invoke(CanChangePlayState);
@@ -157,7 +157,7 @@ namespace LostNotes.Player {
 			IsPlaying = !IsPlaying;
 		}
 
-		private bool CanPlayNotes => _isPlaying && !_isPaused;
+		private bool CanPlayNotes => _isPlaying;
 
 		private void HandleMove(InputAction.CallbackContext context) {
 			DoMove(Vector2Int.RoundToInt(context.ReadValue<Vector2>()));
@@ -165,6 +165,10 @@ namespace LostNotes.Player {
 
 		private void DoMove(Vector2Int input) {
 			if (!CanMove) {
+				return;
+			}
+
+			if (IsPaused) {
 				return;
 			}
 
@@ -202,11 +206,19 @@ namespace LostNotes.Player {
 				return;
 			}
 
+			if (IsPaused) {
+				return;
+			}
+
 			IsPlaying = true;
 		}
 
 		public void HandlePlayStop(InputAction.CallbackContext context) {
 			if (!CanChangePlayState) {
+				return;
+			}
+
+			if (IsPaused) {
 				return;
 			}
 
@@ -237,6 +249,10 @@ namespace LostNotes.Player {
 				return;
 			}
 
+			if (IsPaused) {
+				return;
+			}
+
 			if (TryLookupNote(context.action, out var note)) {
 				StartNote(note);
 			}
@@ -244,6 +260,10 @@ namespace LostNotes.Player {
 
 		private void HandleNoteStop(InputAction.CallbackContext context) {
 			if (!CanPlayNotes) {
+				return;
+			}
+
+			if (IsPaused) {
 				return;
 			}
 
@@ -285,6 +305,10 @@ namespace LostNotes.Player {
 
 		public void PlayNoteOneShot(NoteAsset note) {
 			if (!CanPlayNotes) {
+				return;
+			}
+
+			if (IsPaused) {
 				return;
 			}
 
