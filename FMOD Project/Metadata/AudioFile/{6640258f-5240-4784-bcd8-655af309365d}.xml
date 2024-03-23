@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{6640258f-5240-4784-bcd8-655af309365d}">
+		<property name="assetPath">
+			<value>Music/LN_combat_v7.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>100.28585034013605</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3fe10d14-fc29-4fc5-bbd4-20f34f6e169a}</destination>
+		</relationship>
+	</object>
+</objects>

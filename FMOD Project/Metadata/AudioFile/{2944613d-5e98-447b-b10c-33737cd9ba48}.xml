@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2944613d-5e98-447b-b10c-33737cd9ba48}">
+		<property name="assetPath">
+			<value>Soundeffects/Player/Steps/Footsteps_Casual_Concrete_08.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.27721088435374147</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3fe10d14-fc29-4fc5-bbd4-20f34f6e169a}</destination>
+		</relationship>
+	</object>
+</objects>
