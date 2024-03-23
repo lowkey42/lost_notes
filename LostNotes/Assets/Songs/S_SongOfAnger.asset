@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130ba6736687035468319838fc26eb50, type: 3}
   m_Name: S_SongOfAnger
   m_EditorClassIdentifier: 
-  _isAvailable: 1
+  _isAvailable: 0
+  _notesLearned: 0
   _effects: 33
   _effectDelay: 0.1
   _receiverSorting: 0
@@ -33,3 +34,5 @@ MonoBehaviour:
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
   _songColor: {r: 0.8396226, g: 0.36871427, b: 0.11485406, a: 1}
   _hudSprite: {fileID: 21300000, guid: b7b6b41e767357043b5bb94606360207, type: 3}
+  _buttonSprite: {fileID: 21300000, guid: 330ef9cf4af6d6544810887625fd998c, type: 3}
+  _detailSprite: {fileID: 21300000, guid: 2390e151dd41c4a4392772f7827472e4, type: 3}

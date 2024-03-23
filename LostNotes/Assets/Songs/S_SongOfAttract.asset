@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S_SongOfAttract
   m_EditorClassIdentifier: 
   _isAvailable: 1
+  _notesLearned: 0
   _effects: 5
   _effectDelay: 0.1
   _receiverSorting: 1
@@ -33,3 +34,5 @@ MonoBehaviour:
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
   _songColor: {r: 0.48811057, g: 0.17866677, b: 0.5188679, a: 1}
   _hudSprite: {fileID: 21300000, guid: 31ee7063386cccf4099a8df0338b9221, type: 3}
+  _buttonSprite: {fileID: 21300000, guid: 36af0ba9521733a4cae089a30c7443bb, type: 3}
+  _detailSprite: {fileID: 21300000, guid: 13e0c892d8b796c4e97eead737577c2c, type: 3}

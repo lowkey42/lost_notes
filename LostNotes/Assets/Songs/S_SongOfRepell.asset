@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: S_SongOfRepell
   m_EditorClassIdentifier: 
   _isAvailable: 1
+  _notesLearned: 0
   _effects: 3
   _effectDelay: 0.1
   _receiverSorting: 2
@@ -33,3 +34,5 @@ MonoBehaviour:
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
   _songColor: {r: 0.23949803, g: 0.5250127, b: 0.735849, a: 1}
   _hudSprite: {fileID: 21300000, guid: f3c85243cf254074d9387963310499b1, type: 3}
+  _buttonSprite: {fileID: 21300000, guid: 4afa4b2911ce1234ab0f89797671f514, type: 3}
+  _detailSprite: {fileID: 21300000, guid: 93d82630288f6024caa6f8382aea53e9, type: 3}

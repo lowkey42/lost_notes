@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace LostNotes.UI {
-	internal sealed class InstantiateOnSelect : MonoBehaviour, ISelectHandler, IDeselectHandler {
+	internal sealed class InstantiateOnSelect : MonoBehaviour, ISelectHandler, IDeselectHandler, IPointerEnterHandler, IPointerExitHandler {
 		[SerializeField, Tag]
 		private string _containerLabel = "MenuContent";
 
@@ -14,7 +14,9 @@ namespace LostNotes.UI {
 
 		public void OnSelect(BaseEventData eventData) {
 			TearDown();
-			SetUp();
+			if (_prefab) {
+				SetUp();
+			}
 		}
 
 		public void OnDeselect(BaseEventData eventData) {
@@ -22,6 +24,17 @@ namespace LostNotes.UI {
 		}
 
 		private void OnDisable() {
+			TearDown();
+		}
+
+		public void OnPointerEnter(PointerEventData eventData) {
+			TearDown();
+			if (_prefab) {
+				SetUp();
+			}
+		}
+
+		public void OnPointerExit(PointerEventData eventData) {
 			TearDown();
 		}
 

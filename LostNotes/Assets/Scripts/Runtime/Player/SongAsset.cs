@@ -124,6 +124,9 @@ namespace LostNotes.Player {
 		private Sprite _hudSprite;
 		public Sprite HudSprite => _hudSprite;
 		[SerializeField]
+		private Sprite _buttonSprite;
+		public Sprite ButtonSprite => _buttonSprite;
+		[SerializeField]
 		private Sprite _detailSprite;
 		public Sprite DetailSprite => _detailSprite;
 
