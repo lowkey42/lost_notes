@@ -33,6 +33,7 @@ namespace LostNotes.Player {
 				_avatarInput.OnMoveInput += HandleMoveInput;
 				_avatarInput.OnTogglePlay += HandleTogglePlay;
 				_avatarInput.OnReset += HandleReset;
+				_avatarInput.OnSkipTurn += HandleSkip;
 			}
 		}
 
@@ -42,7 +43,24 @@ namespace LostNotes.Player {
 				_avatarInput.OnMoveInput -= HandleMoveInput;
 				_avatarInput.OnTogglePlay -= HandleTogglePlay;
 				_avatarInput.OnReset -= HandleReset;
+				_avatarInput.OnSkipTurn -= HandleSkip;
 			}
+		}
+
+		private void HandleSkip() {
+			gameObject.BroadcastMessage(nameof(IAvatarMessages.OnSkip), SendMessageOptions.DontRequireReceiver);
+		}
+
+		private void HandleSkip(InputAction.CallbackContext context) {
+			HandleSkip();
+		}
+
+		private void HandlePause() {
+			gameObject.BroadcastMessage(nameof(IAvatarMessages.OnPause), SendMessageOptions.DontRequireReceiver);
+		}
+
+		private void HandlePause(InputAction.CallbackContext context) {
+			HandleSkip();
 		}
 
 		private void HandleReset() {
@@ -72,7 +90,9 @@ namespace LostNotes.Player {
 			PlayerMap["Move"].canceled += HandleMove;
 			PlayerMap["Play"].started += HandlePlayStart;
 			PlayerMap["Play"].canceled += HandlePlayStop;
-			PlayerMap["Reset"].started += HandleReset;
+			PlayerMap["Reset"].performed += HandleReset;
+			PlayerMap["Skip"].performed += HandleSkip;
+			PlayerMap["Pause"].performed += HandlePause;
 		}
 
 		private void TearDownPlayer() {
@@ -80,7 +100,9 @@ namespace LostNotes.Player {
 			PlayerMap["Move"].canceled -= HandleMove;
 			PlayerMap["Play"].started -= HandlePlayStart;
 			PlayerMap["Play"].canceled -= HandlePlayStop;
-			PlayerMap["Reset"].started -= HandleReset;
+			PlayerMap["Reset"].performed -= HandleReset;
+			PlayerMap["Skip"].performed -= HandleSkip;
+			PlayerMap["Pause"].performed -= HandlePause;
 
 			PlayerMap.Disable();
 		}
