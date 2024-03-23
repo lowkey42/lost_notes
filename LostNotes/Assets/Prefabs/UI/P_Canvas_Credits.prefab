@@ -176,7 +176,7 @@ RectTransform:
   - {fileID: 5929435002748838272}
   m_Father: {fileID: 740919942382104885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.35, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -328,22 +328,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2899288290228463355}
     m_Modifications:
-    - target: {fileID: 164519316338730524, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
-      propertyPath: m_fontSize
-      value: 72
-      objectReference: {fileID: 0}
-    - target: {fileID: 266759449894253966, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
-      propertyPath: m_fontSize
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 1450522653767959605, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
-      propertyPath: m_fontSize
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 2563439793611748317, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
-      propertyPath: m_fontSize
-      value: 42.3
-      objectReference: {fileID: 0}
     - target: {fileID: 6596536847770902142, guid: e363e2769b879e14bbcd42d7af94294b, type: 3}
       propertyPath: m_Name
       value: P_Credits
