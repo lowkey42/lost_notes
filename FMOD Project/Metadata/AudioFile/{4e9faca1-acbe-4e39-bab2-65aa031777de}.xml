@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{444b4670-1680-4573-be1a-4c9058b0b4f9}">
+	<object class="AudioFile" id="{4e9faca1-acbe-4e39-bab2-65aa031777de}">
 		<property name="assetPath">
-			<value>Music/LN_combat_v5.wav</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>Soundeffects/Menu/V2/LN_menu_1_hover.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
@@ -14,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>100.28585034013605</value>
+			<value>2.8571428571428572</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{3fe10d14-fc29-4fc5-bbd4-20f34f6e169a}</destination>

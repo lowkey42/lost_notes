@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{d29d9553-1d1b-4636-9ea8-27e48eb574f2}">
 		<property name="name">
-			<value>Soundtrack Fight 2</value>
+			<value>Soundtrack Safe</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -95,8 +95,11 @@
 		<property name="length">
 			<value>100.28585034013605</value>
 		</property>
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<relationship name="audioFile">
-			<destination>{03cce21d-2d51-47d6-93a5-8e694fd0c63a}</destination>
+			<destination>{ca8348cf-70d7-4777-9ace-5f7f9e41fd96}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{45329d01-f4f0-4edf-babb-1256b83fbf27}">

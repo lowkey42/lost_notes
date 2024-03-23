@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{d26506f0-0989-4e55-aa61-5f7110a38ae5}">
 		<property name="assetPath">
-			<value>Soundeffects/Menu/LN_menu_4hover.wav</value>
+			<value>Soundeffects/Menu/V1/LN_menu_4hover.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

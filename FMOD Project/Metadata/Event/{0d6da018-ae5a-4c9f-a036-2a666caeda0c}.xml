@@ -96,7 +96,7 @@
 			<value>100.28585034013605</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{444b4670-1680-4573-be1a-4c9058b0b4f9}</destination>
+			<destination>{6640258f-5240-4784-bcd8-655af309365d}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{97b9ddb7-17cf-4941-a348-6eba246f9714}">
