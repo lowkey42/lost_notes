@@ -92,6 +92,7 @@ namespace LostNotes {
 
 			if (gainedStatusEffect.HasFlag(StatusEffects.Sleeping)) {
 				_animator.SetBool(_animatorIsSleeping, _isSleeping = true);
+				transform.DOLocalRotate(new Vector3(50, 0, 15), 0.7f).SetEase(Ease.InBack);
 				_idleSequence.Pause();
 			}
 		}
@@ -103,6 +104,7 @@ namespace LostNotes {
 			if (lostStatusEffect.HasFlag(StatusEffects.Sleeping)) {
 				_animator.SetBool(_animatorIsSleeping, _isSleeping = false);
 				_idleSequence.Play();
+				transform.rotation = Quaternion.identity;
 			}
 		}
 

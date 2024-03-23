@@ -19,6 +19,9 @@ namespace LostNotes.Gameplay {
 		[SerializeField]
 		private LevelGridTransform _gridTransform;
 
+		[SerializeField]
+		private ActorStatus _status;
+
 		public LevelComponent Level => _gridTransform.Level;
 
 		[SerializeField]
@@ -75,8 +78,6 @@ namespace LostNotes.Gameplay {
 		[Header("Runtime values")]
 		[SerializeField, ReadOnly]
 		private int _actionPoints = 0;
-		[SerializeField, ReadOnly]
-		private bool _isAlive = true;
 
 		private void Awake() {
 			_input.CanMove = false;
@@ -105,7 +106,7 @@ namespace LostNotes.Gameplay {
 		private bool hasEnemies;
 
 		public IEnumerator DoTurn() {
-			if (_isAlive) {
+			if (!_status.HasStatusEffect(StatusEffects.Sleeping)) {
 				ActionPoints = _actionPointsPerTurn;
 				do {
 					yield return _turnQueue.TryDequeue(out var coroutine)
@@ -124,6 +125,9 @@ namespace LostNotes.Gameplay {
 
 		[SerializeField]
 		private int _stepJumpCount = 3;
+
+		[SerializeField]
+		private float _sleepResetDelay = 2.0f;
 
 		private readonly Queue<object> _turnQueue = new();
 
@@ -145,9 +149,13 @@ namespace LostNotes.Gameplay {
 
 		[ContextMenu(nameof(OnAttacked))]
 		public void OnAttacked() {
-			_isAlive = false;
+			_status.ApplyStatusEffect(StatusEffects.Sleeping);
 			ActionPoints = 0;
+			StartCoroutine(ResetAfter(_sleepResetDelay));
+		}
 
+		private IEnumerator ResetAfter(float delay) {
+			yield return new WaitForSeconds(delay);
 			gameObject.BroadcastMessage(nameof(IAvatarMessages.OnReset), SendMessageOptions.DontRequireReceiver);
 		}
 
