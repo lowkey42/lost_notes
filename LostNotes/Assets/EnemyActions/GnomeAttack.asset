@@ -21,5 +21,9 @@ MonoBehaviour:
   _attackSpeed: 1
   _endTurnDelay: 0.25
   _recoilDelay: 0.05
-  _recoilDurationFactor: 0.5
+  _recoilDurationFactor: 0.4
   _recoilJumpHeight: 0.5
+  _projectilePrefab: {fileID: 1828739400758154445, guid: 1f0aaa3765b9dadf1ba07dd2a1ca120b, type: 3}
+  _projectileTargetPositions:
+  - {x: 3, y: 0}
+  _initialDelay: 0.1

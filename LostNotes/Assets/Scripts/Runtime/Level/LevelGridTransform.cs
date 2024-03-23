@@ -45,14 +45,14 @@ namespace LostNotes.Level {
 		public bool IsMoving => _interpolationSequence != null;
 
 		public float MovingDurationFactor => _interpolationDurationFactor;
-		
-		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1) {
+
+		public YieldInstruction MoveBy(Vector2Int delta, float jumpHeight = 0, float durationFactor = 1, int jumpCount = 1, bool ignoreCollisions = false) {
 			_interpolationSequence?.Kill(true);
 			
 			var newPosition2d = Position2d + delta;
 			var newPosition = _level.GridToWorld(newPosition2d);
 
-			if (!CanMoveTo(newPosition2d))
+			if (!ignoreCollisions && !CanMoveTo(newPosition2d))
 				return null;
 
 			if (!_interpolatedChild) {

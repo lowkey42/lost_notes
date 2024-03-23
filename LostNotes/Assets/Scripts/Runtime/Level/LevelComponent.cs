@@ -97,18 +97,25 @@ namespace LostNotes.Level {
 		}
 
 		public bool IsInteractionUnblocked(Vector2Int a, Vector2Int b) {
+			return IsInteractionUnblocked(a, b, out var _);
+		}
+
+		public bool IsInteractionUnblocked(Vector2Int a, Vector2Int b, out Vector2Int lastUnblocked) {
 			// Raycast check of all tiles between a and b, using Bresenham's line algorithm
 			var deltaError = new Vector2Int(Mathf.Abs(b.x - a.x), -Mathf.Abs(b.y - a.y));
 			var step = new Vector2Int(a.x < b.x ? 1 : -1, a.y < b.y ? 1 : -1);
 			var error = deltaError.x + deltaError.y;
 			var firstIteration = true;
-			for (; ; )
-{
-				if (a.x == b.x && a.y == b.y)
+			lastUnblocked = a;
+			for (;;) {
+				if (a.x == b.x && a.y == b.y) {
+					lastUnblocked = b;
 					return true;
+				}
 
-				if (!firstIteration && IsInteractionBlocking(a))
+				if (!firstIteration && IsInteractionBlocking(a)) 
 					return false;
+				lastUnblocked = a;
 
 				var error2 = 2 * error;
 				if (error2 >= deltaError.y) {
@@ -119,7 +126,7 @@ namespace LostNotes.Level {
 				}
 
 				if (error2 <= deltaError.x) {
-					if (a.y == b.y)
+					if (a.y == b.y) 
 						return true;
 					error += deltaError.x;
 					a.y += step.y;
