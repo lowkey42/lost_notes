@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using LostNotes.Level;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LostNotes.Gameplay.EnemyActions {
 	[CreateAssetMenu(fileName = "Attack", menuName = "EnemyActions/Attack", order = 0)]
@@ -42,7 +43,11 @@ namespace LostNotes.Gameplay.EnemyActions {
 		[SerializeField]
 		private float _initialDelay = 0.1f;
 
+		[SerializeField]
+		private UnityEvent _onAttack;
+
 		public override IEnumerator Execute(Enemy enemy) {
+			_onAttack.Invoke();
 			enemy.BroadcastMessage(nameof(IEnemyMessages.OnStartAttack), _attackSpeed, SendMessageOptions.DontRequireReceiver);
 
 			if (_initialDelay > 0)

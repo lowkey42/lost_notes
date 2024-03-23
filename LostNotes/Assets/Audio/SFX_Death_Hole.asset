@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92de7798b441f114bbcdbcd5d0b547a2, type: 3}
+  m_Name: SFX_Death_Hole
+  m_EditorClassIdentifier: 
+  _eventToTrigger:
+    Guid:
+      Data1: -463640638
+      Data2: 1286827036
+      Data3: 1661546633
+      Data4: -648001638
+    Path: event:/Soundeffekte Welt/EntityFlop
