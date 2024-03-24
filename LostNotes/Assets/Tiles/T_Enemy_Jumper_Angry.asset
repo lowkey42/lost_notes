@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbafa5af8c2bf84ba751f8d5a5738c8, type: 3}
+  m_Name: T_Enemy_Jumper_Angry
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 705f32cd6b02c8f08988916ce9a85562, type: 3}
+  prefab: {fileID: 141033000861940632, guid: 941538ea2de3c1689bef659f47daad8f, type: 3}
+  _isWalkable: 1
+  _isInteractionBlocking: 0
