@@ -15,7 +15,7 @@ MonoBehaviour:
   _isAvailable: 0
   _notesLearned: 0
   _effects: 9
-  _effectDelay: 0.1
+  _effectDelay: 1.2
   _receiverSorting: 0
   _notes:
   - {fileID: 11400000, guid: 2e0fa0471ee102244b9605f03e7b2976, type: 2}
@@ -31,7 +31,7 @@ MonoBehaviour:
       Data3: -1717851213
       Data4: -1934899547
     Path: event:/Songs/Song of Sleep/Song of Sleep Combat
-  _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
+  _songPrefab: {fileID: 207553176737131602, guid: 936436a4f46e49f4caa207fe59c9a101, type: 3}
   _songColor: {r: 0.6745098, g: 0.8901961, b: 0.92941177, a: 1}
   _hudSprite: {fileID: 21300000, guid: c1bc37d08e1631940aa7fb549ff0baa6, type: 3}
   _buttonSprite: {fileID: 21300000, guid: 063fdc6a3a6be854e8781b959bf990a7, type: 3}
