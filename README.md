@@ -8,9 +8,9 @@ Game Dev Week 2024:
 - Theme: "Underground Wonderland" and "Celestial Symphony"
 
 ## Credits
-- Jan Bade (project management, ui design, level design)
+- Jan Bade (project management, ui design, level design, sound design)
 - Ako Gertheiss (music, sound design)
-- Sunna Linn (2d art)
-- Finn Macri (2d art)
+- Sunna Linn (2d art, corporate design, level design)
+- Finn Macri (2d art, level design)
 - Florian Oetke (programming)
 - Daniel Schulz (programming)

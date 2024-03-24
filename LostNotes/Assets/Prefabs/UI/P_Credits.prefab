@@ -66,8 +66,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u266A Jan Bade (management, ui, level and sound design)\n\u266A Ako Gertheiss
-    (music, sound design)\n\u266A Sunna Linn (2d art, corporate design)\n\u266A Finn
-    Macri (2d art)\n\u266A Florian Oetke (programming)\n\u266A Daniel Schulz (programming)"
+    (music, sound design)\n\u266A Sunna Linn (2d art, corporate and level design)\n\u266A
+    Finn Macri (2d art, level design)\n\u266A Florian Oetke (programming)\n\u266A
+    Daniel Schulz (programming)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 10d57fdb158170975a3a8c23c70cd948, type: 2}
   m_sharedMaterial: {fileID: -1467271507663379610, guid: 10d57fdb158170975a3a8c23c70cd948, type: 2}
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.55
+  m_fontSize: 19.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -229,7 +230,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.7
+  m_fontSize: 17.9
   m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -478,7 +479,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19.4
+  m_fontSize: 24.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -612,7 +613,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.35
+  m_fontSize: 41.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
