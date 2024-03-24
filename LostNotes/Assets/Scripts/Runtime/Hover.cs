@@ -3,10 +3,11 @@ using UnityEngine;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using LostNotes.Gameplay;
 using Random = UnityEngine.Random;
 
 namespace LostNotes {
-	public class Hover : MonoBehaviour {
+	internal class Hover : MonoBehaviour, IActorStatusMessages {
 		[SerializeField]
 		private float _heightOffset = 0.333f;
 
@@ -27,9 +28,18 @@ namespace LostNotes {
 			                   .SetEase(Ease.InOutSine);
 		}
 
+		public void OnGainedStatusEffect(StatusEffects gainedStatusEffect) {
+			if (gainedStatusEffect.HasFlag(StatusEffects.Sleeping)) {
+				_yTween.Kill();
+				_xTween.Kill();
+			}
+		}
+		
 		private void OnDestroy() {
-			_yTween.Kill();
-			_xTween.Kill();
+			if (_yTween.IsActive())
+				_yTween.Kill();
+			if (_xTween.IsActive())
+				_xTween.Kill();
 		}
 	}
 }
