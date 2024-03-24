@@ -31,7 +31,7 @@ MonoBehaviour:
       Data3: -209008709
       Data4: 1330116494
     Path: event:/Songs/Song of Calm/Song of Calm Combat
-  _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
+  _songPrefab: {fileID: 6390510836268926319, guid: af38a8102260abc43aa9e7b44bd1e4fa, type: 3}
   _songColor: {r: 0.36808035, g: 0.8207547, b: 0.35230508, a: 1}
   _hudSprite: {fileID: 21300000, guid: e8c3367d306cedd44b8d300663fd3c72, type: 3}
   _buttonSprite: {fileID: 21300000, guid: d41677888f246ad4aa189cd8f6d47b08, type: 3}

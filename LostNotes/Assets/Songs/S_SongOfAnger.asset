@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130ba6736687035468319838fc26eb50, type: 3}
   m_Name: S_SongOfAnger
   m_EditorClassIdentifier: 
-  _isAvailable: 0
+  _isAvailable: 1
   _notesLearned: 0
   _effects: 33
   _effectDelay: 0.1
