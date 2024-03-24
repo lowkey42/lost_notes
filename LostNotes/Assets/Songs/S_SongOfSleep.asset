@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130ba6736687035468319838fc26eb50, type: 3}
   m_Name: S_SongOfSleep
   m_EditorClassIdentifier: 
-  _isAvailable: 1
+  _isAvailable: 0
   _notesLearned: 0
   _effects: 9
   _effectDelay: 0.1
@@ -32,7 +32,7 @@ MonoBehaviour:
       Data4: -1934899547
     Path: event:/Songs/Song of Sleep/Song of Sleep Combat
   _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
-  _songColor: {r: 0.1990477, g: 0.6698113, b: 0.5854278, a: 1}
+  _songColor: {r: 0.6745098, g: 0.8901961, b: 0.92941177, a: 1}
   _hudSprite: {fileID: 21300000, guid: c1bc37d08e1631940aa7fb549ff0baa6, type: 3}
   _buttonSprite: {fileID: 21300000, guid: 063fdc6a3a6be854e8781b959bf990a7, type: 3}
   _detailSprite: {fileID: 21300000, guid: 8a3598dca4d21884da04928f516c46c6, type: 3}
