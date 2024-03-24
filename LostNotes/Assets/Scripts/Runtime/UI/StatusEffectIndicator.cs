@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
@@ -18,8 +17,20 @@ namespace LostNotes.UI {
 		private Sprite _angrySprite;
 
 		private TweenerCore<Color, Color, ColorOptions> _animation;
+		private Material _material;
 
-		private void OnDestroy() {
+		protected void Awake() {
+			if (_image) {
+				_material = Instantiate(_image.material);
+				_image.material = _material;
+			}
+		}
+
+		protected void OnDestroy() {
+			if (_material) {
+				Destroy(_material);
+			}
+
 			if (_animation != null && _animation.IsActive())
 				_animation.Kill();
 		}
@@ -32,22 +43,22 @@ namespace LostNotes.UI {
 			if (sprite) {
 				_image.sprite = sprite;
 				_image.gameObject.SetActive(true);
-				if (statusEffects.HasFlag(StatusEffects.Sleeping))
-					_animation ??= _image.material.DOFade(0.4f, 2.0f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
-
-				else if (_animation != null) {
+				if (statusEffects.HasFlag(StatusEffects.Sleeping)) {
+					_animation ??= _material.DOFade(0.4f, 2.0f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
+				} else if (_animation != null) {
 					if (_animation.IsPlaying())
 						_animation.Kill();
 					_animation = null;
 				}
-			} else
+			} else {
 				_image.gameObject.SetActive(false);
+			}
 		}
 
 		private Sprite GetSprite(StatusEffects statusEffects) {
-			if (statusEffects.HasFlag(StatusEffects.Sleeping)) return _sleepingSprite;
-			if (statusEffects.HasFlag(StatusEffects.Angry)) return _angrySprite;
-			return null;
+			if (statusEffects.HasFlag(StatusEffects.Sleeping))
+				return _sleepingSprite;
+			return statusEffects.HasFlag(StatusEffects.Angry) ? _angrySprite : null;
 		}
 	}
 }
