@@ -138,7 +138,7 @@ namespace LostNotes.Player {
 			get => _canMove && !_isPlaying;
 			set {
 				_canMove = value;
-				OnChangeCanMove?.Invoke(CanMove);
+				OnChangeCanMove?.Invoke(value);
 			}
 		}
 
@@ -148,7 +148,7 @@ namespace LostNotes.Player {
 			get => _canChangePlayState;
 			set {
 				_canChangePlayState = value;
-				OnChangeCanPlay?.Invoke(CanChangePlayState);
+				OnChangeCanPlay?.Invoke(value);
 				IsPlaying = CanChangePlayState && PlayerMap["Play"].IsPressed();
 			}
 		}
