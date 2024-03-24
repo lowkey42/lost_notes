@@ -15,7 +15,7 @@ MonoBehaviour:
   _isAvailable: 1
   _notesLearned: 0
   _effects: 5
-  _effectDelay: 0.1
+  _effectDelay: 0.9
   _receiverSorting: 1
   _notes:
   - {fileID: 11400000, guid: 9a0f7198ef15606468b75f5540087f44, type: 2}
@@ -31,7 +31,7 @@ MonoBehaviour:
       Data3: -222807633
       Data4: -784863073
     Path: event:/Songs/Song of Attract/Song of Attract
-  _songPrefab: {fileID: 9129755563245552758, guid: 88d2b89d553d561439bea453490822bb, type: 3}
+  _songPrefab: {fileID: 6390510836268926319, guid: 953696a93a81bc54ba13f9ff350d7f0f, type: 3}
   _songColor: {r: 0.48811057, g: 0.17866677, b: 0.5188679, a: 1}
   _hudSprite: {fileID: 21300000, guid: 31ee7063386cccf4099a8df0338b9221, type: 3}
   _buttonSprite: {fileID: 21300000, guid: 36af0ba9521733a4cae089a30c7443bb, type: 3}
