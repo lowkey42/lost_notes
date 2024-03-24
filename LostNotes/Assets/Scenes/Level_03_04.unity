@@ -1785,7 +1785,7 @@ MonoBehaviour:
   _floorLayer: {fileID: 555333577}
   _interactableLayer: {fileID: 1244997640}
   _wallLayer: {fileID: 865494226}
-  _songLoadout: {fileID: 11400000, guid: e2c9508453c0b21449f0c38c384cb7ba, type: 2}
+  _songLoadout: {fileID: 11400000, guid: 32ae708ea942fe74cbec2fd6922e0173, type: 2}
 --- !u!1 &865494225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2723,10 +2723,10 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 1
       m_TileColorIndex: 2
-      m_TileObjectToInstantiateIndex: 1
+      m_TileObjectToInstantiateIndex: 3
       dummyAlignment: 0
       m_AllTileFlags: 0
   - first: {x: -4, y: 4, z: 0}
@@ -2786,12 +2786,12 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: f8333d356d9d7414fb5ffcd3b94d6082, type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 21300000, guid: 799ebf42471bdb6418df96b5d0bdfe9f, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300000, guid: 799ebf42471bdb6418df96b5d0bdfe9f, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: f8333d356d9d7414fb5ffcd3b94d6082, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 5fa8d931d6a46572dbc26927d8a7a672, type: 3}
   - m_RefCount: 1
@@ -2855,12 +2855,12 @@ Tilemap:
   m_TileObjectToInstantiateArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 3723314650923619869, guid: dcc7faf428ffb7545aca7389e92a425d, type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 4520711330091527916, guid: 4ec6654ecd2d278879e2467ff7a1bd1a, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 2
+    m_Data: {fileID: 4520711330091527916, guid: 4ec6654ecd2d278879e2467ff7a1bd1a, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 3723314650923619869, guid: dcc7faf428ffb7545aca7389e92a425d, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 4520711330091527916, guid: a9e29775762e633b984d6144ec7f6fd9, type: 3}
   - m_RefCount: 1

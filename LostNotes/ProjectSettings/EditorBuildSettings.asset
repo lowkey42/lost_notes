@@ -41,5 +41,32 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_old003_02 2.unity
     guid: 2b9d5491078c8f247b5566ee5254c974
+  - enabled: 1
+    path: Assets/Scenes/Level_03_01.unity
+    guid: f3c2c8a9d5c104240b651fbe45037e00
+  - enabled: 1
+    path: Assets/Scenes/Level_03_02.unity
+    guid: e592054ce310a0040b3c055b619c1dbd
+  - enabled: 1
+    path: Assets/Scenes/Level_03_03.unity
+    guid: cd88944f2639ebb449febc2e00ddf5c7
+  - enabled: 1
+    path: Assets/Scenes/Level_03_04.unity
+    guid: 122f0737cbcbc2e43b8955c5ed3e75e8
+  - enabled: 1
+    path: Assets/Scenes/Level_03_05.unity
+    guid: 0c733e8f5d2edff4f9843115097ae026
+  - enabled: 1
+    path: Assets/Scenes/Level_04_01.unity
+    guid: be098a19ab4bfd045ab46367654a0c08
+  - enabled: 1
+    path: Assets/Scenes/Level_04_02.unity
+    guid: 4847eff745289074ba94e8799bbe91e9
+  - enabled: 1
+    path: Assets/Scenes/Level_05.unity
+    guid: cf4c20b875bbd0e42a1a7e6a47ed8577
+  - enabled: 1
+    path: Assets/Scenes/Level_02_04.unity
+    guid: a79294916e098c54c90c2f7de3c870e9
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: dfc59e41e9112be478fe0a71023d0488, type: 2}
