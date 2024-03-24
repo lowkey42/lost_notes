@@ -15,7 +15,7 @@ MonoBehaviour:
   _isAvailable: 1
   _notesLearned: 0
   _effects: 16
-  _effectDelay: 0.1
+  _effectDelay: 1.2
   _receiverSorting: 0
   _notes:
   - {fileID: 11400000, guid: 1530ebd5465e8514285d1c34f93d40a2, type: 2}

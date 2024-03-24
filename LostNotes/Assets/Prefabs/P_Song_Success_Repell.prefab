@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5131612837146641288, guid: 88d2b89d553d561439bea453490822bb, type: 3}
       propertyPath: EmissionModule.m_BurstCount
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5131612837146641288, guid: 88d2b89d553d561439bea453490822bb, type: 3}
       propertyPath: ShapeModule.radiusThickness
@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5131612837146641288, guid: 88d2b89d553d561439bea453490822bb, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5131612837146641288, guid: 88d2b89d553d561439bea453490822bb, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
@@ -90,15 +90,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5131612837146641288, guid: 88d2b89d553d561439bea453490822bb, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[1].time
-      value: 0.3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5131612837146641288, guid: 88d2b89d553d561439bea453490822bb, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[2].time
-      value: 0.6
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5131612837146641288, guid: 88d2b89d553d561439bea453490822bb, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[3].time
-      value: 0.9
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 5131612837146641288, guid: 88d2b89d553d561439bea453490822bb, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[4].time
