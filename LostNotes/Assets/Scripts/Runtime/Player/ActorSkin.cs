@@ -9,7 +9,8 @@ namespace LostNotes.Player {
 		private Material _material;
 
 		private void OnEnable() {
-			_material = _attachedRenderer.material;
+			_material = Instantiate(_attachedRenderer.sharedMaterial);
+			_attachedRenderer.material = _material;
 		}
 
 		private void OnDisable() {
