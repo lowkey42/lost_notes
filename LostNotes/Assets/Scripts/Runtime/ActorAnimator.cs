@@ -100,11 +100,10 @@ namespace LostNotes {
 		}
 
 		public void OnGainedStatusEffect(StatusEffects gainedStatusEffect) {
-			if (!_animator)
-				return;
-
 			if (gainedStatusEffect.HasFlag(StatusEffects.Sleeping)) {
-				_animator.SetBool(_animatorIsSleeping, _isSleeping = true);
+				if (_animator)
+					_animator.SetBool(_animatorIsSleeping, _isSleeping = true);
+				
 				_sleepSequence = transform.DOLocalRotate(new Vector3(50, 0, 15), 0.7f).SetEase(Ease.InBack);
 				_idleSequence.Pause();
 				_onSleep.Invoke();
@@ -112,11 +111,10 @@ namespace LostNotes {
 		}
 
 		public void OnLostStatusEffect(StatusEffects lostStatusEffect) {
-			if (!_animator)
-				return;
-
 			if (lostStatusEffect.HasFlag(StatusEffects.Sleeping)) {
-				_animator.SetBool(_animatorIsSleeping, _isSleeping = false);
+				if (_animator)
+					_animator.SetBool(_animatorIsSleeping, _isSleeping = false);
+				
 				_idleSequence.Play();
 				transform.rotation = Quaternion.identity;
 			}
