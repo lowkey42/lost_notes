@@ -62,7 +62,6 @@ GameObject:
   - component: {fileID: 8773612014515123362}
   - component: {fileID: 4690978652373671199}
   - component: {fileID: -4796435925094127541}
-  - component: {fileID: 2912192758979876536}
   - component: {fileID: 6966819272973433147}
   - component: {fileID: 2348558129740204074}
   m_Layer: 0
@@ -142,19 +141,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isWalkable: 0
   _isInteractionBlocking: 0
---- !u!114 &2912192758979876536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4520711330091527916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52e7a8ceab4b49a468ede70cacefd820, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gridTransform: {fileID: 8773612014515123362}
 --- !u!114 &6966819272973433147
 MonoBehaviour:
   m_ObjectHideFlags: 0
