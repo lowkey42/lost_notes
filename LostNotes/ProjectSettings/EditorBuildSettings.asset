@@ -68,5 +68,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_02_04.unity
     guid: a79294916e098c54c90c2f7de3c870e9
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: b26da636c4de4f3ff9a008c25dc3f6be
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: dfc59e41e9112be478fe0a71023d0488, type: 2}

@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: -4796435925094127541}
   - component: {fileID: 2912192758979876536}
   - component: {fileID: 6966819272973433147}
+  - component: {fileID: -6064051435088544978}
   m_Layer: 0
   m_Name: P_Enemy_Faerie
   m_TagString: Enemy
@@ -168,6 +169,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statusEffects: 0
+--- !u!114 &-6064051435088544978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520711330091527916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0cc69bf0ef4c8ca3906b3ad2d68a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _delay: 4
+  _levelOrder: {fileID: 11400000, guid: e09c78dd39a1adb4db8a1627017ff419, type: 2}
 --- !u!1 &6075892406356288915
 GameObject:
   m_ObjectHideFlags: 0
