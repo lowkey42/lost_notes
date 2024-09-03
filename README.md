@@ -1,4 +1,4 @@
-# Follow Your Dreams
+# Lost Notes
 A game about the difference between violins and violence.
 
 ## Jam Details
