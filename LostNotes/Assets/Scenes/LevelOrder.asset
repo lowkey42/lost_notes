@@ -58,11 +58,11 @@ MonoBehaviour:
     sceneIndex: 16
     sceneEnabled: 1
   - Scene: {fileID: 102900000, guid: be098a19ab4bfd045ab46367654a0c08, type: 3}
-    SceneName: Level_04_02
+    SceneName: Level_04_01
     sceneIndex: 17
     sceneEnabled: 1
   - Scene: {fileID: 102900000, guid: 4847eff745289074ba94e8799bbe91e9, type: 3}
-    SceneName: Level_04_03
+    SceneName: Level_04_02
     sceneIndex: 18
     sceneEnabled: 1
   - Scene: {fileID: 102900000, guid: cf4c20b875bbd0e42a1a7e6a47ed8577, type: 3}
@@ -73,4 +73,9 @@ MonoBehaviour:
     Scene: {fileID: 102900000, guid: 212258529bea6c0418b02950526a323e, type: 3}
     SceneName: MainMenu
     sceneIndex: 0
+    sceneEnabled: 1
+  _winScreen:
+    Scene: {fileID: 102900000, guid: b26da636c4de4f3ff9a008c25dc3f6be, type: 3}
+    SceneName: WinScreen
+    sceneIndex: 21
     sceneEnabled: 1

@@ -38,5 +38,12 @@ namespace LostNotes.Level {
 		public void LoadMainMenu() {
 			_mainMenu.LoadScene();
 		}
+
+		[SerializeField]
+		private SceneReference _winScreen = new();
+
+		public void ShowWinScreen() {
+			_winScreen.LoadScene();
+		}
 	}
 }
